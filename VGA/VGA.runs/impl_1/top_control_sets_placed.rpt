@@ -1,0 +1,66 @@
+Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2015.4 (win64) Build 1412921 Wed Nov 18 09:43:45 MST 2015
+| Date         : Thu Mar 24 01:32:22 2016
+| Host         : Dries007Laptop running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
+| Design       : top
+| Device       : xc7a35t
+------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Flip-Flop Distribution
+3. Detailed Control Set Information
+
+1. Summary
+----------
+
++-------------------------------------------------------------------+-------+
+|                               Status                              | Count |
++-------------------------------------------------------------------+-------+
+| Number of unique control sets                                     |    13 |
+| Minimum Number of register sites lost to control set restrictions |    43 |
++-------------------------------------------------------------------+-------+
+
+
+2. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              20 |           10 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              32 |            9 |
+| Yes          | No                    | No                     |              22 |           14 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |             139 |           41 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+3. Detailed Control Set Information
+-----------------------------------
+
++--------------------------------+--------------------------------+---------------------+------------------+----------------+
+|          Clock Signal          |          Enable Signal         |   Set/Reset Signal  | Slice Load Count | Bel Load Count |
++--------------------------------+--------------------------------+---------------------+------------------+----------------+
+|  VGA/pixel_clock/inst/clk_out1 |                                |                     |                3 |              5 |
+|  clk_BUFG                      | DB_U/E[0]                      | DB_D/SS[0]          |                4 |             11 |
+|  clk_BUFG                      | DB_L/E[0]                      | DB_L/SS[0]          |                4 |             11 |
+|  VGA/pixel_clock/inst/clk_out1 |                                | VGA/eqOp4_in        |                3 |             12 |
+|  VGA/pixel_clock/inst/clk_out1 | VGA/eqOp4_in                   | VGA/v_cntr_reg0     |                3 |             12 |
+|  clk_BUFG                      |                                |                     |                7 |             15 |
+|  clk_BUFG                      |                                | btn_cnt[19]_i_1_n_0 |                6 |             20 |
+|  clk_BUFG                      | DB_U/counter_out[0]_i_2__0_n_0 | DB_U/counter_set    |                6 |             21 |
+|  clk_BUFG                      | DB_R/counter_out[0]_i_2__3_n_0 | DB_R/counter_set    |                6 |             21 |
+|  clk_BUFG                      | DB_L/counter_out[0]_i_2__2_n_0 | DB_L/counter_set    |                6 |             21 |
+|  clk_BUFG                      | DB_D/counter_out[0]_i_2__1_n_0 | DB_D/counter_set    |                6 |             21 |
+|  clk_BUFG                      | DB_C/sel                       | DB_C/counter_set    |                6 |             21 |
+|  VGA/pixel_clock/inst/clk_out1 | VGA/X0                         |                     |               14 |             22 |
++--------------------------------+--------------------------------+---------------------+------------------+----------------+
+
+

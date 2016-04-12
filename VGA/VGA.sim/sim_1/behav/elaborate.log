@@ -1,0 +1,16 @@
+Vivado Simulator 2015.4
+Copyright 1986-1999, 2001-2015 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2015.4/bin/unwrapped/win64.o/xelab.exe -wto 06c90a3f069a47e799004fc350a69e10 --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot top_behav xil_defaultlib.top -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling architecture behavioral of entity xil_defaultlib.ClockDivider [\ClockDivider(100000000,25000000...]
+Compiling architecture behavioral of entity xil_defaultlib.vga [vga_default]
+Compiling architecture behavioral of entity xil_defaultlib.top
+Built simulation snapshot top_behav
