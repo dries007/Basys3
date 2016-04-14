@@ -1,7 +1,7 @@
 -- Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
--- Date        : Tue Apr 12 22:55:20 2016
+-- Date        : Thu Apr 14 00:17:59 2016
 -- Host        : Dries007-Arch running 64-bit unknown
 -- Command     : write_vhdl -force -mode funcsim
 --               /home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/ip/ClockDivider/ClockDivider_sim_netlist.vhdl
@@ -17,13 +17,15 @@ use UNISIM.VCOMPONENTS.ALL;
 entity ClockDivider_ClockDivider_clk_wiz is
   port (
     inClock : in STD_LOGIC;
-    pixelClock : out STD_LOGIC
+    pixelClock : out STD_LOGIC;
+    clk25MHz : out STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of ClockDivider_ClockDivider_clk_wiz : entity is "ClockDivider_clk_wiz";
 end ClockDivider_ClockDivider_clk_wiz;
 
 architecture STRUCTURE of ClockDivider_ClockDivider_clk_wiz is
+  signal clk25MHz_ClockDivider : STD_LOGIC;
   signal clkfbout_ClockDivider : STD_LOGIC;
   signal clkfbout_buf_ClockDivider : STD_LOGIC;
   signal inClock_ClockDivider : STD_LOGIC;
@@ -32,7 +34,6 @@ architecture STRUCTURE of ClockDivider_ClockDivider_clk_wiz is
   signal NLW_mmcm_adv_inst_CLKFBSTOPPED_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED : STD_LOGIC;
-  signal NLW_mmcm_adv_inst_CLKOUT1_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED : STD_LOGIC;
@@ -55,6 +56,7 @@ architecture STRUCTURE of ClockDivider_ClockDivider_clk_wiz is
   attribute IFD_DELAY_VALUE : string;
   attribute IFD_DELAY_VALUE of clkin1_ibufg : label is "AUTO";
   attribute BOX_TYPE of clkout1_buf : label is "PRIMITIVE";
+  attribute BOX_TYPE of clkout2_buf : label is "PRIMITIVE";
   attribute BOX_TYPE of mmcm_adv_inst : label is "PRIMITIVE";
 begin
 clkf_buf: unisim.vcomponents.BUFG
@@ -75,19 +77,24 @@ clkout1_buf: unisim.vcomponents.BUFG
       I => pixelClock_ClockDivider,
       O => pixelClock
     );
+clkout2_buf: unisim.vcomponents.BUFG
+     port map (
+      I => clk25MHz_ClockDivider,
+      O => clk25MHz
+    );
 mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
     generic map(
       BANDWIDTH => "OPTIMIZED",
-      CLKFBOUT_MULT_F => 10.125000,
+      CLKFBOUT_MULT_F => 6.750000,
       CLKFBOUT_PHASE => 0.000000,
       CLKFBOUT_USE_FINE_PS => false,
       CLKIN1_PERIOD => 10.000000,
       CLKIN2_PERIOD => 0.000000,
-      CLKOUT0_DIVIDE_F => 9.375000,
+      CLKOUT0_DIVIDE_F => 6.250000,
       CLKOUT0_DUTY_CYCLE => 0.500000,
       CLKOUT0_PHASE => 0.000000,
       CLKOUT0_USE_FINE_PS => false,
-      CLKOUT1_DIVIDE => 1,
+      CLKOUT1_DIVIDE => 27,
       CLKOUT1_DUTY_CYCLE => 0.500000,
       CLKOUT1_PHASE => 0.000000,
       CLKOUT1_USE_FINE_PS => false,
@@ -137,7 +144,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       CLKINSTOPPED => NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED,
       CLKOUT0 => pixelClock_ClockDivider,
       CLKOUT0B => NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED,
-      CLKOUT1 => NLW_mmcm_adv_inst_CLKOUT1_UNCONNECTED,
+      CLKOUT1 => clk25MHz_ClockDivider,
       CLKOUT1B => NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED,
       CLKOUT2 => NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED,
       CLKOUT2B => NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED,
@@ -169,18 +176,20 @@ use UNISIM.VCOMPONENTS.ALL;
 entity ClockDivider is
   port (
     inClock : in STD_LOGIC;
-    pixelClock : out STD_LOGIC
+    pixelClock : out STD_LOGIC;
+    clk25MHz : out STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of ClockDivider : entity is true;
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of ClockDivider : entity is "ClockDivider,clk_wiz_v5_2_1,{component_name=ClockDivider,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=1,clkin1_period=10.0,clkin2_period=10.0,use_power_down=false,use_reset=false,use_locked=false,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}";
+  attribute CORE_GENERATION_INFO of ClockDivider : entity is "ClockDivider,clk_wiz_v5_2_1,{component_name=ClockDivider,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=2,clkin1_period=10.0,clkin2_period=10.0,use_power_down=false,use_reset=false,use_locked=false,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}";
 end ClockDivider;
 
 architecture STRUCTURE of ClockDivider is
 begin
 inst: entity work.ClockDivider_ClockDivider_clk_wiz
      port map (
+      clk25MHz => clk25MHz,
       inClock => inClock,
       pixelClock => pixelClock
     );

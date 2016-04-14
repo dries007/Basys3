@@ -12,3 +12,4 @@ All original work:
 - Package: cpg236
 - Speed grade: -1
 - Excact part number: xc7a35tcpg236-1
+- Config flash part number: S25FL032

@@ -28,6 +28,12 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
       <Filter Type="Srcs"/>
+      <File Path="$PSRCDIR/sources_1/new/Font.vhd">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/new/Vga.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -35,6 +41,12 @@
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/new/top.vhd">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/ip/FrameBuffer/FrameBuffer.coe">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -78,9 +90,83 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="doc/clk_wiz_v5_2_changelog.txt"/>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider_board.xdc"/>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider.vho"/>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider_clk_wiz.v"/>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider.v"/>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider.xml"/>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider_ooc.xdc"/>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider.xdc"/>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider_stub.vhdl"/>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider_sim_netlist.v"/>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider_stub.v"/>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider_sim_netlist.vhdl"/>
       </File>
       <Config>
         <Option Name="TopModule" Val="ClockDivider"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="FiFo" Type="BlockSrcs" RelSrcDir="$PSRCDIR/FiFo">
+      <File Path="$PSRCDIR/sources_1/ip/FiFo/FiFo.xci">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+        <CompFileExtendedInfo CompFileName="FiFo.xci" FileRelPathName="FiFo/FiFo.xdc"/>
+        <CompFileExtendedInfo CompFileName="FiFo.xci" FileRelPathName="blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3.vhd"/>
+        <CompFileExtendedInfo CompFileName="FiFo.xci" FileRelPathName="blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd"/>
+        <CompFileExtendedInfo CompFileName="FiFo.xci" FileRelPathName="FiFo_sim_netlist.vhdl"/>
+        <CompFileExtendedInfo CompFileName="FiFo.xci" FileRelPathName="FiFo_sim_netlist.v"/>
+        <CompFileExtendedInfo CompFileName="FiFo.xci" FileRelPathName="FiFo_stub.vhdl"/>
+        <CompFileExtendedInfo CompFileName="FiFo.xci" FileRelPathName="FiFo_stub.v"/>
+        <CompFileExtendedInfo CompFileName="FiFo.xci" FileRelPathName="FiFo.dcp"/>
+        <CompFileExtendedInfo CompFileName="FiFo.xci" FileRelPathName="sim/FiFo.vhd"/>
+        <CompFileExtendedInfo CompFileName="FiFo.xci" FileRelPathName="fifo_generator_v13_0_1/hdl/fifo_generator_v13_0_rfs.vhd"/>
+        <CompFileExtendedInfo CompFileName="FiFo.xci" FileRelPathName="fifo_generator_v13_0_1/simulation/fifo_generator_vhdl_beh.vhd"/>
+        <CompFileExtendedInfo CompFileName="FiFo.xci" FileRelPathName="doc/fifo_generator_v13_0_changelog.txt"/>
+        <CompFileExtendedInfo CompFileName="FiFo.xci" FileRelPathName="FiFo.veo"/>
+        <CompFileExtendedInfo CompFileName="FiFo.xci" FileRelPathName="FiFo.vho"/>
+        <CompFileExtendedInfo CompFileName="FiFo.xci" FileRelPathName="fifo_generator_v13_0_1/hdl/fifo_generator_v13_0_vhsyn_rfs.vhd"/>
+        <CompFileExtendedInfo CompFileName="FiFo.xci" FileRelPathName="FiFo.xml"/>
+        <CompFileExtendedInfo CompFileName="FiFo.xci" FileRelPathName="FiFo_ooc.xdc"/>
+        <CompFileExtendedInfo CompFileName="FiFo.xci" FileRelPathName="fifo_generator_v13_0_1/hdl/fifo_generator_v13_0.vhd"/>
+        <CompFileExtendedInfo CompFileName="FiFo.xci" FileRelPathName="synth/FiFo.vhd"/>
+      </File>
+      <Config>
+        <Option Name="TopModule" Val="FiFo"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="FrameBuffer" Type="BlockSrcs" RelSrcDir="$PSRCDIR/FrameBuffer">
+      <File Path="$PSRCDIR/sources_1/ip/FrameBuffer/FrameBuffer.xci">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+        <CompFileExtendedInfo CompFileName="FrameBuffer.xci" FileRelPathName="FrameBuffer.xml"/>
+        <CompFileExtendedInfo CompFileName="FrameBuffer.xci" FileRelPathName="FrameBuffer_ooc.xdc"/>
+        <CompFileExtendedInfo CompFileName="FrameBuffer.xci" FileRelPathName="synth/FrameBuffer.vhd"/>
+        <CompFileExtendedInfo CompFileName="FrameBuffer.xci" FileRelPathName="blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3.vhd"/>
+        <CompFileExtendedInfo CompFileName="FrameBuffer.xci" FileRelPathName="blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd"/>
+        <CompFileExtendedInfo CompFileName="FrameBuffer.xci" FileRelPathName="FrameBuffer.vho"/>
+        <CompFileExtendedInfo CompFileName="FrameBuffer.xci" FileRelPathName="FrameBuffer.mif"/>
+        <CompFileExtendedInfo CompFileName="FrameBuffer.xci" FileRelPathName="FrameBuffer.coe"/>
+        <CompFileExtendedInfo CompFileName="FrameBuffer.xci" FileRelPathName="doc/blk_mem_gen_v8_3_changelog.txt"/>
+        <CompFileExtendedInfo CompFileName="FrameBuffer.xci" FileRelPathName="sim/FrameBuffer.vhd"/>
+        <CompFileExtendedInfo CompFileName="FrameBuffer.xci" FileRelPathName="blk_mem_gen_v8_3_1/simulation/blk_mem_gen_v8_3.vhd"/>
+        <CompFileExtendedInfo CompFileName="FrameBuffer.xci" FileRelPathName="summary.log"/>
+        <CompFileExtendedInfo CompFileName="FrameBuffer.xci" FileRelPathName="FrameBuffer.veo"/>
+        <CompFileExtendedInfo CompFileName="FrameBuffer.xci" FileRelPathName="FrameBuffer_stub.v"/>
+        <CompFileExtendedInfo CompFileName="FrameBuffer.xci" FileRelPathName="FrameBuffer_sim_netlist.vhdl"/>
+        <CompFileExtendedInfo CompFileName="FrameBuffer.xci" FileRelPathName="FrameBuffer_sim_netlist.v"/>
+        <CompFileExtendedInfo CompFileName="FrameBuffer.xci" FileRelPathName="FrameBuffer_stub.vhdl"/>
+      </File>
+      <Config>
+        <Option Name="TopModule" Val="FrameBuffer"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -121,7 +207,41 @@
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
     </Run>
+    <Run Id="FiFo_synth_1" Type="Ft3:Synth" SrcSet="FiFo" Part="xc7a35tcpg236-1" ConstrsSet="FiFo" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/FiFo_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2015"/>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+    </Run>
+    <Run Id="FrameBuffer_synth_1" Type="Ft3:Synth" SrcSet="FrameBuffer" Part="xc7a35tcpg236-1" ConstrsSet="FrameBuffer" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/FrameBuffer_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2015">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+    </Run>
     <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="constrs_1" Description="Vivado Implementation Defaults" State="current" Dir="$PRUNDIR/impl_1" SynthRun="synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2015"/>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream">
+          <Option Id="RawbitFileBool">1</Option>
+          <Option Id="BinFile">1</Option>
+        </Step>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+    </Run>
+    <Run Id="ClockDivider_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="ClockDivider" Description="Vivado Implementation Defaults" SynthRun="ClockDivider_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2015"/>
         <Step Id="init_design"/>
@@ -134,11 +254,26 @@
         <Step Id="post_route_phys_opt_design"/>
         <Step Id="write_bitstream"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
     </Run>
-    <Run Id="ClockDivider_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="ClockDivider" Description="Vivado Implementation Defaults" SynthRun="ClockDivider_synth_1" IncludeInArchive="true">
+    <Run Id="FiFo_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="FiFo" Description="Vivado Implementation Defaults" SynthRun="FiFo_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2015"/>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+    </Run>
+    <Run Id="FrameBuffer_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="FrameBuffer" Description="Vivado Implementation Defaults" SynthRun="FrameBuffer_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2015">
+          <Desc>Vivado Implementation Defaults</Desc>
+        </StratHandle>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>

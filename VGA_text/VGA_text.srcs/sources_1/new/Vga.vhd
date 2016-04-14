@@ -7,15 +7,15 @@ use ieee.math_real.all;
 -- Information from http://tinyvga.com/vga-timing/1280x1024@60Hz
 entity Vga is
     Generic (
-        H_PIX : natural := 1280; -- Horizontal frame size
-        H_FP : natural := 48; -- Horizontal Front Porch
-        H_SY : natural := 112; -- Horizontal Sync
-        H_BP : natural := 248; -- Horizontal Back Porch
+        H_PIX : integer := 1280; -- Horizontal frame size
+        H_FP : integer := 48; -- Horizontal Front Porch
+        H_SY : integer := 112; -- Horizontal Sync
+        H_BP : integer := 248; -- Horizontal Back Porch
         H_POL : std_logic := '1'; -- Horizontal Sync Polarity
-        V_PIX : natural := 1024; -- Vertical frame size
-        V_FP : natural := 1; -- Vertical Front Porch
-        V_SY : natural := 3; -- Vertical Sync
-        V_BP : natural := 36; -- Vertical Back Porch
+        V_PIX : integer := 1024; -- Vertical frame size
+        V_FP : integer := 1; -- Vertical Front Porch
+        V_SY : integer := 3; -- Vertical Sync
+        V_BP : integer := 36; -- Vertical Back Porch
         V_POL : std_logic := '1' -- Vertical Sync Polarity
     );
     Port
@@ -24,23 +24,23 @@ entity Vga is
         enable : out STD_LOGIC;
         hSync : out STD_LOGIC;
         vSync : out STD_LOGIC;
-        column : out natural range 0 to 1280;
-        row : out natural range 0 to 1024
+        column : out integer range 0 to H_PIX + H_FP + H_SY + H_BP; -- 1688
+        row : out integer range 0 to V_PIX + V_FP + V_SY + V_BP -- 1066
     );
 end Vga;
 
 architecture Behavioral of Vga is
 
-constant H_MAX : natural := H_PIX + H_FP + H_SY + H_BP; -- 1688 for 1280x1024@60Hz
-constant V_MAX : natural := V_PIX + V_FP + V_SY + V_BP; -- 1066 for 1280x1024@60Hz
+constant H_MAX : integer := H_PIX + H_FP + H_SY + H_BP; -- 1688 for 1280x1024@60Hz
+constant V_MAX : integer := V_PIX + V_FP + V_SY + V_BP; -- 1066 for 1280x1024@60Hz
 
 --------------------------------------------------------
 begin --                      BEGIN
 --------------------------------------------------------
 
 process(clk)
-    variable h_count : natural range 0 to H_MAX - 1 := 0;  --horizontal counter (counts the columns)
-    variable v_count : natural range 0 to V_MAX - 1 := 0;  --vertical counter (counts the rows)
+    variable h_count : integer range 0 to H_MAX - 1 := 0;  --horizontal counter (counts the columns)
+    variable v_count : integer range 0 to V_MAX - 1 := 0;  --vertical counter (counts the rows)
 begin
     if (rising_edge(clk)) then
         --counters
@@ -66,13 +66,8 @@ begin
         else
             vSync <= V_POL;
         end if;
-        --set pixel coordinates
-        if (h_count < H_PIX) then
-            column <= h_count;
-        end if;
-        if (v_count < V_PIX) then
-            row <= v_count;
-        end if;
+        column <= h_count;
+        row <= v_count;
         --set display enable output
         if (h_count < H_PIX AND v_count < V_PIX) then
             enable <= '1';
