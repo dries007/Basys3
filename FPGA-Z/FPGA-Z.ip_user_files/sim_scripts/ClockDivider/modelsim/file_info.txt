@@ -1,0 +1,4 @@
+Language File-Name               IP            Library         File-Path                                                               
+Verilog, ClockDivider_clk_wiz.v, ClockDivider, xil_defaultlib, ../../../../FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider_clk_wiz.v
+Verilog, ClockDivider.v,         ClockDivider, xil_defaultlib, ../../../../FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider.v        
+Verilog, glbl.v,                 *,            xil_defaultlib, glbl.v                                                                  
