@@ -4,21 +4,27 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.std_logic_unsigned.all;
 use ieee.math_real.all;
 
+use work.Font.all;
+
 entity top is
     Port (  
-        vgaRed : out STD_LOGIC_VECTOR (3 downto 0);
-        vgaGreen : out STD_LOGIC_VECTOR (3 downto 0);
-        vgaBlue : out STD_LOGIC_VECTOR (3 downto 0);
-        Hsync : out STD_LOGIC;
-        Vsync : out STD_LOGIC;
-        led : out STD_LOGIC_VECTOR (15 downto 0);
-        sw : in STD_LOGIC_VECTOR (15 downto 0);
-        clk : in STD_LOGIC;
-        btnC : in STD_LOGIC;
-        btnU : in STD_LOGIC;
-        btnL : in STD_LOGIC;
-        btnR : in STD_LOGIC;
-        btnD : in STD_LOGIC
+        vgaRed : out std_logic_vector (3 downto 0);
+        vgaGreen : out std_logic_vector (3 downto 0);
+        vgaBlue : out std_logic_vector (3 downto 0);
+        Hsync : out std_logic;
+        Vsync : out std_logic;
+        led : out std_logic_vector (15 downto 0);
+        sw : in std_logic_vector (15 downto 0);
+        clk : in std_logic;
+        btnC : in std_logic;
+        btnU : in std_logic;
+        btnL : in std_logic;
+        btnR : in std_logic;
+        btnD : in std_logic;
+        PS2Clk : in std_logic;
+        PS2Data : in std_logic;
+        RsRx : inout std_logic;
+        RsTx : inout std_logic
     );
 end top;
 
@@ -50,6 +56,7 @@ component Framebuffer is
     wea : in std_logic_vector(0 downto 0);
     
     clka : in std_logic;
+    ena : in std_logic;
     addra : in std_logic_vector(13 downto 0);
     dina : in std_logic_vector(7 downto 0);
     
@@ -73,6 +80,22 @@ component Prng is
     );
 end component;
 
+component ps2_keyboard_to_ascii is
+    Generic
+    (
+        CLK_FREQ : integer := 100_000_000;
+        REPEAT_DELAY : integer := 15
+    );
+    Port 
+    ( 
+        clk        : in  std_logic;                     --system clock input
+        ps2_clk    : in  std_logic;                     --clock signal from ps2 keyboard
+        ps2_data   : in  std_logic;                     --data signal from ps2 keyboard
+        ascii_new  : out std_logic;                     --output flag indicating new ascii value
+        ascii_code : out std_logic_vector(6 downto 0)   --ascii value
+    );
+end component;
+
 type state_type is (splash, writing, blank, halt);
 signal current_s, next_s : state_type := splash;
 
@@ -86,6 +109,7 @@ signal clk_1k : std_logic := '0';
 signal fb_in_we : std_logic_vector(0 downto 0) := (others =>'1');
 signal fb_in_addr : std_logic_vector(13 downto 0) := (others =>'0');
 signal fb_in_dat : std_logic_vector(7 downto 0) := (others =>'0');
+signal fb_in_en : std_logic := '0';
 
 signal fb_out_addr : std_logic_vector(13 downto 0) := (others =>'0');
 signal fb_out_dat : std_logic_vector(7 downto 0) := (others =>'0');
@@ -95,7 +119,11 @@ signal rng_seed_en : std_logic := '0';
 signal rng_clk : std_logic := '0';
 signal rng_out : std_logic_vector(15 downto 0) := (others =>'0');
 
+-- runtime in ms
 signal runtime : unsigned(32 downto 0) := (others => '0');
+
+signal kb_event : std_logic := '0';
+signal kb_acsii : std_logic_vector(6 downto 0) := (others => '0');
 
 --------------------------------------------------------
 begin --                      BEGIN
@@ -124,12 +152,22 @@ frameBuffer0: Framebuffer
     port map (
         clka => clk,
         wea => fb_in_we,
+        ena => fb_in_en,
         addra => fb_in_addr,
         dina => fb_in_dat,
         
         clkb => clk_108M,
         addrb => fb_out_addr,
         doutb => fb_out_dat
+    );
+
+keyboard0: ps2_keyboard_to_ascii
+    port map (
+        clk => clk,
+        ps2_clk => PS2Clk,
+        ps2_data => PS2Data,
+        ascii_new => kb_event,
+        ascii_code => kb_acsii
     );
 
 prng0: Prng
@@ -141,26 +179,26 @@ prng0: Prng
     );
 
 
--- PRNG test
-rng_seed <= sw;
-led <= rng_out;
-process (clk_10)
-begin
-    if rising_edge(clk_10) then
-        if btnL = '1' then
-            rng_seed_en <= '1';
-            rng_clk <= not(rng_clk);
-        else
-            rng_seed_en <= '0';
-        end if;
-        if btnR = '1' then
-            rng_clk <= not(rng_clk);
-        end if;
-    end if;
-end process;
+---- PRNG test
+--rng_seed <= sw;
+--led <= rng_out;
+--process (clk_10)
+--begin
+--    if rising_edge(clk_10) then
+--        if btnL = '1' then
+--            rng_seed_en <= '1';
+--            rng_clk <= not(rng_clk);
+--        else
+--            rng_seed_en <= '0';
+--        end if;
+--        if btnR = '1' then
+--            rng_clk <= not(rng_clk);
+--        end if;
+--    end if;
+--end process;
 
 
--- debug info
+---- debug info
 -- led <= (clk_1, clk_2, runtime(13 downto 0));
 -- led <= clk_1 & clk_2 & std_logic_vector(runtime(17 downto 4));
 
@@ -199,33 +237,15 @@ begin
 end process;
 
 -- next state
-process (current_s, clk)
+process (clk)
 begin
     if rising_edge(clk) then
         current_s <= next_s;   --state change.        
     end if;
 end process;
 
-----state machine process.
---process (current_s, input)
---begin
---    case current_s is
---        when splash =>
-            
---        when writing =>
-        
---    end case;
---end process;
-
---process (current_s, clk, btnC)
---begin
---  if rising_edge(clk) and current_s = splash and btnC = '1' then
---    next_s <= halt;
---  end if;
---end process;
-
 -- SPLASH STATE
-process (clk, current_s, clk_2, clk_1, btnC)
+process (clk)
     constant BLINKDATA : string := "Press any key to continue...";
     variable counter : integer range 0 to 10240 := 0;
 begin
@@ -236,24 +256,51 @@ begin
             else
                 counter := counter + 1;
             end if;
+            fb_in_en <= '1';
             fb_in_dat <= clk_1 & conv_std_logic_vector(character'pos(BLINKDATA(counter + 1)), 7);
             fb_in_addr <= conv_std_logic_vector(160 * 21 + 66 + counter, 14);
-            if clk_1 = '1' and btnC = '1' then
+            if kb_event = '1' then
+                counter := 0;
                 next_s <= blank;
             end if;
         elsif current_s = halt then
-            if clk_1 = '0' and btnC = '1' then
-                next_s <= splash;
+            if kb_event = '1' then
+                fb_in_en <= '1';
+                fb_in_addr <= conv_std_logic_vector(counter, 14);
+                fb_in_dat <= "00100000";  -- space
+                
+                if kb_acsii = "0001000" then -- backspace                                        
+                    counter := (counter - 1) mod 10240;
+                elsif kb_acsii = "0001101" then -- enter
+                    counter := (((counter / 160) + 1) * 160) mod 10240;   
+                elsif kb_acsii = "0011011" then -- escape
+                    fb_in_en <= '0';
+                    counter := 0;
+                    next_s <= blank;
+                else
+                    fb_in_dat <= '0' & kb_acsii;
+                    counter := (counter + 1) mod 10240;
+                end if;
+            else
+                fb_in_en <= '1';
+                fb_in_addr <= conv_std_logic_vector(counter, 14);
+                if clk_2 = '1' then
+                    fb_in_dat <= "00100000";  -- space
+                else
+                    fb_in_dat <= conv_std_logic_vector((counter mod 10) + 48, 8); --"01011111";  -- underscore
+                end if;    
             end if;
         elsif current_s = blank then
-            if counter = 10240 then
+            fb_in_en <= '1';
+            fb_in_addr <= conv_std_logic_vector(counter, 14);
+            fb_in_dat <= conv_std_logic_vector(0, 8);
+            counter := counter + 1;
+            if counter = 10239 then
                 counter := 0;
                 next_s <= halt;
-            else
-                counter := counter + 1;
             end if;
-            fb_in_addr <= conv_std_logic_vector(counter, 14);
-            fb_in_dat <= "00000000";
+        else
+            fb_in_en <= '0';
         end if;
     end if;
 end process;

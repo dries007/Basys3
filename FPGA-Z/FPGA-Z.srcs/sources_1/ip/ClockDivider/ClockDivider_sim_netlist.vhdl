@@ -1,7 +1,7 @@
 -- Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
--- Date        : Thu Apr 14 19:45:27 2016
+-- Date        : Fri Apr 15 20:03:21 2016
 -- Host        : Dries007-Arch running 64-bit unknown
 -- Command     : write_vhdl -force -mode funcsim
 --               /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider_sim_netlist.vhdl

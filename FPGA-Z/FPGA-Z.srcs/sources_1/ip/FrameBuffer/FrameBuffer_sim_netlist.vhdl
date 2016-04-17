@@ -1,7 +1,7 @@
 -- Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
--- Date        : Thu Apr 14 23:18:07 2016
+-- Date        : Sat Apr 16 23:55:54 2016
 -- Host        : Dries007-Arch running 64-bit unknown
 -- Command     : write_vhdl -force -mode funcsim
 --               /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/FrameBuffer_sim_netlist.vhdl
@@ -180,7 +180,8 @@ entity FrameBuffer_blk_mem_gen_prim_wrapper_init is
     addra : in STD_LOGIC_VECTOR ( 13 downto 0 );
     addrb : in STD_LOGIC_VECTOR ( 13 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    wea : in STD_LOGIC_VECTOR ( 0 to 0 )
+    wea : in STD_LOGIC_VECTOR ( 0 to 0 );
+    ena : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of FrameBuffer_blk_mem_gen_prim_wrapper_init : entity is "blk_mem_gen_prim_wrapper_init";
@@ -227,16 +228,16 @@ begin
       INITP_0D => X"0000000000000000000000000000000000000000000000000000000000000000",
       INITP_0E => X"0000000000000000000000000000000000000000000000000000000000000000",
       INITP_0F => X"0000000000000000000000000000000000000000000000000000000000000000",
-      INIT_00 => X"2020202020202020202020202020202020202020202020202020202020202020",
+      INIT_00 => X"2020202020202020202020202020202020202020202020202020202020202B80",
       INIT_01 => X"2020202020202020202020202020202020202020202020202020202020202020",
       INIT_02 => X"2020202020202020202020202020202020202020202020202020202020202020",
       INIT_03 => X"2020202020202020202020202020202020202020202020202020202020202020",
-      INIT_04 => X"2020202020202020202020202020202020202020202020202020202020202020",
-      INIT_05 => X"4646464646464646464646464646464646462020202020202020202020202020",
+      INIT_04 => X"802B202020202020202020202020202020202020202020202020202020202020",
+      INIT_05 => X"4646464646464646464646464646464646462020202020202020202020202B2B",
       INIT_06 => X"2020202020202020202020505050505050505050505050505050505046464646",
       INIT_07 => X"2041414120202020202020202020202020202047474747474747474747474747",
       INIT_08 => X"5A20202020202020202020202020202020202020202020202020202020202020",
-      INIT_09 => X"20202020202020202020202020205A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A",
+      INIT_09 => X"2B2B2020202020202020202020205A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A",
       INIT_0A => X"3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A462020202020202020202020202020",
       INIT_0B => X"47474720202020202020503A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A50463A3A3A",
       INIT_0C => X"413A3A3A412020202020202020202020202020473A3A3A3A3A3A3A3A3A3A3A3A",
@@ -432,7 +433,7 @@ begin
       INIT => X"02"
     )
         port map (
-      I0 => wea(0),
+      I0 => ena,
       I1 => addra(12),
       I2 => addra(13),
       O => \DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM36.ram_i_1_n_0\
@@ -459,7 +460,8 @@ entity \FrameBuffer_blk_mem_gen_prim_wrapper_init__parameterized0\ is
     addra : in STD_LOGIC_VECTOR ( 13 downto 0 );
     addrb : in STD_LOGIC_VECTOR ( 13 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    wea : in STD_LOGIC_VECTOR ( 0 to 0 )
+    wea : in STD_LOGIC_VECTOR ( 0 to 0 );
+    ena : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of \FrameBuffer_blk_mem_gen_prim_wrapper_init__parameterized0\ : entity is "blk_mem_gen_prim_wrapper_init";
@@ -712,7 +714,7 @@ begin
     )
         port map (
       I0 => addra(12),
-      I1 => wea(0),
+      I1 => ena,
       I2 => addra(13),
       O => \DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM36.ram_i_1__0_n_0\
     );
@@ -738,7 +740,8 @@ entity \FrameBuffer_blk_mem_gen_prim_wrapper_init__parameterized1\ is
     addra : in STD_LOGIC_VECTOR ( 13 downto 0 );
     addrb : in STD_LOGIC_VECTOR ( 13 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    wea : in STD_LOGIC_VECTOR ( 0 to 0 )
+    wea : in STD_LOGIC_VECTOR ( 0 to 0 );
+    ena : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of \FrameBuffer_blk_mem_gen_prim_wrapper_init__parameterized1\ : entity is "blk_mem_gen_prim_wrapper_init";
@@ -823,16 +826,16 @@ begin
       INIT_33 => X"2020202020202020202020202020202020202020202020202020202020202020",
       INIT_34 => X"2020202020202020202020202020202020202020202020202020202020202020",
       INIT_35 => X"2020202020202020202020202020202020202020202020202020202020202020",
-      INIT_36 => X"2020202020202020202020202020202020202020202020202020202020202020",
+      INIT_36 => X"2020202020202020202020202020202020202020202020202020202020202B2B",
       INIT_37 => X"2020202020202020202020202020202020202020202020202020202020202020",
       INIT_38 => X"2020202020202020202020202020202020202020202020202020202020202020",
       INIT_39 => X"2020202020202020202020202020202020202020202020202020202020202020",
-      INIT_3A => X"2020202020202020202020202020202020202020202020202020202020202020",
-      INIT_3B => X"2020202020202020202020202020202020202020202020202020202020202020",
+      INIT_3A => X"2B2B202020202020202020202020202020202020202020202020202020202020",
+      INIT_3B => X"2020202020202020202020202020202020202020202020202020202020202B80",
       INIT_3C => X"6867697279706F43202020202020202020202020202020202020202020202020",
       INIT_3D => X"656972642F2F3A707474683C2037303073656972442036313032202943282074",
       INIT_3E => X"20202020202020202020202020202020202020202020203E74656E2E37303073",
-      INIT_3F => X"2020202020202020202020202020202020202020202020202020202020202020",
+      INIT_3F => X"802B202020202020202020202020202020202020202020202020202020202020",
       INIT_A => X"00000",
       INIT_B => X"00000",
       INIT_FILE => "NONE",
@@ -897,7 +900,7 @@ begin
       I0 => addra(12),
       I1 => addra(11),
       I2 => addra(13),
-      I3 => wea(0),
+      I3 => ena,
       O => ram_ena
     );
 \DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM18.ram_i_2\: unisim.vcomponents.LUT3
@@ -923,7 +926,8 @@ entity FrameBuffer_blk_mem_gen_prim_width is
     addra : in STD_LOGIC_VECTOR ( 13 downto 0 );
     addrb : in STD_LOGIC_VECTOR ( 13 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    wea : in STD_LOGIC_VECTOR ( 0 to 0 )
+    wea : in STD_LOGIC_VECTOR ( 0 to 0 );
+    ena : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of FrameBuffer_blk_mem_gen_prim_width : entity is "blk_mem_gen_prim_width";
@@ -939,6 +943,7 @@ begin
       clkb => clkb,
       dina(7 downto 0) => dina(7 downto 0),
       \doutb[7]\(7 downto 0) => \doutb[7]\(7 downto 0),
+      ena => ena,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -954,7 +959,8 @@ entity \FrameBuffer_blk_mem_gen_prim_width__parameterized0\ is
     addra : in STD_LOGIC_VECTOR ( 13 downto 0 );
     addrb : in STD_LOGIC_VECTOR ( 13 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    wea : in STD_LOGIC_VECTOR ( 0 to 0 )
+    wea : in STD_LOGIC_VECTOR ( 0 to 0 );
+    ena : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of \FrameBuffer_blk_mem_gen_prim_width__parameterized0\ : entity is "blk_mem_gen_prim_width";
@@ -970,6 +976,7 @@ begin
       clkb => clkb,
       dina(7 downto 0) => dina(7 downto 0),
       \doutb[7]\(7 downto 0) => \doutb[7]\(7 downto 0),
+      ena => ena,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -985,7 +992,8 @@ entity \FrameBuffer_blk_mem_gen_prim_width__parameterized1\ is
     addra : in STD_LOGIC_VECTOR ( 13 downto 0 );
     addrb : in STD_LOGIC_VECTOR ( 13 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    wea : in STD_LOGIC_VECTOR ( 0 to 0 )
+    wea : in STD_LOGIC_VECTOR ( 0 to 0 );
+    ena : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of \FrameBuffer_blk_mem_gen_prim_width__parameterized1\ : entity is "blk_mem_gen_prim_width";
@@ -1001,6 +1009,7 @@ begin
       clka => clka,
       clkb => clkb,
       dina(7 downto 0) => dina(7 downto 0),
+      ena => ena,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -1016,7 +1025,8 @@ entity FrameBuffer_blk_mem_gen_generic_cstr is
     addra : in STD_LOGIC_VECTOR ( 13 downto 0 );
     addrb : in STD_LOGIC_VECTOR ( 13 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    wea : in STD_LOGIC_VECTOR ( 0 to 0 )
+    wea : in STD_LOGIC_VECTOR ( 0 to 0 );
+    ena : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of FrameBuffer_blk_mem_gen_generic_cstr : entity is "blk_mem_gen_generic_cstr";
@@ -1072,6 +1082,7 @@ begin
       clkb => clkb,
       dina(7 downto 0) => dina(7 downto 0),
       \doutb[7]\(7 downto 0) => ram_doutb(7 downto 0),
+      ena => ena,
       wea(0) => wea(0)
     );
 \ramloop[1].ram.r\: entity work.\FrameBuffer_blk_mem_gen_prim_width__parameterized0\
@@ -1089,6 +1100,7 @@ begin
       \doutb[7]\(2) => \ramloop[1].ram.r_n_5\,
       \doutb[7]\(1) => \ramloop[1].ram.r_n_6\,
       \doutb[7]\(0) => \ramloop[1].ram.r_n_7\,
+      ena => ena,
       wea(0) => wea(0)
     );
 \ramloop[2].ram.r\: entity work.\FrameBuffer_blk_mem_gen_prim_width__parameterized1\
@@ -1106,6 +1118,7 @@ begin
       clka => clka,
       clkb => clkb,
       dina(7 downto 0) => dina(7 downto 0),
+      ena => ena,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -1121,7 +1134,8 @@ entity FrameBuffer_blk_mem_gen_top is
     addra : in STD_LOGIC_VECTOR ( 13 downto 0 );
     addrb : in STD_LOGIC_VECTOR ( 13 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    wea : in STD_LOGIC_VECTOR ( 0 to 0 )
+    wea : in STD_LOGIC_VECTOR ( 0 to 0 );
+    ena : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of FrameBuffer_blk_mem_gen_top : entity is "blk_mem_gen_top";
@@ -1137,6 +1151,7 @@ begin
       clkb => clkb,
       dina(7 downto 0) => dina(7 downto 0),
       doutb(7 downto 0) => doutb(7 downto 0),
+      ena => ena,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -1152,7 +1167,8 @@ entity FrameBuffer_blk_mem_gen_v8_3_1_synth is
     addra : in STD_LOGIC_VECTOR ( 13 downto 0 );
     addrb : in STD_LOGIC_VECTOR ( 13 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
-    wea : in STD_LOGIC_VECTOR ( 0 to 0 )
+    wea : in STD_LOGIC_VECTOR ( 0 to 0 );
+    ena : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of FrameBuffer_blk_mem_gen_v8_3_1_synth : entity is "blk_mem_gen_v8_3_1_synth";
@@ -1168,6 +1184,7 @@ begin
       clkb => clkb,
       dina(7 downto 0) => dina(7 downto 0),
       doutb(7 downto 0) => doutb(7 downto 0),
+      ena => ena,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -1294,7 +1311,7 @@ entity FrameBuffer_blk_mem_gen_v8_3_1 is
   attribute C_HAS_AXI_ID : integer;
   attribute C_HAS_AXI_ID of FrameBuffer_blk_mem_gen_v8_3_1 : entity is 0;
   attribute C_HAS_ENA : integer;
-  attribute C_HAS_ENA of FrameBuffer_blk_mem_gen_v8_3_1 : entity is 0;
+  attribute C_HAS_ENA of FrameBuffer_blk_mem_gen_v8_3_1 : entity is 1;
   attribute C_HAS_ENB : integer;
   attribute C_HAS_ENB of FrameBuffer_blk_mem_gen_v8_3_1 : entity is 0;
   attribute C_HAS_INJECTERR : integer;
@@ -1476,6 +1493,7 @@ inst_blk_mem_gen: entity work.FrameBuffer_blk_mem_gen_v8_3_1_synth
       clkb => clkb,
       dina(7 downto 0) => dina(7 downto 0),
       doutb(7 downto 0) => doutb(7 downto 0),
+      ena => ena,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -1486,6 +1504,7 @@ use UNISIM.VCOMPONENTS.ALL;
 entity FrameBuffer is
   port (
     clka : in STD_LOGIC;
+    ena : in STD_LOGIC;
     wea : in STD_LOGIC_VECTOR ( 0 to 0 );
     addra : in STD_LOGIC_VECTOR ( 13 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -1498,7 +1517,7 @@ entity FrameBuffer is
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of FrameBuffer : entity is "FrameBuffer,blk_mem_gen_v8_3_1,{}";
   attribute core_generation_info : string;
-  attribute core_generation_info of FrameBuffer : entity is "FrameBuffer,blk_mem_gen_v8_3_1,{x_ipProduct=Vivado 2015.4,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=blk_mem_gen,x_ipVersion=8.3,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_FAMILY=artix7,C_XDEVICEFAMILY=artix7,C_ELABORATION_DIR=./,C_INTERFACE_TYPE=0,C_AXI_TYPE=1,C_AXI_SLAVE_TYPE=0,C_USE_BRAM_BLOCK=0,C_ENABLE_32BIT_ADDRESS=0,C_CTRL_ECC_ALGO=NONE,C_HAS_AXI_ID=0,C_AXI_ID_WIDTH=4,C_MEM_TYPE=1,C_BYTE_SIZE=8,C_ALGORITHM=1,C_PRIM_TYPE=1,C_LOAD_INIT_FILE=1,C_INIT_FILE_NAME=FrameBuffer.mif,C_INIT_FILE=FrameBuffer.mem,C_USE_DEFAULT_DATA=1,C_DEFAULT_DATA=20,C_HAS_RSTA=0,C_RST_PRIORITY_A=CE,C_RSTRAM_A=0,C_INITA_VAL=0,C_HAS_ENA=0,C_HAS_REGCEA=0,C_USE_BYTE_WEA=1,C_WEA_WIDTH=1,C_WRITE_MODE_A=READ_FIRST,C_WRITE_WIDTH_A=8,C_READ_WIDTH_A=8,C_WRITE_DEPTH_A=10240,C_READ_DEPTH_A=10240,C_ADDRA_WIDTH=14,C_HAS_RSTB=0,C_RST_PRIORITY_B=CE,C_RSTRAM_B=0,C_INITB_VAL=0,C_HAS_ENB=0,C_HAS_REGCEB=0,C_USE_BYTE_WEB=1,C_WEB_WIDTH=1,C_WRITE_MODE_B=WRITE_FIRST,C_WRITE_WIDTH_B=8,C_READ_WIDTH_B=8,C_WRITE_DEPTH_B=10240,C_READ_DEPTH_B=10240,C_ADDRB_WIDTH=14,C_HAS_MEM_OUTPUT_REGS_A=0,C_HAS_MEM_OUTPUT_REGS_B=0,C_HAS_MUX_OUTPUT_REGS_A=0,C_HAS_MUX_OUTPUT_REGS_B=0,C_MUX_PIPELINE_STAGES=0,C_HAS_SOFTECC_INPUT_REGS_A=0,C_HAS_SOFTECC_OUTPUT_REGS_B=0,C_USE_SOFTECC=0,C_USE_ECC=0,C_EN_ECC_PIPE=0,C_HAS_INJECTERR=0,C_SIM_COLLISION_CHECK=ALL,C_COMMON_CLK=0,C_DISABLE_WARN_BHV_COLL=0,C_EN_SLEEP_PIN=0,C_USE_URAM=0,C_EN_RDADDRA_CHG=0,C_EN_RDADDRB_CHG=0,C_EN_DEEPSLEEP_PIN=0,C_EN_SHUTDOWN_PIN=0,C_EN_SAFETY_CKT=0,C_DISABLE_WARN_BHV_RANGE=0,C_COUNT_36K_BRAM=2,C_COUNT_18K_BRAM=1,C_EST_POWER_SUMMARY=Estimated Power for IP     _     4.58651 mW}";
+  attribute core_generation_info of FrameBuffer : entity is "FrameBuffer,blk_mem_gen_v8_3_1,{x_ipProduct=Vivado 2015.4,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=blk_mem_gen,x_ipVersion=8.3,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_FAMILY=artix7,C_XDEVICEFAMILY=artix7,C_ELABORATION_DIR=./,C_INTERFACE_TYPE=0,C_AXI_TYPE=1,C_AXI_SLAVE_TYPE=0,C_USE_BRAM_BLOCK=0,C_ENABLE_32BIT_ADDRESS=0,C_CTRL_ECC_ALGO=NONE,C_HAS_AXI_ID=0,C_AXI_ID_WIDTH=4,C_MEM_TYPE=1,C_BYTE_SIZE=8,C_ALGORITHM=1,C_PRIM_TYPE=1,C_LOAD_INIT_FILE=1,C_INIT_FILE_NAME=FrameBuffer.mif,C_INIT_FILE=FrameBuffer.mem,C_USE_DEFAULT_DATA=1,C_DEFAULT_DATA=20,C_HAS_RSTA=0,C_RST_PRIORITY_A=CE,C_RSTRAM_A=0,C_INITA_VAL=0,C_HAS_ENA=1,C_HAS_REGCEA=0,C_USE_BYTE_WEA=1,C_WEA_WIDTH=1,C_WRITE_MODE_A=READ_FIRST,C_WRITE_WIDTH_A=8,C_READ_WIDTH_A=8,C_WRITE_DEPTH_A=10240,C_READ_DEPTH_A=10240,C_ADDRA_WIDTH=14,C_HAS_RSTB=0,C_RST_PRIORITY_B=CE,C_RSTRAM_B=0,C_INITB_VAL=0,C_HAS_ENB=0,C_HAS_REGCEB=0,C_USE_BYTE_WEB=1,C_WEB_WIDTH=1,C_WRITE_MODE_B=WRITE_FIRST,C_WRITE_WIDTH_B=8,C_READ_WIDTH_B=8,C_WRITE_DEPTH_B=10240,C_READ_DEPTH_B=10240,C_ADDRB_WIDTH=14,C_HAS_MEM_OUTPUT_REGS_A=0,C_HAS_MEM_OUTPUT_REGS_B=0,C_HAS_MUX_OUTPUT_REGS_A=0,C_HAS_MUX_OUTPUT_REGS_B=0,C_MUX_PIPELINE_STAGES=0,C_HAS_SOFTECC_INPUT_REGS_A=0,C_HAS_SOFTECC_OUTPUT_REGS_B=0,C_USE_SOFTECC=0,C_USE_ECC=0,C_EN_ECC_PIPE=0,C_HAS_INJECTERR=0,C_SIM_COLLISION_CHECK=ALL,C_COMMON_CLK=0,C_DISABLE_WARN_BHV_COLL=0,C_EN_SLEEP_PIN=0,C_USE_URAM=0,C_EN_RDADDRA_CHG=0,C_EN_RDADDRB_CHG=0,C_EN_DEEPSLEEP_PIN=0,C_EN_SHUTDOWN_PIN=0,C_EN_SAFETY_CKT=0,C_DISABLE_WARN_BHV_RANGE=0,C_COUNT_36K_BRAM=2,C_COUNT_18K_BRAM=1,C_EST_POWER_SUMMARY=Estimated Power for IP     _     4.58651 mW}";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of FrameBuffer : entity is "yes";
   attribute x_core_info : string;
@@ -1579,7 +1598,7 @@ architecture STRUCTURE of FrameBuffer is
   attribute C_HAS_AXI_ID : integer;
   attribute C_HAS_AXI_ID of U0 : label is 0;
   attribute C_HAS_ENA : integer;
-  attribute C_HAS_ENA of U0 : label is 0;
+  attribute C_HAS_ENA of U0 : label is 1;
   attribute C_HAS_ENB : integer;
   attribute C_HAS_ENB of U0 : label is 0;
   attribute C_HAS_INJECTERR : integer;
@@ -1689,7 +1708,7 @@ U0: entity work.FrameBuffer_blk_mem_gen_v8_3_1
       douta(7 downto 0) => NLW_U0_douta_UNCONNECTED(7 downto 0),
       doutb(7 downto 0) => doutb(7 downto 0),
       eccpipece => '0',
-      ena => '0',
+      ena => ena,
       enb => '0',
       injectdbiterr => '0',
       injectsbiterr => '0',

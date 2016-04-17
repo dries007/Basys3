@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  "../../../FPGA-Z.srcs/sources_1/new/Font.vhd"
+vhdl xil_defaultlib  "../../../FPGA-Z.srcs/sources_1/new/Vga.vhd"
+vhdl xil_defaultlib  "../../../FPGA-Z.srcs/sim_1/new/test1.vhd"
+
+# Do not sort compile order
+nosort

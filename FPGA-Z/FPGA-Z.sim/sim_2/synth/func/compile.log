@@ -1,0 +1,22 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.sim/sim_2/synth/func/test2_func_synth.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity ClockDivider_ClockDivider_clk_wiz
+INFO: [VRFC 10-307] analyzing entity \FrameBuffer_blk_mem_gen_mux__parameterized0\
+INFO: [VRFC 10-307] analyzing entity FrameBuffer_blk_mem_gen_prim_wrapper_init
+INFO: [VRFC 10-307] analyzing entity \FrameBuffer_blk_mem_gen_prim_wrapper_init__parameterized0\
+INFO: [VRFC 10-307] analyzing entity \FrameBuffer_blk_mem_gen_prim_wrapper_init__parameterized1\
+INFO: [VRFC 10-307] analyzing entity Vga
+INFO: [VRFC 10-307] analyzing entity ps2_keyboard
+INFO: [VRFC 10-307] analyzing entity ClockDivider
+INFO: [VRFC 10-307] analyzing entity FrameBuffer_blk_mem_gen_prim_width
+INFO: [VRFC 10-307] analyzing entity \FrameBuffer_blk_mem_gen_prim_width__parameterized0\
+INFO: [VRFC 10-307] analyzing entity \FrameBuffer_blk_mem_gen_prim_width__parameterized1\
+INFO: [VRFC 10-307] analyzing entity ps2_keyboard_to_ascii
+INFO: [VRFC 10-307] analyzing entity FrameBuffer_blk_mem_gen_generic_cstr
+INFO: [VRFC 10-307] analyzing entity FrameBuffer_blk_mem_gen_top
+INFO: [VRFC 10-307] analyzing entity FrameBuffer_blk_mem_gen_v8_3_1_synth
+INFO: [VRFC 10-307] analyzing entity FrameBuffer_blk_mem_gen_v8_3_1
+INFO: [VRFC 10-307] analyzing entity FrameBuffer
+INFO: [VRFC 10-307] analyzing entity top
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Font.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sim_2/new/test2.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity test2

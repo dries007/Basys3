@@ -59,6 +59,7 @@ USE blk_mem_gen_v8_3_1.blk_mem_gen_v8_3_1;
 ENTITY FrameBuffer IS
   PORT (
     clka : IN STD_LOGIC;
+    ena : IN STD_LOGIC;
     wea : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     addra : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
     dina : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
@@ -216,6 +217,7 @@ ARCHITECTURE FrameBuffer_arch OF FrameBuffer IS
   END COMPONENT blk_mem_gen_v8_3_1;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF clka: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORTA CLK";
+  ATTRIBUTE X_INTERFACE_INFO OF ena: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORTA EN";
   ATTRIBUTE X_INTERFACE_INFO OF wea: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORTA WE";
   ATTRIBUTE X_INTERFACE_INFO OF addra: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORTA ADDR";
   ATTRIBUTE X_INTERFACE_INFO OF dina: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORTA DIN";
@@ -249,7 +251,7 @@ BEGIN
       C_RST_PRIORITY_A => "CE",
       C_RSTRAM_A => 0,
       C_INITA_VAL => "0",
-      C_HAS_ENA => 0,
+      C_HAS_ENA => 1,
       C_HAS_REGCEA => 0,
       C_USE_BYTE_WEA => 1,
       C_WEA_WIDTH => 1,
@@ -302,7 +304,7 @@ BEGIN
     PORT MAP (
       clka => clka,
       rsta => '0',
-      ena => '0',
+      ena => ena,
       regcea => '0',
       wea => wea,
       addra => addra,

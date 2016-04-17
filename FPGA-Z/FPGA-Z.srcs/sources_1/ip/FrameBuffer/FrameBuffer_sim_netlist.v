@@ -1,7 +1,7 @@
 // Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
-// Date        : Thu Apr 14 23:18:07 2016
+// Date        : Sat Apr 16 23:55:54 2016
 // Host        : Dries007-Arch running 64-bit unknown
 // Command     : write_verilog -force -mode funcsim
 //               /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/FrameBuffer_sim_netlist.v
@@ -12,11 +12,12 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "FrameBuffer,blk_mem_gen_v8_3_1,{}" *) (* core_generation_info = "FrameBuffer,blk_mem_gen_v8_3_1,{x_ipProduct=Vivado 2015.4,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=blk_mem_gen,x_ipVersion=8.3,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_FAMILY=artix7,C_XDEVICEFAMILY=artix7,C_ELABORATION_DIR=./,C_INTERFACE_TYPE=0,C_AXI_TYPE=1,C_AXI_SLAVE_TYPE=0,C_USE_BRAM_BLOCK=0,C_ENABLE_32BIT_ADDRESS=0,C_CTRL_ECC_ALGO=NONE,C_HAS_AXI_ID=0,C_AXI_ID_WIDTH=4,C_MEM_TYPE=1,C_BYTE_SIZE=8,C_ALGORITHM=1,C_PRIM_TYPE=1,C_LOAD_INIT_FILE=1,C_INIT_FILE_NAME=FrameBuffer.mif,C_INIT_FILE=FrameBuffer.mem,C_USE_DEFAULT_DATA=1,C_DEFAULT_DATA=20,C_HAS_RSTA=0,C_RST_PRIORITY_A=CE,C_RSTRAM_A=0,C_INITA_VAL=0,C_HAS_ENA=0,C_HAS_REGCEA=0,C_USE_BYTE_WEA=1,C_WEA_WIDTH=1,C_WRITE_MODE_A=READ_FIRST,C_WRITE_WIDTH_A=8,C_READ_WIDTH_A=8,C_WRITE_DEPTH_A=10240,C_READ_DEPTH_A=10240,C_ADDRA_WIDTH=14,C_HAS_RSTB=0,C_RST_PRIORITY_B=CE,C_RSTRAM_B=0,C_INITB_VAL=0,C_HAS_ENB=0,C_HAS_REGCEB=0,C_USE_BYTE_WEB=1,C_WEB_WIDTH=1,C_WRITE_MODE_B=WRITE_FIRST,C_WRITE_WIDTH_B=8,C_READ_WIDTH_B=8,C_WRITE_DEPTH_B=10240,C_READ_DEPTH_B=10240,C_ADDRB_WIDTH=14,C_HAS_MEM_OUTPUT_REGS_A=0,C_HAS_MEM_OUTPUT_REGS_B=0,C_HAS_MUX_OUTPUT_REGS_A=0,C_HAS_MUX_OUTPUT_REGS_B=0,C_MUX_PIPELINE_STAGES=0,C_HAS_SOFTECC_INPUT_REGS_A=0,C_HAS_SOFTECC_OUTPUT_REGS_B=0,C_USE_SOFTECC=0,C_USE_ECC=0,C_EN_ECC_PIPE=0,C_HAS_INJECTERR=0,C_SIM_COLLISION_CHECK=ALL,C_COMMON_CLK=0,C_DISABLE_WARN_BHV_COLL=0,C_EN_SLEEP_PIN=0,C_USE_URAM=0,C_EN_RDADDRA_CHG=0,C_EN_RDADDRB_CHG=0,C_EN_DEEPSLEEP_PIN=0,C_EN_SHUTDOWN_PIN=0,C_EN_SAFETY_CKT=0,C_DISABLE_WARN_BHV_RANGE=0,C_COUNT_36K_BRAM=2,C_COUNT_18K_BRAM=1,C_EST_POWER_SUMMARY=Estimated Power for IP     _     4.58651 mW}" *) (* downgradeipidentifiedwarnings = "yes" *) 
+(* CHECK_LICENSE_TYPE = "FrameBuffer,blk_mem_gen_v8_3_1,{}" *) (* core_generation_info = "FrameBuffer,blk_mem_gen_v8_3_1,{x_ipProduct=Vivado 2015.4,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=blk_mem_gen,x_ipVersion=8.3,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_FAMILY=artix7,C_XDEVICEFAMILY=artix7,C_ELABORATION_DIR=./,C_INTERFACE_TYPE=0,C_AXI_TYPE=1,C_AXI_SLAVE_TYPE=0,C_USE_BRAM_BLOCK=0,C_ENABLE_32BIT_ADDRESS=0,C_CTRL_ECC_ALGO=NONE,C_HAS_AXI_ID=0,C_AXI_ID_WIDTH=4,C_MEM_TYPE=1,C_BYTE_SIZE=8,C_ALGORITHM=1,C_PRIM_TYPE=1,C_LOAD_INIT_FILE=1,C_INIT_FILE_NAME=FrameBuffer.mif,C_INIT_FILE=FrameBuffer.mem,C_USE_DEFAULT_DATA=1,C_DEFAULT_DATA=20,C_HAS_RSTA=0,C_RST_PRIORITY_A=CE,C_RSTRAM_A=0,C_INITA_VAL=0,C_HAS_ENA=1,C_HAS_REGCEA=0,C_USE_BYTE_WEA=1,C_WEA_WIDTH=1,C_WRITE_MODE_A=READ_FIRST,C_WRITE_WIDTH_A=8,C_READ_WIDTH_A=8,C_WRITE_DEPTH_A=10240,C_READ_DEPTH_A=10240,C_ADDRA_WIDTH=14,C_HAS_RSTB=0,C_RST_PRIORITY_B=CE,C_RSTRAM_B=0,C_INITB_VAL=0,C_HAS_ENB=0,C_HAS_REGCEB=0,C_USE_BYTE_WEB=1,C_WEB_WIDTH=1,C_WRITE_MODE_B=WRITE_FIRST,C_WRITE_WIDTH_B=8,C_READ_WIDTH_B=8,C_WRITE_DEPTH_B=10240,C_READ_DEPTH_B=10240,C_ADDRB_WIDTH=14,C_HAS_MEM_OUTPUT_REGS_A=0,C_HAS_MEM_OUTPUT_REGS_B=0,C_HAS_MUX_OUTPUT_REGS_A=0,C_HAS_MUX_OUTPUT_REGS_B=0,C_MUX_PIPELINE_STAGES=0,C_HAS_SOFTECC_INPUT_REGS_A=0,C_HAS_SOFTECC_OUTPUT_REGS_B=0,C_USE_SOFTECC=0,C_USE_ECC=0,C_EN_ECC_PIPE=0,C_HAS_INJECTERR=0,C_SIM_COLLISION_CHECK=ALL,C_COMMON_CLK=0,C_DISABLE_WARN_BHV_COLL=0,C_EN_SLEEP_PIN=0,C_USE_URAM=0,C_EN_RDADDRA_CHG=0,C_EN_RDADDRB_CHG=0,C_EN_DEEPSLEEP_PIN=0,C_EN_SHUTDOWN_PIN=0,C_EN_SAFETY_CKT=0,C_DISABLE_WARN_BHV_RANGE=0,C_COUNT_36K_BRAM=2,C_COUNT_18K_BRAM=1,C_EST_POWER_SUMMARY=Estimated Power for IP     _     4.58651 mW}" *) (* downgradeipidentifiedwarnings = "yes" *) 
 (* x_core_info = "blk_mem_gen_v8_3_1,Vivado 2015.4" *) 
 (* NotValidForBitStream *)
 module FrameBuffer
    (clka,
+    ena,
     wea,
     addra,
     dina,
@@ -24,6 +25,7 @@ module FrameBuffer
     addrb,
     doutb);
   (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORTA CLK" *) input clka;
+  (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORTA EN" *) input ena;
   (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORTA WE" *) input [0:0]wea;
   (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORTA ADDR" *) input [13:0]addra;
   (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORTA DIN" *) input [7:0]dina;
@@ -37,6 +39,7 @@ module FrameBuffer
   wire clkb;
   wire [7:0]dina;
   wire [7:0]doutb;
+  wire ena;
   wire [0:0]wea;
   wire NLW_U0_dbiterr_UNCONNECTED;
   wire NLW_U0_rsta_busy_UNCONNECTED;
@@ -85,7 +88,7 @@ module FrameBuffer
   (* C_EST_POWER_SUMMARY = "Estimated Power for IP     :     4.58651 mW" *) 
   (* C_FAMILY = "artix7" *) 
   (* C_HAS_AXI_ID = "0" *) 
-  (* C_HAS_ENA = "0" *) 
+  (* C_HAS_ENA = "1" *) 
   (* C_HAS_ENB = "0" *) 
   (* C_HAS_INJECTERR = "0" *) 
   (* C_HAS_MEM_OUTPUT_REGS_A = "0" *) 
@@ -146,7 +149,7 @@ module FrameBuffer
         .douta(NLW_U0_douta_UNCONNECTED[7:0]),
         .doutb(doutb),
         .eccpipece(1'b0),
-        .ena(1'b0),
+        .ena(ena),
         .enb(1'b0),
         .injectdbiterr(1'b0),
         .injectsbiterr(1'b0),
@@ -208,7 +211,8 @@ module FrameBuffer_blk_mem_gen_generic_cstr
     addra,
     addrb,
     dina,
-    wea);
+    wea,
+    ena);
   output [7:0]doutb;
   input clka;
   input clkb;
@@ -216,6 +220,7 @@ module FrameBuffer_blk_mem_gen_generic_cstr
   input [13:0]addrb;
   input [7:0]dina;
   input [0:0]wea;
+  input ena;
 
   wire [13:0]addra;
   wire [13:0]addrb;
@@ -223,6 +228,7 @@ module FrameBuffer_blk_mem_gen_generic_cstr
   wire clkb;
   wire [7:0]dina;
   wire [7:0]doutb;
+  wire ena;
   wire [7:0]ram_doutb;
   wire \ramloop[1].ram.r_n_0 ;
   wire \ramloop[1].ram.r_n_1 ;
@@ -256,6 +262,7 @@ module FrameBuffer_blk_mem_gen_generic_cstr
         .clkb(clkb),
         .dina(dina),
         .\doutb[7] (ram_doutb),
+        .ena(ena),
         .wea(wea));
   FrameBuffer_blk_mem_gen_prim_width__parameterized0 \ramloop[1].ram.r 
        (.addra(addra),
@@ -264,6 +271,7 @@ module FrameBuffer_blk_mem_gen_generic_cstr
         .clkb(clkb),
         .dina(dina),
         .\doutb[7] ({\ramloop[1].ram.r_n_0 ,\ramloop[1].ram.r_n_1 ,\ramloop[1].ram.r_n_2 ,\ramloop[1].ram.r_n_3 ,\ramloop[1].ram.r_n_4 ,\ramloop[1].ram.r_n_5 ,\ramloop[1].ram.r_n_6 ,\ramloop[1].ram.r_n_7 }),
+        .ena(ena),
         .wea(wea));
   FrameBuffer_blk_mem_gen_prim_width__parameterized1 \ramloop[2].ram.r 
        (.DOBDO({\ramloop[2].ram.r_n_0 ,\ramloop[2].ram.r_n_1 ,\ramloop[2].ram.r_n_2 ,\ramloop[2].ram.r_n_3 ,\ramloop[2].ram.r_n_4 ,\ramloop[2].ram.r_n_5 ,\ramloop[2].ram.r_n_6 ,\ramloop[2].ram.r_n_7 }),
@@ -272,6 +280,7 @@ module FrameBuffer_blk_mem_gen_generic_cstr
         .clka(clka),
         .clkb(clkb),
         .dina(dina),
+        .ena(ena),
         .wea(wea));
 endmodule
 
@@ -412,7 +421,8 @@ module FrameBuffer_blk_mem_gen_prim_width
     addra,
     addrb,
     dina,
-    wea);
+    wea,
+    ena);
   output [7:0]\doutb[7] ;
   input clka;
   input clkb;
@@ -420,6 +430,7 @@ module FrameBuffer_blk_mem_gen_prim_width
   input [13:0]addrb;
   input [7:0]dina;
   input [0:0]wea;
+  input ena;
 
   wire [13:0]addra;
   wire [13:0]addrb;
@@ -427,6 +438,7 @@ module FrameBuffer_blk_mem_gen_prim_width
   wire clkb;
   wire [7:0]dina;
   wire [7:0]\doutb[7] ;
+  wire ena;
   wire [0:0]wea;
 
   FrameBuffer_blk_mem_gen_prim_wrapper_init \prim_init.ram 
@@ -436,6 +448,7 @@ module FrameBuffer_blk_mem_gen_prim_width
         .clkb(clkb),
         .dina(dina),
         .\doutb[7] (\doutb[7] ),
+        .ena(ena),
         .wea(wea));
 endmodule
 
@@ -447,7 +460,8 @@ module FrameBuffer_blk_mem_gen_prim_width__parameterized0
     addra,
     addrb,
     dina,
-    wea);
+    wea,
+    ena);
   output [7:0]\doutb[7] ;
   input clka;
   input clkb;
@@ -455,6 +469,7 @@ module FrameBuffer_blk_mem_gen_prim_width__parameterized0
   input [13:0]addrb;
   input [7:0]dina;
   input [0:0]wea;
+  input ena;
 
   wire [13:0]addra;
   wire [13:0]addrb;
@@ -462,6 +477,7 @@ module FrameBuffer_blk_mem_gen_prim_width__parameterized0
   wire clkb;
   wire [7:0]dina;
   wire [7:0]\doutb[7] ;
+  wire ena;
   wire [0:0]wea;
 
   FrameBuffer_blk_mem_gen_prim_wrapper_init__parameterized0 \prim_init.ram 
@@ -471,6 +487,7 @@ module FrameBuffer_blk_mem_gen_prim_width__parameterized0
         .clkb(clkb),
         .dina(dina),
         .\doutb[7] (\doutb[7] ),
+        .ena(ena),
         .wea(wea));
 endmodule
 
@@ -482,7 +499,8 @@ module FrameBuffer_blk_mem_gen_prim_width__parameterized1
     addra,
     addrb,
     dina,
-    wea);
+    wea,
+    ena);
   output [7:0]DOBDO;
   input clka;
   input clkb;
@@ -490,6 +508,7 @@ module FrameBuffer_blk_mem_gen_prim_width__parameterized1
   input [13:0]addrb;
   input [7:0]dina;
   input [0:0]wea;
+  input ena;
 
   wire [7:0]DOBDO;
   wire [13:0]addra;
@@ -497,6 +516,7 @@ module FrameBuffer_blk_mem_gen_prim_width__parameterized1
   wire clka;
   wire clkb;
   wire [7:0]dina;
+  wire ena;
   wire [0:0]wea;
 
   FrameBuffer_blk_mem_gen_prim_wrapper_init__parameterized1 \prim_init.ram 
@@ -506,6 +526,7 @@ module FrameBuffer_blk_mem_gen_prim_width__parameterized1
         .clka(clka),
         .clkb(clkb),
         .dina(dina),
+        .ena(ena),
         .wea(wea));
 endmodule
 
@@ -517,7 +538,8 @@ module FrameBuffer_blk_mem_gen_prim_wrapper_init
     addra,
     addrb,
     dina,
-    wea);
+    wea,
+    ena);
   output [7:0]\doutb[7] ;
   input clka;
   input clkb;
@@ -525,6 +547,7 @@ module FrameBuffer_blk_mem_gen_prim_wrapper_init
   input [13:0]addrb;
   input [7:0]dina;
   input [0:0]wea;
+  input ena;
 
   wire \DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM36.ram_i_1_n_0 ;
   wire \DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM36.ram_i_2_n_0 ;
@@ -535,6 +558,7 @@ module FrameBuffer_blk_mem_gen_prim_wrapper_init
   wire clkb;
   wire [7:0]dina;
   wire [7:0]\doutb[7] ;
+  wire ena;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM36.ram_CASCADEOUTA_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM36.ram_CASCADEOUTB_UNCONNECTED ;
@@ -570,16 +594,16 @@ module FrameBuffer_blk_mem_gen_prim_wrapper_init
     .INITP_0D(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_0E(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_0F(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'h2020202020202020202020202020202020202020202020202020202020202020),
+    .INIT_00(256'h2020202020202020202020202020202020202020202020202020202020202B80),
     .INIT_01(256'h2020202020202020202020202020202020202020202020202020202020202020),
     .INIT_02(256'h2020202020202020202020202020202020202020202020202020202020202020),
     .INIT_03(256'h2020202020202020202020202020202020202020202020202020202020202020),
-    .INIT_04(256'h2020202020202020202020202020202020202020202020202020202020202020),
-    .INIT_05(256'h4646464646464646464646464646464646462020202020202020202020202020),
+    .INIT_04(256'h802B202020202020202020202020202020202020202020202020202020202020),
+    .INIT_05(256'h4646464646464646464646464646464646462020202020202020202020202B2B),
     .INIT_06(256'h2020202020202020202020505050505050505050505050505050505046464646),
     .INIT_07(256'h2041414120202020202020202020202020202047474747474747474747474747),
     .INIT_08(256'h5A20202020202020202020202020202020202020202020202020202020202020),
-    .INIT_09(256'h20202020202020202020202020205A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A),
+    .INIT_09(256'h2B2B2020202020202020202020205A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A),
     .INIT_0A(256'h3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A462020202020202020202020202020),
     .INIT_0B(256'h47474720202020202020503A3A3A3A3A3A3A3A3A3A3A3A3A3A3A3A50463A3A3A),
     .INIT_0C(256'h413A3A3A412020202020202020202020202020473A3A3A3A3A3A3A3A3A3A3A3A),
@@ -761,7 +785,7 @@ module FrameBuffer_blk_mem_gen_prim_wrapper_init
   LUT3 #(
     .INIT(8'h02)) 
     \DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM36.ram_i_1 
-       (.I0(wea),
+       (.I0(ena),
         .I1(addra[12]),
         .I2(addra[13]),
         .O(\DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM36.ram_i_1_n_0 ));
@@ -781,7 +805,8 @@ module FrameBuffer_blk_mem_gen_prim_wrapper_init__parameterized0
     addra,
     addrb,
     dina,
-    wea);
+    wea,
+    ena);
   output [7:0]\doutb[7] ;
   input clka;
   input clkb;
@@ -789,6 +814,7 @@ module FrameBuffer_blk_mem_gen_prim_wrapper_init__parameterized0
   input [13:0]addrb;
   input [7:0]dina;
   input [0:0]wea;
+  input ena;
 
   wire \DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM36.ram_i_1__0_n_0 ;
   wire \DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM36.ram_i_2__0_n_0 ;
@@ -799,6 +825,7 @@ module FrameBuffer_blk_mem_gen_prim_wrapper_init__parameterized0
   wire clkb;
   wire [7:0]dina;
   wire [7:0]\doutb[7] ;
+  wire ena;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM36.ram_CASCADEOUTA_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM36.ram_CASCADEOUTB_UNCONNECTED ;
@@ -1026,7 +1053,7 @@ module FrameBuffer_blk_mem_gen_prim_wrapper_init__parameterized0
     .INIT(8'h08)) 
     \DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM36.ram_i_1__0 
        (.I0(addra[12]),
-        .I1(wea),
+        .I1(ena),
         .I2(addra[13]),
         .O(\DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM36.ram_i_1__0_n_0 ));
   LUT2 #(
@@ -1045,7 +1072,8 @@ module FrameBuffer_blk_mem_gen_prim_wrapper_init__parameterized1
     addra,
     addrb,
     dina,
-    wea);
+    wea,
+    ena);
   output [7:0]DOBDO;
   input clka;
   input clkb;
@@ -1053,6 +1081,7 @@ module FrameBuffer_blk_mem_gen_prim_wrapper_init__parameterized1
   input [13:0]addrb;
   input [7:0]dina;
   input [0:0]wea;
+  input ena;
 
   wire \DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM18.ram_n_35 ;
   wire [7:0]DOBDO;
@@ -1061,6 +1090,7 @@ module FrameBuffer_blk_mem_gen_prim_wrapper_init__parameterized1
   wire clka;
   wire clkb;
   wire [7:0]dina;
+  wire ena;
   wire ram_ena;
   wire ram_enb;
   wire [0:0]wea;
@@ -1136,16 +1166,16 @@ module FrameBuffer_blk_mem_gen_prim_wrapper_init__parameterized1
     .INIT_33(256'h2020202020202020202020202020202020202020202020202020202020202020),
     .INIT_34(256'h2020202020202020202020202020202020202020202020202020202020202020),
     .INIT_35(256'h2020202020202020202020202020202020202020202020202020202020202020),
-    .INIT_36(256'h2020202020202020202020202020202020202020202020202020202020202020),
+    .INIT_36(256'h2020202020202020202020202020202020202020202020202020202020202B2B),
     .INIT_37(256'h2020202020202020202020202020202020202020202020202020202020202020),
     .INIT_38(256'h2020202020202020202020202020202020202020202020202020202020202020),
     .INIT_39(256'h2020202020202020202020202020202020202020202020202020202020202020),
-    .INIT_3A(256'h2020202020202020202020202020202020202020202020202020202020202020),
-    .INIT_3B(256'h2020202020202020202020202020202020202020202020202020202020202020),
+    .INIT_3A(256'h2B2B202020202020202020202020202020202020202020202020202020202020),
+    .INIT_3B(256'h2020202020202020202020202020202020202020202020202020202020202B80),
     .INIT_3C(256'h6867697279706F43202020202020202020202020202020202020202020202020),
     .INIT_3D(256'h656972642F2F3A707474683C2037303073656972442036313032202943282074),
     .INIT_3E(256'h20202020202020202020202020202020202020202020203E74656E2E37303073),
-    .INIT_3F(256'h2020202020202020202020202020202020202020202020202020202020202020),
+    .INIT_3F(256'h802B202020202020202020202020202020202020202020202020202020202020),
     .INIT_A(18'h00000),
     .INIT_B(18'h00000),
     .INIT_FILE("NONE"),
@@ -1200,7 +1230,7 @@ module FrameBuffer_blk_mem_gen_prim_wrapper_init__parameterized1
        (.I0(addra[12]),
         .I1(addra[11]),
         .I2(addra[13]),
-        .I3(wea),
+        .I3(ena),
         .O(ram_ena));
   LUT3 #(
     .INIT(8'h04)) 
@@ -1219,7 +1249,8 @@ module FrameBuffer_blk_mem_gen_top
     addra,
     addrb,
     dina,
-    wea);
+    wea,
+    ena);
   output [7:0]doutb;
   input clka;
   input clkb;
@@ -1227,6 +1258,7 @@ module FrameBuffer_blk_mem_gen_top
   input [13:0]addrb;
   input [7:0]dina;
   input [0:0]wea;
+  input ena;
 
   wire [13:0]addra;
   wire [13:0]addrb;
@@ -1234,6 +1266,7 @@ module FrameBuffer_blk_mem_gen_top
   wire clkb;
   wire [7:0]dina;
   wire [7:0]doutb;
+  wire ena;
   wire [0:0]wea;
 
   FrameBuffer_blk_mem_gen_generic_cstr \valid.cstr 
@@ -1243,6 +1276,7 @@ module FrameBuffer_blk_mem_gen_top
         .clkb(clkb),
         .dina(dina),
         .doutb(doutb),
+        .ena(ena),
         .wea(wea));
 endmodule
 
@@ -1254,7 +1288,7 @@ endmodule
 (* C_ENABLE_32BIT_ADDRESS = "0" *) (* C_EN_DEEPSLEEP_PIN = "0" *) (* C_EN_ECC_PIPE = "0" *) 
 (* C_EN_RDADDRA_CHG = "0" *) (* C_EN_RDADDRB_CHG = "0" *) (* C_EN_SAFETY_CKT = "0" *) 
 (* C_EN_SHUTDOWN_PIN = "0" *) (* C_EN_SLEEP_PIN = "0" *) (* C_EST_POWER_SUMMARY = "Estimated Power for IP     :     4.58651 mW" *) 
-(* C_FAMILY = "artix7" *) (* C_HAS_AXI_ID = "0" *) (* C_HAS_ENA = "0" *) 
+(* C_FAMILY = "artix7" *) (* C_HAS_AXI_ID = "0" *) (* C_HAS_ENA = "1" *) 
 (* C_HAS_ENB = "0" *) (* C_HAS_INJECTERR = "0" *) (* C_HAS_MEM_OUTPUT_REGS_A = "0" *) 
 (* C_HAS_MEM_OUTPUT_REGS_B = "0" *) (* C_HAS_MUX_OUTPUT_REGS_A = "0" *) (* C_HAS_MUX_OUTPUT_REGS_B = "0" *) 
 (* C_HAS_REGCEA = "0" *) (* C_HAS_REGCEB = "0" *) (* C_HAS_RSTA = "0" *) 
@@ -1519,6 +1553,7 @@ module FrameBuffer_blk_mem_gen_v8_3_1
         .clkb(clkb),
         .dina(dina),
         .doutb(doutb),
+        .ena(ena),
         .wea(wea));
 endmodule
 
@@ -1530,7 +1565,8 @@ module FrameBuffer_blk_mem_gen_v8_3_1_synth
     addra,
     addrb,
     dina,
-    wea);
+    wea,
+    ena);
   output [7:0]doutb;
   input clka;
   input clkb;
@@ -1538,6 +1574,7 @@ module FrameBuffer_blk_mem_gen_v8_3_1_synth
   input [13:0]addrb;
   input [7:0]dina;
   input [0:0]wea;
+  input ena;
 
   wire [13:0]addra;
   wire [13:0]addrb;
@@ -1545,6 +1582,7 @@ module FrameBuffer_blk_mem_gen_v8_3_1_synth
   wire clkb;
   wire [7:0]dina;
   wire [7:0]doutb;
+  wire ena;
   wire [0:0]wea;
 
   FrameBuffer_blk_mem_gen_top \gnativebmg.native_blk_mem_gen 
@@ -1554,6 +1592,7 @@ module FrameBuffer_blk_mem_gen_v8_3_1_synth
         .clkb(clkb),
         .dina(dina),
         .doutb(doutb),
+        .ena(ena),
         .wea(wea));
 endmodule
 `ifndef GLBL
