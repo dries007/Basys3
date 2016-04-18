@@ -28,6 +28,12 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
       <Filter Type="Srcs"/>
+      <File Path="$PSRCDIR/sources_1/new/Font.vhd">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/imports/Downloads/ps2_keyboard.vhd">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../Downloads/ps2_keyboard.vhd"/>
@@ -36,13 +42,13 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/Font.vhd">
+      <File Path="$PSRCDIR/sources_1/new/Vga.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/Vga.vhd">
+      <File Path="$PSRCDIR/sources_1/new/Prng.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -56,19 +62,19 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/Prng.vhd">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sources_1/new/Top.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/splash/splash.coe">
+      <File Path="$PPRDIR/utils/splash.coe">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/utils/zork1.coe">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -117,6 +123,18 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider.xml"/>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider_ooc.xdc"/>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider.xdc"/>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider.vho"/>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="doc/clk_wiz_v5_2_changelog.txt"/>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider_clk_wiz.v"/>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider.v"/>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider_board.xdc"/>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider_sim_netlist.vhdl"/>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider_sim_netlist.v"/>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider_stub.vhdl"/>
+        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider_stub.v"/>
       </File>
       <Config>
         <Option Name="TopModule" Val="ClockDivider"/>
@@ -143,6 +161,23 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
+        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="/home/dries/Projects/Basys3/FPGA-Z/utils/zork1.coe"/>
+        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="Mem.xml"/>
+        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="synth/Mem.vhd"/>
+        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3.vhd"/>
+        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd"/>
+        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="Mem_ooc.xdc"/>
+        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="sim/Mem.vhd"/>
+        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="blk_mem_gen_v8_3_1/simulation/blk_mem_gen_v8_3.vhd"/>
+        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="Mem.mif"/>
+        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="summary.log"/>
+        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="Mem.veo"/>
+        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="Mem.vho"/>
+        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="Mem_sim_netlist.v"/>
+        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="doc/blk_mem_gen_v8_3_changelog.txt"/>
+        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="Mem_stub.v"/>
+        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="Mem_stub.vhdl"/>
+        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="Mem_sim_netlist.vhdl"/>
       </File>
       <Config>
         <Option Name="TopModule" Val="Mem"/>
@@ -209,11 +244,12 @@
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
     </Run>
-    <Run Id="Mem_synth_1" Type="Ft3:Synth" SrcSet="Mem" Part="xc7a35tcpg236-1" ConstrsSet="Mem" Description="Vivado Synthesis Defaults" IncludeInArchive="true">
+    <Run Id="Mem_synth_1" Type="Ft3:Synth" SrcSet="Mem" Part="xc7a35tcpg236-1" ConstrsSet="Mem" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/Mem_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2015"/>
         <Step Id="synth_design"/>
       </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
     </Run>
     <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="constrs_1" Description="Vivado Implementation Defaults" State="current" Dir="$PRUNDIR/impl_1" SynthRun="synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">

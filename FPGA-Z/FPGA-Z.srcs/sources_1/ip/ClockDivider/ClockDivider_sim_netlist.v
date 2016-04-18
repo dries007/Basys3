@@ -1,7 +1,7 @@
 // Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
-// Date        : Fri Apr 15 20:03:21 2016
+// Date        : Sun Apr 17 22:03:07 2016
 // Host        : Dries007-Arch running 64-bit unknown
 // Command     : write_verilog -force -mode funcsim
 //               /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider_sim_netlist.v
@@ -12,23 +12,27 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "ClockDivider,clk_wiz_v5_2_1,{component_name=ClockDivider,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=2,clkin1_period=10.0,clkin2_period=10.0,use_power_down=false,use_reset=false,use_locked=false,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *) 
+(* CORE_GENERATION_INFO = "ClockDivider,clk_wiz_v5_2_1,{component_name=ClockDivider,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=3,clkin1_period=10.0,clkin2_period=10.0,use_power_down=false,use_reset=false,use_locked=false,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *) 
 (* NotValidForBitStream *)
 module ClockDivider
    (clkIn,
     clk108M,
-    clk10M);
+    clk10M,
+    clk20M);
   input clkIn;
   output clk108M;
   output clk10M;
+  output clk20M;
 
   wire clk108M;
   wire clk10M;
+  wire clk20M;
   (* IBUF_LOW_PWR *) wire clkIn;
 
   ClockDivider_ClockDivider_clk_wiz inst
        (.clk108M(clk108M),
         .clk10M(clk10M),
+        .clk20M(clk20M),
         .clkIn(clkIn));
 endmodule
 
@@ -36,15 +40,19 @@ endmodule
 module ClockDivider_ClockDivider_clk_wiz
    (clkIn,
     clk108M,
-    clk10M);
+    clk10M,
+    clk20M);
   input clkIn;
   output clk108M;
   output clk10M;
+  output clk20M;
 
   wire clk108M;
   wire clk108M_ClockDivider;
   wire clk10M;
   wire clk10M_ClockDivider;
+  wire clk20M;
+  wire clk20M_ClockDivider;
   wire clkIn;
   wire clkIn_ClockDivider;
   wire clkfbout_ClockDivider;
@@ -54,7 +62,6 @@ module ClockDivider_ClockDivider_clk_wiz
   wire NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED;
-  wire NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT3_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED;
@@ -88,6 +95,10 @@ module ClockDivider_ClockDivider_clk_wiz
        (.I(clk10M_ClockDivider),
         .O(clk10M));
   (* BOX_TYPE = "PRIMITIVE" *) 
+  BUFG clkout3_buf
+       (.I(clk20M_ClockDivider),
+        .O(clk20M));
+  (* BOX_TYPE = "PRIMITIVE" *) 
   MMCME2_ADV #(
     .BANDWIDTH("OPTIMIZED"),
     .CLKFBOUT_MULT_F(54.000000),
@@ -103,7 +114,7 @@ module ClockDivider_ClockDivider_clk_wiz
     .CLKOUT1_DUTY_CYCLE(0.500000),
     .CLKOUT1_PHASE(0.000000),
     .CLKOUT1_USE_FINE_PS("FALSE"),
-    .CLKOUT2_DIVIDE(1),
+    .CLKOUT2_DIVIDE(54),
     .CLKOUT2_DUTY_CYCLE(0.500000),
     .CLKOUT2_PHASE(0.000000),
     .CLKOUT2_USE_FINE_PS("FALSE"),
@@ -150,7 +161,7 @@ module ClockDivider_ClockDivider_clk_wiz
         .CLKOUT0B(NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED),
         .CLKOUT1(clk10M_ClockDivider),
         .CLKOUT1B(NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED),
-        .CLKOUT2(NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED),
+        .CLKOUT2(clk20M_ClockDivider),
         .CLKOUT2B(NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED),
         .CLKOUT3(NLW_mmcm_adv_inst_CLKOUT3_UNCONNECTED),
         .CLKOUT3B(NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED),

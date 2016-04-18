@@ -57,6 +57,7 @@
 //----------------------------------------------------------------------------
 // CLK_OUT1___108.000______0.000______50.0______221.150____300.991
 // CLK_OUT2____10.000______0.000______50.0______322.773____300.991
+// CLK_OUT3____20.000______0.000______50.0______290.710____300.991
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -70,7 +71,8 @@ module ClockDivider_clk_wiz
   input         clkIn,
   // Clock out ports
   output        clk108M,
-  output        clk10M
+  output        clk10M,
+  output        clk20M
  );
 
   // Input buffering
@@ -96,7 +98,6 @@ module ClockDivider_clk_wiz
   wire        clkfboutb_unused;
     wire clkout0b_unused;
    wire clkout1b_unused;
-   wire clkout2_unused;
    wire clkout2b_unused;
    wire clkout3_unused;
    wire clkout3b_unused;
@@ -123,6 +124,10 @@ module ClockDivider_clk_wiz
     .CLKOUT1_PHASE        (0.000),
     .CLKOUT1_DUTY_CYCLE   (0.500),
     .CLKOUT1_USE_FINE_PS  ("FALSE"),
+    .CLKOUT2_DIVIDE       (54),
+    .CLKOUT2_PHASE        (0.000),
+    .CLKOUT2_DUTY_CYCLE   (0.500),
+    .CLKOUT2_USE_FINE_PS  ("FALSE"),
     .CLKIN1_PERIOD        (10.0))
   mmcm_adv_inst
     // Output clocks
@@ -133,7 +138,7 @@ module ClockDivider_clk_wiz
     .CLKOUT0B            (clkout0b_unused),
     .CLKOUT1             (clk10M_ClockDivider),
     .CLKOUT1B            (clkout1b_unused),
-    .CLKOUT2             (clkout2_unused),
+    .CLKOUT2             (clk20M_ClockDivider),
     .CLKOUT2B            (clkout2b_unused),
     .CLKOUT3             (clkout3_unused),
     .CLKOUT3B            (clkout3b_unused),
@@ -185,6 +190,10 @@ module ClockDivider_clk_wiz
   BUFG clkout2_buf
    (.O   (clk10M),
     .I   (clk10M_ClockDivider));
+
+  BUFG clkout3_buf
+   (.O   (clk20M),
+    .I   (clk20M_ClockDivider));
 
 
 
