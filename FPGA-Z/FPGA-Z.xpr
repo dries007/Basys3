@@ -17,7 +17,7 @@
     <Option Name="CompiledLibDirActivehdl" Val="$PCACHEDIR/compile_simlib/activehdl"/>
     <Option Name="TargetLanguage" Val="VHDL"/>
     <Option Name="BoardPart" Val=""/>
-    <Option Name="ActiveSimSet" Val="sim_1"/>
+    <Option Name="ActiveSimSet" Val="sim_3"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="EnableCoreContainer" Val="FALSE"/>
     <Option Name="CreateRefXciForCoreContainers" Val="FALSE"/>
@@ -80,6 +80,13 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PSRCDIR/sources_1/new/Ram.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="top"/>
@@ -112,6 +119,7 @@
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="test1"/>
         <Option Name="TopLib" Val="xil_defaultlib"/>
+        <Option Name="SimMode" Val="post-implementation"/>
         <Option Name="SrcSet" Val="sources_1"/>
         <Option Name="NLNetlistMode" Val="funcsim"/>
       </Config>
@@ -123,18 +131,6 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider.xml"/>
-        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider_ooc.xdc"/>
-        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider.xdc"/>
-        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider.vho"/>
-        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="doc/clk_wiz_v5_2_changelog.txt"/>
-        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider_clk_wiz.v"/>
-        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider.v"/>
-        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider_board.xdc"/>
-        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider_sim_netlist.vhdl"/>
-        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider_sim_netlist.v"/>
-        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider_stub.vhdl"/>
-        <CompFileExtendedInfo CompFileName="ClockDivider.xci" FileRelPathName="ClockDivider_stub.v"/>
       </File>
       <Config>
         <Option Name="TopModule" Val="ClockDivider"/>
@@ -173,11 +169,11 @@
         <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="summary.log"/>
         <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="Mem.veo"/>
         <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="Mem.vho"/>
-        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="Mem_sim_netlist.v"/>
         <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="doc/blk_mem_gen_v8_3_changelog.txt"/>
-        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="Mem_stub.v"/>
-        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="Mem_stub.vhdl"/>
         <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="Mem_sim_netlist.vhdl"/>
+        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="Mem_stub.vhdl"/>
+        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="Mem_sim_netlist.v"/>
+        <CompFileExtendedInfo CompFileName="Mem.xci" FileRelPathName="Mem_stub.v"/>
       </File>
       <Config>
         <Option Name="TopModule" Val="Mem"/>
@@ -198,6 +194,26 @@
         <Option Name="TopLib" Val="xil_defaultlib"/>
         <Option Name="SrcSet" Val="sources_1"/>
         <Option Name="NLNetlistMode" Val="funcsim"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="sim_3" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_3">
+      <File Path="$PSRCDIR/sim_3/new/test3.vhd">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/test3_behav.wcfg">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <Config>
+        <Option Name="DesignMode" Val="RTL"/>
+        <Option Name="TopModule" Val="test3"/>
+        <Option Name="TopLib" Val="xil_defaultlib"/>
+        <Option Name="SrcSet" Val="sources_1"/>
+        <Option Name="XSimWcfgFile" Val="$PPRDIR/test3_behav.wcfg"/>
       </Config>
     </FileSet>
   </FileSets>
@@ -223,12 +239,11 @@
     </Simulator>
   </Simulators>
   <Runs Version="1" Minor="10">
-    <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7a35tcpg236-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" State="current" Dir="$PRUNDIR/synth_1" IncludeInArchive="true">
+    <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7a35tcpg236-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" State="current" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2015"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
     </Run>
     <Run Id="ClockDivider_synth_1" Type="Ft3:Synth" SrcSet="ClockDivider" Part="xc7a35tcpg236-1" ConstrsSet="ClockDivider" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/ClockDivider_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
@@ -251,7 +266,7 @@
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
     </Run>
-    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="constrs_1" Description="Vivado Implementation Defaults" State="current" Dir="$PRUNDIR/impl_1" SynthRun="synth_1" IncludeInArchive="true">
+    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="constrs_1" Description="Vivado Implementation Defaults" State="current" SynthRun="synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2015"/>
         <Step Id="init_design"/>
@@ -267,7 +282,6 @@
           <Option Id="RawbitFileBool">1</Option>
         </Step>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
     </Run>
     <Run Id="ClockDivider_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="ClockDivider" Description="Vivado Implementation Defaults" SynthRun="ClockDivider_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">

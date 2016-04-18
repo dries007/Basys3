@@ -10,13 +10,7 @@ int main()
     int count = 0;
     while ((c = getchar()) != -1)
     {
-        /*
-        if (c == '\n') 
-            printf("\n");
-        else 
-        */
-            printf("%02X", c);
-            if (count ++ % 2) printf(" ");
+        printf("%02X ", c);
     }
     printf(";");
     return 0;

@@ -136,22 +136,6 @@ signal kb_event : std_logic := '0';
 signal kb_acsii : std_logic_vector(6 downto 0) := (others => '0');
 
 -- RAM ----------------------------------------------------------
-component Mem is
-  port (
-    clka : in std_logic;
-    ena : in std_logic;
-    wea : in std_logic_vector(1 downto 0);
-    addra : in std_logic_vector(15 downto 0);
-    dina : in std_logic_vector(15 downto 0);
-    douta : out std_logic_vector(15 downto 0)
-  );
-end component;
-
-signal ram_en : std_logic := '0';
-signal ram_we : std_logic_vector(1 downto 0) := "00";
-signal ram_addr : std_logic_vector(15 downto 0) := (others => '0');
-signal ram_dat_in : std_logic_vector(15 downto 0) := (others => '0');
-signal ram_dat_out : std_logic_vector(15 downto 0) := (others => '0');
 
 -- MISC ---------------------------------------------------------
 -- runtime in ms
@@ -263,15 +247,7 @@ keyboard0: ps2_keyboard_to_ascii
     );
 
 -- RAM ----------------------------------------------------------
-mem0: Mem
-  port map (
-    clka => clk_20M,
-    ena => ram_en,
-    wea => ram_we,
-    addra => ram_addr,
-    dina => ram_dat_in,
-    douta => ram_dat_out
-  );
+
 
 -- MISC ---------------------------------------------------------
 -- runtime cursor
