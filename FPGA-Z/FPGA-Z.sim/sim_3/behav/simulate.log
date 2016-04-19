@@ -1,4 +1,2 @@
 Vivado Simulator 2015.4
 Time resolution is 1 ps
-Note: Block Memory Generator module is using a behavioral model FOR simulation which will not precisely model memory collision behavior.
-Time: 5640 ns  Iteration: 1  Process: /test3/ram0/mem0/U0/native_mem_module/mem_module/line__3418  File: /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.ip_user_files/ipstatic/blk_mem_gen_v8_3_1/simulation/blk_mem_gen_v8_3.vhd

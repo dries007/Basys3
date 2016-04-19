@@ -58,6 +58,7 @@
 // CLK_OUT1___108.000______0.000______50.0______221.150____300.991
 // CLK_OUT2____10.000______0.000______50.0______322.773____300.991
 // CLK_OUT3____20.000______0.000______50.0______290.710____300.991
+// CLK_OUT4____60.000______0.000______50.0______239.545____300.991
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -66,7 +67,7 @@
 
 `timescale 1ps/1ps
 
-(* CORE_GENERATION_INFO = "ClockDivider,clk_wiz_v5_2_1,{component_name=ClockDivider,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=3,clkin1_period=10.0,clkin2_period=10.0,use_power_down=false,use_reset=false,use_locked=false,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
+(* CORE_GENERATION_INFO = "ClockDivider,clk_wiz_v5_2_1,{component_name=ClockDivider,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=4,clkin1_period=10.0,clkin2_period=10.0,use_power_down=false,use_reset=false,use_locked=false,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
 
 module ClockDivider 
  (
@@ -75,7 +76,8 @@ module ClockDivider
   // Clock out ports
   output        clk108M,
   output        clk10M,
-  output        clk20M
+  output        clk20M,
+  output        clk60M
  );
 
   ClockDivider_clk_wiz inst
@@ -85,7 +87,8 @@ module ClockDivider
   // Clock out ports  
   .clk108M(clk108M),
   .clk10M(clk10M),
-  .clk20M(clk20M)              
+  .clk20M(clk20M),
+  .clk60M(clk60M)              
   );
 
 endmodule

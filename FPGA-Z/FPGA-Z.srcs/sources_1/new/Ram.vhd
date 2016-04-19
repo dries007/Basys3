@@ -57,11 +57,11 @@ begin
     if rising_edge(clk) then
         ram_en <= '1';
         ram_we <= '0';
-        dat_r <= (others => 'U');
         case state is
         when S0 =>
             state := S1;
-        when S1 => 
+        when S1 =>
+            dat_r <= (others => 'U'); 
             ram_addr <= conv_std_logic_vector(addr, 17);
             state := S2;
         when S2 =>

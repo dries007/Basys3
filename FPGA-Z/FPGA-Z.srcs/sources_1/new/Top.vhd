@@ -42,13 +42,15 @@ component ClockDivider
         clkIn : in std_logic;
         clk108M : out std_logic;
         clk10M : out std_logic;
-        clk20M : out std_logic
+        clk20M : out std_logic;
+        clk60M : out std_logic
     );
 end component;
 
 signal clk_108M : std_logic := '0';
 signal clk_10M : std_logic := '0';
 signal clk_20M : std_logic := '0';
+signal clk_60M : std_logic := '0';
 signal clk_10 : std_logic := '0';
 signal clk_2 : std_logic := '0';
 signal clk_1 : std_logic := '0';
@@ -136,6 +138,23 @@ signal kb_event : std_logic := '0';
 signal kb_acsii : std_logic_vector(6 downto 0) := (others => '0');
 
 -- RAM ----------------------------------------------------------
+component Ram is
+    Port 
+    ( 
+        clk : in std_logic;
+        re : in std_logic_vector (1 downto 0);
+        we : in std_logic_vector (1 downto 0);
+        addr : in integer range 0 to 16#1FFFF#;
+        dat_r : out std_logic_vector (15 downto 0);
+        dat_w : in std_logic_vector (15 downto 0)
+    );
+end component;
+
+signal ram_re : std_logic_vector(1 downto 0) := (others => '0');
+signal ram_we : std_logic_vector(1 downto 0) := (others => '0');
+signal ram_addr : integer := 0;
+signal ram_dat_r : std_logic_vector(15 downto 0) := (others => '0');
+signal ram_dat_w : std_logic_vector(15 downto 0) := (others => '0');
 
 -- MISC ---------------------------------------------------------
 -- runtime in ms
@@ -169,7 +188,8 @@ clock0: ClockDivider
         clkIn => clk,
         clk108M => clk_108M,
         clk10M => clk_10M,
-        clk20M => clk_20M
+        clk20M => clk_20M,
+        clk60M => clk_60M
     );
 -- slow clock devider
 process (clk_10M)
@@ -247,7 +267,20 @@ keyboard0: ps2_keyboard_to_ascii
     );
 
 -- RAM ----------------------------------------------------------
-
+--signal ram_re : std_logic_vector(1 downto 0) := (others => '0');
+--signal ram_we : std_logic_vector(1 downto 0) := (others => '0');
+--signal ram_addr : integer := 0;
+--signal ram_dat_r : std_logic_vector(15 downto 0) := (others => '0');
+--signal ram_dat_w : std_logic_vector(15 downto 0) := (others => '0');
+ram0: Ram
+    port map (
+        clk => clk_60M,
+        re => re,
+        we => we,
+        addr => addr,
+        dat_r => dat_r,
+        dat_w => dat_w
+    );
 
 -- MISC ---------------------------------------------------------
 -- runtime cursor
