@@ -49,6 +49,52 @@ mem0: Mem
     douta => ram_dat_out
   );
 
+--process (clk)
+--    type state_type is (S0, S1, S2, S3);
+--    variable state : state_type := S0;-- The current/next state
+--    variable tmp : std_logic_vector(15 downto 0) := (others => '0');
+--begin
+--    if rising_edge(clk) then
+--        ram_en <= '1';
+--        ram_we <= '0';
+--        case state is
+--        when S0 =>
+--            state := S1;
+--        when S1 =>
+--            ram_addr <= conv_std_logic_vector(addr, 17);
+--            state := S2;
+--        when S2 =>
+--            ram_addr <= conv_std_logic_vector(addr + 1, 17);
+--            -- Write first byte if required
+--            if we(1) = '1' then
+--                ram_we <= '1';
+--                ram_dat_in <= dat_w(15 downto 8); 
+--            end if;
+--            -- Read fist byte if required
+--            if re(1) = '1' then
+--                tmp(15 downto 8) := ram_dat_out;
+--            else
+--                tmp(15 downto 8) := (others => 'U');
+--            end if;
+--            state := S3;
+--        when S3 =>
+--            -- Write second byte if required
+--            if we(0) = '1' then
+--                ram_we <= '1';
+--                ram_dat_in <= dat_w(7 downto 0);
+--            end if;
+--            -- Read second byte if required
+--            if re(0) = '1' then
+--                tmp(7 downto 0) := ram_dat_out;
+--            else
+--                tmp(7 downto 0) := (others => 'U');
+--            end if;
+--            dat_r <= tmp;
+--            state := S0;
+--        end case;
+--    end if;
+--end process;
+
 process (clk)
     type state_type is (S0, S1, S2, S3, S4, S5);
     variable state : state_type := S0;-- The current/next state

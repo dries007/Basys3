@@ -4,6 +4,9 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.std_logic_unsigned.all;
 use ieee.math_real.all;
 
+use ieee.std_logic_textio.all;
+use std.textio.all;
+
 use work.Font.all;
 
 entity top is
@@ -34,6 +37,7 @@ architecture Behavioral of top is
 constant COLS : integer := 160;
 constant ROWS : integer := 64;
 constant CHARS : integer := COLS * ROWS;
+constant CPU_FREQ : integer := 10_000_000;
 constant BLINKDATA : string := "Press any key to continue...";
 
 -- CLOCK --------------------------------------------------------
@@ -41,16 +45,18 @@ component ClockDivider
     port (
         clkIn : in std_logic;
         clk108M : out std_logic;
-        clk10M : out std_logic;
-        clk20M : out std_logic;
-        clk60M : out std_logic
+        clk_cpu : out std_logic;
+        clk2cpu : out std_logic;
+        clk4cpu : out std_logic;
+        clk6cpu : out std_logic
     );
 end component;
 
-signal clk_108M : std_logic := '0';
-signal clk_10M : std_logic := '0';
-signal clk_20M : std_logic := '0';
-signal clk_60M : std_logic := '0';
+signal clk_vga : std_logic := '0';
+signal clk_cpu : std_logic := '0';
+signal clk_2cpu : std_logic := '0';
+signal clk_4cpu : std_logic := '0';
+signal clk_6cpu : std_logic := '0';
 signal clk_10 : std_logic := '0';
 signal clk_2 : std_logic := '0';
 signal clk_1 : std_logic := '0';
@@ -74,6 +80,7 @@ signal vga_addr : std_logic_vector(13 downto 0) := (others =>'0');
 signal vga_dat : std_logic_vector(7 downto 0) := (others =>'0');
 
 -- FRAMEBUFFER --------------------------------------------------
+-- NEEDS to run at 2x CPU freq, for 1 CPU cycle mem access
 component Framebuffer is
     port (
         clka : in std_logic;
@@ -118,6 +125,7 @@ signal rng_clk : std_logic := '0';
 signal rng_out : std_logic_vector(15 downto 0) := (others =>'0');
 
 -- KEYBOARD CONTROLLER ------------------------------------------
+-- NEEDS to be at CPU freq
 component ps2_keyboard_to_ascii is
     Generic
     (
@@ -138,6 +146,7 @@ signal kb_event : std_logic := '0';
 signal kb_acsii : std_logic_vector(6 downto 0) := (others => '0');
 
 -- RAM ----------------------------------------------------------
+-- NEEDS to run at 6x CPU freq, for 1 CPU cycle mem access
 component Ram is
     Port 
     ( 
@@ -178,6 +187,16 @@ begin
     return tmp;
 end pad_string;
 
+-- returns true if done
+impure function write_text(cursor : integer; message : string; invert : std_logic := '0'; offset : integer := 0) return boolean is
+begin
+    fb_a_en <= '1';
+    fb_a_we <= "1";
+    fb_a_dat_in <= invert & conv_std_logic_vector(character'pos(message(cursor)), 7);
+    fb_a_addr <= conv_std_logic_vector(cursor + offset, 14);
+    return cursor = message'LENGTH;
+end write_text;
+
 --------------------------------------------------------
 begin --                      BEGIN
 --------------------------------------------------------
@@ -186,17 +205,18 @@ begin --                      BEGIN
 clock0: ClockDivider 
     port map (
         clkIn => clk,
-        clk108M => clk_108M,
-        clk10M => clk_10M,
-        clk20M => clk_20M,
-        clk60M => clk_60M
+        clk108M => clk_vga,
+        clk_cpu => clk_cpu,
+        clk2cpu => clk_2cpu,
+        clk4cpu => clk_4cpu,
+        clk6cpu => clk_6cpu
     );
--- slow clock devider
-process (clk_10M)
+-- Slow clock devider
+process (clk_cpu)
     constant MAX : integer := 10000000/2;
     variable i : integer range 0 to MAX := 0;
 begin
-    if rising_edge(clk_10M) then
+    if rising_edge(clk_cpu) then
         if i < MAX then
             i := i + 1;
         else
@@ -220,7 +240,7 @@ end process;
 -- VGA controller -----------------------------------------------
 vga0: Vga
     port map (
-        clk => clk_108M,
+        clk => clk_vga,
         hSync => Hsync,
         vSync => Vsync,
         vgaRed => vgaRed,
@@ -233,14 +253,14 @@ vga0: Vga
 -- FRAMEBUFFER --------------------------------------------------
 frameBuffer0: Framebuffer
     port map (
-        clka => clk_20M,
+        clka => clk_2cpu,
         ena => fb_a_en,
         wea => fb_a_we,
         addra => fb_a_addr,
         dina => fb_a_dat_in,
         douta => fb_a_dat_out,
         
-        clkb => clk_108M,
+        clkb => clk_vga,
         web => "0",
         addrb => vga_addr,
         dinb => x"00",
@@ -259,7 +279,7 @@ prng0: Prng
 -- KEYBOARD CONTROLLER ------------------------------------------
 keyboard0: ps2_keyboard_to_ascii
     port map (
-        clk => clk_10M,
+        clk => clk_cpu,
         ps2_clk => PS2Clk,
         ps2_data => PS2Data,
         ascii_new => kb_event,
@@ -267,19 +287,14 @@ keyboard0: ps2_keyboard_to_ascii
     );
 
 -- RAM ----------------------------------------------------------
---signal ram_re : std_logic_vector(1 downto 0) := (others => '0');
---signal ram_we : std_logic_vector(1 downto 0) := (others => '0');
---signal ram_addr : integer := 0;
---signal ram_dat_r : std_logic_vector(15 downto 0) := (others => '0');
---signal ram_dat_w : std_logic_vector(15 downto 0) := (others => '0');
 ram0: Ram
     port map (
-        clk => clk_60M,
-        re => re,
-        we => we,
-        addr => addr,
-        dat_r => dat_r,
-        dat_w => dat_w
+        clk => clk_6cpu,
+        re => ram_re,
+        we => ram_we,
+        addr => ram_addr,
+        dat_r => ram_dat_r,
+        dat_w => ram_dat_w
     );
 
 -- MISC ---------------------------------------------------------
@@ -316,14 +331,14 @@ end process;
 
 -- MAIN ---------------------------------------------------------
 -- CPU control state machine, not a proper FSM!
-process (clk_10M)
-    type state_type is (RESET, BLANK, SCROLL, SCROLL_W, LOAD, TEST, ERROR);
+process (clk_cpu)
+    type state_type is (RESET, BLANK, SCROLL, SCROLL_W, LOAD, DEBUG, DEBUG_KB, ERROR);
     variable next_state : state_type := RESET; -- The state to go to, after finishing the current one.
     variable state : state_type := RESET;-- The current/next state
     
     variable delay : boolean := false;-- Delay 1 clock tick
     variable cursor : integer range 0 to CHARS := 0;
-    variable message : string(1 to 160);
+    variable message : string(1 to COLS);
     
     variable flags1 : std_logic_vector(15 downto 0) := (others => '0');
     variable flags2 : std_logic_vector(15 downto 0) := (others => '0');
@@ -333,11 +348,14 @@ process (clk_10M)
     variable objtab : integer range 0 to 16#FFFF# := 0;
     variable globals : integer range 0 to 16#FFFF# := 0;
     variable static : integer range 0 to 16#FFFF# := 0;
-begin
-    if rising_edge(clk_10M) then
+    variable abbreviations : integer range 0 to 16#FFFF# := 0;
+    variable length : integer range 0 to 16#FFFF# := 0;
+    variable checksum : integer range 0 to 16#FFFF# := 0;
+begin    
+    if rising_edge(clk_cpu) then
         fb_a_en <= '0';
         fb_a_we <= "0";
-        ram_en <= '0';
+        ram_re <= "00";
         ram_we <= "00";
         if delay then
             delay := false;
@@ -345,11 +363,8 @@ begin
             case state is
             ---------------------------------------------
             when RESET => -- splash screen
-                fb_a_en <= '1';
-                fb_a_we <= "1";
-                fb_a_dat_in <= clk_1 & conv_std_logic_vector(character'pos(BLINKDATA(cursor + 1)), 7);
-                fb_a_addr <= conv_std_logic_vector(COLS * 21 + 66 + cursor, 14);
                 cursor := cursor_delta(cursor, modulo => blinkData'LENGTH);
+                write_text(cursor, BLINKDATA, clk_1, COLS * 21 + 66);
                 if kb_event = '1' then
                     cursor := 0;
                     state := BLANK;
@@ -368,75 +383,82 @@ begin
                 end if;
             ---------------------------------------------
             when ERROR =>
-                fb_a_en <= '1';
-                fb_a_we <= "1";
-                fb_a_dat_in <= '1' & conv_std_logic_vector(character'pos(message(cursor + 1)), 7);
-                fb_a_addr <= conv_std_logic_vector(cursor, 14);
-                cursor := cursor_delta(cursor, modulo => message'LENGTH);
-                if cursor = 0 then
-                    cursor := 160;
-                    state := TEST;
-                    next_state := TEST;
+                cursor := cursor_delta(cursor);
+                if write_text(cursor, message, clk_1) then
+                    cursor := COLS;
+                    state := DEBUG;
+                    next_state := DEBUG;
                 end if;
             ---------------------------------------------
             when LOAD => -- Dirty sequential loading of data from RAM
                 cursor := cursor_delta(cursor);
-                ram_en <= '1';
+                ram_re <= "11";
                 case cursor is
                 when 1 =>
-                    ram_addr <= conv_std_logic_vector(16#00#, 16);
+                    ram_re <= "10";
+                    ram_addr <= 16#00#;
                 when 2 =>
-                    if ram_dat_out(15 downto 8) /= x"03" then
+                    if ram_dat_r(15 downto 8) /= x"03" then
                         cursor := 0;
                         state := ERROR;
                         next_state := RESET;
                         message := pad_string("Version != 3", message'LENGTH);
                     end if;
-                    ram_addr <= conv_std_logic_vector(16#01#, 16); -- Flags 1
+                    ram_addr <= 16#01#; -- Flags 1
                 when 3 =>
-                    flags1 := ram_dat_out;
+                    ram_re <= "00";
+                    flags1 := ram_dat_r;
                     -- SET FLAGS 1 BITS
                     flags1(4) := '0';
                     flags1(5) := '0';
                     flags1(6) := '0';
-                    ram_dat_in <= flags1;
+                    ram_dat_w <= flags1;
                     ram_we <= "11";
                 when 4 =>
-                    ram_addr <= conv_std_logic_vector(16#04#, 16); -- Base of high memory (byte address)
+                    ram_addr <= 16#04#; -- Base of high memory (byte address)
                 when 5 =>
-                    high := conv_integer(ram_dat_out);
-                    ram_addr <= conv_std_logic_vector(16#06#, 16); -- Initial value of program counter (byte address)
+                    high := conv_integer(ram_dat_r);
+                    ram_addr <= 16#06#; -- Initial value of program counter (byte address)
                 when 6 =>
-                    pc := conv_integer(ram_dat_out);
-                    ram_addr <= conv_std_logic_vector(16#08#, 16); -- Location of dictionary (byte address)
+                    pc := conv_integer(ram_dat_r);
+                    ram_addr <= 16#08#; -- Location of dictionary (byte address)
                 when 7 =>
-                    dict := conv_integer(ram_dat_out);
-                    ram_addr <= conv_std_logic_vector(16#0A#, 16); -- Location of object table (byte address)
+                    dict := conv_integer(ram_dat_r);
+                    ram_addr <= 16#0A#; -- Location of object table (byte address)
                 when 8 =>
-                    objtab := conv_integer(ram_dat_out);
-                    ram_addr <= conv_std_logic_vector(16#0C#, 16); -- 	Location of global variables table (byte address)
+                    objtab := conv_integer(ram_dat_r);
+                    ram_addr <= 16#0C#; -- 	Location of global variables table (byte address)
                 when 9 =>
-                    globals := conv_integer(ram_dat_out);
-                    ram_addr <= conv_std_logic_vector(16#0E#, 16); -- 	Base of static memory (byte address)
+                    globals := conv_integer(ram_dat_r);
+                    ram_addr <= 16#0E#; -- 	Base of static memory (byte address)
                 when 10 => 
-                    static := conv_integer(ram_dat_out);
-                    ram_addr <= conv_std_logic_vector(16#10#, 16); -- 	Flags 2
+                    static := conv_integer(ram_dat_r);
+                    ram_addr <= 16#10#; -- 	Flags 2
                 when 11 =>
-                    flags2 := ram_dat_out;
-                    --flags2()
+                    flags2 := ram_dat_r;
+                    ram_addr <= 16#18#; -- Location of abbreviations table (byte address)
+                when 12 =>
+                    abbreviations := conv_integer(ram_dat_r);
+                    ram_addr <= 16#1A#; -- Length of file, Not always available
+                when 13 =>
+                    length := conv_integer(ram_dat_r);
+                    ram_addr <= 16#1C#; -- Checksum, Not always available
+                when 14 =>
+                    checksum := conv_integer(ram_dat_r);
+                    -- HEADER LOADED
                     
+                when 15 =>
+                    ram_re <= "00";
                     cursor := 0;
                     state := ERROR;
                     next_state := RESET;
-                    message := pad_string("It works. Untill this point that is...", message'LENGTH);
-                    
-                    -- todo: check bits
-                    
+                    message := pad_string("Header loaded! Commencing debug dump...", message'LENGTH);
                 when others =>
+                    ram_re <= "00";
                     cursor := 0;
                     state := ERROR;
                     next_state := RESET;
-                    message := pad_string("Illegal load state", message'LENGTH);
+                    message := pad_string("Illegal load state.", message'LENGTH);
                 end case;
             ---------------------------------------------
             when SCROLL => -- move all of the screen up one row, read part
@@ -470,9 +492,24 @@ begin
                     state := SCROLL;
                 end if;
             ---------------------------------------------
-            
-            ---------------------------------------------
-            when TEST =>
+            when DEBUG =>
+                case cursor is
+                    when 0 =>
+                        ram_re <= "11";
+                        
+                    when 1 to COLS =>
+                        if write_text(cursor, "Debug data dump", '1') then
+                            cursor := COLS;
+                        end if;
+                        cursor := cursor_delta(cursor);
+                    when COLS + 1 to 2 * COLS =>
+                        if write_text(cursor - COLS, "Line 2 right?", offset => COLS) then
+                            cursor := COLS;
+                        end if;
+                        cursor := cursor_delta(cursor);
+                    when others =>
+                end case;
+            when DEBUG_KB =>
                 if kb_event = '1' then
                     -- By default, we want to write a space to the current position
                     fb_a_en <= '1';
@@ -487,7 +524,7 @@ begin
                     elsif kb_acsii = "0001101" then
                         if cursor / COLS = (ROWS - 1) then
                             state := SCROLL;
-                            next_state := TEST;
+                            next_state := DEBUG_KB;
                             cursor := 0;
                         else
                             cursor := cursor_delta(cursor, COLS - (cursor mod COLS));    
@@ -498,7 +535,7 @@ begin
                         fb_a_we <=  "0";
                         cursor := 0;
                         state := BLANK;
-                        next_state := TEST;
+                        next_state := DEBUG;
                     -- OTHERWISE print character to screen
                     else
                         fb_a_dat_in <= '0' & kb_acsii;

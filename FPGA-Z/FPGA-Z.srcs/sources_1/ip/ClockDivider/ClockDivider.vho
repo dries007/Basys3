@@ -57,7 +57,8 @@
 -- CLK_OUT1___108.000______0.000______50.0______221.150____300.991
 -- CLK_OUT2____10.000______0.000______50.0______322.773____300.991
 -- CLK_OUT3____20.000______0.000______50.0______290.710____300.991
--- CLK_OUT4____60.000______0.000______50.0______239.545____300.991
+-- CLK_OUT4____40.000______0.000______50.0______255.896____300.991
+-- CLK_OUT5____60.000______0.000______50.0______239.545____300.991
 --
 ------------------------------------------------------------------------------
 -- Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -73,9 +74,10 @@ port
   clkIn           : in     std_logic;
   -- Clock out ports
   clk108M          : out    std_logic;
-  clk10M          : out    std_logic;
-  clk20M          : out    std_logic;
-  clk60M          : out    std_logic
+  clk_cpu          : out    std_logic;
+  clk2cpu          : out    std_logic;
+  clk4cpu          : out    std_logic;
+  clk6cpu          : out    std_logic
  );
 end component;
 
@@ -90,8 +92,9 @@ your_instance_name : ClockDivider
    clkIn => clkIn,
   -- Clock out ports  
    clk108M => clk108M,
-   clk10M => clk10M,
-   clk20M => clk20M,
-   clk60M => clk60M              
+   clk_cpu => clk_cpu,
+   clk2cpu => clk2cpu,
+   clk4cpu => clk4cpu,
+   clk6cpu => clk6cpu              
  );
 -- INST_TAG_END ------ End INSTANTIATION Template ------------

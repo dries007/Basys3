@@ -1,10 +1,10 @@
 // Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2015.4 (win64) Build 1412921 Wed Nov 18 09:43:45 MST 2015
-// Date        : Tue Apr 19 12:14:58 2016
-// Host        : Dries007Laptop running 64-bit major release  (build 9200)
+// Tool Version: Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
+// Date        : Tue Apr 19 23:02:15 2016
+// Host        : Dries007-Arch running 64-bit unknown
 // Command     : write_verilog -force -mode funcsim
-//               D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider_sim_netlist.v
+//               /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider_sim_netlist.v
 // Design      : ClockDivider
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,57 +12,65 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "ClockDivider,clk_wiz_v5_2_1,{component_name=ClockDivider,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=4,clkin1_period=10.0,clkin2_period=10.0,use_power_down=false,use_reset=false,use_locked=false,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *) 
+(* CORE_GENERATION_INFO = "ClockDivider,clk_wiz_v5_2_1,{component_name=ClockDivider,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=5,clkin1_period=10.0,clkin2_period=10.0,use_power_down=false,use_reset=false,use_locked=false,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *) 
 (* NotValidForBitStream *)
 module ClockDivider
    (clkIn,
     clk108M,
-    clk10M,
-    clk20M,
-    clk60M);
+    clk_cpu,
+    clk2cpu,
+    clk4cpu,
+    clk6cpu);
   input clkIn;
   output clk108M;
-  output clk10M;
-  output clk20M;
-  output clk60M;
+  output clk_cpu;
+  output clk2cpu;
+  output clk4cpu;
+  output clk6cpu;
 
   wire clk108M;
-  wire clk10M;
-  wire clk20M;
-  wire clk60M;
+  wire clk2cpu;
+  wire clk4cpu;
+  wire clk6cpu;
   (* IBUF_LOW_PWR *) wire clkIn;
+  wire clk_cpu;
 
   ClockDivider_ClockDivider_clk_wiz inst
        (.clk108M(clk108M),
-        .clk10M(clk10M),
-        .clk20M(clk20M),
-        .clk60M(clk60M),
-        .clkIn(clkIn));
+        .clk2cpu(clk2cpu),
+        .clk4cpu(clk4cpu),
+        .clk6cpu(clk6cpu),
+        .clkIn(clkIn),
+        .clk_cpu(clk_cpu));
 endmodule
 
 (* ORIG_REF_NAME = "ClockDivider_clk_wiz" *) 
 module ClockDivider_ClockDivider_clk_wiz
    (clkIn,
     clk108M,
-    clk10M,
-    clk20M,
-    clk60M);
+    clk_cpu,
+    clk2cpu,
+    clk4cpu,
+    clk6cpu);
   input clkIn;
   output clk108M;
-  output clk10M;
-  output clk20M;
-  output clk60M;
+  output clk_cpu;
+  output clk2cpu;
+  output clk4cpu;
+  output clk6cpu;
 
   wire clk108M;
   wire clk108M_ClockDivider;
-  wire clk10M;
-  wire clk10M_ClockDivider;
-  wire clk20M;
-  wire clk20M_ClockDivider;
-  wire clk60M;
-  wire clk60M_ClockDivider;
+  wire clk2cpu;
+  wire clk2cpu_ClockDivider;
+  wire clk4cpu;
+  wire clk4cpu_ClockDivider;
+  wire clk6cpu;
+  wire clk6cpu_ClockDivider;
   wire clkIn;
   wire clkIn_ClockDivider;
+  wire clk_cpu;
+  wire clk_cpu_ClockDivider;
   wire clkfbout_ClockDivider;
   wire clkfbout_buf_ClockDivider;
   wire NLW_mmcm_adv_inst_CLKFBOUTB_UNCONNECTED;
@@ -72,7 +80,6 @@ module ClockDivider_ClockDivider_clk_wiz
   wire NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED;
-  wire NLW_mmcm_adv_inst_CLKOUT4_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT5_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT6_UNCONNECTED;
   wire NLW_mmcm_adv_inst_DRDY_UNCONNECTED;
@@ -99,16 +106,20 @@ module ClockDivider_ClockDivider_clk_wiz
         .O(clk108M));
   (* BOX_TYPE = "PRIMITIVE" *) 
   BUFG clkout2_buf
-       (.I(clk10M_ClockDivider),
-        .O(clk10M));
+       (.I(clk_cpu_ClockDivider),
+        .O(clk_cpu));
   (* BOX_TYPE = "PRIMITIVE" *) 
   BUFG clkout3_buf
-       (.I(clk20M_ClockDivider),
-        .O(clk20M));
+       (.I(clk2cpu_ClockDivider),
+        .O(clk2cpu));
   (* BOX_TYPE = "PRIMITIVE" *) 
   BUFG clkout4_buf
-       (.I(clk60M_ClockDivider),
-        .O(clk60M));
+       (.I(clk4cpu_ClockDivider),
+        .O(clk4cpu));
+  (* BOX_TYPE = "PRIMITIVE" *) 
+  BUFG clkout5_buf
+       (.I(clk6cpu_ClockDivider),
+        .O(clk6cpu));
   (* BOX_TYPE = "PRIMITIVE" *) 
   MMCME2_ADV #(
     .BANDWIDTH("OPTIMIZED"),
@@ -129,12 +140,12 @@ module ClockDivider_ClockDivider_clk_wiz
     .CLKOUT2_DUTY_CYCLE(0.500000),
     .CLKOUT2_PHASE(0.000000),
     .CLKOUT2_USE_FINE_PS("FALSE"),
-    .CLKOUT3_DIVIDE(18),
+    .CLKOUT3_DIVIDE(27),
     .CLKOUT3_DUTY_CYCLE(0.500000),
     .CLKOUT3_PHASE(0.000000),
     .CLKOUT3_USE_FINE_PS("FALSE"),
     .CLKOUT4_CASCADE("FALSE"),
-    .CLKOUT4_DIVIDE(1),
+    .CLKOUT4_DIVIDE(18),
     .CLKOUT4_DUTY_CYCLE(0.500000),
     .CLKOUT4_PHASE(0.000000),
     .CLKOUT4_USE_FINE_PS("FALSE"),
@@ -170,13 +181,13 @@ module ClockDivider_ClockDivider_clk_wiz
         .CLKINSTOPPED(NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED),
         .CLKOUT0(clk108M_ClockDivider),
         .CLKOUT0B(NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED),
-        .CLKOUT1(clk10M_ClockDivider),
+        .CLKOUT1(clk_cpu_ClockDivider),
         .CLKOUT1B(NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED),
-        .CLKOUT2(clk20M_ClockDivider),
+        .CLKOUT2(clk2cpu_ClockDivider),
         .CLKOUT2B(NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED),
-        .CLKOUT3(clk60M_ClockDivider),
+        .CLKOUT3(clk4cpu_ClockDivider),
         .CLKOUT3B(NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED),
-        .CLKOUT4(NLW_mmcm_adv_inst_CLKOUT4_UNCONNECTED),
+        .CLKOUT4(clk6cpu_ClockDivider),
         .CLKOUT5(NLW_mmcm_adv_inst_CLKOUT5_UNCONNECTED),
         .CLKOUT6(NLW_mmcm_adv_inst_CLKOUT6_UNCONNECTED),
         .DADDR({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),

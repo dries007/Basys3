@@ -72,13 +72,7 @@ process(clk_1)
     variable  outline  : line;   --line number declaration  
 begin
     if rising_edge(clk_1) then
-        write(outline, addr, right, 10);
-        write(outline, i, right, 5);
-        write(outline, dat_r, right, 20);
-        write(outline, dat_w, right, 20);
-        write(outline, re, right, 5);
-        write(outline, we, right, 5);
-        writeline(outfile, outline);
+        
         
         addr <= addr + 5;
         dat_w(7 downto 0) <= conv_std_logic_vector(addr + (i * 8), 8);

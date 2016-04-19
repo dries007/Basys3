@@ -1,0 +1,45 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider_clk_wiz.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ClockDivider_clk_wiz
+INFO: [VRFC 10-2458] undeclared symbol clkIn_ClockDivider, assumed default net type wire [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider_clk_wiz.v:83]
+INFO: [VRFC 10-2458] undeclared symbol clk108M_ClockDivider, assumed default net type wire [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider_clk_wiz.v:142]
+INFO: [VRFC 10-2458] undeclared symbol clk10M_ClockDivider, assumed default net type wire [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider_clk_wiz.v:144]
+INFO: [VRFC 10-2458] undeclared symbol clk20M_ClockDivider, assumed default net type wire [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider_clk_wiz.v:146]
+INFO: [VRFC 10-2458] undeclared symbol clk60M_ClockDivider, assumed default net type wire [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider_clk_wiz.v:148]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ClockDivider
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.sim/sim_4/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.ip_user_files/ipstatic/blk_mem_gen_v8_3_1/simulation/blk_mem_gen_v8_3.vhd" into library blk_mem_gen_v8_3_1
+INFO: [VRFC 10-307] analyzing entity blk_mem_axi_regs_fwd_v8_3
+INFO: [VRFC 10-307] analyzing entity blk_mem_axi_write_wrapper_beh
+INFO: [VRFC 10-307] analyzing entity write_netlist
+INFO: [VRFC 10-307] analyzing entity blk_mem_axi_read_wrapper_beh
+INFO: [VRFC 10-307] analyzing entity read_netlist
+INFO: [VRFC 10-307] analyzing entity blk_mem_gen_v8_3_1_output_stage
+INFO: [VRFC 10-307] analyzing entity blk_mem_gen_v8_3_1_softecc_output_reg_stage
+INFO: [VRFC 10-307] analyzing entity blk_mem_gen_v8_3_1_mem_module
+INFO: [VRFC 10-307] analyzing entity blk_mem_gen_v8_3_1
+INFO: [VRFC 10-307] analyzing entity beh_ff_clr
+INFO: [VRFC 10-307] analyzing entity beh_ff_ce
+INFO: [VRFC 10-307] analyzing entity beh_ff_pre
+INFO: [VRFC 10-307] analyzing entity beh_muxf7
+INFO: [VRFC 10-307] analyzing entity STATE_LOGIC
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/Mem/sim/Mem.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Mem
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Font.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/imports/Downloads/ps2_keyboard.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity ps2_keyboard
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/sim/FrameBuffer.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity FrameBuffer
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Ram.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Ram
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Vga.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Vga
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Prng.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Prng
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/imports/Downloads/ps2_keyboard_to_ascii.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity ps2_keyboard_to_ascii
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity top
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sim_4/new/SystemTest.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity SystemTest

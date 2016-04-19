@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="10" Path="D:/Github/Basys3/FPGA-Z/FPGA-Z.xpr">
+<Project Version="7" Minor="10" Path="/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="9f8d276a196d4d5e8558204853293c23"/>
@@ -17,7 +17,7 @@
     <Option Name="CompiledLibDirActivehdl" Val="$PCACHEDIR/compile_simlib/activehdl"/>
     <Option Name="TargetLanguage" Val="VHDL"/>
     <Option Name="BoardPart" Val=""/>
-    <Option Name="ActiveSimSet" Val="sim_3"/>
+    <Option Name="ActiveSimSet" Val="sim_4"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="EnableCoreContainer" Val="FALSE"/>
     <Option Name="CreateRefXciForCoreContainers" Val="FALSE"/>
@@ -28,12 +28,6 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
       <Filter Type="Srcs"/>
-      <File Path="$PSRCDIR/sources_1/new/Font.vhd">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sources_1/imports/Downloads/ps2_keyboard.vhd">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../Downloads/ps2_keyboard.vhd"/>
@@ -42,7 +36,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/Ram.vhd">
+      <File Path="$PSRCDIR/sources_1/new/Font.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -54,16 +48,22 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PSRCDIR/sources_1/imports/Downloads/ps2_keyboard_to_ascii.vhd">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../Downloads/ps2_keyboard_to_ascii.vhd"/>
+          <Attr Name="ImportTime" Val="1460739758"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/new/Prng.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/Downloads/ps2_keyboard_to_ascii.vhd">
+      <File Path="$PSRCDIR/sources_1/new/Ram.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../Downloads/ps2_keyboard_to_ascii.vhd"/>
-          <Attr Name="ImportTime" Val="1460739758"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
@@ -199,6 +199,28 @@
         <Option Name="XSimWcfgFile" Val="$PPRDIR/test3_behav.wcfg"/>
       </Config>
     </FileSet>
+    <FileSet Name="sim_4" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_4">
+      <Filter Type="Srcs"/>
+      <File Path="$PSRCDIR/sim_4/new/SystemTest.vhd">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/SystemTest_behav.wcfg">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <Config>
+        <Option Name="DesignMode" Val="RTL"/>
+        <Option Name="TopModule" Val="SystemTest"/>
+        <Option Name="TopLib" Val="xil_defaultlib"/>
+        <Option Name="TopAutoSet" Val="TRUE"/>
+        <Option Name="SrcSet" Val="sources_1"/>
+        <Option Name="XSimWcfgFile" Val="$PPRDIR/SystemTest_behav.wcfg"/>
+      </Config>
+    </FileSet>
   </FileSets>
   <Simulators>
     <Simulator Name="XSim">
@@ -220,16 +242,14 @@
     <Simulator Name="Riviera">
       <Option Name="Description" Val="Riviera-PRO Simulator"/>
     </Simulator>
-    <Simulator Name="ActiveHDL">
-      <Option Name="Description" Val="Active-HDL Simulator"/>
-    </Simulator>
   </Simulators>
   <Runs Version="1" Minor="10">
-    <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7a35tcpg236-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" State="current" IncludeInArchive="true">
+    <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7a35tcpg236-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" State="current" Dir="$PRUNDIR/synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2015"/>
         <Step Id="synth_design"/>
       </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
     </Run>
     <Run Id="ClockDivider_synth_1" Type="Ft3:Synth" SrcSet="ClockDivider" Part="xc7a35tcpg236-1" ConstrsSet="ClockDivider" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/ClockDivider_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
@@ -238,11 +258,12 @@
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
     </Run>
-    <Run Id="FrameBuffer_synth_1" Type="Ft3:Synth" SrcSet="FrameBuffer" Part="xc7a35tcpg236-1" ConstrsSet="FrameBuffer" Description="Vivado Synthesis Defaults" IncludeInArchive="true">
+    <Run Id="FrameBuffer_synth_1" Type="Ft3:Synth" SrcSet="FrameBuffer" Part="xc7a35tcpg236-1" ConstrsSet="FrameBuffer" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/FrameBuffer_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2015"/>
         <Step Id="synth_design"/>
       </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
     </Run>
     <Run Id="Mem_synth_1" Type="Ft3:Synth" SrcSet="Mem" Part="xc7a35tcpg236-1" ConstrsSet="Mem" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/Mem_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
@@ -251,7 +272,7 @@
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
     </Run>
-    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="constrs_1" Description="Vivado Implementation Defaults" State="current" SynthRun="synth_1" IncludeInArchive="true">
+    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="constrs_1" Description="Vivado Implementation Defaults" State="current" Dir="$PRUNDIR/impl_1" SynthRun="synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2015"/>
         <Step Id="init_design"/>
@@ -267,6 +288,7 @@
           <Option Id="RawbitFileBool">1</Option>
         </Step>
       </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
     </Run>
     <Run Id="ClockDivider_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="ClockDivider" Description="Vivado Implementation Defaults" SynthRun="ClockDivider_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
