@@ -221,6 +221,33 @@
         <Option Name="XSimWcfgFile" Val="$PPRDIR/SystemTest_behav.wcfg"/>
       </Config>
     </FileSet>
+    <FileSet Name="Stack" Type="BlockSrcs" RelSrcDir="$PSRCDIR/Stack">
+      <File Path="$PSRCDIR/sources_1/ip/Stack/Stack.xci">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+        <CompFileExtendedInfo CompFileName="Stack.xci" FileRelPathName="Stack.vho"/>
+        <CompFileExtendedInfo CompFileName="Stack.xci" FileRelPathName="Stack.veo"/>
+        <CompFileExtendedInfo CompFileName="Stack.xci" FileRelPathName="dist_mem_gen_v8_0_9/hdl/dist_mem_gen_v8_0_vhsyn_rfs.vhd"/>
+        <CompFileExtendedInfo CompFileName="Stack.xci" FileRelPathName="sim/Stack.vhd"/>
+        <CompFileExtendedInfo CompFileName="Stack.xci" FileRelPathName="dist_mem_gen_v8_0_9/simulation/dist_mem_gen_v8_0.vhd"/>
+        <CompFileExtendedInfo CompFileName="Stack.xci" FileRelPathName="doc/dist_mem_gen_v8_0_changelog.txt"/>
+        <CompFileExtendedInfo CompFileName="Stack.xci" FileRelPathName="Stack_ooc.xdc"/>
+        <CompFileExtendedInfo CompFileName="Stack.xci" FileRelPathName="Stack.xml"/>
+        <CompFileExtendedInfo CompFileName="Stack.xci" FileRelPathName="Stack_sim_netlist.vhdl"/>
+        <CompFileExtendedInfo CompFileName="Stack.xci" FileRelPathName="Stack_sim_netlist.v"/>
+        <CompFileExtendedInfo CompFileName="Stack.xci" FileRelPathName="dist_mem_gen_v8_0_9/hdl/dist_mem_gen_v8_0.vhd"/>
+        <CompFileExtendedInfo CompFileName="Stack.xci" FileRelPathName="Stack_stub.v"/>
+        <CompFileExtendedInfo CompFileName="Stack.xci" FileRelPathName="Stack_stub.vhdl"/>
+        <CompFileExtendedInfo CompFileName="Stack.xci" FileRelPathName="synth/Stack.vhd"/>
+      </File>
+      <Config>
+        <Option Name="TopModule" Val="Stack"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
   </FileSets>
   <Simulators>
     <Simulator Name="XSim">
@@ -268,6 +295,15 @@
     <Run Id="Mem_synth_1" Type="Ft3:Synth" SrcSet="Mem" Part="xc7a35tcpg236-1" ConstrsSet="Mem" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/Mem_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2015"/>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+    </Run>
+    <Run Id="Stack_synth_1" Type="Ft3:Synth" SrcSet="Stack" Part="xc7a35tcpg236-1" ConstrsSet="Stack" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/Stack_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2015">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -321,6 +357,22 @@
     <Run Id="Mem_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="Mem" Description="Vivado Implementation Defaults" SynthRun="Mem_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2015"/>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+    </Run>
+    <Run Id="Stack_impl_1" Type="Ft2:EntireDesign" Part="xc7a35tcpg236-1" ConstrsSet="Stack" Description="Vivado Implementation Defaults" SynthRun="Stack_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2015">
+          <Desc>Vivado Implementation Defaults</Desc>
+        </StratHandle>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>

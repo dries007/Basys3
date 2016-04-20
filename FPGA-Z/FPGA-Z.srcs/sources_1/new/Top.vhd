@@ -1,7 +1,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;
-use IEEE.std_logic_unsigned.all;
+use ieee.numeric_std.all;
 use ieee.math_real.all;
 
 use ieee.std_logic_textio.all;
@@ -165,6 +164,22 @@ signal ram_addr : integer := 0;
 signal ram_dat_r : std_logic_vector(15 downto 0) := (others => '0');
 signal ram_dat_w : std_logic_vector(15 downto 0) := (others => '0');
 
+-- STACK --------------------------------------------------------
+component Stack is
+  port (
+    a : in std_logic_vector(9 downto 0);
+    d : in std_logic_vector(15 downto 0);
+    clk : in std_logic;
+    we : in std_logic;
+    spo : out std_logic_vector(15 downto 0)
+  );
+end component;
+
+signal stack_addr : std_logic_vector(9 downto 0) := (others => '0');
+signal stack_dat_w : std_logic_vector(15 downto 0) := (others => '0');
+signal stack_we : std_logic := 0;
+signal stack_dat_r : std_logic_vector(15 downto 0) := (others => '0');
+
 -- MISC ---------------------------------------------------------
 -- runtime in ms
 signal runtime : unsigned(32 downto 0) := (others => '0');
@@ -187,15 +202,63 @@ begin
     return tmp;
 end pad_string;
 
--- returns true if done
-impure function write_text(cursor : integer; message : string; invert : std_logic := '0'; offset : integer := 0) return boolean is
+function ascii_c(char : character; inverted : boolean := false) return std_logic_vector(7 downto 0) is
+    variable tmp : std_logic_vector(7 downto 0) := (others => '0');
 begin
-    fb_a_en <= '1';
-    fb_a_we <= "1";
-    fb_a_dat_in <= invert & conv_std_logic_vector(character'pos(message(cursor)), 7);
-    fb_a_addr <= conv_std_logic_vector(cursor + offset, 14);
-    return cursor = message'LENGTH;
-end write_text;
+    if inverted then
+        tmp(7) := '1';
+    end if;    
+    tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos(char), 7));
+    return tmp;
+end ascii_c;
+
+function ascii_b(b : std_logic; inverted : boolean := false) return std_logic_vector(7 downto 0) is
+    variable tmp : std_logic_vector(7 downto 0) := '0' & std_logic_vector(to_unsigned(character'pos('0'), 7));
+begin
+    if inverted then
+        tmp(7) := '1';
+    end if;
+    tmp(0) := b;
+    return tmp;
+end ascii_b;
+
+function ascii_i(i : integer range 0 to 999_999; didget : integer range 0 to 10 := 0; inverted : boolean := false) return std_logic_vector(7 downto 0) is
+    variable tmp : std_logic_vector(7 downto 0) := (others => '0');
+begin
+    if inverted then
+        tmp(7) := '1';
+    end if;
+    tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos('0') + ((i mod (10 ** (didget + 1))) / (10 ** didget)), 7));
+    return tmp;
+end ascii_i;
+
+function ascii_x(i : integer range 0 to 16#FF_FFFF#; didget : integer range 0 to 10 := 0; inverted : boolean := false) return std_logic_vector(7 downto 0) is
+    variable tmp : std_logic_vector(7 downto 0) := (others => '0');
+begin
+    if inverted then
+        tmp(7) := '1';
+    end if;
+    case to_integer(shift_right(to_unsigned(i, 6 * 4), 4 * didget) and "000000000000000000001111") is
+        when 0 => tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos('0'), 7));
+        when 1 => tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos('1'), 7));
+        when 2 => tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos('2'), 7));
+        when 3 => tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos('3'), 7));
+        when 4 => tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos('4'), 7));
+        when 5 => tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos('5'), 7));
+        when 6 => tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos('6'), 7));
+        when 7 => tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos('7'), 7));
+        when 8 => tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos('8'), 7));
+        when 9 => tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos('9'), 7));
+        when 10 => tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos('A'), 7));
+        when 11 => tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos('B'), 7));
+        when 12 => tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos('C'), 7));
+        when 13 => tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos('D'), 7));
+        when 14 => tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos('E'), 7));
+        when 15 => tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos('F'), 7));
+        when others => tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos('?'), 7));
+    end case;
+    return tmp;
+end ascii_x;
 
 --------------------------------------------------------
 begin --                      BEGIN
@@ -296,6 +359,16 @@ ram0: Ram
         dat_r => ram_dat_r,
         dat_w => ram_dat_w
     );
+    
+-- STACK --------------------------------------------------------
+stack0: Stack
+    port map (
+        a => stack_addr,
+        d => stack_dat_w,
+        clk => clk_cpu,
+        we => stack_we,
+        spo => stack_dat_r
+    );
 
 -- MISC ---------------------------------------------------------
 -- runtime cursor
@@ -349,7 +422,7 @@ process (clk_cpu)
     variable globals : integer range 0 to 16#FFFF# := 0;
     variable static : integer range 0 to 16#FFFF# := 0;
     variable abbreviations : integer range 0 to 16#FFFF# := 0;
-    variable length : integer range 0 to 16#FFFF# := 0;
+    variable length : integer range 0 to 16#FF_FFFF# := 0;
     variable checksum : integer range 0 to 16#FFFF# := 0;
 begin    
     if rising_edge(clk_cpu) then
@@ -363,8 +436,11 @@ begin
             case state is
             ---------------------------------------------
             when RESET => -- splash screen
+                fb_a_en <= '1';
+                fb_a_we <= "1";
+                fb_a_dat_in <= clk_1 & std_logic_vector(to_unsigned(character'pos(blinkData(cursor + 1)), 7));
+                fb_a_addr <= std_logic_vector(to_unsigned(cursor + COLS * 21 + 66, 14));
                 cursor := cursor_delta(cursor, modulo => blinkData'LENGTH);
-                write_text(cursor, BLINKDATA, clk_1, COLS * 21 + 66);
                 if kb_event = '1' then
                     cursor := 0;
                     state := BLANK;
@@ -374,7 +450,7 @@ begin
             when BLANK => -- erase all of the screen
                 fb_a_en <= '1';
                 fb_a_we <= "1";
-                fb_a_addr <= conv_std_logic_vector(cursor, 14);
+                fb_a_addr <= std_logic_vector(to_unsigned(cursor, 14));
                 fb_a_dat_in <= x"00";
                 cursor := cursor_delta(cursor);
                 if cursor = 0 then
@@ -383,11 +459,15 @@ begin
                 end if;
             ---------------------------------------------
             when ERROR =>
-                cursor := cursor_delta(cursor);
-                if write_text(cursor, message, clk_1) then
+                fb_a_en <= '1';
+                fb_a_we <= "1";
+                fb_a_dat_in <= '1' & std_logic_vector(to_unsigned(character'pos(message(cursor + 1)), 7));
+                fb_a_addr <= std_logic_vector(to_unsigned(cursor + COLS * 21 + 66, 14));
+                cursor := cursor_delta(cursor, modulo => message'LENGTH);
+                if cursor = 0 then
                     cursor := COLS;
-                    state := DEBUG;
-                    next_state := DEBUG;
+                    state := DEBUG_KB;
+                    next_state := DEBUG_KB;
                 end if;
             ---------------------------------------------
             when LOAD => -- Dirty sequential loading of data from RAM
@@ -417,42 +497,39 @@ begin
                 when 4 =>
                     ram_addr <= 16#04#; -- Base of high memory (byte address)
                 when 5 =>
-                    high := conv_integer(ram_dat_r);
+                    high := to_integer(unsigned(ram_dat_r));
                     ram_addr <= 16#06#; -- Initial value of program counter (byte address)
                 when 6 =>
-                    pc := conv_integer(ram_dat_r);
+                    pc := to_integer(unsigned(ram_dat_r));
                     ram_addr <= 16#08#; -- Location of dictionary (byte address)
                 when 7 =>
-                    dict := conv_integer(ram_dat_r);
+                    dict := to_integer(unsigned(ram_dat_r));
                     ram_addr <= 16#0A#; -- Location of object table (byte address)
                 when 8 =>
-                    objtab := conv_integer(ram_dat_r);
+                    objtab := to_integer(unsigned(ram_dat_r));
                     ram_addr <= 16#0C#; -- 	Location of global variables table (byte address)
                 when 9 =>
-                    globals := conv_integer(ram_dat_r);
+                    globals := to_integer(unsigned(ram_dat_r));
                     ram_addr <= 16#0E#; -- 	Base of static memory (byte address)
                 when 10 => 
-                    static := conv_integer(ram_dat_r);
+                    static := to_integer(unsigned(ram_dat_r));
                     ram_addr <= 16#10#; -- 	Flags 2
                 when 11 =>
                     flags2 := ram_dat_r;
                     ram_addr <= 16#18#; -- Location of abbreviations table (byte address)
                 when 12 =>
-                    abbreviations := conv_integer(ram_dat_r);
+                    abbreviations := to_integer(unsigned(ram_dat_r));
                     ram_addr <= 16#1A#; -- Length of file, Not always available
                 when 13 =>
-                    length := conv_integer(ram_dat_r);
+                    length := 2 * to_integer(unsigned(ram_dat_r));
                     ram_addr <= 16#1C#; -- Checksum, Not always available
                 when 14 =>
-                    checksum := conv_integer(ram_dat_r);
-                    -- HEADER LOADED
-                    
-                when 15 =>
+                    checksum := to_integer(unsigned(ram_dat_r));
+                when 15 => -- HEADER LOADED
                     ram_re <= "00";
                     cursor := 0;
-                    state := ERROR;
-                    next_state := RESET;
-                    message := pad_string("Header loaded! Commencing debug dump...", message'LENGTH);
+                    state := DEBUG;
+                    
                 when others =>
                     ram_re <= "00";
                     cursor := 0;
@@ -460,17 +537,19 @@ begin
                     next_state := RESET;
                     message := pad_string("Illegal load state.", message'LENGTH);
                 end case;
+            
+                
             ---------------------------------------------
             when SCROLL => -- move all of the screen up one row, read part
                 fb_a_en <= '1';
                 -- Read next line's char
-                fb_a_addr <= conv_std_logic_vector((cursor + COLS) mod CHARS, 14);
+                fb_a_addr <= std_logic_vector(to_unsigned((cursor + COLS) mod CHARS, 14));
                 state := SCROLL_W;
             when SCROLL_W => -- Write part of scroll state
                 fb_a_en <= '1';
                 -- Write current char
                 fb_a_we <= "1";
-                fb_a_addr <= conv_std_logic_vector(cursor, 14);
+                fb_a_addr <= std_logic_vector(to_unsigned(cursor, 14));
                 -- Last line is special
                 if cursor > COLS * (ROWS - 1) then
                     fb_a_dat_in <= x"00";
@@ -493,28 +572,222 @@ begin
                 end if;
             ---------------------------------------------
             when DEBUG =>
+                fb_a_en <= '1';
+                fb_a_we <= "1";
+                fb_a_addr <= std_logic_vector(to_unsigned(cursor, 14));
+                fb_a_dat_in <= (others => '0');
                 case cursor is
-                    when 0 =>
-                        ram_re <= "11";
-                        
-                    when 1 to COLS =>
-                        if write_text(cursor, "Debug data dump", '1') then
-                            cursor := COLS;
-                        end if;
-                        cursor := cursor_delta(cursor);
-                    when COLS + 1 to 2 * COLS =>
-                        if write_text(cursor - COLS, "Line 2 right?", offset => COLS) then
-                            cursor := COLS;
-                        end if;
-                        cursor := cursor_delta(cursor);
+                    when 0 =>   fb_a_dat_in <= ascii_c('D', true);
+                    when 1 =>   fb_a_dat_in <= ascii_c('e', true);
+                    when 2 =>   fb_a_dat_in <= ascii_c('b', true);
+                    when 3 =>   fb_a_dat_in <= ascii_c('u', true);
+                    when 4 =>   fb_a_dat_in <= ascii_c('g', true);
+                    when 5 =>   fb_a_dat_in <= ascii_c(' ', true);
+                    when 6 =>   fb_a_dat_in <= ascii_c('d', true);
+                    when 7 =>   fb_a_dat_in <= ascii_c('a', true);
+                    when 8 =>   fb_a_dat_in <= ascii_c('t', true);
+                    when 9 =>   fb_a_dat_in <= ascii_c('a', true);
+                    when 10 =>  fb_a_dat_in <= ascii_c(' ', true);
+                    when 11 =>  fb_a_dat_in <= ascii_c('d', true);
+                    when 12 =>  fb_a_dat_in <= ascii_c('u', true);
+                    when 13 =>  fb_a_dat_in <= ascii_c('m', true);
+                    when 14 =>  fb_a_dat_in <= ascii_c('p', true);
+                    
+                    --
+                    when 15 to COLS - 1 => fb_a_dat_in <= ('1', others => '0');
+                    when 63 * COLS to (64 * COLS) - 1 => fb_a_dat_in <= ('1', others => '0');
+                    
+                    when COLS + 0 =>    fb_a_dat_in <= ascii_c('F');
+                    when COLS + 1 =>    fb_a_dat_in <= ascii_c('l');
+                    when COLS + 2 =>    fb_a_dat_in <= ascii_c('a');
+                    when COLS + 3 =>    fb_a_dat_in <= ascii_c('g');
+                    when COLS + 4 =>    fb_a_dat_in <= ascii_c('s');
+                    when COLS + 5 =>    fb_a_dat_in <= ascii_c('1');
+                    when COLS + 6 =>    fb_a_dat_in <= ascii_c(':');
+                    
+                    when COLS + 16 =>   fb_a_dat_in <= ascii_b(flags1(15));
+                    when COLS + 17 =>   fb_a_dat_in <= ascii_b(flags1(14));
+                    when COLS + 18 =>   fb_a_dat_in <= ascii_b(flags1(13));
+                    when COLS + 19 =>   fb_a_dat_in <= ascii_b(flags1(12));
+                    when COLS + 20 =>   fb_a_dat_in <= ascii_b(flags1(11));
+                    when COLS + 21 =>   fb_a_dat_in <= ascii_b(flags1(10));
+                    when COLS + 22 =>   fb_a_dat_in <= ascii_b(flags1(9));
+                    when COLS + 23 =>   fb_a_dat_in <= ascii_b(flags1(8));
+                    when COLS + 24 =>   fb_a_dat_in <= ascii_b(flags1(7));
+                    when COLS + 25 =>   fb_a_dat_in <= ascii_b(flags1(6));
+                    when COLS + 26 =>   fb_a_dat_in <= ascii_b(flags1(5));
+                    when COLS + 27 =>   fb_a_dat_in <= ascii_b(flags1(4));
+                    when COLS + 28 =>   fb_a_dat_in <= ascii_b(flags1(3));
+                    when COLS + 29 =>   fb_a_dat_in <= ascii_b(flags1(2));
+                    when COLS + 30 =>   fb_a_dat_in <= ascii_b(flags1(1));
+                    when COLS + 31 =>   fb_a_dat_in <= ascii_b(flags1(0));
+                    
+                    when 2 * COLS + 0 =>    fb_a_dat_in <= ascii_c('F');
+                    when 2 * COLS + 1 =>    fb_a_dat_in <= ascii_c('l');
+                    when 2 * COLS + 2 =>    fb_a_dat_in <= ascii_c('a');
+                    when 2 * COLS + 3 =>    fb_a_dat_in <= ascii_c('g');
+                    when 2 * COLS + 4 =>    fb_a_dat_in <= ascii_c('s');
+                    when 2 * COLS + 5 =>    fb_a_dat_in <= ascii_c('2');
+                    when 2 * COLS + 6 =>    fb_a_dat_in <= ascii_c(':');
+                    
+                    when 2 * COLS + 16 =>   fb_a_dat_in <= ascii_b(flags2(15));
+                    when 2 * COLS + 17 =>   fb_a_dat_in <= ascii_b(flags2(14));
+                    when 2 * COLS + 18 =>   fb_a_dat_in <= ascii_b(flags2(13));
+                    when 2 * COLS + 19 =>   fb_a_dat_in <= ascii_b(flags2(12));
+                    when 2 * COLS + 20 =>   fb_a_dat_in <= ascii_b(flags2(11));
+                    when 2 * COLS + 21 =>   fb_a_dat_in <= ascii_b(flags2(10));
+                    when 2 * COLS + 22 =>   fb_a_dat_in <= ascii_b(flags2(9));
+                    when 2 * COLS + 23 =>   fb_a_dat_in <= ascii_b(flags2(8));
+                    when 2 * COLS + 24 =>   fb_a_dat_in <= ascii_b(flags2(7));
+                    when 2 * COLS + 25 =>   fb_a_dat_in <= ascii_b(flags2(6));
+                    when 2 * COLS + 26 =>   fb_a_dat_in <= ascii_b(flags2(5));
+                    when 2 * COLS + 27 =>   fb_a_dat_in <= ascii_b(flags2(4));
+                    when 2 * COLS + 28 =>   fb_a_dat_in <= ascii_b(flags2(3));
+                    when 2 * COLS + 29 =>   fb_a_dat_in <= ascii_b(flags2(2));
+                    when 2 * COLS + 30 =>   fb_a_dat_in <= ascii_b(flags2(1));
+                    when 2 * COLS + 31 =>   fb_a_dat_in <= ascii_b(flags2(0));
+                    
+                    when 3 * COLS + 0 =>    fb_a_dat_in <= ascii_c('H');
+                    when 3 * COLS + 1 =>    fb_a_dat_in <= ascii_c('i');
+                    when 3 * COLS + 2 =>    fb_a_dat_in <= ascii_c('g');
+                    when 3 * COLS + 3 =>    fb_a_dat_in <= ascii_c('h');
+                    when 3 * COLS + 4 =>    fb_a_dat_in <= ascii_c(':');
+                    
+                    when 3 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
+                    when 3 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
+                    when 3 * COLS + 18 =>   fb_a_dat_in <= ascii_x(high, 3);
+                    when 3 * COLS + 19 =>   fb_a_dat_in <= ascii_x(high, 2);
+                    when 3 * COLS + 20 =>   fb_a_dat_in <= ascii_x(high, 1);
+                    when 3 * COLS + 21 =>   fb_a_dat_in <= ascii_x(high, 0);
+                    
+                    when 4 * COLS + 0 =>    fb_a_dat_in <= ascii_c('P');
+                    when 4 * COLS + 1 =>    fb_a_dat_in <= ascii_c('C');
+                    when 4 * COLS + 2 =>    fb_a_dat_in <= ascii_c(':');
+                    when 4 * COLS + 3 =>    fb_a_dat_in <= ascii_c(' ');
+                    
+                    when 4 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
+                    when 4 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
+                    when 4 * COLS + 18 =>   fb_a_dat_in <= ascii_x(pc, 3);
+                    when 4 * COLS + 19 =>   fb_a_dat_in <= ascii_x(pc, 2);
+                    when 4 * COLS + 20 =>   fb_a_dat_in <= ascii_x(pc, 1);
+                    when 4 * COLS + 21 =>   fb_a_dat_in <= ascii_x(pc, 0);
+                    
+                    when 5 * COLS + 0 =>    fb_a_dat_in <= ascii_c('D');
+                    when 5 * COLS + 1 =>    fb_a_dat_in <= ascii_c('i');
+                    when 5 * COLS + 2 =>    fb_a_dat_in <= ascii_c('c');
+                    when 5 * COLS + 3 =>    fb_a_dat_in <= ascii_c('t');
+                    when 5 * COLS + 4 =>    fb_a_dat_in <= ascii_c(':');
+                    
+                    when 5 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
+                    when 5 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
+                    when 5 * COLS + 18 =>   fb_a_dat_in <= ascii_x(dict, 3);
+                    when 5 * COLS + 19 =>   fb_a_dat_in <= ascii_x(dict, 2);
+                    when 5 * COLS + 20 =>   fb_a_dat_in <= ascii_x(dict, 1);
+                    when 5 * COLS + 21 =>   fb_a_dat_in <= ascii_x(dict, 0);
+                    
+                    when 6 * COLS + 0 =>    fb_a_dat_in <= ascii_c('O');
+                    when 6 * COLS + 1 =>    fb_a_dat_in <= ascii_c('b');
+                    when 6 * COLS + 2 =>    fb_a_dat_in <= ascii_c('j');
+                    when 6 * COLS + 3 =>    fb_a_dat_in <= ascii_c(':');
+                    
+                    when 6 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
+                    when 6 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
+                    when 6 * COLS + 18 =>   fb_a_dat_in <= ascii_x(objtab, 3);
+                    when 6 * COLS + 19 =>   fb_a_dat_in <= ascii_x(objtab, 2);
+                    when 6 * COLS + 20 =>   fb_a_dat_in <= ascii_x(objtab, 1);
+                    when 6 * COLS + 21 =>   fb_a_dat_in <= ascii_x(objtab, 0);
+                    
+                    when 7 * COLS + 0 =>    fb_a_dat_in <= ascii_c('G');
+                    when 7 * COLS + 1 =>    fb_a_dat_in <= ascii_c('l');
+                    when 7 * COLS + 2 =>    fb_a_dat_in <= ascii_c('o');
+                    when 7 * COLS + 3 =>    fb_a_dat_in <= ascii_c('b');
+                    when 7 * COLS + 4 =>    fb_a_dat_in <= ascii_c('a');
+                    when 7 * COLS + 5 =>    fb_a_dat_in <= ascii_c('l');
+                    when 7 * COLS + 6 =>    fb_a_dat_in <= ascii_c('s');
+                    when 7 * COLS + 7 =>    fb_a_dat_in <= ascii_c(':');
+                    
+                    when 7 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
+                    when 7 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
+                    when 7 * COLS + 18 =>   fb_a_dat_in <= ascii_x(globals, 3);
+                    when 7 * COLS + 19 =>   fb_a_dat_in <= ascii_x(globals, 2);
+                    when 7 * COLS + 20 =>   fb_a_dat_in <= ascii_x(globals, 1);
+                    when 7 * COLS + 21 =>   fb_a_dat_in <= ascii_x(globals, 0);
+                    
+                    when 8 * COLS + 0 =>    fb_a_dat_in <= ascii_c('S');
+                    when 8 * COLS + 1 =>    fb_a_dat_in <= ascii_c('t');
+                    when 8 * COLS + 2 =>    fb_a_dat_in <= ascii_c('a');
+                    when 8 * COLS + 3 =>    fb_a_dat_in <= ascii_c('t');
+                    when 8 * COLS + 4 =>    fb_a_dat_in <= ascii_c('i');
+                    when 8 * COLS + 5 =>    fb_a_dat_in <= ascii_c('c');
+                    when 8 * COLS + 6 =>    fb_a_dat_in <= ascii_c(':');
+                    
+                    when 8 * COLS + 16 =>    fb_a_dat_in <= ascii_c('0');
+                    when 8 * COLS + 17 =>    fb_a_dat_in <= ascii_c('x');
+                    when 8 * COLS + 18 =>   fb_a_dat_in <= ascii_x(static, 3);
+                    when 8 * COLS + 19 =>   fb_a_dat_in <= ascii_x(static, 2);
+                    when 8 * COLS + 20 =>   fb_a_dat_in <= ascii_x(static, 1);
+                    when 8 * COLS + 21 =>   fb_a_dat_in <= ascii_x(static, 0);
+                    
+                    when 9 * COLS + 0 =>    fb_a_dat_in <= ascii_c('A');
+                    when 9 * COLS + 1 =>    fb_a_dat_in <= ascii_c('b');
+                    when 9 * COLS + 2 =>    fb_a_dat_in <= ascii_c('b');
+                    when 9 * COLS + 3 =>    fb_a_dat_in <= ascii_c('r');
+                    when 9 * COLS + 4 =>    fb_a_dat_in <= ascii_c('e');
+                    when 9 * COLS + 5 =>    fb_a_dat_in <= ascii_c('v');
+                    when 9 * COLS + 6 =>    fb_a_dat_in <= ascii_c(':');
+                    
+                    when 9 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
+                    when 9 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
+                    when 9 * COLS + 18 =>   fb_a_dat_in <= ascii_x(abbreviations, 3);
+                    when 9 * COLS + 19 =>   fb_a_dat_in <= ascii_x(abbreviations, 2);
+                    when 9 * COLS + 20 =>   fb_a_dat_in <= ascii_x(abbreviations, 1);
+                    when 9 * COLS + 21 =>   fb_a_dat_in <= ascii_x(abbreviations, 0);
+                    
+                    when 10 * COLS + 0 =>    fb_a_dat_in <= ascii_c('L');
+                    when 10 * COLS + 1 =>    fb_a_dat_in <= ascii_c('e');
+                    when 10 * COLS + 2 =>    fb_a_dat_in <= ascii_c('n');
+                    when 10 * COLS + 3 =>    fb_a_dat_in <= ascii_c('g');
+                    when 10 * COLS + 4 =>    fb_a_dat_in <= ascii_c('t');
+                    when 10 * COLS + 5 =>    fb_a_dat_in <= ascii_c('h');
+                    when 10 * COLS + 6 =>    fb_a_dat_in <= ascii_c(':');
+                    
+                    when 10 * COLS + 16 =>   fb_a_dat_in <= ascii_i(length, 5);
+                    when 10 * COLS + 17 =>   fb_a_dat_in <= ascii_i(length, 4);
+                    when 10 * COLS + 18 =>   fb_a_dat_in <= ascii_i(length, 3);
+                    when 10 * COLS + 19 =>   fb_a_dat_in <= ascii_i(length, 2);
+                    when 10 * COLS + 20 =>   fb_a_dat_in <= ascii_i(length, 1);
+                    when 10 * COLS + 21 =>   fb_a_dat_in <= ascii_i(length, 0);
+                    
+                    when 11 * COLS + 0 =>    fb_a_dat_in <= ascii_c('C');
+                    when 11 * COLS + 1 =>    fb_a_dat_in <= ascii_c('h');
+                    when 11 * COLS + 2 =>    fb_a_dat_in <= ascii_c('e');
+                    when 11 * COLS + 3 =>    fb_a_dat_in <= ascii_c('c');
+                    when 11 * COLS + 4 =>    fb_a_dat_in <= ascii_c('k');
+                    when 11 * COLS + 5 =>    fb_a_dat_in <= ascii_c('s');
+                    when 11 * COLS + 6 =>    fb_a_dat_in <= ascii_c('u');
+                    when 11 * COLS + 7 =>    fb_a_dat_in <= ascii_c('m');
+                    when 11 * COLS + 8 =>    fb_a_dat_in <= ascii_c(':');
+                    
+                    when 11 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
+                    when 11 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
+                    when 11 * COLS + 18 =>   fb_a_dat_in <= ascii_x(checksum, 3);
+                    when 11 * COLS + 19 =>   fb_a_dat_in <= ascii_x(checksum, 2);
+                    when 11 * COLS + 20 =>   fb_a_dat_in <= ascii_x(checksum, 1);
+                    when 11 * COLS + 21 =>   fb_a_dat_in <= ascii_x(checksum, 0);
+                    
                     when others =>
+                        -- Nothing
                 end case;
+                cursor := cursor_delta(cursor);
+                if cursor = 0 then
+                    state := DEBUG_KB;
+                end if;
             when DEBUG_KB =>
                 if kb_event = '1' then
                     -- By default, we want to write a space to the current position
                     fb_a_en <= '1';
                     fb_a_we <= "1";
-                    fb_a_addr <= conv_std_logic_vector(cursor, 14);
+                    fb_a_addr <= std_logic_vector(to_unsigned(cursor, 14));
                     fb_a_dat_in <= "00100000";  -- space
                     
                     -- IF Backspace
@@ -545,7 +818,7 @@ begin
                 else
                     fb_a_en <= '1';
                     fb_a_we <= "1";
-                    fb_a_addr <= conv_std_logic_vector(cursor, 14);
+                    fb_a_addr <= std_logic_vector(to_unsigned(cursor, 14));
                     if clk_2 = '1' then
                         fb_a_dat_in <= "00100000";  -- space
                     else

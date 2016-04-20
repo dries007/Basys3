@@ -1,12 +1,12 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;
-use IEEE.std_logic_unsigned.all;
+use ieee.numeric_std.all;
 use ieee.math_real.all;
-use work.Font.all;
 
 use ieee.std_logic_textio.all;
 use std.textio.all;
+
+use work.Font.all;
 
 -- Information from http://tinyvga.com/vga-timing/1280x1024@60Hz
 entity Vga is
@@ -83,10 +83,10 @@ begin
             if (charX = 0) then -- Set up next character
                 char := fbOutDat;
             elsif (charX = 1) then
-                fbOutAddr <= conv_std_logic_vector(1 + (h_count / 8) + ((v_count / 16) * 160), 14);
+                fbOutAddr <= std_logic_vector(to_unsigned(1 + (h_count / 8) + ((v_count / 16) * 160), fbOutAddr'LENGTH));
             end if;
             -- char[7] = invert bit
-            if (char(7) = '1' xor draw_char(charX, charY, conv_integer(char and "01111111"))) then
+            if (char(7) = '1' xor draw_char(charX, charY, to_integer(unsigned(char and "01111111")))) then
                 vgaRed      <= "1111";
                 vgaGreen    <= "1111";
                 vgaBlue     <= "1111";
@@ -96,7 +96,7 @@ begin
                 vgaBlue     <= "0000";
             end if;
         else
-            fbOutAddr <= conv_std_logic_vector(((v_count / 16) * 160), 14);
+            fbOutAddr <= std_logic_vector(to_unsigned(((v_count / 16) * 160), fbOutAddr'LENGTH));
             vgaRed      <= "0000";
             vgaGreen    <= "0000";
             vgaBlue     <= "0000";
