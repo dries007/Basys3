@@ -160,7 +160,7 @@ end component;
 
 signal ram_re : std_logic_vector(1 downto 0) := (others => '0');
 signal ram_we : std_logic_vector(1 downto 0) := (others => '0');
-signal ram_addr : integer := 0;
+signal ram_addr : integer range 0 to 16#1FFFF# := 0;
 signal ram_dat_r : std_logic_vector(15 downto 0) := (others => '0');
 signal ram_dat_w : std_logic_vector(15 downto 0) := (others => '0');
 
@@ -177,7 +177,7 @@ end component;
 
 signal stack_addr : std_logic_vector(9 downto 0) := (others => '0');
 signal stack_dat_w : std_logic_vector(15 downto 0) := (others => '0');
-signal stack_we : std_logic := 0;
+signal stack_we : std_logic := '0';
 signal stack_dat_r : std_logic_vector(15 downto 0) := (others => '0');
 
 -- MISC ---------------------------------------------------------
@@ -403,11 +403,43 @@ end process;
 -- led <= clk_1 & clk_2 & std_logic_vector(runtime(17 downto 4));
 
 -- MAIN ---------------------------------------------------------
+
 -- CPU control state machine, not a proper FSM!
 process (clk_cpu)
-    type state_type is (RESET, BLANK, SCROLL, SCROLL_W, LOAD, DEBUG, DEBUG_KB, ERROR);
-    variable next_state : state_type := RESET; -- The state to go to, after finishing the current one.
+    type state_type is 
+    (
+        RESET, BLANK, SCROLL, SCROLL_W, LOAD, DEBUG, DEBUG_KB, ERROR, -- Background states, used for 'interpreter' stuff
+        FETCH, DECODE, EXEC -- Z machine states
+    );
     variable state : state_type := RESET;-- The current/next state
+    variable next_state : state_type := RESET; -- The state to go to, after finishing the current one.
+    
+    type instuction_type is
+    (
+        NOP, PRINT, POP, PRINT_NL, STATUS, VERIFY, 
+        COMP_ZERO, GET_SIBLING, GET_CHILD, GET_PARENT, GET_PROP_LEN, INC, DEC, PRINT_ADDR, REMOVE_OBJ, PRINT_OBJ, JUMP, PRINT_PADDR, LOAD, NOT_BW
+    );
+    variable instruction : instuction_type := NOP;
+    
+    variable ret : boolean := false;
+    
+    variable branch : boolean := false;
+    variable branch_on_true : boolean := false;
+    variable branch_fetch : boolean := false;
+    variable branch_offset : std_logic_vector(15 downto 0) := (others => '0');
+    
+    variable store : boolean := false;
+    variable store_fetch : boolean := false;
+    variable store_var : std_logic_vector(7 downto 0) := (others => '0');
+    
+    variable op0_type : std_logic_vector(1 downto 0) := "00";
+    variable op0      : std_logic_vector(15 downto 0) := (others => '0');
+    variable op1_type : std_logic_vector(1 downto 0) := "00";
+    variable op1      : std_logic_vector(15 downto 0) := (others => '0');
+    variable op2_type : std_logic_vector(1 downto 0) := "00";
+    variable op2      : std_logic_vector(15 downto 0) := (others => '0');
+    variable op3_type : std_logic_vector(1 downto 0) := "00";
+    variable op3      : std_logic_vector(15 downto 0) := (others => '0');
     
     variable delay : boolean := false;-- Delay 1 clock tick
     variable cursor : integer range 0 to CHARS := 0;
@@ -434,6 +466,159 @@ begin
             delay := false;
         else
             case state is
+            ---------------------------------------------
+            --          Z STATES
+            ---------------------------------------------------------------------------------------------------------------------------------------
+            when FETCH =>
+                ram_re <= "11";
+                ram_addr <= pc;
+                state := DECODE;
+                if pc > length then
+                    cursor := 0;
+                    state := ERROR;
+                    message := pad_string("PC > length?", message'LENGTH);
+                end if;
+            ---------------------------------------------
+            when DECODE =>
+                state := EXEC;
+                next_state := EXEC;
+                pc := pc + 1;
+                ram_re <= "11";
+                ram_addr <= pc;
+                
+                if ram_dat_r(15 downto 14) = "10" then -- Short form
+                    if ram_dat_r(13 downto 12) = "11" then -- 0OP
+                        case to_integer(unsigned(ram_dat_r(9 downto 8))) is
+                        when 0 => -- rtrue
+                            instruction := NOP;
+                            ret := true;
+                            op0 := "0000000000000001";
+                        when 1 => -- rfalse
+                            instruction := NOP;
+                            ret := true;
+                            op0 := "0000000000000000";
+                        when 2 => -- print (literal-string)
+                            instruction := PRINT;
+                        when 3 => -- print_ret (literal-string)
+                            instruction := PRINT;
+                            ret := true;
+                            op0 := "0000000000000001";
+                        when 4 => -- nop
+                            instruction := NOP;
+                        when 5 => -- save ?(label) -- TODO
+                            instruction := NOP;
+                            branch := true;
+                            branch_on_true := ram_dat_r(7) = '1';
+                            branch_fetch := ram_dat_r(6) = '0';
+                            branch_offset := "0000000000" & ram_dat_r(5 downto 0);
+                        when 6 => -- save ?(label) -- TODO
+                            instruction := NOP;
+                            branch := true;
+                            branch_on_true := ram_dat_r(7) = '1';
+                            branch_fetch := ram_dat_r(6) = '0';
+                            branch_offset := "0000000000" & ram_dat_r(5 downto 0);
+                        when 7 => -- restart -- TODO
+                            instruction := NOP;
+                            state := ERROR;
+                            message := pad_string("Power cycling is the restart in this universe!", message'LENGTH);
+                        when 8 => -- ret_popped
+                            instruction := POP;
+                            ret := true;
+                        when 9 => -- pop
+                            instruction := POP;
+                        when 10 =>
+                            instruction := NOP;
+                            state := ERROR;
+                            message := pad_string("It is now safe to power off your computer.", message'LENGTH);
+                        when 11 =>
+                            instruction := PRINT_NL;
+                        when 12 =>
+                            instruction := STATUS;
+                        when 13 =>
+                            instruction := VERIFY;
+                        when others =>
+                            cursor := 0;
+                            state := ERROR;
+                            message := pad_string("Instruction undecodable. Short, 0OP", message'LENGTH);
+                        end case;
+                    else-- 1OP
+                        -- This makes the PC increment again, since the 2nd byte of the word we got is (part of) the operand
+                        pc := pc + 1;
+                        ram_re <= "11";
+                        ram_addr <= pc;
+                        op0_type := ram_dat_r(11 downto 10);
+                        if op0_type = "00" then -- Lage constant, will require later fetching
+                            op0 := ram_dat_r(7 downto 0) & "00000000";
+                        else -- Variable or small constant
+                            op0 := "00000000" & ram_dat_r(7 downto 0);
+                        end if;
+                        
+                        case to_integer(unsigned(ram_dat_r(9 downto 8))) is
+                        when 0 =>
+                            instruction := COMP_ZERO;
+                            branch := true;
+                        when 1 =>
+                            instruction := GET_SIBLING;
+                            store := true;
+                            store_fetch := true;
+                            branch := true;
+                            branch_fetch := true;
+                        when 2 =>
+                            instruction := GET_CHILD;
+                            store := true;
+                            store_fetch := true;
+                            branch := true;
+                            branch_fetch := true;
+                        when 3 =>
+                            instruction := GET_PARENT;
+                            store := true;
+                            store_fetch := true;
+                        when 4 =>
+                            instruction := GET_PROP_LEN;
+                            store := true;
+                            store_fetch := true;
+                        when 5 =>
+                            instruction := INC;
+                        when 6 =>
+                            instruction := DEC;
+                        when 7 =>
+                            instruction := PRINT_ADDR;
+                        when 9 =>
+                            instruction := REMOVE_OBJ;
+                        when 10 =>
+                            instruction := PRINT_OBJ;
+                        when 11 =>
+                            instruction := NOP;
+                            ret := true;
+                        when 12 =>
+                            instruction := JUMP;
+                        when 13 =>
+                            instruction := PRINT_PADDR;
+                        when 14 =>
+                            instruction := LOAD;
+                            store := true;
+                            store_fetch := true;
+                        when 15 =>
+                            instruction := NOT_BW;
+                            store := true;
+                            store_fetch := true;
+                        when others =>
+                            cursor := 0;
+                            state := ERROR;
+                            message := pad_string("Instruction undecodable. Short, 1OP", message'LENGTH);
+                        end case;
+                    end if;
+                elsif ram_dat_r(15 downto 14) = "11" then -- Variable form
+                    
+                else -- ????
+                    
+                end if;
+            ---------------------------------------------
+            when EXEC =>
+                -- TODO
+                state := FETCH;
+            ---------------------------------------------------------------------------------------------------------------------------------------
+            --          INTERPRETER STATES
             ---------------------------------------------
             when RESET => -- splash screen
                 fb_a_en <= '1';
@@ -462,15 +647,14 @@ begin
                 fb_a_en <= '1';
                 fb_a_we <= "1";
                 fb_a_dat_in <= '1' & std_logic_vector(to_unsigned(character'pos(message(cursor + 1)), 7));
-                fb_a_addr <= std_logic_vector(to_unsigned(cursor + COLS * 21 + 66, 14));
+                fb_a_addr <= std_logic_vector(to_unsigned(cursor, 14));
                 cursor := cursor_delta(cursor, modulo => message'LENGTH);
                 if cursor = 0 then
                     cursor := COLS;
-                    state := DEBUG_KB;
-                    next_state := DEBUG_KB;
+                    state := DEBUG;
                 end if;
             ---------------------------------------------
-            when LOAD => -- Dirty sequential loading of data from RAM
+            when LOAD =>
                 cursor := cursor_delta(cursor);
                 ram_re <= "11";
                 case cursor is
@@ -481,7 +665,6 @@ begin
                     if ram_dat_r(15 downto 8) /= x"03" then
                         cursor := 0;
                         state := ERROR;
-                        next_state := RESET;
                         message := pad_string("Version != 3", message'LENGTH);
                     end if;
                     ram_addr <= 16#01#; -- Flags 1
@@ -507,13 +690,13 @@ begin
                     ram_addr <= 16#0A#; -- Location of object table (byte address)
                 when 8 =>
                     objtab := to_integer(unsigned(ram_dat_r));
-                    ram_addr <= 16#0C#; -- 	Location of global variables table (byte address)
+                    ram_addr <= 16#0C#; --     Location of global variables table (byte address)
                 when 9 =>
                     globals := to_integer(unsigned(ram_dat_r));
-                    ram_addr <= 16#0E#; -- 	Base of static memory (byte address)
+                    ram_addr <= 16#0E#; --     Base of static memory (byte address)
                 when 10 => 
                     static := to_integer(unsigned(ram_dat_r));
-                    ram_addr <= 16#10#; -- 	Flags 2
+                    ram_addr <= 16#10#; --     Flags 2
                 when 11 =>
                     flags2 := ram_dat_r;
                     ram_addr <= 16#18#; -- Location of abbreviations table (byte address)
@@ -528,17 +711,13 @@ begin
                 when 15 => -- HEADER LOADED
                     ram_re <= "00";
                     cursor := 0;
-                    state := DEBUG;
-                    
+                    state := FETCH;
                 when others =>
                     ram_re <= "00";
                     cursor := 0;
                     state := ERROR;
-                    next_state := RESET;
                     message := pad_string("Illegal load state.", message'LENGTH);
                 end case;
-            
-                
             ---------------------------------------------
             when SCROLL => -- move all of the screen up one row, read part
                 fb_a_en <= '1';
@@ -577,26 +756,10 @@ begin
                 fb_a_addr <= std_logic_vector(to_unsigned(cursor, 14));
                 fb_a_dat_in <= (others => '0');
                 case cursor is
-                    when 0 =>   fb_a_dat_in <= ascii_c('D', true);
-                    when 1 =>   fb_a_dat_in <= ascii_c('e', true);
-                    when 2 =>   fb_a_dat_in <= ascii_c('b', true);
-                    when 3 =>   fb_a_dat_in <= ascii_c('u', true);
-                    when 4 =>   fb_a_dat_in <= ascii_c('g', true);
-                    when 5 =>   fb_a_dat_in <= ascii_c(' ', true);
-                    when 6 =>   fb_a_dat_in <= ascii_c('d', true);
-                    when 7 =>   fb_a_dat_in <= ascii_c('a', true);
-                    when 8 =>   fb_a_dat_in <= ascii_c('t', true);
-                    when 9 =>   fb_a_dat_in <= ascii_c('a', true);
-                    when 10 =>  fb_a_dat_in <= ascii_c(' ', true);
-                    when 11 =>  fb_a_dat_in <= ascii_c('d', true);
-                    when 12 =>  fb_a_dat_in <= ascii_c('u', true);
-                    when 13 =>  fb_a_dat_in <= ascii_c('m', true);
-                    when 14 =>  fb_a_dat_in <= ascii_c('p', true);
-                    
-                    --
-                    when 15 to COLS - 1 => fb_a_dat_in <= ('1', others => '0');
-                    when 63 * COLS to (64 * COLS) - 1 => fb_a_dat_in <= ('1', others => '0');
-                    
+                    when 0 to COLS - 1 => -- Leave top line
+                        fb_a_en <= '0';
+                        fb_a_we <= "0";
+                
                     when COLS + 0 =>    fb_a_dat_in <= ascii_c('F');
                     when COLS + 1 =>    fb_a_dat_in <= ascii_c('l');
                     when COLS + 2 =>    fb_a_dat_in <= ascii_c('a');
@@ -721,8 +884,8 @@ begin
                     when 8 * COLS + 5 =>    fb_a_dat_in <= ascii_c('c');
                     when 8 * COLS + 6 =>    fb_a_dat_in <= ascii_c(':');
                     
-                    when 8 * COLS + 16 =>    fb_a_dat_in <= ascii_c('0');
-                    when 8 * COLS + 17 =>    fb_a_dat_in <= ascii_c('x');
+                    when 8 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
+                    when 8 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
                     when 8 * COLS + 18 =>   fb_a_dat_in <= ascii_x(static, 3);
                     when 8 * COLS + 19 =>   fb_a_dat_in <= ascii_x(static, 2);
                     when 8 * COLS + 20 =>   fb_a_dat_in <= ascii_x(static, 1);
@@ -751,12 +914,11 @@ begin
                     when 10 * COLS + 5 =>    fb_a_dat_in <= ascii_c('h');
                     when 10 * COLS + 6 =>    fb_a_dat_in <= ascii_c(':');
                     
-                    when 10 * COLS + 16 =>   fb_a_dat_in <= ascii_i(length, 5);
-                    when 10 * COLS + 17 =>   fb_a_dat_in <= ascii_i(length, 4);
-                    when 10 * COLS + 18 =>   fb_a_dat_in <= ascii_i(length, 3);
-                    when 10 * COLS + 19 =>   fb_a_dat_in <= ascii_i(length, 2);
-                    when 10 * COLS + 20 =>   fb_a_dat_in <= ascii_i(length, 1);
-                    when 10 * COLS + 21 =>   fb_a_dat_in <= ascii_i(length, 0);
+                    when 10 * COLS + 16 =>   fb_a_dat_in <= ascii_i(length, 4);
+                    when 10 * COLS + 17 =>   fb_a_dat_in <= ascii_i(length, 3);
+                    when 10 * COLS + 18 =>   fb_a_dat_in <= ascii_i(length, 2);
+                    when 10 * COLS + 19 =>   fb_a_dat_in <= ascii_i(length, 1);
+                    when 10 * COLS + 20 =>   fb_a_dat_in <= ascii_i(length, 0);
                     
                     when 11 * COLS + 0 =>    fb_a_dat_in <= ascii_c('C');
                     when 11 * COLS + 1 =>    fb_a_dat_in <= ascii_c('h');
@@ -775,12 +937,36 @@ begin
                     when 11 * COLS + 20 =>   fb_a_dat_in <= ascii_x(checksum, 1);
                     when 11 * COLS + 21 =>   fb_a_dat_in <= ascii_x(checksum, 0);
                     
+                    when 12 * COLS + 0 =>    fb_a_dat_in <= ascii_c('R');
+                    when 12 * COLS + 1 =>    fb_a_dat_in <= ascii_c('A');
+                    when 12 * COLS + 2 =>    fb_a_dat_in <= ascii_c('M');
+                    when 12 * COLS + 3 =>    fb_a_dat_in <= ascii_c(' ');
+                    when 12 * COLS + 4 =>    fb_a_dat_in <= ascii_c('R');
+                    when 12 * COLS + 5 =>    fb_a_dat_in <= ascii_c('e');
+                    when 12 * COLS + 6 =>    fb_a_dat_in <= ascii_c('a');
+                    when 12 * COLS + 7 =>    fb_a_dat_in <= ascii_c('d');
+                    when 12 * COLS + 8 =>    fb_a_dat_in <= ascii_c(':');
+                    
+                    when 12 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
+                    when 12 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
+                    when 12 * COLS + 18 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(ram_dat_r)), 3);
+                    when 12 * COLS + 19 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(ram_dat_r)), 2);
+                    when 12 * COLS + 20 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(ram_dat_r)), 1);
+                    when 12 * COLS + 21 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(ram_dat_r)), 0);
+                    
+                    when 12 * COLS + 32 =>   fb_a_dat_in <= ascii_i(to_integer(unsigned(ram_dat_r)), 4);
+                    when 12 * COLS + 33 =>   fb_a_dat_in <= ascii_i(to_integer(unsigned(ram_dat_r)), 3);
+                    when 12 * COLS + 34 =>   fb_a_dat_in <= ascii_i(to_integer(unsigned(ram_dat_r)), 2);
+                    when 12 * COLS + 35 =>   fb_a_dat_in <= ascii_i(to_integer(unsigned(ram_dat_r)), 1);
+                    when 12 * COLS + 36 =>   fb_a_dat_in <= ascii_i(to_integer(unsigned(ram_dat_r)), 0);
+                    
                     when others =>
                         -- Nothing
                 end case;
                 cursor := cursor_delta(cursor);
                 if cursor = 0 then
                     state := DEBUG_KB;
+                    cursor := 32 * COLS;
                 end if;
             when DEBUG_KB =>
                 if kb_event = '1' then
