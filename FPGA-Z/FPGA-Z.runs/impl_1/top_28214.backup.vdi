@@ -1,0 +1,21 @@
+#-----------------------------------------------------------
+# Vivado v2015.4 (64-bit)
+# SW Build 1412921 on Wed Nov 18 09:44:32 MST 2015
+# IP Build 1412160 on Tue Nov 17 13:47:24 MST 2015
+# Start of session at: Fri Apr 15 21:24:01 2016
+# Process ID: 28214
+# Current directory: /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/impl_1
+# Command line: vivado -log top.vdi -applog -messageDb vivado.pb -mode batch -source top.tcl -notrace
+# Log file: /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/impl_1/top.vdi
+# Journal file: /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/impl_1/vivado.jou
+#-----------------------------------------------------------
+source top.tcl -notrace
+
+*** Halting run - EA reset detected ***
+
+
+
+    while executing
+"start_step init_design"
+    (file "top.tcl" line 49)
+INFO: [Common 17-206] Exiting Vivado at Fri Apr 15 21:24:05 2016...

@@ -411,15 +411,18 @@ process (clk_cpu)
         RESET, BLANK, SCROLL, SCROLL_W, LOAD, DEBUG, DEBUG_KB, ERROR, -- Background states, used for 'interpreter' stuff
         FETCH, DECODE, EXEC -- Z machine states
     );
-    variable state : state_type := RESET;-- The current/next state
+    variable state : state_type := LOAD;-- RESET;-- The current/next state
     variable next_state : state_type := RESET; -- The state to go to, after finishing the current one.
     
     type instuction_type is
     (
-        NOP, PRINT, POP, PRINT_NL, STATUS, VERIFY, 
-        COMP_ZERO, GET_SIBLING, GET_CHILD, GET_PARENT, GET_PROP_LEN, INC, DEC, PRINT_ADDR, REMOVE_OBJ, PRINT_OBJ, JUMP, PRINT_PADDR, LOAD, NOT_BW
+        OP_NOP, OP_PRINT, OP_POP, OP_PRINT_NL, OP_STATUS, OP_VERIFY, 
+        OP_COMP_ZERO, OP_GET_SIBLING, OP_GET_CHILD, OP_GET_PARENT, OP_GET_PROP_LEN, OP_INC, OP_DEC, OP_PRINT_ADDR, OP_REMOVE_OBJ, OP_PRINT_OBJ, OP_JUMP, OP_PRINT_PADDR, OP_LOAD, OP_NOT_BW,
+        
+        
+        OP_COMP_EQ, OP_COMP_LT, OP_COMP_GT, OP_DEC_CHK, OP_INC_CHK, OP_JIN, OP_TEST, OP_OR_BW, OP_AND_BW, OP_TEST_ATTR, OP_SET_ATTR, OP_CLEAR_ATTR, OP_STORE, OP_INSERT_OBJ, OP_LOADW, OP_LOADB, OP_GET_PROP, OP_GET_PROP_ADDR, OP_GET_NEXT_PROP, OP_ADD, OP_SUB, OP_MUL, OP_DIV, OP_MOD
     );
-    variable instruction : instuction_type := NOP;
+    variable instruction : instuction_type := OP_NOP;
     
     variable ret : boolean := false;
     
@@ -448,7 +451,7 @@ process (clk_cpu)
     variable flags1 : std_logic_vector(15 downto 0) := (others => '0');
     variable flags2 : std_logic_vector(15 downto 0) := (others => '0');
     variable high : integer range 0 to 16#FFFF# := 0;
-    variable pc : integer range 0 to 16#FFFF# := 0;
+    variable pc : integer range 0 to 16#1FFFF# := 0;
     variable dict : integer range 0 to 16#FFFF# := 0;
     variable objtab : integer range 0 to 16#FFFF# := 0;
     variable globals : integer range 0 to 16#FFFF# := 0;
@@ -464,6 +467,10 @@ begin
         ram_we <= "00";
         if delay then
             delay := false;
+        elsif kb_event = '1' and kb_acsii = "0011011" then
+            cursor := 0;
+            state := BLANK;
+            next_state := LOAD;
         else
             case state is
             ---------------------------------------------
@@ -486,63 +493,68 @@ begin
                 ram_re <= "11";
                 ram_addr <= pc;
                 
-                if ram_dat_r(15 downto 14) = "10" then -- Short form
-                    if ram_dat_r(13 downto 12) = "11" then -- 0OP
+                -- Short form ------------------------
+                if ram_dat_r(15 downto 14) = "10" then
+                    -- 0OP ------------------------------
+                    if ram_dat_r(13 downto 12) = "11" then
                         case to_integer(unsigned(ram_dat_r(9 downto 8))) is
                         when 0 => -- rtrue
-                            instruction := NOP;
+                            instruction := OP_NOP;
                             ret := true;
                             op0 := "0000000000000001";
                         when 1 => -- rfalse
-                            instruction := NOP;
+                            instruction := OP_NOP;
                             ret := true;
                             op0 := "0000000000000000";
                         when 2 => -- print (literal-string)
-                            instruction := PRINT;
+                            instruction := OP_PRINT;
                         when 3 => -- print_ret (literal-string)
-                            instruction := PRINT;
+                            instruction := OP_PRINT;
                             ret := true;
                             op0 := "0000000000000001";
                         when 4 => -- nop
-                            instruction := NOP;
+                            instruction := OP_NOP;
                         when 5 => -- save ?(label) -- TODO
-                            instruction := NOP;
+                            instruction := OP_NOP;
                             branch := true;
-                            branch_on_true := ram_dat_r(7) = '1';
-                            branch_fetch := ram_dat_r(6) = '0';
-                            branch_offset := "0000000000" & ram_dat_r(5 downto 0);
+                            branch_fetch := true;
+--                            branch_on_true := ram_dat_r(7) = '1';
+--                            branch_fetch := ram_dat_r(6) = '0';
+--                            branch_offset := "0000000000" & ram_dat_r(5 downto 0);
                         when 6 => -- save ?(label) -- TODO
-                            instruction := NOP;
+                            instruction := OP_NOP;
                             branch := true;
-                            branch_on_true := ram_dat_r(7) = '1';
-                            branch_fetch := ram_dat_r(6) = '0';
-                            branch_offset := "0000000000" & ram_dat_r(5 downto 0);
+                            branch_fetch := true;
+--                            branch_on_true := ram_dat_r(7) = '1';
+--                            branch_fetch := ram_dat_r(6) = '0';
+--                            branch_offset := "0000000000" & ram_dat_r(5 downto 0);
                         when 7 => -- restart -- TODO
-                            instruction := NOP;
+                            instruction := OP_NOP;
                             state := ERROR;
                             message := pad_string("Power cycling is the restart in this universe!", message'LENGTH);
                         when 8 => -- ret_popped
-                            instruction := POP;
+                            instruction := OP_POP;
                             ret := true;
                         when 9 => -- pop
-                            instruction := POP;
+                            instruction := OP_POP;
                         when 10 =>
-                            instruction := NOP;
+                            instruction := OP_NOP;
                             state := ERROR;
                             message := pad_string("It is now safe to power off your computer.", message'LENGTH);
                         when 11 =>
-                            instruction := PRINT_NL;
+                            instruction := OP_PRINT_NL;
                         when 12 =>
-                            instruction := STATUS;
+                            instruction := OP_STATUS;
                         when 13 =>
-                            instruction := VERIFY;
+                            instruction := OP_VERIFY;
                         when others =>
                             cursor := 0;
                             state := ERROR;
                             message := pad_string("Instruction undecodable. Short, 0OP", message'LENGTH);
                         end case;
-                    else-- 1OP
-                        -- This makes the PC increment again, since the 2nd byte of the word we got is (part of) the operand
+                    -- 1OP ------------------------------
+                    else
+                        -- Increment PC again, since the 2nd byte of the word we got is (part of) the operand
                         pc := pc + 1;
                         ram_re <= "11";
                         ram_addr <= pc;
@@ -555,51 +567,51 @@ begin
                         
                         case to_integer(unsigned(ram_dat_r(9 downto 8))) is
                         when 0 =>
-                            instruction := COMP_ZERO;
+                            instruction := OP_COMP_ZERO;
                             branch := true;
                         when 1 =>
-                            instruction := GET_SIBLING;
+                            instruction := OP_GET_SIBLING;
                             store := true;
                             store_fetch := true;
                             branch := true;
                             branch_fetch := true;
                         when 2 =>
-                            instruction := GET_CHILD;
+                            instruction := OP_GET_CHILD;
                             store := true;
                             store_fetch := true;
                             branch := true;
                             branch_fetch := true;
                         when 3 =>
-                            instruction := GET_PARENT;
+                            instruction := OP_GET_PARENT;
                             store := true;
                             store_fetch := true;
                         when 4 =>
-                            instruction := GET_PROP_LEN;
+                            instruction := OP_GET_PROP_LEN;
                             store := true;
                             store_fetch := true;
                         when 5 =>
-                            instruction := INC;
+                            instruction := OP_INC;
                         when 6 =>
-                            instruction := DEC;
+                            instruction := OP_DEC;
                         when 7 =>
-                            instruction := PRINT_ADDR;
+                            instruction := OP_PRINT_ADDR;
                         when 9 =>
-                            instruction := REMOVE_OBJ;
+                            instruction := OP_REMOVE_OBJ;
                         when 10 =>
-                            instruction := PRINT_OBJ;
+                            instruction := OP_PRINT_OBJ;
                         when 11 =>
-                            instruction := NOP;
+                            instruction := OP_NOP;
                             ret := true;
                         when 12 =>
-                            instruction := JUMP;
+                            instruction := OP_JUMP;
                         when 13 =>
-                            instruction := PRINT_PADDR;
+                            instruction := OP_PRINT_PADDR;
                         when 14 =>
-                            instruction := LOAD;
+                            instruction := OP_LOAD;
                             store := true;
                             store_fetch := true;
                         when 15 =>
-                            instruction := NOT_BW;
+                            instruction := OP_NOT_BW;
                             store := true;
                             store_fetch := true;
                         when others =>
@@ -608,10 +620,135 @@ begin
                             message := pad_string("Instruction undecodable. Short, 1OP", message'LENGTH);
                         end case;
                     end if;
-                elsif ram_dat_r(15 downto 14) = "11" then -- Variable form
-                    
-                else -- ????
-                    
+                -- Variable form ---------------------
+                elsif ram_dat_r(15 downto 14) = "11" then
+                    -- VAR ------------------------------
+                    if ram_dat_r(13) = '1' then
+                        case to_integer(unsigned(ram_dat_r(12 downto 8))) is
+                        
+                        when others =>
+                            cursor := 0;
+                            state := ERROR;
+                            message := pad_string("Instruction undecodable. Variable, VAR", message'LENGTH);
+                        end case;
+                    -- 2OP ------------------------------
+                    else
+                        case to_integer(unsigned(ram_dat_r(12 downto 8))) is
+                        
+                        when others =>
+                            cursor := 0;
+                            state := ERROR;
+                            message := pad_string("Instruction undecodable. Variable, 2OP", message'LENGTH);
+                        end case;
+                    end if;
+                -- Long form -------------------------
+                else -- Always 2OP
+                    -- Type OP 1
+                    if ram_dat_r(14) = '0' then
+                        op0_type := "01";
+                    else
+                        op0_type := "10";
+                    end if;
+                    -- Type OP 2
+                    if ram_dat_r(13) = '0' then
+                        op1_type := "01";
+                    else
+                        op1_type := "10";
+                    end if;
+                    case to_integer(unsigned(ram_dat_r(12 downto 8))) is
+                    when 1 => -- je a b ?(label)
+                        instruction := OP_COMP_EQ;
+                        branch := true;
+                        branch_fetch := true;
+                    when 2 => -- jl a b ?(label)
+                        instruction := OP_COMP_LT;
+                        branch := true;
+                        branch_fetch := true;
+                    when 3 => -- jg a b ?(label)
+                        instruction := OP_COMP_GT;
+                        branch := true;
+                        branch_fetch := true;
+                    when 4 => -- dec_chk (variable) value ?(label)
+                        instruction := OP_DEC_CHK;
+                        branch := true;
+                        branch_fetch := true;
+                    when 5 => -- inc_chk (variable) value ?(label)
+                        instruction := OP_INC_CHK;
+                        branch := true;
+                        branch_fetch := true;
+                    when 6 => -- jin obj1 obj2 ?(label)
+                        instruction := OP_JIN;
+                        branch := true;
+                        branch_fetch := true;
+                    when 7 => -- test bitmap flags ?(label)
+                        instruction := OP_TEST;
+                        branch := true;
+                        branch_fetch := true;
+                    when 8 => -- or a b -> (result)
+                        instruction := OP_OR_BW;
+                        store := true;
+                        store_fetch := true;
+                    when 9 => -- and a b -> (result)
+                        instruction := OP_AND_BW;
+                        store := true;
+                        store_fetch := true;
+                    when 10 => -- test_attr object attribute ?(label)
+                        instruction := OP_TEST_ATTR;
+                        branch := true;
+                        branch_fetch := true;
+                    when 11 => -- set_attr object attribute
+                        instruction := OP_SET_ATTR;    
+                    when 12 => -- set_attr object attribute
+                        instruction := OP_CLEAR_ATTR;
+                    when 13 => -- set_attr object attribute
+                        instruction := OP_STORE;
+                    when 14 => -- insert_obj object destination
+                        instruction := OP_INSERT_OBJ;
+                    when 15 => -- loadw array word-index -> (result)
+                        instruction := OP_LOADW;
+                        store := true;
+                        store_fetch := true;
+                    when 16 => -- loadb array byte-index -> (result)
+                        instruction := OP_LOADB;
+                        store := true;
+                        store_fetch := true;
+                    when 17 => -- get_prop object property -> (result)
+                        instruction := OP_GET_PROP;
+                        store := true;
+                        store_fetch := true;
+                    when 18 => -- get_prop_addr object property -> (result)
+                        instruction := OP_GET_PROP_ADDR;
+                        store := true;
+                        store_fetch := true;
+                    when 19 => -- get_next_prop object property -> (result)
+                        instruction := OP_GET_NEXT_PROP;
+                        store := true;
+                        store_fetch := true;
+                    when 20 =>
+                        instruction := OP_ADD;
+                        store := true;
+                        store_fetch := true;
+                    when 21 =>
+                        instruction := OP_SUB;
+                        store := true;
+                        store_fetch := true;
+                    when 22 =>
+                        instruction := OP_MUL;
+                        store := true;
+                        store_fetch := true;
+                    when 23 =>
+                        instruction := OP_DIV;
+                        store := true;
+                        store_fetch := true;
+                    when 24 =>
+                        instruction := OP_MOD;
+                        store := true;
+                        store_fetch := true;
+                    when others =>
+                        cursor := 0;
+                        state := ERROR;
+                        message := pad_string("Instruction undecodable. Long", message'LENGTH);
+                    end case;
                 end if;
             ---------------------------------------------
             when EXEC =>
@@ -988,8 +1125,8 @@ begin
                         else
                             cursor := cursor_delta(cursor, COLS - (cursor mod COLS));    
                         end if;
-                    -- ELSE IF Escape (wipe whole screen)
-                    elsif kb_acsii = "0011011" then
+                    -- ELSE IF Delete (wipe whole screen)
+                    elsif kb_acsii = "1111111" then
                         fb_a_en <= '0';
                         fb_a_we <=  "0";
                         cursor := 0;

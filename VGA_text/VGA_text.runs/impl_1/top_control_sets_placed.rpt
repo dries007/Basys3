@@ -1,0 +1,63 @@
+Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
+| Date         : Thu Apr 14 01:42:48 2016
+| Host         : Dries007-Arch running 64-bit unknown
+| Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
+| Design       : top
+| Device       : xc7a35t
+------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Flip-Flop Distribution
+3. Detailed Control Set Information
+
+1. Summary
+----------
+
++-------------------------------------------------------------------+-------+
+|                               Status                              | Count |
++-------------------------------------------------------------------+-------+
+| Number of unique control sets                                     |    10 |
+| Minimum Number of register sites lost to control set restrictions |    31 |
++-------------------------------------------------------------------+-------+
+
+
+2. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              47 |           18 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              43 |           18 |
+| Yes          | No                    | No                     |              30 |            9 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |               9 |            3 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+3. Detailed Control Set Information
+-----------------------------------
+
++-------------------------+--------------------------+--------------------------+------------------+----------------+
+|       Clock Signal      |       Enable Signal      |     Set/Reset Signal     | Slice Load Count | Bel Load Count |
++-------------------------+--------------------------+--------------------------+------------------+----------------+
+|  clock0/inst/clk25MHz   |                          |                          |                2 |              2 |
+|  clock0/inst/pixelClock | vga0/enable              |                          |                3 |              8 |
+|  clock0/inst/pixelClock | vga0/nextchar_reg[0][0]  |                          |                2 |              8 |
+|  clk_BUFG               |                          | fb_in_dat[7]_i_1_n_0     |                4 |              8 |
+|  clock0/inst/pixelClock | vga0/h_count[10]_i_1_n_0 | vga0/v_count[5]_i_1_n_0  |                3 |              9 |
+|  clock0/inst/pixelClock |                          | vga0/h_count[10]_i_1_n_0 |                7 |             11 |
+|  clock0/inst/pixelClock | vga0/E[0]                |                          |                4 |             14 |
+|  clock0/inst/pixelClock |                          |                          |                8 |             17 |
+|  clock0/inst/clk25MHz   |                          | counter[23]_i_1_n_0      |                7 |             24 |
+|  clk_BUFG               |                          |                          |                8 |             28 |
++-------------------------+--------------------------+--------------------------+------------------+----------------+
+
+
