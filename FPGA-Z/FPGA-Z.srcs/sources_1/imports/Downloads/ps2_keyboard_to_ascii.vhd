@@ -319,6 +319,8 @@ begin
                 if repeat_counter = repeat_max - 1 then
                     ascii_new <= '1';                  --set flag indicating new ascii output
                     ascii_code <= ascii(6 downto 0);   --output the ascii value
+                    
+                    
                 else
                     repeat_counter <= repeat_counter + 1;
                     ascii_new <= '0';                  --set flag indicating new ascii output
@@ -326,6 +328,7 @@ begin
             else
                 ascii_new <= '1';                  --set flag indicating new ascii output
                 ascii_code <= ascii(6 downto 0);   --output the ascii value
+                prev_ascii <= ascii(6 downto 0);
                 repeat_counter <= 0;
             end if;
           else

@@ -5,6 +5,7 @@
 set_param xicom.use_bs_reader 1
 set_msg_config -id {HDL 9-1061} -limit 100000
 set_msg_config -id {HDL 9-1654} -limit 100000
+set_msg_config  -ruleid {1}  -string {{generated file not found}}  -suppress 
 create_project -in_memory -part xc7a35tcpg236-1
 
 set_param project.compositeFile.enableAutoGeneration 0

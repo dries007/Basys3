@@ -190,14 +190,45 @@ begin
     return (current + delta) mod modulo;
 end cursor_delta;
 
-function pad_string(input : string; size : positive) return string is
+function pad_string(input : string; size : positive; hex : std_logic_vector := "") return string is
     variable tmp: string(1 to size) := (others => NUL);
 begin
-    if input'length >= size then
-        tmp := input(1 to size);
+    if hex'length = 0 then
+        if input'length >= size then
+            tmp := input(1 to size);
+        else
+            tmp(1 to input'length) := input;
+            tmp(input'length + 1 to size) := (others => ' ');
+        end if;
     else
-        tmp(1 to input'length) := input;
-        tmp(input'length + 1 to size) := (others => ' ');
+        if input'length >= (size - (hex'length / 4) - 1) then
+            tmp(1 to (size - (hex'length / 4)) - 1) := input(1 to (size - (hex'length / 4)) - 1); -- copy over as much as will fit
+            tmp(size - (hex'length / 4)) := ' '; -- add space
+            for i in 0 to (hex'length / 4) - 1 loop -- per 4 bits
+                case to_integer(unsigned(hex(hex'length - (4 * i) to hex'length - (4 * i) - 4))) is
+                    when 0 => tmp(size - (hex'length / 4) + i) := '0';
+                    when 1 => tmp(size - (hex'length / 4) + i) := '1';
+                    when 2 => tmp(size - (hex'length / 4) + i) := '2';
+                    when 3 => tmp(size - (hex'length / 4) + i) := '3';
+                    when 4 => tmp(size - (hex'length / 4) + i) := '4';
+                    when 5 => tmp(size - (hex'length / 4) + i) := '5';
+                    when 6 => tmp(size - (hex'length / 4) + i) := '6';
+                    when 7 => tmp(size - (hex'length / 4) + i) := '7';
+                    when 8 => tmp(size - (hex'length / 4) + i) := '8';
+                    when 9 => tmp(size - (hex'length / 4) + i) := '9';
+                    when 10 => tmp(size - (hex'length / 4) + i) := 'A';
+                    when 11 => tmp(size - (hex'length / 4) + i) := 'B';
+                    when 12 => tmp(size - (hex'length / 4) + i) := 'D';
+                    when 13 => tmp(size - (hex'length / 4) + i) := 'D';
+                    when 14 => tmp(size - (hex'length / 4) + i) := 'E';
+                    when 15 => tmp(size - (hex'length / 4) + i) := 'F';
+                    when others => tmp(size - (hex'length / 4) + i) := '?';
+                end case;
+            end loop;
+        else
+            tmp(1 to input'length) := input;
+            tmp(input'length + 1 to size) := (others => ' ');
+        end if;
     end if;
     return tmp;
 end pad_string;
@@ -416,11 +447,11 @@ process (clk_cpu)
     
     type instuction_type is
     (
-        OP_NOP, OP_PRINT, OP_POP, OP_PRINT_NL, OP_STATUS, OP_VERIFY, 
-        OP_COMP_ZERO, OP_GET_SIBLING, OP_GET_CHILD, OP_GET_PARENT, OP_GET_PROP_LEN, OP_INC, OP_DEC, OP_PRINT_ADDR, OP_REMOVE_OBJ, OP_PRINT_OBJ, OP_JUMP, OP_PRINT_PADDR, OP_LOAD, OP_NOT_BW,
-        
-        
-        OP_COMP_EQ, OP_COMP_LT, OP_COMP_GT, OP_DEC_CHK, OP_INC_CHK, OP_JIN, OP_TEST, OP_OR_BW, OP_AND_BW, OP_TEST_ATTR, OP_SET_ATTR, OP_CLEAR_ATTR, OP_STORE, OP_INSERT_OBJ, OP_LOADW, OP_LOADB, OP_GET_PROP, OP_GET_PROP_ADDR, OP_GET_NEXT_PROP, OP_ADD, OP_SUB, OP_MUL, OP_DIV, OP_MOD
+        OP_NOP, OP_PRINT, OP_POP, OP_PRINT_NL, OP_STATUS, OP_VERIFY, OP_COMP_ZERO, OP_GET_SIBLING, OP_GET_CHILD, OP_GET_PARENT, OP_GET_PROP_LEN,
+        OP_INC, OP_DEC, OP_PRINT_ADDR, OP_REMOVE_OBJ, OP_PRINT_OBJ, OP_JUMP, OP_PRINT_PADDR, OP_LOAD, OP_NOT_BW, OP_COMP_EQ, OP_COMP_LT, 
+        OP_COMP_GT, OP_DEC_CHK, OP_INC_CHK, OP_JIN, OP_TEST, OP_OR_BW, OP_AND_BW, OP_TEST_ATTR, OP_SET_ATTR, OP_CLEAR_ATTR, OP_STORE, 
+        OP_INSERT_OBJ, OP_LOADW, OP_LOADB, OP_GET_PROP, OP_GET_PROP_ADDR, OP_GET_NEXT_PROP, OP_ADD, OP_SUB, OP_MUL, OP_DIV, OP_MOD, OP_CALL, 
+        OP_STOREW, OP_STOREB, OP_PUT_PROP, OP_SREAD, OP_PRINT_CHAR, OP_PRINT_NUM, OP_RND, OP_PUSH, OP_PULL, OP_SPLIT_WINDOW, OP_SET_WINDOW
     );
     variable instruction : instuction_type := OP_NOP;
     
@@ -531,7 +562,7 @@ begin
                         when 7 => -- restart -- TODO
                             instruction := OP_NOP;
                             state := ERROR;
-                            message := pad_string("Power cycling is the restart in this universe!", message'LENGTH);
+                            message := pad_string("Power cycling is the restart in this universe!", message'LENGTH, ram_dat_r);
                         when 8 => -- ret_popped
                             instruction := OP_POP;
                             ret := true;
@@ -540,7 +571,7 @@ begin
                         when 10 =>
                             instruction := OP_NOP;
                             state := ERROR;
-                            message := pad_string("It is now safe to power off your computer.", message'LENGTH);
+                            message := pad_string("It is now safe to power off your computer.", message'LENGTH, ram_dat_r);
                         when 11 =>
                             instruction := OP_PRINT_NL;
                         when 12 =>
@@ -550,7 +581,7 @@ begin
                         when others =>
                             cursor := 0;
                             state := ERROR;
-                            message := pad_string("Instruction undecodable. Short, 0OP", message'LENGTH);
+                            message := pad_string("Instruction undecodable. Short, 0OP", message'LENGTH, ram_dat_r);
                         end case;
                     -- 1OP ------------------------------
                     else
@@ -617,28 +648,106 @@ begin
                         when others =>
                             cursor := 0;
                             state := ERROR;
-                            message := pad_string("Instruction undecodable. Short, 1OP", message'LENGTH);
+                            message := pad_string("Instruction undecodable. Short, 1OP", message'LENGTH, ram_dat_r);
                         end case;
                     end if;
                 -- Variable form ---------------------
                 elsif ram_dat_r(15 downto 14) = "11" then
+                    op0_type := ram_dat_r(7 downto 6);
+                    op1_type := ram_dat_r(5 downto 4);
+                    op2_type := ram_dat_r(3 downto 2);
+                    op3_type := ram_dat_r(1 downto 0);
                     -- VAR ------------------------------
                     if ram_dat_r(13) = '1' then
                         case to_integer(unsigned(ram_dat_r(12 downto 8))) is
-                        
+                        when 0 => -- call routine ...0 to 3 args... -> (result)
+                            instruction := OP_CALL;
+                            store := true;
+                            store_fetch := true;
+                        when 1 => -- storew array word-index value
+                            instruction := OP_STOREW;
+                        when 2 => -- storeb array byte-index value
+                            instruction := OP_STOREB;
+                        when 3 => -- put_prop object property value
+                            instruction := OP_PUT_PROP;
+                        when 4 => -- sread text parse
+                            instruction := OP_SREAD;
+                        when 5 => -- print_char output-character-code
+                            instruction := OP_PRINT_CHAR;
+                        when 6 => -- print_num value
+                            instruction := OP_PRINT_NUM;
+                        when 7 => -- random range -> (result)
+                            instruction := OP_RND;
+                            store := true;
+                            store_fetch := true;
+                        when 8 => -- push value
+                            instruction := OP_PUSH;
+                        when 9 => -- pull (variable)
+                            instruction := OP_PULL;
+                        when 10 => -- split_window lines
+                            instruction := OP_SPLIT_WINDOW;
+                        when 11 => -- set_window window
+                            instruction := OP_SET_WINDOW;
                         when others =>
                             cursor := 0;
                             state := ERROR;
-                            message := pad_string("Instruction undecodable. Variable, VAR", message'LENGTH);
+                            message := pad_string("Instruction undecodable. Variable, VAR", message'LENGTH, ram_dat_r);
                         end case;
                     -- 2OP ------------------------------
                     else
                         case to_integer(unsigned(ram_dat_r(12 downto 8))) is
-                        
+                        when 0 =>
+                            instruction := OP_COMP_ZERO;
+                            branch := true;
+                        when 1 =>
+                            instruction := OP_GET_SIBLING;
+                            store := true;
+                            store_fetch := true;
+                            branch := true;
+                            branch_fetch := true;
+                        when 2 =>
+                            instruction := OP_GET_CHILD;
+                            store := true;
+                            store_fetch := true;
+                            branch := true;
+                            branch_fetch := true;
+                        when 3 =>
+                            instruction := OP_GET_PARENT;
+                            store := true;
+                            store_fetch := true;
+                        when 4 =>
+                            instruction := OP_GET_PROP_LEN;
+                            store := true;
+                            store_fetch := true;
+                        when 5 =>
+                            instruction := OP_INC;
+                        when 6 =>
+                            instruction := OP_DEC;
+                        when 7 =>
+                            instruction := OP_PRINT_ADDR;
+                        when 9 =>
+                            instruction := OP_REMOVE_OBJ;
+                        when 10 =>
+                            instruction := OP_PRINT_OBJ;
+                        when 11 =>
+                            instruction := OP_NOP;
+                            ret := true;
+                        when 12 =>
+                            instruction := OP_JUMP;
+                        when 13 =>
+                            instruction := OP_PRINT_PADDR;
+                        when 14 =>
+                            instruction := OP_LOAD;
+                            store := true;
+                            store_fetch := true;
+                        when 15 =>
+                            instruction := OP_NOT_BW;
+                            store := true;
+                            store_fetch := true;
                         when others =>
                             cursor := 0;
                             state := ERROR;
-                            message := pad_string("Instruction undecodable. Variable, 2OP", message'LENGTH);
+                            message := pad_string("Instruction undecodable. Variable, 2OP", message'LENGTH, ram_dat_r);
                         end case;
                     end if;
                 -- Long form -------------------------
@@ -747,7 +856,7 @@ begin
                     when others =>
                         cursor := 0;
                         state := ERROR;
-                        message := pad_string("Instruction undecodable. Long", message'LENGTH);
+                        message := pad_string("Instruction undecodable. Long", message'LENGTH, ram_dat_r);
                     end case;
                 end if;
             ---------------------------------------------

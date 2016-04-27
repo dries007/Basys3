@@ -44,6 +44,7 @@ proc step_failed { step } {
 
 set_msg_config -id {HDL 9-1061} -limit 100000
 set_msg_config -id {HDL 9-1654} -limit 100000
+set_msg_config  -ruleid {1}  -string {{generated file not found}}  -suppress 
 
 start_step init_design
 set rc [catch {
