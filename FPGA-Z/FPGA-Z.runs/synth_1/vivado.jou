@@ -1,12 +1,12 @@
 #-----------------------------------------------------------
 # Vivado v2015.4 (64-bit)
-# SW Build 1412921 on Wed Nov 18 09:44:32 MST 2015
+# SW Build 1412921 on Wed Nov 18 09:43:45 MST 2015
 # IP Build 1412160 on Tue Nov 17 13:47:24 MST 2015
-# Start of session at: Sat Apr 23 22:30:24 2016
-# Process ID: 4197
-# Current directory: /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1
-# Command line: vivado -log top.vds -mode batch -messageDb vivado.pb -notrace -source top.tcl
-# Log file: /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/top.vds
-# Journal file: /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/vivado.jou
+# Start of session at: Wed Apr 27 17:25:39 2016
+# Process ID: 6492
+# Current directory: D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1
+# Command line: vivado.exe -log top.vds -mode batch -messageDb vivado.pb -notrace -source top.tcl
+# Log file: D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/top.vds
+# Journal file: D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
 source top.tcl -notrace

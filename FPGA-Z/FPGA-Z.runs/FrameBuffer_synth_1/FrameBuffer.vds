@@ -1,31 +1,26 @@
 #-----------------------------------------------------------
 # Vivado v2015.4 (64-bit)
-# SW Build 1412921 on Wed Nov 18 09:44:32 MST 2015
+# SW Build 1412921 on Wed Nov 18 09:43:45 MST 2015
 # IP Build 1412160 on Tue Nov 17 13:47:24 MST 2015
-# Start of session at: Sun Apr 17 21:18:09 2016
-# Process ID: 23450
-# Current directory: /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/FrameBuffer_synth_1
-# Command line: vivado -log FrameBuffer.vds -mode batch -messageDb vivado.pb -notrace -source FrameBuffer.tcl
-# Log file: /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/FrameBuffer_synth_1/FrameBuffer.vds
-# Journal file: /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/FrameBuffer_synth_1/vivado.jou
+# Start of session at: Wed Apr 27 15:24:06 2016
+# Process ID: 12896
+# Current directory: D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/FrameBuffer_synth_1
+# Command line: vivado.exe -log FrameBuffer.vds -mode batch -messageDb vivado.pb -notrace -source FrameBuffer.tcl
+# Log file: D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/FrameBuffer_synth_1/FrameBuffer.vds
+# Journal file: D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/FrameBuffer_synth_1\vivado.jou
 #-----------------------------------------------------------
 source FrameBuffer.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
-INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2015.4/data/ip'.
-WARNING: [IP_Flow 19-3664] IP 'FrameBuffer' generated file not found '/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/FrameBuffer.dcp'. Please regenerate to continue.
-WARNING: [IP_Flow 19-3664] IP 'FrameBuffer' generated file not found '/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/FrameBuffer_stub.v'. Please regenerate to continue.
-WARNING: [IP_Flow 19-3664] IP 'FrameBuffer' generated file not found '/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/FrameBuffer_stub.vhdl'. Please regenerate to continue.
-WARNING: [IP_Flow 19-3664] IP 'FrameBuffer' generated file not found '/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/FrameBuffer_sim_netlist.v'. Please regenerate to continue.
-WARNING: [IP_Flow 19-3664] IP 'FrameBuffer' generated file not found '/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/FrameBuffer_sim_netlist.vhdl'. Please regenerate to continue.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2015.4/data/ip'.
 Command: synth_design -top FrameBuffer -part xc7a35tcpg236-1 -mode out_of_context
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 996.988 ; gain = 166.316 ; free physical = 4155 ; free virtual = 10984
+Starting RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:16 . Memory (MB): peak = 302.598 ; gain = 130.574
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'FrameBuffer' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/synth/FrameBuffer.vhd:75]
+INFO: [Synth 8-638] synthesizing module 'FrameBuffer' [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/synth/FrameBuffer.vhd:75]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_XDEVICEFAMILY bound to: artix7 - type: string 
 	Parameter C_ELABORATION_DIR bound to: ./ - type: string 
@@ -99,8 +94,8 @@ INFO: [Synth 8-638] synthesizing module 'FrameBuffer' [/home/dries/Projects/Basy
 	Parameter C_COUNT_36K_BRAM bound to: 2 - type: string 
 	Parameter C_COUNT_18K_BRAM bound to: 1 - type: string 
 	Parameter C_EST_POWER_SUMMARY bound to: Estimated Power for IP     :     4.61856 mW - type: string 
-INFO: [Synth 8-3491] module 'blk_mem_gen_v8_3_1' declared at '/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3.vhd:133' bound to instance 'U0' of component 'blk_mem_gen_v8_3_1' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/synth/FrameBuffer.vhd:240]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_v8_3_1' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3.vhd:277]
+INFO: [Synth 8-3491] module 'blk_mem_gen_v8_3_1' declared at 'd:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3.vhd:133' bound to instance 'U0' of component 'blk_mem_gen_v8_3_1' [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/synth/FrameBuffer.vhd:240]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_v8_3_1' [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3.vhd:277]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_XDEVICEFAMILY bound to: artix7 - type: string 
 	Parameter C_ELABORATION_DIR bound to: ./ - type: string 
@@ -174,7 +169,7 @@ INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_v8_3_1' [/home/dries/Projec
 	Parameter C_COUNT_36K_BRAM bound to: 2 - type: string 
 	Parameter C_COUNT_18K_BRAM bound to: 1 - type: string 
 	Parameter C_EST_POWER_SUMMARY bound to: Estimated Power for IP     :     4.61856 mW - type: string 
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_v8_3_1_synth' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:193780]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_v8_3_1_synth' [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:193780]
 	Parameter C_FAMILY bound to: artix7 - type: string 
 	Parameter C_XDEVICEFAMILY bound to: artix7 - type: string 
 	Parameter C_ELABORATION_DIR bound to: ./ - type: string 
@@ -243,7 +238,7 @@ INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_v8_3_1_synth' [/home/dries/
 	Parameter C_DISABLE_WARN_BHV_COLL bound to: 0 - type: integer 
 	Parameter C_DISABLE_WARN_BHV_RANGE bound to: 0 - type: integer 
 	Parameter C_EN_SAFETY_CKT bound to: 0 - type: integer 
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_top' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:192741]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_top' [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:192741]
 	Parameter C_SIM_DEVICE bound to: 7SERIES - type: string 
 	Parameter C_FAMILY bound to: virtex6 - type: string 
 	Parameter C_XDEVICEFAMILY bound to: artix7 - type: string 
@@ -314,32 +309,32 @@ INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_top' [/home/dries/Projects/
 	Parameter C_DISABLE_WARN_BHV_RANGE bound to: 0 - type: integer 
 	Parameter DOUBLING_RESOURCE_FIX bound to: 0 - type: integer 
 	Parameter C_EN_SAFETY_CKT bound to: 0 - type: integer 
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_input_block' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:187182]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:4803]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_input_block' [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:187182]
 	Parameter C_FAMILY bound to: virtex6 - type: string 
 	Parameter C_MEM_TYPE bound to: 2 - type: integer 
 	Parameter C_HAS_RSTA bound to: 0 - type: integer 
@@ -376,13 +371,13 @@ INFO: [Synth 8-638] synthesizing module 'blk_mem_input_block' [/home/dries/Proje
 	Parameter C_USE_ECC bound to: 0 - type: integer 
 	Parameter C_USE_SOFTECC bound to: 0 - type: integer 
 	Parameter C_HAS_INJECTERR bound to: 0 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'blk_mem_input_block' (1#1) [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:187182]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:193270]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:193274]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:193278]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:193282]
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:193296]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_generic_cstr' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:184458]
+INFO: [Synth 8-256] done synthesizing module 'blk_mem_input_block' (1#1) [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:187182]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:193270]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:193274]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:193278]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:193282]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:193296]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_generic_cstr' [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:184458]
 	Parameter C_FAMILY bound to: virtex6 - type: string 
 	Parameter C_XDEVICEFAMILY bound to: artix7 - type: string 
 	Parameter C_SIM_DEVICE bound to: 7SERIES - type: string 
@@ -456,11 +451,11 @@ INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_generic_cstr' [/home/dries/
 	Parameter C_SIM_COLLISION_CHECK bound to: ALL - type: string 
 	Parameter DOUBLING_RESOURCE_FIX bound to: 0 - type: integer 
 	Parameter C_EN_SAFETY_CKT bound to: 0 - type: integer 
-INFO: [Synth 8-638] synthesizing module 'bindec' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:5128]
+INFO: [Synth 8-638] synthesizing module 'bindec' [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:5128]
 	Parameter C_NUM_PRIM_DEPTH bound to: 8 - type: integer 
 	Parameter C_SEL_WIDTH bound to: 3 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'bindec' (2#1) [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:5128]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_prim_width' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:182885]
+INFO: [Synth 8-256] done synthesizing module 'bindec' (2#1) [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:5128]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_prim_width' [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:182885]
 	Parameter C_SIM_DEVICE bound to: 7SERIES - type: string 
 	Parameter C_FAMILY bound to: virtex6 - type: string 
 	Parameter C_XDEVICEFAMILY bound to: artix7 - type: string 
@@ -518,9 +513,9 @@ INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_prim_width' [/home/dries/Pr
 	Parameter C_MEM_ADDR_WIDTH_B bound to: 14 - type: integer 
 	Parameter DOUBLING_RESOURCE_FIX bound to: 0 - type: integer 
 	Parameter C_EN_SAFETY_CKT bound to: 0 - type: integer 
-INFO: [Synth 8-3919] null assignment ignored [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183564]
-INFO: [Synth 8-3919] null assignment ignored [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183565]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_prim_wrapper_init' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:96243]
+INFO: [Synth 8-3919] null assignment ignored [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183564]
+INFO: [Synth 8-3919] null assignment ignored [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183565]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_prim_wrapper_init' [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:96243]
 	Parameter C_SIM_DEVICE bound to: 7SERIES - type: string 
 	Parameter C_ELABORATION_DIR bound to: ./ - type: string 
 	Parameter C_ENABLE_32BIT_ADDRESS bound to: 0 - type: integer 
@@ -575,7 +570,7 @@ INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_prim_wrapper_init' [/home/d
 	Parameter C_MEM_ADDR_WIDTH_A bound to: 14 - type: integer 
 	Parameter C_MEM_ADDR_WIDTH_B bound to: 14 - type: integer 
 	Parameter DOUBLING_RESOURCE_FIX bound to: 0 - type: integer 
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:106052]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:106052]
 	Parameter DOA_REG bound to: 0 - type: integer 
 	Parameter DOB_REG bound to: 1 - type: integer 
 	Parameter EN_ECC_READ bound to: 0 - type: bool 
@@ -751,10 +746,10 @@ WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [
 	Parameter WRITE_MODE_B bound to: WRITE_FIRST - type: string 
 	Parameter WRITE_WIDTH_A bound to: 9 - type: integer 
 	Parameter WRITE_WIDTH_B bound to: 9 - type: integer 
-INFO: [Synth 8-113] binding component instance 'ram' to cell 'RAMB36E1' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:106379]
-INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_prim_wrapper_init' (3#1) [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:96243]
-INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_prim_width' (4#1) [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:182885]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_prim_width__parameterized0' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:182885]
+INFO: [Synth 8-113] binding component instance 'ram' to cell 'RAMB36E1' [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:106379]
+INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_prim_wrapper_init' (3#1) [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:96243]
+INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_prim_width' (4#1) [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:182885]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_prim_width__parameterized0' [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:182885]
 	Parameter C_SIM_DEVICE bound to: 7SERIES - type: string 
 	Parameter C_FAMILY bound to: virtex6 - type: string 
 	Parameter C_XDEVICEFAMILY bound to: artix7 - type: string 
@@ -812,9 +807,9 @@ INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_prim_width__parameterized0'
 	Parameter C_MEM_ADDR_WIDTH_B bound to: 14 - type: integer 
 	Parameter DOUBLING_RESOURCE_FIX bound to: 0 - type: integer 
 	Parameter C_EN_SAFETY_CKT bound to: 0 - type: integer 
-INFO: [Synth 8-3919] null assignment ignored [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183564]
-INFO: [Synth 8-3919] null assignment ignored [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183565]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_prim_wrapper_init__parameterized0' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:96243]
+INFO: [Synth 8-3919] null assignment ignored [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183564]
+INFO: [Synth 8-3919] null assignment ignored [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183565]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_prim_wrapper_init__parameterized0' [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:96243]
 	Parameter C_SIM_DEVICE bound to: 7SERIES - type: string 
 	Parameter C_ELABORATION_DIR bound to: ./ - type: string 
 	Parameter C_ENABLE_32BIT_ADDRESS bound to: 0 - type: integer 
@@ -869,7 +864,7 @@ INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_prim_wrapper_init__paramete
 	Parameter C_MEM_ADDR_WIDTH_A bound to: 14 - type: integer 
 	Parameter C_MEM_ADDR_WIDTH_B bound to: 14 - type: integer 
 	Parameter DOUBLING_RESOURCE_FIX bound to: 0 - type: integer 
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:106052]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:106052]
 	Parameter DOA_REG bound to: 0 - type: integer 
 	Parameter DOB_REG bound to: 1 - type: integer 
 	Parameter EN_ECC_READ bound to: 0 - type: bool 
@@ -1045,10 +1040,10 @@ WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [
 	Parameter WRITE_MODE_B bound to: WRITE_FIRST - type: string 
 	Parameter WRITE_WIDTH_A bound to: 9 - type: integer 
 	Parameter WRITE_WIDTH_B bound to: 9 - type: integer 
-INFO: [Synth 8-113] binding component instance 'ram' to cell 'RAMB36E1' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:106379]
-INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_prim_wrapper_init__parameterized0' (4#1) [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:96243]
-INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_prim_width__parameterized0' (4#1) [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:182885]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_prim_width__parameterized1' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:182885]
+INFO: [Synth 8-113] binding component instance 'ram' to cell 'RAMB36E1' [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:106379]
+INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_prim_wrapper_init__parameterized0' (4#1) [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:96243]
+INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_prim_width__parameterized0' (4#1) [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:182885]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_prim_width__parameterized1' [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:182885]
 	Parameter C_SIM_DEVICE bound to: 7SERIES - type: string 
 	Parameter C_FAMILY bound to: virtex6 - type: string 
 	Parameter C_XDEVICEFAMILY bound to: artix7 - type: string 
@@ -1106,9 +1101,9 @@ INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_prim_width__parameterized1'
 	Parameter C_MEM_ADDR_WIDTH_B bound to: 14 - type: integer 
 	Parameter DOUBLING_RESOURCE_FIX bound to: 0 - type: integer 
 	Parameter C_EN_SAFETY_CKT bound to: 0 - type: integer 
-INFO: [Synth 8-3919] null assignment ignored [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183564]
-INFO: [Synth 8-3919] null assignment ignored [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183565]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_prim_wrapper_init__parameterized1' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:96243]
+INFO: [Synth 8-3919] null assignment ignored [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183564]
+INFO: [Synth 8-3919] null assignment ignored [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183565]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_prim_wrapper_init__parameterized1' [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:96243]
 	Parameter C_SIM_DEVICE bound to: 7SERIES - type: string 
 	Parameter C_ELABORATION_DIR bound to: ./ - type: string 
 	Parameter C_ENABLE_32BIT_ADDRESS bound to: 0 - type: integer 
@@ -1163,7 +1158,7 @@ INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_prim_wrapper_init__paramete
 	Parameter C_MEM_ADDR_WIDTH_A bound to: 14 - type: integer 
 	Parameter C_MEM_ADDR_WIDTH_B bound to: 14 - type: integer 
 	Parameter DOUBLING_RESOURCE_FIX bound to: 0 - type: integer 
-WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:106052]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:106052]
 	Parameter DOA_REG bound to: 0 - type: integer 
 	Parameter DOB_REG bound to: 1 - type: integer 
 	Parameter INITP_00 bound to: 256'b0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
@@ -1263,10 +1258,10 @@ WARNING: [Synth 8-312] ignoring unsynthesizable construct: assertion statement [
 	Parameter WRITE_MODE_B bound to: WRITE_FIRST - type: string 
 	Parameter WRITE_WIDTH_A bound to: 9 - type: integer 
 	Parameter WRITE_WIDTH_B bound to: 9 - type: integer 
-INFO: [Synth 8-113] binding component instance 'ram' to cell 'RAMB18E1' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:106146]
-INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_prim_wrapper_init__parameterized1' (4#1) [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:96243]
-INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_prim_width__parameterized1' (4#1) [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:182885]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_mux' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:5391]
+INFO: [Synth 8-113] binding component instance 'ram' to cell 'RAMB18E1' [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:106146]
+INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_prim_wrapper_init__parameterized1' (4#1) [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:96243]
+INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_prim_width__parameterized1' (4#1) [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:182885]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_mux' [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:5391]
 	Parameter C_FAMILY bound to: virtex6 - type: string 
 	Parameter C_XDEVICEFAMILY bound to: artix7 - type: string 
 	Parameter C_RST_TYPE bound to: sync - type: string 
@@ -1289,8 +1284,8 @@ INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_mux' [/home/dries/Projects/
 	Parameter C_EN_ECC_READ bound to: 0 - type: bool 
 	Parameter C_EN_ECC_WRITE bound to: 0 - type: bool 
 	Parameter C_EN_ECC_PIPE bound to: 0 - type: bool 
-INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_mux' (5#1) [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:5391]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_mux__parameterized0' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:5391]
+INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_mux' (5#1) [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:5391]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_mux__parameterized0' [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:5391]
 	Parameter C_FAMILY bound to: virtex6 - type: string 
 	Parameter C_XDEVICEFAMILY bound to: artix7 - type: string 
 	Parameter C_RST_TYPE bound to: sync - type: string 
@@ -1313,9 +1308,9 @@ INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_mux__parameterized0' [/home
 	Parameter C_EN_ECC_READ bound to: 0 - type: bool 
 	Parameter C_EN_ECC_WRITE bound to: 0 - type: bool 
 	Parameter C_EN_ECC_PIPE bound to: 0 - type: bool 
-INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_mux__parameterized0' (5#1) [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:5391]
-INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_generic_cstr' (6#1) [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:184458]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_output_block' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:187787]
+INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_mux__parameterized0' (5#1) [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:5391]
+INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_generic_cstr' (6#1) [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:184458]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_output_block' [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:187787]
 	Parameter C_MEM_TYPE bound to: 2 - type: integer 
 	Parameter C_WRITE_WIDTH_A bound to: 8 - type: integer 
 	Parameter C_READ_WIDTH_A bound to: 8 - type: integer 
@@ -1326,13 +1321,13 @@ INFO: [Synth 8-638] synthesizing module 'blk_mem_output_block' [/home/dries/Proj
 	Parameter C_HAS_SOFTECC_OUTPUT_REGS_B bound to: 0 - type: integer 
 	Parameter C_USE_SOFTECC bound to: 0 - type: integer 
 	Parameter C_USE_ECC bound to: 0 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'blk_mem_output_block' (7#1) [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:187787]
-INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_top' (8#1) [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:192741]
-INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_v8_3_1_synth' (9#1) [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:193780]
-INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_v8_3_1' (10#1) [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3.vhd:277]
-INFO: [Synth 8-256] done synthesizing module 'FrameBuffer' (11#1) [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/synth/FrameBuffer.vhd:75]
+INFO: [Synth 8-256] done synthesizing module 'blk_mem_output_block' (7#1) [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:187787]
+INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_top' (8#1) [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:192741]
+INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_v8_3_1_synth' (9#1) [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:193780]
+INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_v8_3_1' (10#1) [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3.vhd:277]
+INFO: [Synth 8-256] done synthesizing module 'FrameBuffer' (11#1) [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/synth/FrameBuffer.vhd:75]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:55 ; elapsed = 00:00:56 . Memory (MB): peak = 1167.582 ; gain = 336.910 ; free physical = 3771 ; free virtual = 10624
+Finished RTL Elaboration : Time (s): cpu = 00:02:18 ; elapsed = 00:02:26 . Memory (MB): peak = 473.379 ; gain = 301.355
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -1341,62 +1336,62 @@ Report Check Netlist:
 +------+------------------+-------+---------+-------+------------------+
 |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
-INFO: [Synth 8-3295] tying undriven pin \prim_init.ram :DINA[8] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183929]
-INFO: [Synth 8-3295] tying undriven pin \prim_init.ram :DINB[8] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183929]
-INFO: [Synth 8-3295] tying undriven pin \prim_init.ram :DINA[8] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183929]
-INFO: [Synth 8-3295] tying undriven pin \prim_init.ram :DINB[8] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183929]
-INFO: [Synth 8-3295] tying undriven pin \prim_init.ram :DINA[8] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183929]
-INFO: [Synth 8-3295] tying undriven pin \prim_init.ram :DINB[8] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183929]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[63] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[62] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[61] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[60] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[59] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[58] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[57] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[56] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[55] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[54] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[53] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[52] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[51] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[50] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[49] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[48] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[47] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[46] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[45] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[44] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[43] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[42] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[41] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[40] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[63] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[62] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[61] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[60] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[59] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[58] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[57] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[56] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[55] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[54] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[53] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[52] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[51] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[50] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[49] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[48] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[47] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[46] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[45] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[44] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[43] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[42] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[41] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
-INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[40] to constant 0 [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \prim_init.ram :DINA[8] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183929]
+INFO: [Synth 8-3295] tying undriven pin \prim_init.ram :DINB[8] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183929]
+INFO: [Synth 8-3295] tying undriven pin \prim_init.ram :DINA[8] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183929]
+INFO: [Synth 8-3295] tying undriven pin \prim_init.ram :DINB[8] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183929]
+INFO: [Synth 8-3295] tying undriven pin \prim_init.ram :DINA[8] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183929]
+INFO: [Synth 8-3295] tying undriven pin \prim_init.ram :DINB[8] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:183929]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[63] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[62] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[61] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[60] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[59] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[58] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[57] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[56] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[55] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[54] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[53] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[52] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[51] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[50] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[49] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[48] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[47] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[46] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[45] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[44] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[43] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[42] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[41] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_a.A :DIN[40] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:185883]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[63] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[62] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[61] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[60] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[59] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[58] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[57] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[56] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[55] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[54] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[53] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[52] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[51] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[50] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[49] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[48] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[47] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[46] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[45] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[44] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[43] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[42] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[41] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
+INFO: [Synth 8-3295] tying undriven pin \has_mux_b.B :DIN[40] to constant 0 [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/blk_mem_gen_v8_3_1/hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd:186031]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:55 ; elapsed = 00:00:56 . Memory (MB): peak = 1167.582 ; gain = 336.910 ; free physical = 3771 ; free virtual = 10623
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:02:19 ; elapsed = 00:02:26 . Memory (MB): peak = 473.379 ; gain = 301.355
 ---------------------------------------------------------------------------------
 INFO: [Netlist 29-17] Analyzing 3 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -1405,34 +1400,32 @@ INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/FrameBuffer_ooc.xdc]
-Finished Parsing XDC File [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/FrameBuffer_ooc.xdc]
+Parsing XDC File [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/FrameBuffer_ooc.xdc]
+Finished Parsing XDC File [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/FrameBuffer_ooc.xdc]
 Completed Processing XDC Constraints
 
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 1239.598 ; gain = 0.000 ; free physical = 3766 ; free virtual = 10619
-INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 23939 
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 533.172 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:01:00 ; elapsed = 00:01:01 . Memory (MB): peak = 1239.598 ; gain = 408.926 ; free physical = 3746 ; free virtual = 10604
+Finished Constraint Validation : Time (s): cpu = 00:02:30 ; elapsed = 00:02:38 . Memory (MB): peak = 533.172 ; gain = 361.148
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:01:00 ; elapsed = 00:01:01 . Memory (MB): peak = 1239.598 ; gain = 408.926 ; free physical = 3746 ; free virtual = 10604
+Finished Loading Part and Timing Information : Time (s): cpu = 00:02:30 ; elapsed = 00:02:38 . Memory (MB): peak = 533.172 ; gain = 361.148
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:00 ; elapsed = 00:01:01 . Memory (MB): peak = 1239.598 ; gain = 408.926 ; free physical = 3746 ; free virtual = 10604
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:02:31 ; elapsed = 00:02:38 . Memory (MB): peak = 533.172 ; gain = 361.148
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:01 ; elapsed = 00:01:01 . Memory (MB): peak = 1239.598 ; gain = 408.926 ; free physical = 3734 ; free virtual = 10593
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:02:31 ; elapsed = 00:02:39 . Memory (MB): peak = 533.172 ; gain = 361.148
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1483,7 +1476,7 @@ BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
-Start Parallel Synthesis Optimization  : Time (s): cpu = 00:01:01 ; elapsed = 00:01:01 . Memory (MB): peak = 1239.605 ; gain = 408.934 ; free physical = 3734 ; free virtual = 10593
+Start Parallel Synthesis Optimization  : Time (s): cpu = 00:02:32 ; elapsed = 00:02:40 . Memory (MB): peak = 533.172 ; gain = 361.148
 ---------------------------------------------------------------------------------
 Start Cross Boundary Optimization
 ---------------------------------------------------------------------------------
@@ -1496,9 +1489,9 @@ INFO: [Synth 8-5544] ROM "inst_blk_mem_gen/gnativebmg.native_blk_mem_gen/valid.c
 INFO: [Synth 8-5544] ROM "inst_blk_mem_gen/gnativebmg.native_blk_mem_gen/valid.cstr/bindec_b.bindec_inst_b/ENOUT" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "inst_blk_mem_gen/gnativebmg.native_blk_mem_gen/valid.cstr/bindec_b.bindec_inst_b/ENOUT" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 ---------------------------------------------------------------------------------
-Finished Cross Boundary Optimization : Time (s): cpu = 00:01:01 ; elapsed = 00:01:01 . Memory (MB): peak = 1239.605 ; gain = 408.934 ; free physical = 3736 ; free virtual = 10595
+Finished Cross Boundary Optimization : Time (s): cpu = 00:02:32 ; elapsed = 00:02:40 . Memory (MB): peak = 533.172 ; gain = 361.148
 ---------------------------------------------------------------------------------
-Finished Parallel Reinference  : Time (s): cpu = 00:01:01 ; elapsed = 00:01:01 . Memory (MB): peak = 1239.605 ; gain = 408.934 ; free physical = 3736 ; free virtual = 10595
+Finished Parallel Reinference  : Time (s): cpu = 00:02:32 ; elapsed = 00:02:40 . Memory (MB): peak = 533.172 ; gain = 361.148
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
@@ -1509,9 +1502,9 @@ Report RTL Partitions:
 Start Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Area Optimization : Time (s): cpu = 00:01:01 ; elapsed = 00:01:01 . Memory (MB): peak = 1247.605 ; gain = 416.934 ; free physical = 3720 ; free virtual = 10579
+Finished Area Optimization : Time (s): cpu = 00:02:32 ; elapsed = 00:02:40 . Memory (MB): peak = 533.172 ; gain = 361.148
 ---------------------------------------------------------------------------------
-Finished Parallel Area Optimization  : Time (s): cpu = 00:01:01 ; elapsed = 00:01:01 . Memory (MB): peak = 1247.605 ; gain = 416.934 ; free physical = 3720 ; free virtual = 10579
+Finished Parallel Area Optimization  : Time (s): cpu = 00:02:32 ; elapsed = 00:02:40 . Memory (MB): peak = 533.172 ; gain = 361.148
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
@@ -1525,10 +1518,10 @@ Start Timing Optimization
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:06 ; elapsed = 00:01:07 . Memory (MB): peak = 1279.605 ; gain = 448.934 ; free physical = 3668 ; free virtual = 10525
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:50 ; elapsed = 00:02:58 . Memory (MB): peak = 573.094 ; gain = 401.070
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:06 ; elapsed = 00:01:07 . Memory (MB): peak = 1279.605 ; gain = 448.934 ; free physical = 3668 ; free virtual = 10525
+Finished Timing Optimization : Time (s): cpu = 00:02:50 ; elapsed = 00:02:58 . Memory (MB): peak = 573.094 ; gain = 401.070
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1540,16 +1533,16 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:06 ; elapsed = 00:01:07 . Memory (MB): peak = 1298.637 ; gain = 467.965 ; free physical = 3655 ; free virtual = 10513
+Finished Technology Mapping : Time (s): cpu = 00:02:50 ; elapsed = 00:02:58 . Memory (MB): peak = 593.344 ; gain = 421.320
 ---------------------------------------------------------------------------------
-Finished Parallel Technology Mapping Optimization  : Time (s): cpu = 00:01:06 ; elapsed = 00:01:07 . Memory (MB): peak = 1298.637 ; gain = 467.965 ; free physical = 3655 ; free virtual = 10513
+Finished Parallel Technology Mapping Optimization  : Time (s): cpu = 00:02:50 ; elapsed = 00:02:58 . Memory (MB): peak = 593.344 ; gain = 421.320
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
 | |RTL Partition |Replication |Instances |
 +-+--------------+------------+----------+
 +-+--------------+------------+----------+
-Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:01:06 ; elapsed = 00:01:07 . Memory (MB): peak = 1298.637 ; gain = 467.965 ; free physical = 3655 ; free virtual = 10513
+Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:02:50 ; elapsed = 00:02:58 . Memory (MB): peak = 593.344 ; gain = 421.320
 ---------------------------------------------------------------------------------
 Start IO Insertion
 ---------------------------------------------------------------------------------
@@ -1566,7 +1559,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:06 ; elapsed = 00:01:07 . Memory (MB): peak = 1298.637 ; gain = 467.965 ; free physical = 3655 ; free virtual = 10513
+Finished IO Insertion : Time (s): cpu = 00:02:51 ; elapsed = 00:02:59 . Memory (MB): peak = 593.344 ; gain = 421.320
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -1579,7 +1572,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:06 ; elapsed = 00:01:07 . Memory (MB): peak = 1298.637 ; gain = 467.965 ; free physical = 3655 ; free virtual = 10513
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:51 ; elapsed = 00:02:59 . Memory (MB): peak = 593.344 ; gain = 421.320
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1591,25 +1584,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:06 ; elapsed = 00:01:07 . Memory (MB): peak = 1298.637 ; gain = 467.965 ; free physical = 3655 ; free virtual = 10513
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:51 ; elapsed = 00:02:59 . Memory (MB): peak = 593.344 ; gain = 421.320
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:06 ; elapsed = 00:01:07 . Memory (MB): peak = 1298.637 ; gain = 467.965 ; free physical = 3655 ; free virtual = 10513
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:51 ; elapsed = 00:02:59 . Memory (MB): peak = 593.344 ; gain = 421.320
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:06 ; elapsed = 00:01:07 . Memory (MB): peak = 1298.637 ; gain = 467.965 ; free physical = 3655 ; free virtual = 10513
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:51 ; elapsed = 00:02:59 . Memory (MB): peak = 593.344 ; gain = 421.320
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:06 ; elapsed = 00:01:07 . Memory (MB): peak = 1298.637 ; gain = 467.965 ; free physical = 3655 ; free virtual = 10513
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:51 ; elapsed = 00:02:59 . Memory (MB): peak = 593.344 ; gain = 421.320
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -1654,25 +1647,25 @@ Report Instance Areas:
 |13    |            \prim_init.ram            |blk_mem_gen_prim_wrapper_init__parameterized1 |     3|
 +------+--------------------------------------+----------------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:06 ; elapsed = 00:01:07 . Memory (MB): peak = 1298.637 ; gain = 467.965 ; free physical = 3655 ; free virtual = 10513
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:51 ; elapsed = 00:02:59 . Memory (MB): peak = 593.344 ; gain = 421.320
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:03 ; elapsed = 00:01:03 . Memory (MB): peak = 1298.637 ; gain = 289.898 ; free physical = 3654 ; free virtual = 10513
-Synthesis Optimization Complete : Time (s): cpu = 00:01:06 ; elapsed = 00:01:07 . Memory (MB): peak = 1298.637 ; gain = 467.965 ; free physical = 3654 ; free virtual = 10513
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:26 ; elapsed = 00:02:46 . Memory (MB): peak = 593.344 ; gain = 312.301
+Synthesis Optimization Complete : Time (s): cpu = 00:02:51 ; elapsed = 00:03:00 . Memory (MB): peak = 593.344 ; gain = 421.320
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 3 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
-Parsing XDC File [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/FrameBuffer_ooc.xdc]
-Finished Parsing XDC File [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/FrameBuffer_ooc.xdc]
+Parsing XDC File [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/FrameBuffer_ooc.xdc]
+Finished Parsing XDC File [d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/FrameBuffer_ooc.xdc]
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-120 Infos, 38 Warnings, 0 Critical Warnings and 0 Errors encountered.
+120 Infos, 33 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:06 ; elapsed = 00:01:07 . Memory (MB): peak = 1298.637 ; gain = 382.500 ; free physical = 3644 ; free virtual = 10509
+synth_design: Time (s): cpu = 00:02:49 ; elapsed = 00:02:55 . Memory (MB): peak = 593.344 ; gain = 372.094
 INFO: [Coretcl 2-1174] Renamed 12 cell refs.
-report_utilization: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 1330.652 ; gain = 0.000 ; free physical = 3645 ; free virtual = 10510
-INFO: [Common 17-206] Exiting Vivado at Sun Apr 17 21:19:20 2016...
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.018 . Memory (MB): peak = 593.344 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Wed Apr 27 15:27:09 2016...

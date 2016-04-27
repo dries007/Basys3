@@ -38,6 +38,10 @@ constant ROWS : integer := 64;
 constant CHARS : integer := COLS * ROWS;
 constant CPU_FREQ : integer := 10_000_000;
 constant BLINKDATA : string := "Press any key to continue...";
+constant TYPE_LRG_CNT : std_logic_vector := "00";
+constant TYPE_SML_CNT : std_logic_vector := "01";
+constant TYPE_VAR : std_logic_vector := "10";
+constant TYPE_OMITTED : std_logic_vector := "11";
 
 -- CLOCK --------------------------------------------------------
 component ClockDivider
@@ -440,9 +444,9 @@ process (clk_cpu)
     type state_type is 
     (
         RESET, BLANK, SCROLL, SCROLL_W, LOAD, DEBUG, DEBUG_KB, ERROR, -- Background states, used for 'interpreter' stuff
-        FETCH, DECODE, EXEC -- Z machine states
+        FETCH, FETCH_OP, DECODE, EXEC -- Z machine states
     );
-    variable state : state_type := LOAD;-- RESET;-- The current/next state
+    variable state : state_type := RESET;-- LOAD;-- The current/next state
     variable next_state : state_type := RESET; -- The state to go to, after finishing the current one.
     
     type instuction_type is
@@ -454,8 +458,11 @@ process (clk_cpu)
         OP_STOREW, OP_STOREB, OP_PUT_PROP, OP_SREAD, OP_PRINT_CHAR, OP_PRINT_NUM, OP_RND, OP_PUSH, OP_PULL, OP_SPLIT_WINDOW, OP_SET_WINDOW
     );
     variable instruction : instuction_type := OP_NOP;
+    variable instruction_raw : std_logic_vector(7 downto 0) := (others => '0');
     
     variable ret : boolean := false;
+    
+    variable fetch_string : boolean := false;
     
     variable branch : boolean := false;
     variable branch_on_true : boolean := false;
@@ -466,12 +473,16 @@ process (clk_cpu)
     variable store_fetch : boolean := false;
     variable store_var : std_logic_vector(7 downto 0) := (others => '0');
     
+    variable op0_fetch : boolean := false;
     variable op0_type : std_logic_vector(1 downto 0) := "00";
     variable op0      : std_logic_vector(15 downto 0) := (others => '0');
+    variable op1_fetch : boolean := false;
     variable op1_type : std_logic_vector(1 downto 0) := "00";
     variable op1      : std_logic_vector(15 downto 0) := (others => '0');
+    variable op2_fetch : boolean := false;
     variable op2_type : std_logic_vector(1 downto 0) := "00";
     variable op2      : std_logic_vector(15 downto 0) := (others => '0');
+    variable op3_fetch : boolean := false;
     variable op3_type : std_logic_vector(1 downto 0) := "00";
     variable op3      : std_logic_vector(15 downto 0) := (others => '0');
     
@@ -507,6 +518,74 @@ begin
             ---------------------------------------------
             --          Z STATES
             ---------------------------------------------------------------------------------------------------------------------------------------
+            when EXEC =>
+                state := FETCH;
+            when FETCH_OP =>
+--constant TYPE_LRG_CNT : std_logic_vector := "00";
+--constant TYPE_SML_CNT : std_logic_vector := "01";
+--constant TYPE_VAR : std_logic_vector := "10";
+--constant TYPE_OMITTED : std_logic_vector := "11";
+                pc := pc + 1;
+                ram_re <= "11";
+                
+                if op0_fetch then
+                    op0_fetch := false;
+                    case op0_type is
+                        when TYPE_LRG_CNT =>
+                            op0 := ram_dat_r;
+                            pc := pc + 1;
+                        when TYPE_SML_CNT | TYPE_VAR =>
+                            op0 := "00000000" & ram_dat_r(15 downto 8);
+                        when TYPE_OMITTED =>
+                            op0 := (others => '0');
+                    end case;
+                elsif op1_fetch then
+                    op1_fetch := false;
+                    case op1_type is
+                        when TYPE_LRG_CNT =>
+                            op1 := ram_dat_r;
+                            pc := pc + 1;
+                        when TYPE_SML_CNT | TYPE_VAR =>
+                            op1 := "00000000" & ram_dat_r(15 downto 8);
+                        when TYPE_OMITTED =>
+                            op1 := (others => '0');
+                    end case;
+                elsif op2_fetch then
+                    op2_fetch := false;
+                    case op2_type is
+                        when TYPE_LRG_CNT =>
+                            op2 := ram_dat_r;
+                            pc := pc + 1;
+                        when TYPE_SML_CNT | TYPE_VAR =>
+                            op2 := "00000000" & ram_dat_r(15 downto 8);
+                        when TYPE_OMITTED =>
+                            op2 := (others => '0');
+                    end case;
+                elsif op3_fetch then
+                    op3_fetch := false;
+                    case op3_type is
+                        when TYPE_LRG_CNT =>
+                            op3 := ram_dat_r;
+                            pc := pc + 1;
+                        when TYPE_SML_CNT | TYPE_VAR =>
+                            op3 := "00000000" & ram_dat_r(15 downto 8);
+                        when TYPE_OMITTED =>
+                            op3 := (others => '0');
+                    end case;
+                elsif store_fetch then
+                    store_fetch := false;
+                    store_var := ram_dat_r(15 downto 8);
+                elsif branch_fetch then
+                    branch_fetch := false;
+                    branch_offset := ram_dat_r;
+                elsif fetch_string then
+                    -- todo
+                end if;
+                -- if no more fetch steps will follow, go to the next stage, don't need to check op0
+                if not (op1_fetch or op2_fetch or op3_fetch or store_fetch or branch_fetch or fetch_string) then
+                    state := EXEC;
+                end if;
+            ---------------------------------------------    
             when FETCH =>
                 ram_re <= "11";
                 ram_addr <= pc;
@@ -519,11 +598,10 @@ begin
             ---------------------------------------------
             when DECODE =>
                 state := EXEC;
-                next_state := EXEC;
                 pc := pc + 1;
                 ram_re <= "11";
                 ram_addr <= pc;
-                
+                instruction_raw := ram_dat_r(15 downto 8);
                 -- Short form ------------------------
                 if ram_dat_r(15 downto 14) = "10" then
                     -- 0OP ------------------------------
@@ -533,16 +611,21 @@ begin
                             instruction := OP_NOP;
                             ret := true;
                             op0 := "0000000000000001";
+                            op0_type := TYPE_SML_CNT;
                         when 1 => -- rfalse
                             instruction := OP_NOP;
                             ret := true;
                             op0 := "0000000000000000";
+                            op0_type := TYPE_SML_CNT;
                         when 2 => -- print (literal-string)
                             instruction := OP_PRINT;
+                            fetch_string := true;
                         when 3 => -- print_ret (literal-string)
                             instruction := OP_PRINT;
+                            fetch_string := true;
                             ret := true;
                             op0 := "0000000000000001";
+                            op0_type := TYPE_SML_CNT;
                         when 4 => -- nop
                             instruction := OP_NOP;
                         when 5 => -- save ?(label) -- TODO
@@ -695,6 +778,7 @@ begin
                         end case;
                     -- 2OP ------------------------------
                     else
+                        -- TODO ??? Is this correct ??
                         case to_integer(unsigned(ram_dat_r(12 downto 8))) is
                         when 0 =>
                             instruction := OP_COMP_ZERO;
@@ -833,23 +917,23 @@ begin
                         instruction := OP_GET_NEXT_PROP;
                         store := true;
                         store_fetch := true;
-                    when 20 =>
+                    when 20 => -- add a b -> (result)
                         instruction := OP_ADD;
                         store := true;
                         store_fetch := true;
-                    when 21 =>
+                    when 21 => -- sub a b -> (result)
                         instruction := OP_SUB;
                         store := true;
                         store_fetch := true;
-                    when 22 =>
+                    when 22 => -- mul a b -> (result)
                         instruction := OP_MUL;
                         store := true;
                         store_fetch := true;
-                    when 23 =>
+                    when 23 => -- div a b -> (result)
                         instruction := OP_DIV;
                         store := true;
                         store_fetch := true;
-                    when 24 =>
+                    when 24 => -- mod a b -> (result)
                         instruction := OP_MOD;
                         store := true;
                         store_fetch := true;
@@ -859,10 +943,6 @@ begin
                         message := pad_string("Instruction undecodable. Long", message'LENGTH, ram_dat_r);
                     end case;
                 end if;
-            ---------------------------------------------
-            when EXEC =>
-                -- TODO
-                state := FETCH;
             ---------------------------------------------------------------------------------------------------------------------------------------
             --          INTERPRETER STATES
             ---------------------------------------------
@@ -1013,7 +1093,6 @@ begin
                     when COLS + 4 =>    fb_a_dat_in <= ascii_c('s');
                     when COLS + 5 =>    fb_a_dat_in <= ascii_c('1');
                     when COLS + 6 =>    fb_a_dat_in <= ascii_c(':');
-                    
                     when COLS + 16 =>   fb_a_dat_in <= ascii_b(flags1(15));
                     when COLS + 17 =>   fb_a_dat_in <= ascii_b(flags1(14));
                     when COLS + 18 =>   fb_a_dat_in <= ascii_b(flags1(13));
@@ -1038,7 +1117,6 @@ begin
                     when 2 * COLS + 4 =>    fb_a_dat_in <= ascii_c('s');
                     when 2 * COLS + 5 =>    fb_a_dat_in <= ascii_c('2');
                     when 2 * COLS + 6 =>    fb_a_dat_in <= ascii_c(':');
-                    
                     when 2 * COLS + 16 =>   fb_a_dat_in <= ascii_b(flags2(15));
                     when 2 * COLS + 17 =>   fb_a_dat_in <= ascii_b(flags2(14));
                     when 2 * COLS + 18 =>   fb_a_dat_in <= ascii_b(flags2(13));
@@ -1061,7 +1139,6 @@ begin
                     when 3 * COLS + 2 =>    fb_a_dat_in <= ascii_c('g');
                     when 3 * COLS + 3 =>    fb_a_dat_in <= ascii_c('h');
                     when 3 * COLS + 4 =>    fb_a_dat_in <= ascii_c(':');
-                    
                     when 3 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
                     when 3 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
                     when 3 * COLS + 18 =>   fb_a_dat_in <= ascii_x(high, 3);
@@ -1073,7 +1150,6 @@ begin
                     when 4 * COLS + 1 =>    fb_a_dat_in <= ascii_c('C');
                     when 4 * COLS + 2 =>    fb_a_dat_in <= ascii_c(':');
                     when 4 * COLS + 3 =>    fb_a_dat_in <= ascii_c(' ');
-                    
                     when 4 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
                     when 4 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
                     when 4 * COLS + 18 =>   fb_a_dat_in <= ascii_x(pc, 3);
@@ -1086,7 +1162,6 @@ begin
                     when 5 * COLS + 2 =>    fb_a_dat_in <= ascii_c('c');
                     when 5 * COLS + 3 =>    fb_a_dat_in <= ascii_c('t');
                     when 5 * COLS + 4 =>    fb_a_dat_in <= ascii_c(':');
-                    
                     when 5 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
                     when 5 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
                     when 5 * COLS + 18 =>   fb_a_dat_in <= ascii_x(dict, 3);
@@ -1098,7 +1173,6 @@ begin
                     when 6 * COLS + 1 =>    fb_a_dat_in <= ascii_c('b');
                     when 6 * COLS + 2 =>    fb_a_dat_in <= ascii_c('j');
                     when 6 * COLS + 3 =>    fb_a_dat_in <= ascii_c(':');
-                    
                     when 6 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
                     when 6 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
                     when 6 * COLS + 18 =>   fb_a_dat_in <= ascii_x(objtab, 3);
@@ -1114,7 +1188,6 @@ begin
                     when 7 * COLS + 5 =>    fb_a_dat_in <= ascii_c('l');
                     when 7 * COLS + 6 =>    fb_a_dat_in <= ascii_c('s');
                     when 7 * COLS + 7 =>    fb_a_dat_in <= ascii_c(':');
-                    
                     when 7 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
                     when 7 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
                     when 7 * COLS + 18 =>   fb_a_dat_in <= ascii_x(globals, 3);
@@ -1129,7 +1202,6 @@ begin
                     when 8 * COLS + 4 =>    fb_a_dat_in <= ascii_c('i');
                     when 8 * COLS + 5 =>    fb_a_dat_in <= ascii_c('c');
                     when 8 * COLS + 6 =>    fb_a_dat_in <= ascii_c(':');
-                    
                     when 8 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
                     when 8 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
                     when 8 * COLS + 18 =>   fb_a_dat_in <= ascii_x(static, 3);
@@ -1144,7 +1216,6 @@ begin
                     when 9 * COLS + 4 =>    fb_a_dat_in <= ascii_c('e');
                     when 9 * COLS + 5 =>    fb_a_dat_in <= ascii_c('v');
                     when 9 * COLS + 6 =>    fb_a_dat_in <= ascii_c(':');
-                    
                     when 9 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
                     when 9 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
                     when 9 * COLS + 18 =>   fb_a_dat_in <= ascii_x(abbreviations, 3);
@@ -1159,7 +1230,6 @@ begin
                     when 10 * COLS + 4 =>    fb_a_dat_in <= ascii_c('t');
                     when 10 * COLS + 5 =>    fb_a_dat_in <= ascii_c('h');
                     when 10 * COLS + 6 =>    fb_a_dat_in <= ascii_c(':');
-                    
                     when 10 * COLS + 16 =>   fb_a_dat_in <= ascii_i(length, 4);
                     when 10 * COLS + 17 =>   fb_a_dat_in <= ascii_i(length, 3);
                     when 10 * COLS + 18 =>   fb_a_dat_in <= ascii_i(length, 2);
@@ -1175,7 +1245,6 @@ begin
                     when 11 * COLS + 6 =>    fb_a_dat_in <= ascii_c('u');
                     when 11 * COLS + 7 =>    fb_a_dat_in <= ascii_c('m');
                     when 11 * COLS + 8 =>    fb_a_dat_in <= ascii_c(':');
-                    
                     when 11 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
                     when 11 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
                     when 11 * COLS + 18 =>   fb_a_dat_in <= ascii_x(checksum, 3);
@@ -1192,19 +1261,90 @@ begin
                     when 12 * COLS + 6 =>    fb_a_dat_in <= ascii_c('a');
                     when 12 * COLS + 7 =>    fb_a_dat_in <= ascii_c('d');
                     when 12 * COLS + 8 =>    fb_a_dat_in <= ascii_c(':');
-                    
                     when 12 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
                     when 12 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
                     when 12 * COLS + 18 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(ram_dat_r)), 3);
                     when 12 * COLS + 19 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(ram_dat_r)), 2);
                     when 12 * COLS + 20 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(ram_dat_r)), 1);
                     when 12 * COLS + 21 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(ram_dat_r)), 0);
-                    
                     when 12 * COLS + 32 =>   fb_a_dat_in <= ascii_i(to_integer(unsigned(ram_dat_r)), 4);
                     when 12 * COLS + 33 =>   fb_a_dat_in <= ascii_i(to_integer(unsigned(ram_dat_r)), 3);
                     when 12 * COLS + 34 =>   fb_a_dat_in <= ascii_i(to_integer(unsigned(ram_dat_r)), 2);
                     when 12 * COLS + 35 =>   fb_a_dat_in <= ascii_i(to_integer(unsigned(ram_dat_r)), 1);
                     when 12 * COLS + 36 =>   fb_a_dat_in <= ascii_i(to_integer(unsigned(ram_dat_r)), 0);
+                    
+                    when 13 * COLS + 0 =>    fb_a_dat_in <= ascii_c('I');
+                    when 13 * COLS + 1 =>    fb_a_dat_in <= ascii_c('n');
+                    when 13 * COLS + 2 =>    fb_a_dat_in <= ascii_c('s');
+                    when 13 * COLS + 3 =>    fb_a_dat_in <= ascii_c('t');
+                    when 13 * COLS + 4 =>    fb_a_dat_in <= ascii_c('r');
+                    when 13 * COLS + 5 =>    fb_a_dat_in <= ascii_c('u');
+                    when 13 * COLS + 6 =>    fb_a_dat_in <= ascii_c('c');
+                    when 13 * COLS + 7 =>    fb_a_dat_in <= ascii_c('t');
+                    when 13 * COLS + 8 =>    fb_a_dat_in <= ascii_c('i');
+                    when 13 * COLS + 9 =>    fb_a_dat_in <= ascii_c('o');
+                    when 13 * COLS + 10 =>   fb_a_dat_in <= ascii_c('n');
+                    when 13 * COLS + 11 =>   fb_a_dat_in <= ascii_c(':');
+                    when 13 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
+                    when 13 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
+                    when 13 * COLS + 18 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(instruction_raw)), 1);
+                    when 13 * COLS + 19 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(instruction_raw)), 0);
+                    
+                    when 14 * COLS + 0 =>    fb_a_dat_in <= ascii_c('O');
+                    when 14 * COLS + 1 =>    fb_a_dat_in <= ascii_c('P');
+                    when 14 * COLS + 2 =>    fb_a_dat_in <= ascii_c('0');
+                    when 14 * COLS + 3 =>    fb_a_dat_in <= ascii_c(':');
+                    when 14 * COLS + 4 =>    fb_a_dat_in <= ascii_c(' ');
+                    when 14 * COLS + 5 =>    fb_a_dat_in <= ascii_x(to_integer(unsigned(op0_type)), 1);
+                    when 14 * COLS + 6 =>    fb_a_dat_in <= ascii_x(to_integer(unsigned(op0_type)), 0);
+                    when 14 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
+                    when 14 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
+                    when 14 * COLS + 18 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(op0)), 3);
+                    when 14 * COLS + 19 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(op0)), 2);
+                    when 14 * COLS + 20 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(op0)), 1);
+                    when 14 * COLS + 21 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(op0)), 0);
+                    
+                    when 15 * COLS + 0 =>    fb_a_dat_in <= ascii_c('O');
+                    when 15 * COLS + 1 =>    fb_a_dat_in <= ascii_c('P');
+                    when 15 * COLS + 2 =>    fb_a_dat_in <= ascii_c('1');
+                    when 15 * COLS + 3 =>    fb_a_dat_in <= ascii_c(':');
+                    when 15 * COLS + 4 =>    fb_a_dat_in <= ascii_c(' ');
+                    when 15 * COLS + 5 =>    fb_a_dat_in <= ascii_x(to_integer(unsigned(op1_type)), 1);
+                    when 15 * COLS + 6 =>    fb_a_dat_in <= ascii_x(to_integer(unsigned(op1_type)), 0);
+                    when 15 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
+                    when 15 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
+                    when 15 * COLS + 18 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(op1)), 3);
+                    when 15 * COLS + 19 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(op1)), 2);
+                    when 15 * COLS + 20 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(op1)), 1);
+                    when 15 * COLS + 21 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(op1)), 0);
+                    
+                    when 16 * COLS + 0 =>    fb_a_dat_in <= ascii_c('O');
+                    when 16 * COLS + 1 =>    fb_a_dat_in <= ascii_c('P');
+                    when 16 * COLS + 2 =>    fb_a_dat_in <= ascii_c('2');
+                    when 16 * COLS + 3 =>    fb_a_dat_in <= ascii_c(':');
+                    when 16 * COLS + 4 =>    fb_a_dat_in <= ascii_c(' ');
+                    when 16 * COLS + 5 =>    fb_a_dat_in <= ascii_x(to_integer(unsigned(op2_type)), 1);
+                    when 16 * COLS + 6 =>    fb_a_dat_in <= ascii_x(to_integer(unsigned(op2_type)), 0);
+                    when 16 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
+                    when 16 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
+                    when 16 * COLS + 18 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(op2)), 3);
+                    when 16 * COLS + 19 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(op2)), 2);
+                    when 16 * COLS + 20 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(op2)), 1);
+                    when 16 * COLS + 21 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(op2)), 0);
+                    
+                    when 17 * COLS + 0 =>    fb_a_dat_in <= ascii_c('O');
+                    when 17 * COLS + 1 =>    fb_a_dat_in <= ascii_c('P');
+                    when 17 * COLS + 2 =>    fb_a_dat_in <= ascii_c('3');
+                    when 17 * COLS + 3 =>    fb_a_dat_in <= ascii_c(':');
+                    when 17 * COLS + 4 =>    fb_a_dat_in <= ascii_c(' ');
+                    when 17 * COLS + 5 =>    fb_a_dat_in <= ascii_x(to_integer(unsigned(op3_type)), 1);
+                    when 17 * COLS + 6 =>    fb_a_dat_in <= ascii_x(to_integer(unsigned(op3_type)), 0);
+                    when 17 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
+                    when 17 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
+                    when 17 * COLS + 18 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(op3)), 3);
+                    when 17 * COLS + 19 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(op3)), 2);
+                    when 17 * COLS + 20 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(op3)), 1);
+                    when 17 * COLS + 21 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(op3)), 0);
                     
                     when others =>
                         -- Nothing

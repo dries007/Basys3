@@ -1,8 +1,8 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
-| Date         : Mon Apr 18 13:35:39 2016
-| Host         : Dries007-Arch running 64-bit unknown
+| Tool Version : Vivado v.2015.4 (win64) Build 1412921 Wed Nov 18 09:43:45 MST 2015
+| Date         : Wed Apr 27 15:28:53 2016
+| Host         : Dries007Laptop running 64-bit major release  (build 9200)
 | Command      : report_utilization -file Mem_utilization_synth.rpt -pb Mem_utilization_synth.pb
 | Design       : Mem
 | Device       : 7a35tcpg236-1
