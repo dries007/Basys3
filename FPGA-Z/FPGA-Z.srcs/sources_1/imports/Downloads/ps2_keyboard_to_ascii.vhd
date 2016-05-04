@@ -53,9 +53,9 @@ architecture behavior of ps2_keyboard_to_ascii is
   signal shift_r           : std_logic := '0';                      --'1' if right shift is held down, else '0'
   signal shift_l           : std_logic := '0';                      --'1' if left shift is held down, else '0'
   signal ascii             : std_logic_vector(7 downto 0) := x"ff"; --internal value of ascii translation
-  signal prev_ascii        : std_logic_vector(6 downto 0); --internal value of ascii translation
+  signal prev_ascii        : std_logic_vector(6 downto 0) := "1111111";
   constant repeat_max      : integer := clk_freq * repeat_delay / 1000;
-  signal repeat_counter    : integer range 0 to repeat_max;
+  signal repeat_counter    : integer range 0 to repeat_max := 0;
 
   --declare ps2 keyboard interface component
   component ps2_keyboard is
@@ -313,14 +313,13 @@ begin
         
         --output state: verify the code is valid and output the ascii value
         when output =>
-          if(ascii(7) = '0') then            --the ps2 code has an ascii output
+          if ascii(7) = '0' then            --the ps2 code has an ascii output
             -- REPEAT CODE CHANGES
             if ascii(6 downto 0) = prev_ascii then
-                if repeat_counter = repeat_max - 1 then
+                if repeat_counter >= repeat_max - 1 then
                     ascii_new <= '1';                  --set flag indicating new ascii output
                     ascii_code <= ascii(6 downto 0);   --output the ascii value
-                    
-                    
+                    repeat_counter <= 0;
                 else
                     repeat_counter <= repeat_counter + 1;
                     ascii_new <= '0';                  --set flag indicating new ascii output
@@ -333,6 +332,7 @@ begin
             end if;
           else
             ascii_new <= '0';
+            repeat_counter <= 0;
             -- END REPEAT CODE CHANGES
           end if;
           state <= ready;                    --return to ready state to await next ps2 code

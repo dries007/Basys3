@@ -519,15 +519,13 @@ begin
             --          Z STATES
             ---------------------------------------------------------------------------------------------------------------------------------------
             when EXEC =>
-                state := FETCH;
-            when FETCH_OP =>
---constant TYPE_LRG_CNT : std_logic_vector := "00";
---constant TYPE_SML_CNT : std_logic_vector := "01";
---constant TYPE_VAR : std_logic_vector := "10";
---constant TYPE_OMITTED : std_logic_vector := "11";
-                pc := pc + 1;
-                ram_re <= "11";
+            
+                state := ERROR;
+                message := pad_string("Debug", message'LENGTH, ram_dat_r);
                 
+                -- state := FETCH;
+            when FETCH_OP =>
+                pc := pc + 1;
                 if op0_fetch then
                     op0_fetch := false;
                     case op0_type is
@@ -581,6 +579,8 @@ begin
                 elsif fetch_string then
                     -- todo
                 end if;
+                ram_re <= "11";
+                ram_addr <= pc;
                 -- if no more fetch steps will follow, go to the next stage, don't need to check op0
                 if not (op1_fetch or op2_fetch or op3_fetch or store_fetch or branch_fetch or fetch_string) then
                     state := EXEC;
@@ -597,7 +597,7 @@ begin
                 end if;
             ---------------------------------------------
             when DECODE =>
-                state := EXEC;
+                state := FETCH_OP;
                 pc := pc + 1;
                 ram_re <= "11";
                 ram_addr <= pc;
@@ -668,17 +668,15 @@ begin
                         end case;
                     -- 1OP ------------------------------
                     else
-                        -- Increment PC again, since the 2nd byte of the word we got is (part of) the operand
-                        pc := pc + 1;
+                        op0_type := ram_dat_r(11 downto 10);
+                        if op0_type /= TYPE_LRG_CNT then -- NOT Lage constant that will require later fetching, BUT Variable or small constant
+                            op0 := "00000000" & ram_dat_r(7 downto 0);
+                            pc := pc + 1; -- Increment PC again, since the 2nd byte of the word we got is (part of) the operand
+                        else
+                            op0_fetch := true;
+                        end if;
                         ram_re <= "11";
                         ram_addr <= pc;
-                        op0_type := ram_dat_r(11 downto 10);
-                        if op0_type = "00" then -- Lage constant, will require later fetching
-                            op0 := ram_dat_r(7 downto 0) & "00000000";
-                        else -- Variable or small constant
-                            op0 := "00000000" & ram_dat_r(7 downto 0);
-                        end if;
-                        
                         case to_integer(unsigned(ram_dat_r(9 downto 8))) is
                         when 0 =>
                             instruction := OP_COMP_ZERO;
@@ -736,10 +734,25 @@ begin
                     end if;
                 -- Variable form ---------------------
                 elsif ram_dat_r(15 downto 14) = "11" then
+                    pc := pc + 1; -- second byte was type info, inc again
+                    ram_re <= "11";
+                    ram_addr <= pc;
                     op0_type := ram_dat_r(7 downto 6);
                     op1_type := ram_dat_r(5 downto 4);
                     op2_type := ram_dat_r(3 downto 2);
                     op3_type := ram_dat_r(1 downto 0);
+                    if op0_type /= TYPE_OMITTED then
+                        op0_fetch := true;
+                    end if;
+                    if op1_type /= TYPE_OMITTED then
+                        op1_fetch := true;
+                    end if;
+                    if op2_type /= TYPE_OMITTED then
+                        op2_fetch := true;
+                    end if;
+                    if op3_type /= TYPE_OMITTED then
+                        op3_fetch := true;
+                    end if;
                     -- VAR ------------------------------
                     if ram_dat_r(13) = '1' then
                         case to_integer(unsigned(ram_dat_r(12 downto 8))) is
@@ -1295,8 +1308,8 @@ begin
                     when 14 * COLS + 2 =>    fb_a_dat_in <= ascii_c('0');
                     when 14 * COLS + 3 =>    fb_a_dat_in <= ascii_c(':');
                     when 14 * COLS + 4 =>    fb_a_dat_in <= ascii_c(' ');
-                    when 14 * COLS + 5 =>    fb_a_dat_in <= ascii_x(to_integer(unsigned(op0_type)), 1);
-                    when 14 * COLS + 6 =>    fb_a_dat_in <= ascii_x(to_integer(unsigned(op0_type)), 0);
+                    when 14 * COLS + 5 =>    fb_a_dat_in <= ascii_b(op0_type(1));
+                    when 14 * COLS + 6 =>    fb_a_dat_in <= ascii_b(op0_type(0));
                     when 14 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
                     when 14 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
                     when 14 * COLS + 18 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(op0)), 3);
@@ -1309,8 +1322,8 @@ begin
                     when 15 * COLS + 2 =>    fb_a_dat_in <= ascii_c('1');
                     when 15 * COLS + 3 =>    fb_a_dat_in <= ascii_c(':');
                     when 15 * COLS + 4 =>    fb_a_dat_in <= ascii_c(' ');
-                    when 15 * COLS + 5 =>    fb_a_dat_in <= ascii_x(to_integer(unsigned(op1_type)), 1);
-                    when 15 * COLS + 6 =>    fb_a_dat_in <= ascii_x(to_integer(unsigned(op1_type)), 0);
+                    when 15 * COLS + 5 =>    fb_a_dat_in <= ascii_b(op1_type(1));
+                    when 15 * COLS + 6 =>    fb_a_dat_in <= ascii_b(op1_type(0));
                     when 15 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
                     when 15 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
                     when 15 * COLS + 18 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(op1)), 3);
@@ -1323,8 +1336,8 @@ begin
                     when 16 * COLS + 2 =>    fb_a_dat_in <= ascii_c('2');
                     when 16 * COLS + 3 =>    fb_a_dat_in <= ascii_c(':');
                     when 16 * COLS + 4 =>    fb_a_dat_in <= ascii_c(' ');
-                    when 16 * COLS + 5 =>    fb_a_dat_in <= ascii_x(to_integer(unsigned(op2_type)), 1);
-                    when 16 * COLS + 6 =>    fb_a_dat_in <= ascii_x(to_integer(unsigned(op2_type)), 0);
+                    when 16 * COLS + 5 =>    fb_a_dat_in <= ascii_b(op2_type(1));
+                    when 16 * COLS + 6 =>    fb_a_dat_in <= ascii_b(op2_type(0));
                     when 16 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
                     when 16 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
                     when 16 * COLS + 18 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(op2)), 3);
@@ -1337,8 +1350,8 @@ begin
                     when 17 * COLS + 2 =>    fb_a_dat_in <= ascii_c('3');
                     when 17 * COLS + 3 =>    fb_a_dat_in <= ascii_c(':');
                     when 17 * COLS + 4 =>    fb_a_dat_in <= ascii_c(' ');
-                    when 17 * COLS + 5 =>    fb_a_dat_in <= ascii_x(to_integer(unsigned(op3_type)), 1);
-                    when 17 * COLS + 6 =>    fb_a_dat_in <= ascii_x(to_integer(unsigned(op3_type)), 0);
+                    when 17 * COLS + 5 =>    fb_a_dat_in <= ascii_b(op3_type(1));
+                    when 17 * COLS + 6 =>    fb_a_dat_in <= ascii_b(op3_type(0));
                     when 17 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
                     when 17 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
                     when 17 * COLS + 18 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(op3)), 3);
@@ -1355,6 +1368,9 @@ begin
                     cursor := 32 * COLS;
                 end if;
             when DEBUG_KB =>
+                if btnC = '1' and cursor = 0 then
+                    state := FETCH;
+                end if;
                 if kb_event = '1' then
                     -- By default, we want to write a space to the current position
                     fb_a_en <= '1';
@@ -1380,7 +1396,7 @@ begin
                         fb_a_we <=  "0";
                         cursor := 0;
                         state := BLANK;
-                        next_state := DEBUG;
+                        next_state := DEBUG_KB;
                     -- OTHERWISE print character to screen
                     else
                         fb_a_dat_in <= '0' & kb_acsii;
