@@ -51,32 +51,32 @@ set rc [catch {
   create_msg_db init_design.pb
   set_param xicom.use_bs_reader 1
   set_property design_mode GateLvl [current_fileset]
-  set_property webtalk.parent_dir D:/Github/Basys3/FPGA-Z/FPGA-Z.cache/wt [current_project]
-  set_property parent.project_path D:/Github/Basys3/FPGA-Z/FPGA-Z.xpr [current_project]
-  set_property ip_repo_paths d:/Github/Basys3/FPGA-Z/FPGA-Z.cache/ip [current_project]
-  set_property ip_output_repo d:/Github/Basys3/FPGA-Z/FPGA-Z.cache/ip [current_project]
-  add_files -quiet D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/top.dcp
-  add_files -quiet D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/ClockDivider_synth_1/ClockDivider.dcp
-  set_property netlist_only true [get_files D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/ClockDivider_synth_1/ClockDivider.dcp]
-  add_files -quiet D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/FrameBuffer_synth_1/FrameBuffer.dcp
-  set_property netlist_only true [get_files D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/FrameBuffer_synth_1/FrameBuffer.dcp]
-  add_files -quiet D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/Mem_synth_1/Mem.dcp
-  set_property netlist_only true [get_files D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/Mem_synth_1/Mem.dcp]
-  add_files -quiet D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/Stack_synth_1/Stack.dcp
-  set_property netlist_only true [get_files D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/Stack_synth_1/Stack.dcp]
-  read_xdc -mode out_of_context -ref ClockDivider -cells inst d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider_ooc.xdc
-  set_property processing_order EARLY [get_files d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider_ooc.xdc]
-  read_xdc -prop_thru_buffers -ref ClockDivider -cells inst d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider_board.xdc
-  set_property processing_order EARLY [get_files d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider_board.xdc]
-  read_xdc -ref ClockDivider -cells inst d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider.xdc
-  set_property processing_order EARLY [get_files d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider.xdc]
-  read_xdc -mode out_of_context -ref FrameBuffer d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/FrameBuffer_ooc.xdc
-  set_property processing_order EARLY [get_files d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/FrameBuffer_ooc.xdc]
-  read_xdc -mode out_of_context -ref Mem d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/Mem/Mem_ooc.xdc
-  set_property processing_order EARLY [get_files d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/Mem/Mem_ooc.xdc]
-  read_xdc -mode out_of_context -ref Stack -cells U0 d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/Stack/Stack_ooc.xdc
-  set_property processing_order EARLY [get_files d:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/Stack/Stack_ooc.xdc]
-  read_xdc D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/constrs_1/imports/Basys3/Basys3_Master.xdc
+  set_property webtalk.parent_dir /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.cache/wt [current_project]
+  set_property parent.project_path /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.xpr [current_project]
+  set_property ip_repo_paths /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.cache/ip [current_project]
+  set_property ip_output_repo /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.cache/ip [current_project]
+  add_files -quiet /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/top.dcp
+  add_files -quiet /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/ClockDivider_synth_1/ClockDivider.dcp
+  set_property netlist_only true [get_files /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/ClockDivider_synth_1/ClockDivider.dcp]
+  add_files -quiet /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/Stack_synth_1/Stack.dcp
+  set_property netlist_only true [get_files /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/Stack_synth_1/Stack.dcp]
+  add_files -quiet /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/FrameBuffer_synth_1/FrameBuffer.dcp
+  set_property netlist_only true [get_files /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/FrameBuffer_synth_1/FrameBuffer.dcp]
+  add_files -quiet /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/Mem_synth_1/Mem.dcp
+  set_property netlist_only true [get_files /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/Mem_synth_1/Mem.dcp]
+  read_xdc -mode out_of_context -ref ClockDivider -cells inst /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider_ooc.xdc
+  set_property processing_order EARLY [get_files /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider_ooc.xdc]
+  read_xdc -prop_thru_buffers -ref ClockDivider -cells inst /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider_board.xdc
+  set_property processing_order EARLY [get_files /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider_board.xdc]
+  read_xdc -ref ClockDivider -cells inst /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider.xdc
+  set_property processing_order EARLY [get_files /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider.xdc]
+  read_xdc -mode out_of_context -ref Stack -cells U0 /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/Stack/Stack_ooc.xdc
+  set_property processing_order EARLY [get_files /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/Stack/Stack_ooc.xdc]
+  read_xdc -mode out_of_context -ref FrameBuffer /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/FrameBuffer_ooc.xdc
+  set_property processing_order EARLY [get_files /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/FrameBuffer/FrameBuffer_ooc.xdc]
+  read_xdc -mode out_of_context -ref Mem /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/Mem/Mem_ooc.xdc
+  set_property processing_order EARLY [get_files /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/Mem/Mem_ooc.xdc]
+  read_xdc /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/constrs_1/imports/Basys3/Basys3_Master.xdc
   link_design -top top -part xc7a35tcpg236-1
   close_msg_db -file init_design.pb
 } RESULT]

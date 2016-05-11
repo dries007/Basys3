@@ -132,8 +132,7 @@ signal rng_out : std_logic_vector(15 downto 0) := (others =>'0');
 component ps2_keyboard_to_ascii is
     Generic
     (
-        CLK_FREQ : integer := 10_000_000;
-        REPEAT_DELAY : integer := 15
+        CLK_FREQ : integer := CPU_FREQ
     );
     Port 
     ( 
@@ -1359,6 +1358,33 @@ begin
                     when 17 * COLS + 20 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(op3)), 1);
                     when 17 * COLS + 21 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(op3)), 0);
                     
+                    when 18 * COLS + 0 =>    fb_a_dat_in <= ascii_c('S');
+                    when 18 * COLS + 1 =>    fb_a_dat_in <= ascii_c('t');
+                    when 18 * COLS + 2 =>    fb_a_dat_in <= ascii_c('o');
+                    when 18 * COLS + 3 =>    fb_a_dat_in <= ascii_c('r');
+                    when 18 * COLS + 4 =>    fb_a_dat_in <= ascii_c('e');
+                    when 18 * COLS + 5 =>    fb_a_dat_in <= ascii_c(':');
+                    when 18 * COLS + 6 =>    fb_a_dat_in <= ascii_c(' ');
+                    when 18 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
+                    when 18 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
+                    when 18 * COLS + 18 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(store_var)), 1);
+                    when 18 * COLS + 19 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(store_var)), 0);
+                    
+                    when 19 * COLS + 0 =>    fb_a_dat_in <= ascii_c('B');
+                    when 19 * COLS + 1 =>    fb_a_dat_in <= ascii_c('r');
+                    when 19 * COLS + 2 =>    fb_a_dat_in <= ascii_c('a');
+                    when 19 * COLS + 3 =>    fb_a_dat_in <= ascii_c('n');
+                    when 19 * COLS + 4 =>    fb_a_dat_in <= ascii_c('c');
+                    when 19 * COLS + 5 =>    fb_a_dat_in <= ascii_c('h');
+                    when 19 * COLS + 6 =>    fb_a_dat_in <= ascii_c(':');
+                    when 19 * COLS + 7 =>    fb_a_dat_in <= ascii_c(' ');
+                    when 19 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
+                    when 19 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
+                    when 19 * COLS + 18 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(branch_offset)), 3);
+                    when 19 * COLS + 19 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(branch_offset)), 2);
+                    when 19 * COLS + 20 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(branch_offset)), 1);
+                    when 19 * COLS + 21 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(branch_offset)), 0);
+
                     when others =>
                         -- Nothing
                 end case;
@@ -1368,9 +1394,6 @@ begin
                     cursor := 32 * COLS;
                 end if;
             when DEBUG_KB =>
-                if btnC = '1' and cursor = 0 then
-                    state := FETCH;
-                end if;
                 if kb_event = '1' then
                     -- By default, we want to write a space to the current position
                     fb_a_en <= '1';
@@ -1390,6 +1413,9 @@ begin
                         else
                             cursor := cursor_delta(cursor, COLS - (cursor mod COLS));    
                         end if;
+                    -- ELSE IF NULL Continue
+                    elsif kb_acsii = "0000000" then
+                        state := FETCH;
                     -- ELSE IF Delete (wipe whole screen)
                     elsif kb_acsii = "1111111" then
                         fb_a_en <= '0';

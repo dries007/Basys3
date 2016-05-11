@@ -1,8 +1,8 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------
-| Tool Version     : Vivado v.2015.4 (win64) Build 1412921 Wed Nov 18 09:43:45 MST 2015
-| Date             : Wed May 04 17:50:37 2016
-| Host             : Dries007Laptop running 64-bit major release  (build 9200)
+| Tool Version     : Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
+| Date             : Sat May  7 22:58:50 2016
+| Host             : Dries007-Arch running 64-bit unknown
 | Command          : 
 | Design           : top
 | Device           : xc7a35tcpg236-1
@@ -50,13 +50,13 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.003 |       14 |       --- |             --- |
-| Slice Logic    |     0.003 |     4863 |       --- |             --- |
-|   LUT as Logic |     0.003 |     3059 |     20800 |           14.71 |
-|   CARRY4       |    <0.001 |      321 |      8150 |            3.94 |
-|   F7/F8 Muxes  |    <0.001 |      206 |     32600 |            0.63 |
-|   Register     |    <0.001 |      599 |     41600 |            1.44 |
+| Slice Logic    |     0.003 |     4982 |       --- |             --- |
+|   LUT as Logic |     0.003 |     3170 |     20800 |           15.24 |
+|   CARRY4       |    <0.001 |      316 |      8150 |            3.88 |
+|   F7/F8 Muxes  |    <0.001 |      209 |     32600 |            0.64 |
+|   Register     |    <0.001 |      595 |     41600 |            1.43 |
 |   Others       |     0.000 |      121 |       --- |             --- |
-| Signals        |     0.003 |     3874 |       --- |             --- |
+| Signals        |     0.003 |     3995 |       --- |             --- |
 | Block RAM      |     0.003 |     34.5 |        50 |           69.00 |
 | MMCM           |     0.110 |        1 |         5 |           20.00 |
 | I/O            |     0.014 |       38 |       106 |           35.85 |
@@ -176,8 +176,8 @@ Table of Contents
 |           gnativebmg.native_blk_mem_gen |     0.002 |
 |             valid.cstr                  |     0.002 |
 |               has_mux_a.A               |    <0.001 |
-|               ramloop[0].ram.r          |    <0.001 |
-|                 prim_init.ram           |    <0.001 |
+|               ramloop[0].ram.r          |     0.001 |
+|                 prim_init.ram           |     0.001 |
 |               ramloop[10].ram.r         |    <0.001 |
 |                 prim_init.ram           |    <0.001 |
 |               ramloop[11].ram.r         |    <0.001 |

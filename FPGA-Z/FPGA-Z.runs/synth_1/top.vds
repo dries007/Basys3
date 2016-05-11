@@ -1,13 +1,13 @@
 #-----------------------------------------------------------
 # Vivado v2015.4 (64-bit)
-# SW Build 1412921 on Wed Nov 18 09:43:45 MST 2015
+# SW Build 1412921 on Wed Nov 18 09:44:32 MST 2015
 # IP Build 1412160 on Tue Nov 17 13:47:24 MST 2015
-# Start of session at: Wed May 04 17:41:24 2016
-# Process ID: 8288
-# Current directory: D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1
-# Command line: vivado.exe -log top.vds -mode batch -messageDb vivado.pb -notrace -source top.tcl
-# Log file: D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/top.vds
-# Journal file: D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1\vivado.jou
+# Start of session at: Sat May  7 22:54:24 2016
+# Process ID: 1469
+# Current directory: /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1
+# Command line: vivado -log top.vds -mode batch -messageDb vivado.pb -notrace -source top.tcl
+# Log file: /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/top.vds
+# Journal file: /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/vivado.jou
 #-----------------------------------------------------------
 source top.tcl -notrace
 Command: synth_design -top top -part xc7a35tcpg236-1
@@ -15,13 +15,13 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:14 . Memory (MB): peak = 261.879 ; gain = 89.914
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 960.590 ; gain = 129.918 ; free physical = 1966 ; free virtual = 10688
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'top' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:33]
-INFO: [Synth 8-3491] module 'ClockDivider' declared at 'D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-8288-/realtime/ClockDivider_stub.vhdl:5' bound to instance 'clock0' of component 'ClockDivider' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:303]
-INFO: [Synth 8-638] synthesizing module 'ClockDivider' [D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-8288-/realtime/ClockDivider_stub.vhdl:17]
-INFO: [Synth 8-3491] module 'Vga' declared at 'D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Vga.vhd:12' bound to instance 'vga0' of component 'Vga' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:339]
-INFO: [Synth 8-638] synthesizing module 'Vga' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Vga.vhd:38]
+INFO: [Synth 8-638] synthesizing module 'top' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:33]
+INFO: [Synth 8-3491] module 'ClockDivider' declared at '/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-1469-Dries007-Arch/realtime/ClockDivider_stub.vhdl:5' bound to instance 'clock0' of component 'ClockDivider' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:302]
+INFO: [Synth 8-638] synthesizing module 'ClockDivider' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-1469-Dries007-Arch/realtime/ClockDivider_stub.vhdl:17]
+INFO: [Synth 8-3491] module 'Vga' declared at '/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Vga.vhd:12' bound to instance 'vga0' of component 'Vga' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:338]
+INFO: [Synth 8-638] synthesizing module 'Vga' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Vga.vhd:38]
 	Parameter H_PIX bound to: 1280 - type: integer 
 	Parameter H_FP bound to: 48 - type: integer 
 	Parameter H_SY bound to: 112 - type: integer 
@@ -32,60 +32,58 @@ INFO: [Synth 8-638] synthesizing module 'Vga' [D:/Github/Basys3/FPGA-Z/FPGA-Z.sr
 	Parameter V_SY bound to: 3 - type: integer 
 	Parameter V_BP bound to: 36 - type: integer 
 	Parameter V_POL bound to: 1'b1 
-INFO: [Synth 8-4471] merging register 'vgaGreen_reg[3:0]' into 'vgaRed_reg[3:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Vga.vhd:91]
-INFO: [Synth 8-4471] merging register 'vgaBlue_reg[3:0]' into 'vgaRed_reg[3:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Vga.vhd:92]
-INFO: [Synth 8-256] done synthesizing module 'Vga' (1#1) [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Vga.vhd:38]
-INFO: [Synth 8-3491] module 'FrameBuffer' declared at 'D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-8288-/realtime/FrameBuffer_stub.vhdl:5' bound to instance 'frameBuffer0' of component 'Framebuffer' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:352]
-INFO: [Synth 8-638] synthesizing module 'FrameBuffer' [D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-8288-/realtime/FrameBuffer_stub.vhdl:22]
+INFO: [Synth 8-4471] merging register 'vgaGreen_reg[3:0]' into 'vgaRed_reg[3:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Vga.vhd:91]
+INFO: [Synth 8-4471] merging register 'vgaBlue_reg[3:0]' into 'vgaRed_reg[3:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Vga.vhd:92]
+INFO: [Synth 8-256] done synthesizing module 'Vga' (1#1) [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Vga.vhd:38]
+INFO: [Synth 8-3491] module 'FrameBuffer' declared at '/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-1469-Dries007-Arch/realtime/FrameBuffer_stub.vhdl:5' bound to instance 'frameBuffer0' of component 'Framebuffer' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:351]
+INFO: [Synth 8-638] synthesizing module 'FrameBuffer' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-1469-Dries007-Arch/realtime/FrameBuffer_stub.vhdl:22]
 	Parameter BITS bound to: 16 - type: integer 
-INFO: [Synth 8-3491] module 'Prng' declared at 'D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Prng.vhd:6' bound to instance 'prng0' of component 'Prng' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:369]
-INFO: [Synth 8-638] synthesizing module 'Prng' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Prng.vhd:20]
+INFO: [Synth 8-3491] module 'Prng' declared at '/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Prng.vhd:6' bound to instance 'prng0' of component 'Prng' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:368]
+INFO: [Synth 8-638] synthesizing module 'Prng' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Prng.vhd:20]
 	Parameter BITS bound to: 16 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'Prng' (2#1) [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Prng.vhd:20]
+INFO: [Synth 8-256] done synthesizing module 'Prng' (2#1) [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Prng.vhd:20]
 	Parameter CLK_FREQ bound to: 10000000 - type: integer 
-	Parameter REPEAT_DELAY bound to: 15 - type: integer 
-INFO: [Synth 8-3491] module 'ps2_keyboard_to_ascii' declared at 'D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/imports/Downloads/ps2_keyboard_to_ascii.vhd:26' bound to instance 'keyboard0' of component 'ps2_keyboard_to_ascii' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:378]
-INFO: [Synth 8-638] synthesizing module 'ps2_keyboard_to_ascii' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/imports/Downloads/ps2_keyboard_to_ascii.vhd:42]
+INFO: [Synth 8-3491] module 'ps2_keyboard_to_ascii' declared at '/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/imports/Downloads/ps2_keyboard_to_ascii.vhd:26' bound to instance 'keyboard0' of component 'ps2_keyboard_to_ascii' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:377]
+INFO: [Synth 8-638] synthesizing module 'ps2_keyboard_to_ascii' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/imports/Downloads/ps2_keyboard_to_ascii.vhd:41]
 	Parameter clk_freq bound to: 10000000 - type: integer 
-	Parameter repeat_delay bound to: 15 - type: integer 
 	Parameter clk_freq bound to: 10000000 - type: integer 
-INFO: [Synth 8-3491] module 'ps2_keyboard' declared at 'D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/imports/Downloads/ps2_keyboard.vhd:26' bound to instance 'ps2_keyboard_0' of component 'ps2_keyboard' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/imports/Downloads/ps2_keyboard_to_ascii.vhd:76]
-INFO: [Synth 8-638] synthesizing module 'ps2_keyboard' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/imports/Downloads/ps2_keyboard.vhd:39]
+INFO: [Synth 8-3491] module 'ps2_keyboard' declared at '/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/imports/Downloads/ps2_keyboard.vhd:26' bound to instance 'ps2_keyboard_0' of component 'ps2_keyboard' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/imports/Downloads/ps2_keyboard_to_ascii.vhd:72]
+INFO: [Synth 8-638] synthesizing module 'ps2_keyboard' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/imports/Downloads/ps2_keyboard.vhd:39]
 	Parameter clk_freq bound to: 10000000 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'ps2_keyboard' (3#1) [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/imports/Downloads/ps2_keyboard.vhd:39]
-INFO: [Synth 8-256] done synthesizing module 'ps2_keyboard_to_ascii' (4#1) [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/imports/Downloads/ps2_keyboard_to_ascii.vhd:42]
-INFO: [Synth 8-3491] module 'Ram' declared at 'D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Ram.vhd:8' bound to instance 'ram0' of component 'Ram' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:388]
-INFO: [Synth 8-638] synthesizing module 'Ram' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Ram.vhd:20]
-INFO: [Synth 8-3491] module 'Mem' declared at 'D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-8288-/realtime/Mem_stub.vhdl:5' bound to instance 'mem0' of component 'Mem' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Ram.vhd:42]
-INFO: [Synth 8-638] synthesizing module 'Mem' [D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-8288-/realtime/Mem_stub.vhdl:17]
-INFO: [Synth 8-256] done synthesizing module 'Ram' (5#1) [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Ram.vhd:20]
-INFO: [Synth 8-3491] module 'Stack' declared at 'D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-8288-/realtime/Stack_stub.vhdl:5' bound to instance 'stack0' of component 'Stack' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:399]
-INFO: [Synth 8-638] synthesizing module 'Stack' [D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-8288-/realtime/Stack_stub.vhdl:16]
-WARNING: [Synth 8-153] case item 31'b0000000000000000000000000000100 will never be executed [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:609]
-WARNING: [Synth 8-153] case item 31'b0000000000000000000000000000101 will never be executed [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:609]
-WARNING: [Synth 8-153] case item 31'b0000000000000000000000000000110 will never be executed [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:609]
-WARNING: [Synth 8-153] case item 31'b0000000000000000000000000000111 will never be executed [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:609]
-WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001000 will never be executed [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:609]
-WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001001 will never be executed [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:609]
-WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001010 will never be executed [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:609]
-WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001011 will never be executed [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:609]
-WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001100 will never be executed [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:609]
-WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001101 will never be executed [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:609]
-INFO: [Synth 8-226] default block is never used [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:609]
-WARNING: [Synth 8-153] case item 31'b0000000000000000000000000000100 will never be executed [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:680]
-WARNING: [Synth 8-153] case item 31'b0000000000000000000000000000101 will never be executed [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:680]
-WARNING: [Synth 8-153] case item 31'b0000000000000000000000000000110 will never be executed [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:680]
-WARNING: [Synth 8-153] case item 31'b0000000000000000000000000000111 will never be executed [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:680]
-WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001001 will never be executed [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:680]
-WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001010 will never be executed [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:680]
-WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001011 will never be executed [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:680]
-WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001100 will never be executed [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:680]
-WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001101 will never be executed [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:680]
-WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001110 will never be executed [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:680]
-WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001111 will never be executed [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:680]
-INFO: [Synth 8-226] default block is never used [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:680]
-WARNING: [Synth 8-3848] Net led in module/entity top does not have driver. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:18]
-INFO: [Synth 8-256] done synthesizing module 'top' (6#1) [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:33]
+INFO: [Synth 8-256] done synthesizing module 'ps2_keyboard' (3#1) [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/imports/Downloads/ps2_keyboard.vhd:39]
+INFO: [Synth 8-256] done synthesizing module 'ps2_keyboard_to_ascii' (4#1) [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/imports/Downloads/ps2_keyboard_to_ascii.vhd:41]
+INFO: [Synth 8-3491] module 'Ram' declared at '/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Ram.vhd:8' bound to instance 'ram0' of component 'Ram' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:387]
+INFO: [Synth 8-638] synthesizing module 'Ram' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Ram.vhd:20]
+INFO: [Synth 8-3491] module 'Mem' declared at '/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-1469-Dries007-Arch/realtime/Mem_stub.vhdl:5' bound to instance 'mem0' of component 'Mem' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Ram.vhd:42]
+INFO: [Synth 8-638] synthesizing module 'Mem' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-1469-Dries007-Arch/realtime/Mem_stub.vhdl:17]
+INFO: [Synth 8-256] done synthesizing module 'Ram' (5#1) [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Ram.vhd:20]
+INFO: [Synth 8-3491] module 'Stack' declared at '/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-1469-Dries007-Arch/realtime/Stack_stub.vhdl:5' bound to instance 'stack0' of component 'Stack' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:398]
+INFO: [Synth 8-638] synthesizing module 'Stack' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-1469-Dries007-Arch/realtime/Stack_stub.vhdl:16]
+WARNING: [Synth 8-153] case item 31'b0000000000000000000000000000100 will never be executed [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:608]
+WARNING: [Synth 8-153] case item 31'b0000000000000000000000000000101 will never be executed [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:608]
+WARNING: [Synth 8-153] case item 31'b0000000000000000000000000000110 will never be executed [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:608]
+WARNING: [Synth 8-153] case item 31'b0000000000000000000000000000111 will never be executed [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:608]
+WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001000 will never be executed [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:608]
+WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001001 will never be executed [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:608]
+WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001010 will never be executed [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:608]
+WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001011 will never be executed [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:608]
+WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001100 will never be executed [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:608]
+WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001101 will never be executed [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:608]
+INFO: [Synth 8-226] default block is never used [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:608]
+WARNING: [Synth 8-153] case item 31'b0000000000000000000000000000100 will never be executed [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:679]
+WARNING: [Synth 8-153] case item 31'b0000000000000000000000000000101 will never be executed [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:679]
+WARNING: [Synth 8-153] case item 31'b0000000000000000000000000000110 will never be executed [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:679]
+WARNING: [Synth 8-153] case item 31'b0000000000000000000000000000111 will never be executed [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:679]
+WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001001 will never be executed [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:679]
+WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001010 will never be executed [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:679]
+WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001011 will never be executed [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:679]
+WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001100 will never be executed [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:679]
+WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001101 will never be executed [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:679]
+WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001110 will never be executed [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:679]
+WARNING: [Synth 8-153] case item 31'b0000000000000000000000000001111 will never be executed [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:679]
+INFO: [Synth 8-226] default block is never used [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:679]
+WARNING: [Synth 8-3848] Net led in module/entity top does not have driver. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:18]
+INFO: [Synth 8-256] done synthesizing module 'top' (6#1) [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:33]
 WARNING: [Synth 8-3331] design top has unconnected port led[15]
 WARNING: [Synth 8-3331] design top has unconnected port led[14]
 WARNING: [Synth 8-3331] design top has unconnected port led[13]
@@ -120,12 +118,13 @@ WARNING: [Synth 8-3331] design top has unconnected port sw[3]
 WARNING: [Synth 8-3331] design top has unconnected port sw[2]
 WARNING: [Synth 8-3331] design top has unconnected port sw[1]
 WARNING: [Synth 8-3331] design top has unconnected port sw[0]
+WARNING: [Synth 8-3331] design top has unconnected port btnC
 WARNING: [Synth 8-3331] design top has unconnected port btnU
 WARNING: [Synth 8-3331] design top has unconnected port btnL
 WARNING: [Synth 8-3331] design top has unconnected port btnR
 WARNING: [Synth 8-3331] design top has unconnected port btnD
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:18 ; elapsed = 00:00:27 . Memory (MB): peak = 384.207 ; gain = 212.242
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1088.480 ; gain = 257.809 ; free physical = 1836 ; free virtual = 10559
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -135,153 +134,156 @@ Report Check Netlist:
 |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:30 . Memory (MB): peak = 384.207 ; gain = 212.242
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1088.480 ; gain = 257.809 ; free physical = 1835 ; free virtual = 10559
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-8288-/dcp/ClockDivider_in_context.xdc] for cell 'clock0'
-Finished Parsing XDC File [D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-8288-/dcp/ClockDivider_in_context.xdc] for cell 'clock0'
-Parsing XDC File [D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-8288-/dcp_2/FrameBuffer_in_context.xdc] for cell 'frameBuffer0'
-Finished Parsing XDC File [D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-8288-/dcp_2/FrameBuffer_in_context.xdc] for cell 'frameBuffer0'
-Parsing XDC File [D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-8288-/dcp_3/Mem_in_context.xdc] for cell 'ram0/mem0'
-Finished Parsing XDC File [D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-8288-/dcp_3/Mem_in_context.xdc] for cell 'ram0/mem0'
-Parsing XDC File [D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-8288-/dcp_4/Stack_in_context.xdc] for cell 'stack0'
-Finished Parsing XDC File [D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-8288-/dcp_4/Stack_in_context.xdc] for cell 'stack0'
-Parsing XDC File [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/constrs_1/imports/Basys3/Basys3_Master.xdc]
-Finished Parsing XDC File [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/constrs_1/imports/Basys3/Basys3_Master.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/constrs_1/imports/Basys3/Basys3_Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_propImpl.xdc].
+Parsing XDC File [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-1469-Dries007-Arch/dcp/ClockDivider_in_context.xdc] for cell 'clock0'
+Finished Parsing XDC File [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-1469-Dries007-Arch/dcp/ClockDivider_in_context.xdc] for cell 'clock0'
+Parsing XDC File [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-1469-Dries007-Arch/dcp_2/Stack_in_context.xdc] for cell 'stack0'
+Finished Parsing XDC File [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-1469-Dries007-Arch/dcp_2/Stack_in_context.xdc] for cell 'stack0'
+Parsing XDC File [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-1469-Dries007-Arch/dcp_3/FrameBuffer_in_context.xdc] for cell 'frameBuffer0'
+Finished Parsing XDC File [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-1469-Dries007-Arch/dcp_3/FrameBuffer_in_context.xdc] for cell 'frameBuffer0'
+Parsing XDC File [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-1469-Dries007-Arch/dcp_4/Mem_in_context.xdc] for cell 'ram0/mem0'
+Finished Parsing XDC File [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-1469-Dries007-Arch/dcp_4/Mem_in_context.xdc] for cell 'ram0/mem0'
+Parsing XDC File [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/constrs_1/imports/Basys3/Basys3_Master.xdc]
+Finished Parsing XDC File [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/constrs_1/imports/Basys3/Basys3_Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/constrs_1/imports/Basys3/Basys3_Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 690.691 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1401.879 ; gain = 0.000 ; free physical = 1583 ; free virtual = 10307
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context implementation of instance 'frameBuffer0' at clock pin 'clkb' is different from the actual clock period '9.259', this can result in different implementation results.
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context implementation of instance 'ram0/mem0' at clock pin 'clka' is different from the actual clock period '16.667', this can result in different implementation results.
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 1483 
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:37 ; elapsed = 00:00:53 . Memory (MB): peak = 690.691 ; gain = 518.727
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1402.980 ; gain = 572.309 ; free physical = 1576 ; free virtual = 10299
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:37 ; elapsed = 00:00:53 . Memory (MB): peak = 690.691 ; gain = 518.727
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1402.980 ; gain = 572.309 ; free physical = 1576 ; free virtual = 10299
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property IO_BUFFER_TYPE = NONE for clk. (constraint file  D:/Github/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-8288-/dcp/ClockDivider_in_context.xdc, line 7).
+Applied set_property IO_BUFFER_TYPE = NONE for clk. (constraint file  /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.runs/synth_1/.Xil/Vivado-1469-Dries007-Arch/dcp/ClockDivider_in_context.xdc, line 7).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:37 ; elapsed = 00:00:53 . Memory (MB): peak = 690.691 ; gain = 518.727
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1402.980 ; gain = 572.309 ; free physical = 1575 ; free virtual = 10299
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5546] ROM "break" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ascii" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "ascii" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "shift_l" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "shift_r" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'Ram'
-INFO: [Synth 8-4471] merging register 'ram_dat_w_reg[15:0]' into 'flags1_reg[15:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:395]
-INFO: [Synth 8-4471] merging register 'message_reg[35][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[39][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[40][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[41][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[42][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[43][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[44][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[45][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[46][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[47][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[48][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[49][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[50][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[51][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[52][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[53][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[54][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[55][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[56][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[57][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[58][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[59][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[60][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[61][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[62][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[63][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[64][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[65][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[66][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[67][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[68][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[69][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[70][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[71][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[72][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[73][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[74][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[75][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[76][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[77][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[78][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[79][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[80][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[81][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[82][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[83][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[84][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[85][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[86][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[87][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[88][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[89][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[90][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[91][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[92][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[93][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[94][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[95][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[96][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[97][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[98][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[99][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[100][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[101][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[102][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[103][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[104][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[105][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[106][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[107][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[108][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[109][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[110][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[111][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[112][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[113][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[114][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[115][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[116][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[117][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[118][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[119][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[120][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[121][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[122][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[123][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[124][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[125][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[126][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[127][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[128][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[129][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[130][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[131][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[132][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[133][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-INFO: [Synth 8-4471] merging register 'message_reg[134][7:0]' into 'message_reg[25][7:0]' [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
+INFO: [Synth 8-4471] merging register 'ram_dat_w_reg[15:0]' into 'flags1_reg[15:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:394]
+INFO: [Synth 8-4471] merging register 'message_reg[35][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[39][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[40][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[41][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[42][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[43][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[44][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[45][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[46][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[47][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[48][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[49][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[50][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[51][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[52][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[53][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[54][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[55][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[56][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[57][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[58][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[59][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[60][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[61][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[62][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[63][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[64][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[65][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[66][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[67][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[68][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[69][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[70][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[71][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[72][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[73][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[74][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[75][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[76][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[77][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[78][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[79][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[80][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[81][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[82][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[83][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[84][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[85][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[86][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[87][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[88][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[89][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[90][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[91][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[92][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[93][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[94][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[95][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[96][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[97][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[98][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[99][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[100][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[101][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[102][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[103][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[104][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[105][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[106][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[107][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[108][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[109][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[110][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[111][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[112][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[113][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[114][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[115][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[116][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[117][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[118][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[119][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[120][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[121][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[122][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[123][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[124][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[125][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[126][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[127][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[128][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[129][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[130][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[131][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[132][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[133][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+INFO: [Synth 8-4471] merging register 'message_reg[134][7:0]' into 'message_reg[25][7:0]' [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
 INFO: [Common 17-14] Message 'Synth 8-4471' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 INFO: [Synth 8-5546] ROM "clk_1" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "clk_2" won't be mapped to RAM because it is too sparse
@@ -294,7 +296,7 @@ INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "next_state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "next_state" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5544] ROM "message[26]" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "message[27]" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
@@ -376,6 +378,12 @@ INFO: [Synth 8-5587] ROM size for "tmp" is below threshold of ROM address width.
 INFO: [Synth 8-5587] ROM size for "tmp" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5587] ROM size for "tmp" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5587] ROM size for "tmp" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5587] ROM size for "tmp" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5587] ROM size for "tmp" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5587] ROM size for "tmp" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5587] ROM size for "tmp" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5587] ROM size for "tmp" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5587] ROM size for "tmp" is below threshold of ROM address width. It will be mapped to LUTs
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -388,7 +396,7 @@ INFO: [Synth 8-5587] ROM size for "tmp" is below threshold of ROM address width.
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'Ram'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:02:55 ; elapsed = 00:03:38 . Memory (MB): peak = 690.691 ; gain = 518.727
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:43 ; elapsed = 00:01:44 . Memory (MB): peak = 1402.980 ; gain = 572.309 ; free physical = 1543 ; free virtual = 10279
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -404,7 +412,6 @@ Detailed RTL Component Info :
 	   2 Input     32 Bit       Adders := 1     
 	   2 Input     31 Bit       Adders := 1     
 	   2 Input     23 Bit       Adders := 1     
-	   2 Input     18 Bit       Adders := 1     
 	   2 Input     17 Bit       Adders := 3     
 	   3 Input     16 Bit       Adders := 1     
 	   2 Input     15 Bit       Adders := 3     
@@ -420,21 +427,19 @@ Detailed RTL Component Info :
 	   9 Input      1 Bit         XORs := 1     
 +---Registers : 
 	               23 Bit    Registers := 1     
-	               18 Bit    Registers := 1     
 	               17 Bit    Registers := 3     
-	               16 Bit    Registers := 17    
+	               16 Bit    Registers := 18    
 	               14 Bit    Registers := 3     
 	               11 Bit    Registers := 2     
 	               10 Bit    Registers := 1     
-	                8 Bit    Registers := 43    
-	                7 Bit    Registers := 2     
+	                8 Bit    Registers := 44    
+	                7 Bit    Registers := 1     
 	                4 Bit    Registers := 2     
 	                2 Bit    Registers := 7     
 	                1 Bit    Registers := 29    
 +---Muxes : 
 	   2 Input     31 Bit        Muxes := 1     
 	   2 Input     23 Bit        Muxes := 1     
-	   2 Input     18 Bit        Muxes := 3     
 	   6 Input     17 Bit        Muxes := 1     
 	   2 Input     17 Bit        Muxes := 9     
 	   3 Input     17 Bit        Muxes := 4     
@@ -448,45 +453,41 @@ Detailed RTL Component Info :
 	   2 Input     14 Bit        Muxes := 14    
 	  16 Input     14 Bit        Muxes := 1     
 	   2 Input     11 Bit        Muxes := 11    
-	   2 Input      8 Bit        Muxes := 17    
-	   3 Input      8 Bit        Muxes := 1     
-	  22 Input      8 Bit        Muxes := 4     
-	  35 Input      8 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 14    
+	  32 Input      8 Bit        Muxes := 2     
+	   9 Input      8 Bit        Muxes := 2     
+	  48 Input      8 Bit        Muxes := 4     
 	   4 Input      8 Bit        Muxes := 2     
-	   7 Input      8 Bit        Muxes := 1     
-	  27 Input      8 Bit        Muxes := 2     
 	   6 Input      8 Bit        Muxes := 1     
 	  28 Input      8 Bit        Muxes := 13    
 	  13 Input      8 Bit        Muxes := 23    
 	  16 Input      8 Bit        Muxes := 2     
-	 245 Input      8 Bit        Muxes := 1     
-	   2 Input      7 Bit        Muxes := 62    
+	 270 Input      8 Bit        Muxes := 1     
+	   2 Input      7 Bit        Muxes := 68    
 	   3 Input      7 Bit        Muxes := 4     
-	  16 Input      7 Bit        Muxes := 54    
-	   4 Input      7 Bit        Muxes := 1     
+	  16 Input      7 Bit        Muxes := 60    
+	   5 Input      7 Bit        Muxes := 1     
 	   2 Input      6 Bit        Muxes := 1     
-	  27 Input      5 Bit        Muxes := 2     
-	  22 Input      5 Bit        Muxes := 2     
+	  32 Input      5 Bit        Muxes := 1     
 	   2 Input      5 Bit        Muxes := 1     
-	   2 Input      4 Bit        Muxes := 6     
+	   2 Input      4 Bit        Muxes := 5     
 	  16 Input      4 Bit        Muxes := 2     
 	  14 Input      4 Bit        Muxes := 1     
 	  27 Input      4 Bit        Muxes := 1     
 	  13 Input      4 Bit        Muxes := 1     
 	   3 Input      4 Bit        Muxes := 1     
 	   7 Input      2 Bit        Muxes := 1     
-	  33 Input      2 Bit        Muxes := 1     
 	   3 Input      2 Bit        Muxes := 1     
-	   4 Input      2 Bit        Muxes := 3     
+	   4 Input      2 Bit        Muxes := 1     
 	   2 Input      2 Bit        Muxes := 1     
 	  28 Input      2 Bit        Muxes := 2     
-	   4 Input      1 Bit        Muxes := 10    
-	   5 Input      1 Bit        Muxes := 5     
-	   6 Input      1 Bit        Muxes := 4     
+	   4 Input      1 Bit        Muxes := 11    
+	   5 Input      1 Bit        Muxes := 4     
+	   6 Input      1 Bit        Muxes := 5     
 	   8 Input      1 Bit        Muxes := 2     
 	   2 Input      1 Bit        Muxes := 35    
-	   3 Input      1 Bit        Muxes := 2     
-	  13 Input      1 Bit        Muxes := 22    
+	   3 Input      1 Bit        Muxes := 1     
+	  13 Input      1 Bit        Muxes := 24    
 	  16 Input      1 Bit        Muxes := 5     
 	  14 Input      1 Bit        Muxes := 3     
 	   7 Input      1 Bit        Muxes := 2     
@@ -494,7 +495,7 @@ Detailed RTL Component Info :
 	  28 Input      1 Bit        Muxes := 12    
 	  15 Input      1 Bit        Muxes := 1     
 	  27 Input      1 Bit        Muxes := 1     
-	 245 Input      1 Bit        Muxes := 1     
+	 270 Input      1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -518,9 +519,9 @@ Detailed RTL Component Info :
 +---Registers : 
 	               23 Bit    Registers := 1     
 	               17 Bit    Registers := 2     
-	               16 Bit    Registers := 13    
+	               16 Bit    Registers := 14    
 	               14 Bit    Registers := 2     
-	                8 Bit    Registers := 39    
+	                8 Bit    Registers := 40    
 	                4 Bit    Registers := 2     
 	                2 Bit    Registers := 6     
 	                1 Bit    Registers := 12    
@@ -541,36 +542,35 @@ Detailed RTL Component Info :
 	  28 Input      8 Bit        Muxes := 13    
 	  13 Input      8 Bit        Muxes := 23    
 	  16 Input      8 Bit        Muxes := 2     
-	 245 Input      8 Bit        Muxes := 1     
-	   2 Input      7 Bit        Muxes := 62    
+	 270 Input      8 Bit        Muxes := 1     
+	   2 Input      7 Bit        Muxes := 68    
 	   3 Input      7 Bit        Muxes := 4     
-	  16 Input      7 Bit        Muxes := 54    
-	   4 Input      7 Bit        Muxes := 1     
+	  16 Input      7 Bit        Muxes := 60    
+	   5 Input      7 Bit        Muxes := 1     
 	   2 Input      6 Bit        Muxes := 1     
 	   2 Input      5 Bit        Muxes := 1     
-	   2 Input      4 Bit        Muxes := 6     
+	   2 Input      4 Bit        Muxes := 5     
 	  16 Input      4 Bit        Muxes := 2     
 	  14 Input      4 Bit        Muxes := 1     
 	  27 Input      4 Bit        Muxes := 1     
 	  13 Input      4 Bit        Muxes := 1     
 	   3 Input      4 Bit        Muxes := 1     
 	   3 Input      2 Bit        Muxes := 1     
-	   4 Input      2 Bit        Muxes := 3     
+	   4 Input      2 Bit        Muxes := 1     
 	   2 Input      2 Bit        Muxes := 1     
 	  28 Input      2 Bit        Muxes := 2     
-	   2 Input      1 Bit        Muxes := 29    
-	  13 Input      1 Bit        Muxes := 22    
+	   2 Input      1 Bit        Muxes := 31    
+	  13 Input      1 Bit        Muxes := 24    
 	  16 Input      1 Bit        Muxes := 5     
 	  14 Input      1 Bit        Muxes := 3     
 	   7 Input      1 Bit        Muxes := 2     
 	  18 Input      1 Bit        Muxes := 1     
 	  28 Input      1 Bit        Muxes := 12    
 	  15 Input      1 Bit        Muxes := 1     
-	   4 Input      1 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 4     
 	  27 Input      1 Bit        Muxes := 1     
-	   3 Input      1 Bit        Muxes := 1     
-	   5 Input      1 Bit        Muxes := 1     
-	 245 Input      1 Bit        Muxes := 1     
+	   6 Input      1 Bit        Muxes := 1     
+	 270 Input      1 Bit        Muxes := 1     
 Module Vga 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -608,32 +608,24 @@ Detailed RTL Component Info :
 	                1 Bit    Registers := 3     
 Module ps2_keyboard_to_ascii 
 Detailed RTL Component Info : 
-+---Adders : 
-	   2 Input     18 Bit       Adders := 1     
 +---Registers : 
-	               18 Bit    Registers := 1     
 	                8 Bit    Registers := 1     
-	                7 Bit    Registers := 2     
+	                7 Bit    Registers := 1     
 	                2 Bit    Registers := 1     
 	                1 Bit    Registers := 9     
 +---Muxes : 
-	   2 Input     18 Bit        Muxes := 3     
-	   3 Input      8 Bit        Muxes := 1     
-	   2 Input      8 Bit        Muxes := 10    
-	  22 Input      8 Bit        Muxes := 4     
-	  35 Input      8 Bit        Muxes := 2     
+	  32 Input      8 Bit        Muxes := 2     
+	   9 Input      8 Bit        Muxes := 2     
+	  48 Input      8 Bit        Muxes := 4     
 	   4 Input      8 Bit        Muxes := 2     
-	   7 Input      8 Bit        Muxes := 1     
-	  27 Input      8 Bit        Muxes := 2     
-	  27 Input      5 Bit        Muxes := 2     
-	  22 Input      5 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 7     
+	  32 Input      5 Bit        Muxes := 1     
 	   7 Input      2 Bit        Muxes := 1     
-	  33 Input      2 Bit        Muxes := 1     
 	   5 Input      1 Bit        Muxes := 4     
-	   4 Input      1 Bit        Muxes := 8     
+	   4 Input      1 Bit        Muxes := 6     
 	   6 Input      1 Bit        Muxes := 1     
 	   8 Input      1 Bit        Muxes := 2     
-	   2 Input      1 Bit        Muxes := 6     
+	   2 Input      1 Bit        Muxes := 4     
 	   3 Input      1 Bit        Muxes := 1     
 Module Ram 
 Detailed RTL Component Info : 
@@ -661,47 +653,48 @@ BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
-Start Parallel Synthesis Optimization  : Time (s): cpu = 00:02:56 ; elapsed = 00:03:39 . Memory (MB): peak = 690.691 ; gain = 518.727
+Start Parallel Synthesis Optimization  : Time (s): cpu = 00:01:44 ; elapsed = 00:01:44 . Memory (MB): peak = 1402.988 ; gain = 572.316 ; free physical = 1543 ; free virtual = 10279
 ---------------------------------------------------------------------------------
 Start Cross Boundary Optimization
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5546] ROM "ascii2" won't be mapped to RAM because it is too sparse
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[38]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[37]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[36]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[34]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[33]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[32]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[31]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[30]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[29]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[28]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[27]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[26]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[24]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[23]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[22]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[21]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[20]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[19]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[18]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[17]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[16]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[15]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[14]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[13]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[12]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[11]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[10]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[9]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[8]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[7]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[6]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[5]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[4]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[3]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[2]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
-WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[1]' and it is trimmed from '8' to '7' bits. [D:/Github/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:524]
+INFO: [Synth 8-5546] ROM "ascii" won't be mapped to RAM because it is too sparse
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[38]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[37]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[36]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[34]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[33]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[32]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[31]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[30]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[29]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[28]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[27]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[26]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[24]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[23]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[22]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[21]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[20]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[19]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[18]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[17]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[16]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[15]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[14]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[13]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[12]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[11]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[10]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[9]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[8]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[7]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[6]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[5]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[4]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[3]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[2]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
+WARNING: [Synth 8-3936] Found unconnected internal register 'message_reg[1]' and it is trimmed from '8' to '7' bits. [/home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/new/Top.vhd:523]
 INFO: [Synth 8-5544] ROM "message[26]" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "message[27]" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "message[28]" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
@@ -713,9 +706,9 @@ INFO: [Synth 8-5544] ROM "message[33]" won't be mapped to Block RAM because addr
 INFO: [Synth 8-5544] ROM "message[34]" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
 INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "next_state" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "next_state" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_state" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "fb_a_addr1" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5546] ROM "clk_1" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "clk_2" won't be mapped to RAM because it is too sparse
@@ -753,14 +746,15 @@ WARNING: [Synth 8-3331] design top has unconnected port sw[3]
 WARNING: [Synth 8-3331] design top has unconnected port sw[2]
 WARNING: [Synth 8-3331] design top has unconnected port sw[1]
 WARNING: [Synth 8-3331] design top has unconnected port sw[0]
+WARNING: [Synth 8-3331] design top has unconnected port btnC
 WARNING: [Synth 8-3331] design top has unconnected port btnU
 WARNING: [Synth 8-3331] design top has unconnected port btnL
 WARNING: [Synth 8-3331] design top has unconnected port btnR
 WARNING: [Synth 8-3331] design top has unconnected port btnD
 ---------------------------------------------------------------------------------
-Finished Cross Boundary Optimization : Time (s): cpu = 00:05:17 ; elapsed = 00:06:06 . Memory (MB): peak = 690.691 ; gain = 518.727
+Finished Cross Boundary Optimization : Time (s): cpu = 00:03:11 ; elapsed = 00:03:13 . Memory (MB): peak = 1402.988 ; gain = 572.316 ; free physical = 1528 ; free virtual = 10273
 ---------------------------------------------------------------------------------
-Finished Parallel Reinference  : Time (s): cpu = 00:05:17 ; elapsed = 00:06:06 . Memory (MB): peak = 690.691 ; gain = 518.727
+Finished Parallel Reinference  : Time (s): cpu = 00:03:11 ; elapsed = 00:03:13 . Memory (MB): peak = 1402.988 ; gain = 572.316 ; free physical = 1528 ; free virtual = 10273
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
@@ -1001,9 +995,9 @@ WARNING: [Synth 8-3332] Sequential element (\message_reg[15][0] ) is unused and 
 WARNING: [Synth 8-3332] Sequential element (\message_reg[8][0] ) is unused and will be removed from module top.
 INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Area Optimization : Time (s): cpu = 00:05:33 ; elapsed = 00:06:25 . Memory (MB): peak = 690.691 ; gain = 518.727
+Finished Area Optimization : Time (s): cpu = 00:03:19 ; elapsed = 00:03:21 . Memory (MB): peak = 1402.988 ; gain = 572.316 ; free physical = 1517 ; free virtual = 10265
 ---------------------------------------------------------------------------------
-Finished Parallel Area Optimization  : Time (s): cpu = 00:05:33 ; elapsed = 00:06:25 . Memory (MB): peak = 690.691 ; gain = 518.727
+Finished Parallel Area Optimization  : Time (s): cpu = 00:03:19 ; elapsed = 00:03:21 . Memory (MB): peak = 1402.988 ; gain = 572.316 ; free physical = 1517 ; free virtual = 10265
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
@@ -1023,10 +1017,10 @@ INFO: [Synth 8-5578] Moved timing constraint from pin 'clock0/clk6cpu' to pin 'c
 INFO: [Synth 8-5578] Moved timing constraint from pin 'clock0/clk_cpu' to pin 'clock0/bbstub_clk_cpu/O'
 INFO: Moved 5 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:05:46 ; elapsed = 00:06:38 . Memory (MB): peak = 690.691 ; gain = 518.727
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:03:24 ; elapsed = 00:03:27 . Memory (MB): peak = 1402.988 ; gain = 572.316 ; free physical = 1517 ; free virtual = 10265
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:06:03 ; elapsed = 00:06:55 . Memory (MB): peak = 746.809 ; gain = 574.844
+Finished Timing Optimization : Time (s): cpu = 00:03:34 ; elapsed = 00:03:37 . Memory (MB): peak = 1472.684 ; gain = 642.012 ; free physical = 1449 ; free virtual = 10198
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1038,16 +1032,16 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:06:06 ; elapsed = 00:06:59 . Memory (MB): peak = 767.754 ; gain = 595.789
+Finished Technology Mapping : Time (s): cpu = 00:03:36 ; elapsed = 00:03:38 . Memory (MB): peak = 1497.699 ; gain = 667.027 ; free physical = 1424 ; free virtual = 10174
 ---------------------------------------------------------------------------------
-Finished Parallel Technology Mapping Optimization  : Time (s): cpu = 00:06:06 ; elapsed = 00:06:59 . Memory (MB): peak = 767.754 ; gain = 595.789
+Finished Parallel Technology Mapping Optimization  : Time (s): cpu = 00:03:36 ; elapsed = 00:03:38 . Memory (MB): peak = 1497.699 ; gain = 667.027 ; free physical = 1424 ; free virtual = 10174
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
 | |RTL Partition |Replication |Instances |
 +-+--------------+------------+----------+
 +-+--------------+------------+----------+
-Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:06:06 ; elapsed = 00:06:59 . Memory (MB): peak = 767.754 ; gain = 595.789
+Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:03:36 ; elapsed = 00:03:38 . Memory (MB): peak = 1497.699 ; gain = 667.027 ; free physical = 1424 ; free virtual = 10174
 ---------------------------------------------------------------------------------
 Start IO Insertion
 ---------------------------------------------------------------------------------
@@ -1064,7 +1058,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:06:07 ; elapsed = 00:07:00 . Memory (MB): peak = 767.754 ; gain = 595.789
+Finished IO Insertion : Time (s): cpu = 00:03:36 ; elapsed = 00:03:39 . Memory (MB): peak = 1497.699 ; gain = 667.027 ; free physical = 1424 ; free virtual = 10174
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -1077,7 +1071,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:06:07 ; elapsed = 00:07:00 . Memory (MB): peak = 767.754 ; gain = 595.789
+Finished Renaming Generated Instances : Time (s): cpu = 00:03:36 ; elapsed = 00:03:39 . Memory (MB): peak = 1497.699 ; gain = 667.027 ; free physical = 1424 ; free virtual = 10174
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1089,25 +1083,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:06:08 ; elapsed = 00:07:00 . Memory (MB): peak = 767.754 ; gain = 595.789
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:03:37 ; elapsed = 00:03:39 . Memory (MB): peak = 1497.699 ; gain = 667.027 ; free physical = 1424 ; free virtual = 10174
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:06:08 ; elapsed = 00:07:00 . Memory (MB): peak = 767.754 ; gain = 595.789
+Finished Renaming Generated Ports : Time (s): cpu = 00:03:37 ; elapsed = 00:03:39 . Memory (MB): peak = 1497.699 ; gain = 667.027 ; free physical = 1424 ; free virtual = 10174
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:06:08 ; elapsed = 00:07:01 . Memory (MB): peak = 767.754 ; gain = 595.789
+Finished Handling Custom Attributes : Time (s): cpu = 00:03:37 ; elapsed = 00:03:39 . Memory (MB): peak = 1497.699 ; gain = 667.027 ; free physical = 1424 ; free virtual = 10174
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:06:08 ; elapsed = 00:07:01 . Memory (MB): peak = 767.754 ; gain = 595.789
+Finished Renaming Generated Nets : Time (s): cpu = 00:03:37 ; elapsed = 00:03:39 . Memory (MB): peak = 1497.699 ; gain = 667.027 ; free physical = 1424 ; free virtual = 10174
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -1131,18 +1125,18 @@ Report Cell Usage:
 |2     |FrameBuffer_bbox  |     1|
 |3     |Mem_bbox          |     1|
 |4     |Stack_bbox        |     1|
-|5     |CARRY4            |   321|
-|6     |LUT1              |   397|
-|7     |LUT2              |   481|
-|8     |LUT3              |   520|
-|9     |LUT4              |   352|
-|10    |LUT5              |   510|
-|11    |LUT6              |  1420|
-|12    |MUXF7             |   125|
+|5     |CARRY4            |   316|
+|6     |LUT1              |   382|
+|7     |LUT2              |   488|
+|8     |LUT3              |   537|
+|9     |LUT4              |   344|
+|10    |LUT5              |   506|
+|11    |LUT6              |  1533|
+|12    |MUXF7             |   128|
 |13    |MUXF8             |    49|
-|14    |FDRE              |   583|
+|14    |FDRE              |   579|
 |15    |FDSE              |     2|
-|16    |IBUF              |     3|
+|16    |IBUF              |     2|
 |17    |OBUF              |    14|
 |18    |OBUFT             |    16|
 +------+------------------+------+
@@ -1151,29 +1145,29 @@ Report Instance Areas:
 +------+-------------------+----------------------+------+
 |      |Instance           |Module                |Cells |
 +------+-------------------+----------------------+------+
-|1     |top                |                      |  4838|
-|2     |  keyboard0        |ps2_keyboard_to_ascii |   412|
-|3     |    ps2_keyboard_0 |ps2_keyboard          |   156|
-|4     |  ram0             |Ram                   |   606|
+|1     |top                |                      |  4941|
+|2     |  keyboard0        |ps2_keyboard_to_ascii |   397|
+|3     |    ps2_keyboard_0 |ps2_keyboard          |   185|
+|4     |  ram0             |Ram                   |   595|
 |5     |  vga0             |Vga                   |   573|
 +------+-------------------+----------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:06:08 ; elapsed = 00:07:01 . Memory (MB): peak = 767.754 ; gain = 595.789
+Finished Writing Synthesis Report : Time (s): cpu = 00:03:37 ; elapsed = 00:03:39 . Memory (MB): peak = 1497.699 ; gain = 667.027 ; free physical = 1424 ; free virtual = 10174
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 326 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:05:38 ; elapsed = 00:06:40 . Memory (MB): peak = 767.754 ; gain = 265.008
-Synthesis Optimization Complete : Time (s): cpu = 00:06:08 ; elapsed = 00:07:01 . Memory (MB): peak = 767.754 ; gain = 595.789
+Synthesis finished with 0 errors, 0 critical warnings and 327 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:03:32 ; elapsed = 00:03:35 . Memory (MB): peak = 1497.699 ; gain = 260.609 ; free physical = 1424 ; free virtual = 10174
+Synthesis Optimization Complete : Time (s): cpu = 00:03:37 ; elapsed = 00:03:39 . Memory (MB): peak = 1497.699 ; gain = 667.027 ; free physical = 1424 ; free virtual = 10174
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 324 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Netlist 29-17] Analyzing 318 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 1 inverter(s) to 11 load pin(s).
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-371 Infos, 236 Warnings, 0 Critical Warnings and 0 Errors encountered.
+379 Infos, 238 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:06:09 ; elapsed = 00:06:58 . Memory (MB): peak = 767.754 ; gain = 578.891
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.037 . Memory (MB): peak = 767.754 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Wed May 04 17:48:30 2016...
+synth_design: Time (s): cpu = 00:03:38 ; elapsed = 00:03:40 . Memory (MB): peak = 1497.699 ; gain = 595.695 ; free physical = 1418 ; free virtual = 10169
+report_utilization: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 1529.715 ; gain = 0.000 ; free physical = 1418 ; free virtual = 10168
+INFO: [Common 17-206] Exiting Vivado at Sat May  7 22:58:09 2016...
