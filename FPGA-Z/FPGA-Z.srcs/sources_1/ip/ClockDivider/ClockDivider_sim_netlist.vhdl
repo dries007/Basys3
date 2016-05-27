@@ -1,7 +1,7 @@
 -- Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
--- Date        : Sat Apr 23 20:51:05 2016
+-- Date        : Fri May 27 23:50:21 2016
 -- Host        : Dries007-Arch running 64-bit unknown
 -- Command     : write_vhdl -force -mode funcsim
 --               /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.srcs/sources_1/ip/ClockDivider/ClockDivider_sim_netlist.vhdl
@@ -20,7 +20,6 @@ entity ClockDivider_ClockDivider_clk_wiz is
     clk108M : out STD_LOGIC;
     clk_cpu : out STD_LOGIC;
     clk2cpu : out STD_LOGIC;
-    clk4cpu : out STD_LOGIC;
     clk6cpu : out STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
@@ -30,7 +29,6 @@ end ClockDivider_ClockDivider_clk_wiz;
 architecture STRUCTURE of ClockDivider_ClockDivider_clk_wiz is
   signal clk108M_ClockDivider : STD_LOGIC;
   signal clk2cpu_ClockDivider : STD_LOGIC;
-  signal clk4cpu_ClockDivider : STD_LOGIC;
   signal clk6cpu_ClockDivider : STD_LOGIC;
   signal clkIn_ClockDivider : STD_LOGIC;
   signal clk_cpu_ClockDivider : STD_LOGIC;
@@ -43,6 +41,7 @@ architecture STRUCTURE of ClockDivider_ClockDivider_clk_wiz is
   signal NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED : STD_LOGIC;
+  signal NLW_mmcm_adv_inst_CLKOUT4_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT5_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT6_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_DRDY_UNCONNECTED : STD_LOGIC;
@@ -62,7 +61,6 @@ architecture STRUCTURE of ClockDivider_ClockDivider_clk_wiz is
   attribute BOX_TYPE of clkout2_buf : label is "PRIMITIVE";
   attribute BOX_TYPE of clkout3_buf : label is "PRIMITIVE";
   attribute BOX_TYPE of clkout4_buf : label is "PRIMITIVE";
-  attribute BOX_TYPE of clkout5_buf : label is "PRIMITIVE";
   attribute BOX_TYPE of mmcm_adv_inst : label is "PRIMITIVE";
 begin
 clkf_buf: unisim.vcomponents.BUFG
@@ -95,11 +93,6 @@ clkout3_buf: unisim.vcomponents.BUFG
     );
 clkout4_buf: unisim.vcomponents.BUFG
      port map (
-      I => clk4cpu_ClockDivider,
-      O => clk4cpu
-    );
-clkout5_buf: unisim.vcomponents.BUFG
-     port map (
       I => clk6cpu_ClockDivider,
       O => clk6cpu
     );
@@ -115,20 +108,20 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       CLKOUT0_DUTY_CYCLE => 0.500000,
       CLKOUT0_PHASE => 0.000000,
       CLKOUT0_USE_FINE_PS => false,
-      CLKOUT1_DIVIDE => 108,
+      CLKOUT1_DIVIDE => 72,
       CLKOUT1_DUTY_CYCLE => 0.500000,
       CLKOUT1_PHASE => 0.000000,
       CLKOUT1_USE_FINE_PS => false,
-      CLKOUT2_DIVIDE => 54,
+      CLKOUT2_DIVIDE => 36,
       CLKOUT2_DUTY_CYCLE => 0.500000,
       CLKOUT2_PHASE => 0.000000,
       CLKOUT2_USE_FINE_PS => false,
-      CLKOUT3_DIVIDE => 27,
+      CLKOUT3_DIVIDE => 12,
       CLKOUT3_DUTY_CYCLE => 0.500000,
       CLKOUT3_PHASE => 0.000000,
       CLKOUT3_USE_FINE_PS => false,
       CLKOUT4_CASCADE => false,
-      CLKOUT4_DIVIDE => 18,
+      CLKOUT4_DIVIDE => 1,
       CLKOUT4_DUTY_CYCLE => 0.500000,
       CLKOUT4_PHASE => 0.000000,
       CLKOUT4_USE_FINE_PS => false,
@@ -169,9 +162,9 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       CLKOUT1B => NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED,
       CLKOUT2 => clk2cpu_ClockDivider,
       CLKOUT2B => NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED,
-      CLKOUT3 => clk4cpu_ClockDivider,
+      CLKOUT3 => clk6cpu_ClockDivider,
       CLKOUT3B => NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED,
-      CLKOUT4 => clk6cpu_ClockDivider,
+      CLKOUT4 => NLW_mmcm_adv_inst_CLKOUT4_UNCONNECTED,
       CLKOUT5 => NLW_mmcm_adv_inst_CLKOUT5_UNCONNECTED,
       CLKOUT6 => NLW_mmcm_adv_inst_CLKOUT6_UNCONNECTED,
       DADDR(6 downto 0) => B"0000000",
@@ -200,13 +193,12 @@ entity ClockDivider is
     clk108M : out STD_LOGIC;
     clk_cpu : out STD_LOGIC;
     clk2cpu : out STD_LOGIC;
-    clk4cpu : out STD_LOGIC;
     clk6cpu : out STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of ClockDivider : entity is true;
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of ClockDivider : entity is "ClockDivider,clk_wiz_v5_2_1,{component_name=ClockDivider,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=5,clkin1_period=10.0,clkin2_period=10.0,use_power_down=false,use_reset=false,use_locked=false,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}";
+  attribute CORE_GENERATION_INFO of ClockDivider : entity is "ClockDivider,clk_wiz_v5_2_1,{component_name=ClockDivider,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=4,clkin1_period=10.0,clkin2_period=10.0,use_power_down=false,use_reset=false,use_locked=false,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}";
 end ClockDivider;
 
 architecture STRUCTURE of ClockDivider is
@@ -215,7 +207,6 @@ inst: entity work.ClockDivider_ClockDivider_clk_wiz
      port map (
       clk108M => clk108M,
       clk2cpu => clk2cpu,
-      clk4cpu => clk4cpu,
       clk6cpu => clk6cpu,
       clkIn => clkIn,
       clk_cpu => clk_cpu

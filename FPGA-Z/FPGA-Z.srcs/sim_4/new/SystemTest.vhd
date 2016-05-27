@@ -34,7 +34,7 @@ component top is
     );
 end component;
 
-constant clk_period : time := 10 ns;
+constant clk_period : time := 1 ns;
 
 signal vgaRed : std_logic_vector (3 downto 0);
 signal vgaGreen :std_logic_vector (3 downto 0);

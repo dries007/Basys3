@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
-| Date         : Sat May  7 22:58:34 2016
+| Date         : Sat May 28 00:25:30 2016
 | Host         : Dries007-Arch running 64-bit unknown
 | Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
 | Design       : top
@@ -22,8 +22,8 @@ Table of Contents
 +-------------------------------------------------------------------+-------+
 |                               Status                              | Count |
 +-------------------------------------------------------------------+-------+
-| Number of unique control sets                                     |    50 |
-| Minimum Number of register sites lost to control set restrictions |    85 |
+| Number of unique control sets                                     |    55 |
+| Minimum Number of register sites lost to control set restrictions |   109 |
 +-------------------------------------------------------------------+-------+
 
 
@@ -33,71 +33,76 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              67 |           39 |
+| No           | No                    | No                     |              69 |           36 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              39 |           18 |
-| Yes          | No                    | No                     |             415 |          172 |
+| No           | Yes                   | No                     |              39 |           14 |
+| Yes          | No                    | No                     |             399 |          190 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              74 |           32 |
+| Yes          | Yes                   | No                     |             112 |           52 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 3. Detailed Control Set Information
 -----------------------------------
 
-+---------------------------------------+----------------------------------------+--------------------------------+------------------+----------------+
-|              Clock Signal             |              Enable Signal             |        Set/Reset Signal        | Slice Load Count | Bel Load Count |
-+---------------------------------------+----------------------------------------+--------------------------------+------------------+----------------+
-|  clock0/inst/clk2cpu                  |                                        |                                |                2 |              3 |
-|  clock0/inst/clk_cpu                  | ram0/E[0]                              |                                |                1 |              4 |
-|  clock0/inst/clk108M                  | vga0/fbOutAddr[13]_i_1_n_0             | vga0/fbOutAddr[4]_i_1_n_0      |                2 |              4 |
-|  clock0/inst/clk_cpu                  | keyboard0/state_reg[3][0]              | keyboard0/fb_a_en0             |                3 |              4 |
-|  clock0/inst/clk108M                  | vga0/h_count[10]_i_1_n_0               | vga0/v_count[5]_i_1_n_0        |                2 |              4 |
-|  clock0/inst/clk6cpu                  | ram0/ena                               |                                |                2 |              5 |
-|  clock0/inst/clk_cpu                  |                                        | keyboard0/fb_a_en0             |                4 |              5 |
-|  clock0/inst/clk_cpu                  | keyboard0/ascii_new_i_1_n_0            |                                |                5 |              7 |
-|  clock0/inst/clk_cpu                  | keyboard0/ps2_keyboard_0/E[0]          |                                |                7 |              7 |
-|  clock0/inst/clk_cpu                  | keyboard0/op2                          |                                |                3 |              8 |
-|  clock0/inst/clk_cpu                  | keyboard0/op1                          | keyboard0/op1_reg[15]          |                2 |              8 |
-|  clock0/inst/clk_cpu                  | keyboard0/op2                          | keyboard0/op2_reg[15]          |                2 |              8 |
-|  clock0/inst/clk_cpu                  | ram0/op0                               | ram0/op0_reg[8]                |                4 |              8 |
-|  clock0/inst/clk_cpu                  | keyboard0/op1                          |                                |                3 |              8 |
-|  clock0/inst/clk_cpu                  | keyboard0/op3                          | keyboard0/op3_reg[8]           |                2 |              8 |
-|  clock0/inst/clk_cpu                  | keyboard0/instruction_raw              |                                |                3 |              8 |
-|  clock0/inst/clk_cpu                  | keyboard0/op3                          |                                |                3 |              8 |
-|  clock0/inst/clk_cpu                  | keyboard0/ps2_keyboard_0/ps2_code_new0 |                                |                2 |              8 |
-|  clock0/inst/clk_cpu                  | ram0/op0                               |                                |                4 |              8 |
-|  clock0/inst/clk_cpu                  | keyboard0/store_var_reg[0][0]          |                                |                4 |              8 |
-|  clock0/inst/clk6cpu                  |                                        |                                |                5 |              8 |
-|  clock0/inst/clk6cpu                  | ram0/ram_we                            |                                |                4 |              8 |
-|  clock0/inst/clk6cpu                  | ram0/FSM_onehot_state_reg_n_0_[3]      |                                |                4 |              8 |
-|  clock0/inst/clk_cpu                  | keyboard0/fb_a_dat_in_reg[0][0]        |                                |                8 |              8 |
-|  clock0/inst/clk108M                  | vga0/char[7]_i_1_n_0                   |                                |                3 |              8 |
-|  clock0/inst/clk_cpu                  | keyboard0/ps2_keyboard_0/sel           | keyboard0/ps2_keyboard_0/clear |                3 |             10 |
-|  clock0/inst/clk108M                  | vga0/fbOutAddr[13]_i_1_n_0             |                                |                2 |             10 |
-| ~keyboard0/ps2_keyboard_0/ps2_clk_int |                                        |                                |                3 |             11 |
-|  clock0/inst/clk108M                  |                                        | vga0/h_count[10]_i_1_n_0       |                7 |             11 |
-|  clock0/inst/clk_cpu                  | keyboard0/flags1_reg[0][0]             |                                |                7 |             13 |
-|  clock0/inst/clk_cpu                  | keyboard0/fb_a_addr_reg[0][0]          |                                |                5 |             14 |
-|  clock0/inst/clk_cpu                  | keyboard0/dict_reg[0][0]               |                                |                5 |             16 |
-|  clock0/inst/clk_cpu                  | keyboard0/checksum_reg[0][0]           |                                |                6 |             16 |
-|  clock0/inst/clk_cpu                  | keyboard0/branch_offset_reg[0][0]      |                                |                5 |             16 |
-|  clock0/inst/clk_cpu                  | keyboard0/abbreviations_reg[0][0]      |                                |                4 |             16 |
-|  clock0/inst/clk_cpu                  | keyboard0/static_reg[0][0]             |                                |                7 |             16 |
-|  clock0/inst/clk_cpu                  | keyboard0/objtab_reg[0][0]             |                                |                6 |             16 |
-|  clock0/inst/clk_cpu                  | keyboard0/flags2_reg[0][0]             |                                |                7 |             16 |
-|  clock0/inst/clk_cpu                  | keyboard0/length_reg[1][0]             |                                |                6 |             16 |
-|  clock0/inst/clk6cpu                  | ram0/FSM_onehot_state_reg_n_0_[5]      |                                |                6 |             16 |
-|  clock0/inst/clk_cpu                  | keyboard0/high_reg[0][0]               |                                |                5 |             16 |
-|  clock0/inst/clk_cpu                  | keyboard0/globals_reg[0][0]            |                                |                6 |             16 |
-|  clock0/inst/clk108M                  |                                        |                                |                8 |             16 |
-|  clock0/inst/clk6cpu                  | ram0/ram_addr                          |                                |                5 |             17 |
-|  clock0/inst/clk_cpu                  | keyboard0/ram_addr_reg[0][0]           |                                |               11 |             17 |
-|  clock0/inst/clk_cpu                  | keyboard0/E[0]                         |                                |                9 |             17 |
-|  clock0/inst/clk_cpu                  | keyboard0/cursor_reg[2]_rep__1         | keyboard0/fb_a_en0             |               12 |             20 |
-|  clock0/inst/clk_cpu                  |                                        | i[22]_i_1_n_0                  |                7 |             23 |
-|  clock0/inst/clk_cpu                  |                                        |                                |               21 |             29 |
-|  clock0/inst/clk_cpu                  | keyboard0/message_reg[36][5]           |                                |               14 |             40 |
-+---------------------------------------+----------------------------------------+--------------------------------+------------------+----------------+
++---------------------------------------+-----------------------------------------+----------------------------------+------------------+----------------+
+|              Clock Signal             |              Enable Signal              |         Set/Reset Signal         | Slice Load Count | Bel Load Count |
++---------------------------------------+-----------------------------------------+----------------------------------+------------------+----------------+
+|  clock0/inst/clk2cpu                  |                                         |                                  |                1 |              3 |
+|  clock0/inst/clk108M                  | vga0/fbOutAddr[13]_i_1_n_0              | vga0/fbOutAddr[4]_i_1_n_0        |                2 |              4 |
+|  clock0/inst/clk108M                  | vga0/h_count[10]_i_1_n_0                | vga0/v_count[5]_i_1_n_0          |                2 |              4 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[3]_0[0]             | keyboard0/fb_a_en0               |                4 |              4 |
+|  clock0/inst/clk_cpu                  | ram0/message_reg[15][6]_0               | ram0/message_reg[6][2]           |                2 |              4 |
+|  clock0/inst/clk_cpu                  | ram0/message_reg[15][6]_0               | ram0/message_reg[15][6]          |                3 |              4 |
+|  clock0/inst/clk_cpu                  | ram0/message_reg[15][6]_0               | ram0/message_reg[14][6]          |                2 |              4 |
+|  clock0/inst/clk_cpu                  | ram0/op2_type                           | keyboard0/op2_type_reg[0]        |                2 |              4 |
+|  clock0/inst/clk_cpu                  |                                         | keyboard0/fb_a_en0               |                3 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/branch_offset                 | keyboard0/branch_offset_reg[0]_0 |                3 |              5 |
+|  clock0/inst/clk6cpu                  | ram0/ena                                |                                  |                3 |              5 |
+|  clock0/inst/clk_cpu                  | ram0/message_reg[15][6]_0               | ram0/message_reg[21][6]_0        |                3 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/branch_offset                 | ram0/branch_offset_reg[6]        |                3 |              6 |
+|  clock0/inst/clk_cpu                  | keyboard0/ascii_new_i_1_n_0             |                                  |                3 |              7 |
+|  clock0/inst/clk_cpu                  | keyboard0/ps2_keyboard_0/E[0]           |                                  |                7 |              7 |
+|  clock0/inst/clk_cpu                  | keyboard0/op2                           |                                  |                5 |              8 |
+|  clock0/inst/clk_cpu                  | keyboard0/op3                           | keyboard0/op3_reg[15]            |                2 |              8 |
+|  clock0/inst/clk_cpu                  | keyboard0/op2                           | keyboard0/op2_reg[15]            |                2 |              8 |
+|  clock0/inst/clk_cpu                  | keyboard0/op3                           |                                  |                5 |              8 |
+|  clock0/inst/clk_cpu                  | keyboard0/ps2_keyboard_0/ps2_code_new0  |                                  |                2 |              8 |
+|  clock0/inst/clk6cpu                  |                                         |                                  |                3 |              8 |
+|  clock0/inst/clk6cpu                  | ram0/ram_we                             |                                  |                3 |              8 |
+|  clock0/inst/clk6cpu                  | ram0/FSM_onehot_state_reg_n_0_[3]       |                                  |                5 |              8 |
+|  clock0/inst/clk108M                  | vga0/char[7]_i_1_n_0                    |                                  |                4 |              8 |
+|  clock0/inst/clk_cpu                  | keyboard0/op1                           |                                  |                4 |              8 |
+|  clock0/inst/clk_cpu                  | keyboard0/op0_reg[8]_0                  | keyboard0/op0_reg[8]             |                3 |              8 |
+|  clock0/inst/clk_cpu                  | keyboard0/op0_reg[8]_0                  |                                  |                6 |              8 |
+|  clock0/inst/clk_cpu                  | keyboard0/E[0]                          |                                  |                2 |              8 |
+|  clock0/inst/clk_cpu                  | keyboard0/fb_a_dat_in_reg[7][0]         |                                  |                6 |              8 |
+|  clock0/inst/clk_cpu                  | keyboard0/instruction_raw_reg[7][0]     |                                  |                4 |              8 |
+|  clock0/inst/clk_cpu                  | keyboard0/op1                           | keyboard0/op1_reg[15]            |                3 |              8 |
+|  clock0/inst/clk108M                  | vga0/fbOutAddr[13]_i_1_n_0              |                                  |                3 |             10 |
+|  clock0/inst/clk_cpu                  | keyboard0/ps2_keyboard_0/sel            | keyboard0/ps2_keyboard_0/clear   |                3 |             10 |
+| ~keyboard0/ps2_keyboard_0/ps2_clk_int |                                         |                                  |                2 |             11 |
+|  clock0/inst/clk108M                  |                                         | vga0/h_count[10]_i_1_n_0         |                4 |             11 |
+|  clock0/inst/clk_cpu                  | keyboard0/flags1_reg[0][0]              |                                  |                5 |             13 |
+|  clock0/inst/clk_cpu                  | keyboard0/fb_a_addr_reg[13]_0[0]        |                                  |                7 |             14 |
+|  clock0/inst/clk108M                  |                                         |                                  |                7 |             16 |
+|  clock0/inst/clk_cpu                  | keyboard0/dict_reg[0][0]                |                                  |                6 |             16 |
+|  clock0/inst/clk_cpu                  | keyboard0/checksum_reg[0][0]            |                                  |                6 |             16 |
+|  clock0/inst/clk6cpu                  | ram0/FSM_onehot_state_reg_n_0_[5]       |                                  |                8 |             16 |
+|  clock0/inst/clk_cpu                  | keyboard0/abbreviations_start_reg[0][0] |                                  |                6 |             16 |
+|  clock0/inst/clk_cpu                  | keyboard0/flags2_reg[0][0]              |                                  |                6 |             16 |
+|  clock0/inst/clk_cpu                  | keyboard0/globals_reg[0][0]             |                                  |                7 |             16 |
+|  clock0/inst/clk_cpu                  | keyboard0/high_reg[0][0]                |                                  |                5 |             16 |
+|  clock0/inst/clk_cpu                  | keyboard0/length_reg[1][0]              |                                  |                6 |             16 |
+|  clock0/inst/clk_cpu                  | keyboard0/objtab_reg[0][0]              |                                  |                9 |             16 |
+|  clock0/inst/clk_cpu                  | keyboard0/static_reg[0][0]              |                                  |                8 |             16 |
+|  clock0/inst/clk6cpu                  | ram0/ram_addr                           |                                  |                5 |             17 |
+|  clock0/inst/clk_cpu                  | keyboard0/pc_reg[0][0]                  |                                  |               10 |             17 |
+|  clock0/inst/clk_cpu                  | keyboard0/ram_addr_reg[0][0]            |                                  |               11 |             17 |
+|  clock0/inst/clk_cpu                  |                                         | i[22]_i_1_n_0                    |                7 |             23 |
+|  clock0/inst/clk_cpu                  | ram0/cursor_reg[2]_rep__1               | keyboard0/fb_a_en0               |               13 |             26 |
+|  clock0/inst/clk_cpu                  |                                         |                                  |               23 |             31 |
+|  clock0/inst/clk_cpu                  | ram0/message_reg[15][6]_0               |                                  |               23 |             44 |
++---------------------------------------+-----------------------------------------+----------------------------------+------------------+----------------+
 
 

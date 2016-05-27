@@ -36,12 +36,19 @@ architecture Behavioral of top is
 constant COLS : integer := 160;
 constant ROWS : integer := 64;
 constant CHARS : integer := COLS * ROWS;
-constant CPU_FREQ : integer := 10_000_000;
+constant CPU_FREQ : integer := 15_000_000;
 constant BLINKDATA : string := "Press any key to continue...";
 constant TYPE_LRG_CNT : std_logic_vector := "00";
 constant TYPE_SML_CNT : std_logic_vector := "01";
 constant TYPE_VAR : std_logic_vector := "10";
 constant TYPE_OMITTED : std_logic_vector := "11";
+
+type alphabets_type is array (0 to 2, 6 to 31) of character;
+constant alphabets: alphabets_type := (
+    ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'),
+    ('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'),
+    (character'val(255), character'val(10), '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', ',', '!', '?', '_', '#', character'val(39), character'val(34), '/', '\', '-', ':', '(', ')')
+);
 
 -- CLOCK --------------------------------------------------------
 component ClockDivider
@@ -50,7 +57,6 @@ component ClockDivider
         clk108M : out std_logic;
         clk_cpu : out std_logic;
         clk2cpu : out std_logic;
-        clk4cpu : out std_logic;
         clk6cpu : out std_logic
     );
 end component;
@@ -58,7 +64,6 @@ end component;
 signal clk_vga : std_logic := '0';
 signal clk_cpu : std_logic := '0';
 signal clk_2cpu : std_logic := '0';
-signal clk_4cpu : std_logic := '0';
 signal clk_6cpu : std_logic := '0';
 signal clk_10 : std_logic := '0';
 signal clk_2 : std_logic := '0';
@@ -256,13 +261,21 @@ begin
     return tmp;
 end ascii_b;
 
-function ascii_i(i : integer range 0 to 999_999; didget : integer range 0 to 10 := 0; inverted : boolean := false) return std_logic_vector(7 downto 0) is
+function ascii_i(i : integer range -999_999 to 999_999; didget : integer range 0 to 10 := 0; inverted : boolean := false; sign : boolean := false) return std_logic_vector(7 downto 0) is
     variable tmp : std_logic_vector(7 downto 0) := (others => '0');
 begin
     if inverted then
         tmp(7) := '1';
     end if;
-    tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos('0') + ((i mod (10 ** (didget + 1))) / (10 ** didget)), 7));
+    if sign then
+        if i > 0 then
+            tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos('+'), 7));
+        else
+            tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos('-'), 7));
+        end if;
+    else
+        tmp(6 downto 0) := std_logic_vector(to_unsigned(character'pos('0') + ((i mod (10 ** (didget + 1))) / (10 ** didget)), 7));
+    end if;
     return tmp;
 end ascii_i;
 
@@ -305,12 +318,11 @@ clock0: ClockDivider
         clk108M => clk_vga,
         clk_cpu => clk_cpu,
         clk2cpu => clk_2cpu,
-        clk4cpu => clk_4cpu,
         clk6cpu => clk_6cpu
     );
 -- Slow clock devider
 process (clk_cpu)
-    constant MAX : integer := 10000000/2;
+    constant MAX : integer := CPU_FREQ/2;
     variable i : integer range 0 to MAX := 0;
 begin
     if rising_edge(clk_cpu) then
@@ -442,7 +454,7 @@ end process;
 process (clk_cpu)
     type state_type is 
     (
-        RESET, BLANK, SCROLL, SCROLL_W, LOAD, DEBUG, DEBUG_KB, ERROR, -- Background states, used for 'interpreter' stuff
+        RESET, BLANK, SCROLL, SCROLL_W, LOAD, LOAD_ABBR, DEBUG, DEBUG_KB, ERROR, -- Background states, used for 'interpreter' stuff
         FETCH, FETCH_OP, DECODE, EXEC -- Z machine states
     );
     variable state : state_type := RESET;-- LOAD;-- The current/next state
@@ -461,12 +473,21 @@ process (clk_cpu)
     
     variable ret : boolean := false;
     
-    variable fetch_string : boolean := false;
+    variable string_fetch : boolean := false;
+    variable string_buffer : string(1 to COLS);
+    variable string_pointer : integer range 0 to COLS := 0;
+    variable string_back : integer range 0 to 16#1FFFF# := 0;
+    variable string_back_inner : integer range 0 to 2 := 0;
+    variable string_in_abbr : boolean := false;
+    variable string_alphabet : integer range 0 to 2 := 0;
+    variable string_current_z : integer range 0 to 31 := 0;
+    variable string_abbreviation : integer range 0 to 3 := 0; -- if not 0, do an abbreviation next
+    variable string_zscii : integer range 0 to 2 := 0; -- if not 0, do a zscii character of 2x 5 bits. 2 = upper bits, 1 = lower bits
     
     variable branch : boolean := false;
     variable branch_on_true : boolean := false;
     variable branch_fetch : boolean := false;
-    variable branch_offset : std_logic_vector(15 downto 0) := (others => '0');
+    variable branch_offset : integer range -8192 to 8191;
     
     variable store : boolean := false;
     variable store_fetch : boolean := false;
@@ -497,9 +518,14 @@ process (clk_cpu)
     variable objtab : integer range 0 to 16#FFFF# := 0;
     variable globals : integer range 0 to 16#FFFF# := 0;
     variable static : integer range 0 to 16#FFFF# := 0;
-    variable abbreviations : integer range 0 to 16#FFFF# := 0;
+    variable abbreviations_start : integer range 0 to 16#FFFF# := 0;
     variable length : integer range 0 to 16#FF_FFFF# := 0;
     variable checksum : integer range 0 to 16#FFFF# := 0;
+    
+    -- Table of abbreviation addresses, for reduced access time.
+    -- It could be left in ram and accessed when required, but that would require more stare registers and clock cycles.
+    type abbreviations_type is array(95 downto 0) of integer range 0 to 16#1FFFF#;
+    variable abbreviations : abbreviations_type;    
 begin    
     if rising_edge(clk_cpu) then
         fb_a_en <= '0';
@@ -521,6 +547,34 @@ begin
             
                 state := ERROR;
                 message := pad_string("Debug", message'LENGTH, ram_dat_r);
+                
+                ret := false;
+                
+                string_buffer := pad_string("-", string_buffer'LENGTH);
+                string_pointer := 0;
+                string_back := 0;
+                string_back_inner := 0;
+                string_in_abbr := false;
+                string_alphabet := 0;
+                string_current_z := 0;
+                string_abbreviation := 0;
+                string_zscii := 0;
+                
+                branch := false;
+                branch_on_true := false;
+                branch_offset := 0;
+                
+                store := false;
+                store_var := (others => '0');
+                
+                op0_type := "11";
+                op0 := "0000000000000000";
+                op1_type := "11";
+                op1 := "0000000000000000";
+                op2_type := "11";
+                op2 := "0000000000000000";
+                op3_type := "11";
+                op3 := "0000000000000000";
                 
                 -- state := FETCH;
             when FETCH_OP =>
@@ -574,14 +628,169 @@ begin
                     store_var := ram_dat_r(15 downto 8);
                 elsif branch_fetch then
                     branch_fetch := false;
-                    branch_offset := ram_dat_r;
-                elsif fetch_string then
-                    -- todo
+                    if ram_dat_r(15) = '1' then -- true or false?
+                        branch_on_true := true;
+                    else
+                        branch_on_true := false;
+                    end if;
+                    if ram_dat_r(14) = '1' then -- short format,  0 to 63)
+                        branch_offset := to_integer(unsigned(ram_dat_r(13 downto 8)));
+                    else -- long format, !!signed!! -8192 to 8191
+                        branch_offset := to_integer(signed(ram_dat_r(13 downto 0)));
+                        pc := pc + 1;
+                    end if;
+                elsif string_fetch then
+                    pc := pc + 2; -- string is always word alligned
+                    
+                    -- bit 15 only set when last 3 characters.
+                    if ram_dat_r(15) = '1' then 
+                        if string_in_abbr then -- go back to main string
+                            string_in_abbr := false;
+                            pc := string_back;
+                        else -- string is done
+                            string_fetch := false;
+                        end if;
+                    end if;
+                    
+                    ------------------------
+                                        
+--                    -- z char 1 (bits 14 to 10)
+--                    string_current_z := to_integer(unsigned(ram_dat_r(14 downto 10)));
+                    
+--                    if string_abbreviation /= 0 then -- prev char was abbreviation char
+--                        string_back := pc;
+--                        string_in_abbr := true;
+--                        pc := abbreviations(32 * (string_abbreviation - 1) + string_current_z); -- address of the "32(z-1)+n"th abbreviation
+--                        string_abbreviation := 0;
+--                    elsif string_zscii = 2 then -- part 1 of zscii
+--                        -- string_buffer(string_pointer)(8 downto 6) := std_logic_vector(to_unsigned(string_current_z, 3));
+--                        string_zscii := 1;
+--                    elsif string_zscii = 1 then -- part 2 of zscii
+--                        -- string_buffer(string_pointer)(5 downto 0) := std_logic_vector(to_unsigned(string_current_z, 5));
+                        
+--                        string_buffer(string_pointer) := character'val(254); -- todo
+--                        string_zscii := 0;
+--                        string_pointer := string_pointer + 1;
+--                    else -- not escaped
+                    
+--                        case string_current_z is
+--                        when 0 => -- space
+--                            string_buffer(string_pointer) := ' ';
+--                            string_pointer := string_pointer + 1;
+--                        when 1 to 3 => -- abbreviation character
+--                            if string_in_abbr then
+--                                state := ERROR;
+--                                message := pad_string("Abbreviation inside abbreviation.", message'LENGTH);
+--                            end if;
+--                            string_abbreviation := string_current_z;
+--                        when 4 => -- alphabet shift to 1
+--                            string_alphabet := 1;
+--                        when 5 => -- alphabet shift to 2
+--                            string_alphabet := 2;
+--                        when 6 to 31 =>
+--                            if string_alphabet = 2 and string_current_z = 6 then -- zscii escape char
+--                                string_zscii := 2;
+--                            else -- regular character
+--                                string_buffer(string_pointer) := alphabets(string_alphabet, string_current_z);
+--                                string_pointer := string_pointer + 1;    
+--                            end if;
+--                        end case;
+                        
+--                    end if;
+                    
+                    
+                    ------------------------
+                    
+--                    -- z char 2 (bits 9 to 5)
+--                    string_current_z := to_integer(unsigned(ram_dat_r(9 downto 5)));
+                    
+--                    if string_abbreviation /= 0 then -- prev char was abbreviation char
+--                        string_back := pc;
+--                        string_in_abbr := true;
+--                        pc := abbreviations(32 * (string_abbreviation - 1) + string_current_z); -- address of the "32(z-1)+n"th abbreviation
+--                        string_abbreviation := 0;
+--                    else
+--                        case string_current_z is
+--                        when 0 => -- space
+--                            string_buffer(string_pointer) = ' '
+--                            string_pointer := string_pointer + 1;
+--                        when 1 to 3 => -- abbreviation character
+--                            if string_in_abbr then
+--                                state := ERROR;
+--                                message := pad_string("Abbreviation inside abbreviation.", message'LENGTH);
+--                            end if;
+--                            string_abbreviation := string_current_z;
+--                        when 4 => -- alphabet shift to 1
+--                            string_alphabet := 1;
+--                        when 5 => -- alphabet shift to 2
+--                            string_alphabet := 2;
+--                        when 6 to 31 => -- regular character
+--                            if string_alphabet = 2 and z = 6 then
+--                                string_zscii = 2;
+--                            end if;
+--                            string_buffer(string_pointer) = alphabets(string_alphabet, string_current_z);
+--                            string_pointer := string_pointer + 1;
+--                        end case;
+--                    end if;
+                    
+                    
+--                    ---------------------------------------------------------------------------------------------------------
+--                    z := to_integer(unsigned(ram_dat_r(14 downto 10)))
+--                    z := to_integer(unsigned(ram_dat_r(9 downto 5)))
+--                    z := to_integer(unsigned(ram_dat_r(4 downto 0)))
+                    
+--                    if string_abbreviation /= 0 then -- prev char was abbreviation char
+--                        string_back := pc;
+--                        string_back_inner := 1;
+--                        string_in_abbr := true;
+--                        pc := abbreviations(32 * (string_abbreviation - 1) + z); -- set pc to the address of the "32(z-1)+n"th abbreviation
+--                        string_abbreviation := 0;
+--                    else -- previous char was normal
+--                        case z is
+--                        when 0 => -- space
+--                            string_buffer(string_pointer) = ' '
+--                            string_pointer := string_pointer + 1;
+--                        when 1 to 3 => -- abbreviation character
+--                            if string_in_abbr then
+--                                state := ERROR;
+--                                message := pad_string("Abbreviation inside abbreviation.", message'LENGTH);
+--                            end if;
+--                            string_abbreviation := z;
+--                        when 4 => -- alphabet shift to 1
+--                            string_alphabet := 1;
+--                        when 5 => -- alphabet shift to 2
+--                            string_alphabet := 2;
+--                        when 6 to 31 => -- regular character
+--                            if string_alphabet = 2 and z = 6 then
+--                                string_zscii = 2;
+--                            end if;
+--                            string_buffer(string_pointer) = alphabets(string_alphabet, z);
+--                            string_pointer := string_pointer + 1;
+--                        end case;
+--                    end if; 
+                    
+                    
+                    
+--                    if z > 6 then
+--                        string_buffer(string_pointer) = alphabets(string_alphabet, z);
+--                        string_pointer := string_pointer + 1;
+--                    else if z == 1 then
+                        
+--                    end if;
+--                    string_alphabet := 0;
+                    
+                     
+--                    ram_dat_r(14 downto 10) -- z char 1
+                    
+                
+                
+                    
+                    
                 end if;
                 ram_re <= "11";
                 ram_addr <= pc;
                 -- if no more fetch steps will follow, go to the next stage, don't need to check op0
-                if not (op1_fetch or op2_fetch or op3_fetch or store_fetch or branch_fetch or fetch_string) then
+                if not (op1_fetch or op2_fetch or op3_fetch or store_fetch or branch_fetch or string_fetch) then
                     state := EXEC;
                 end if;
             ---------------------------------------------    
@@ -600,12 +809,13 @@ begin
                 pc := pc + 1;
                 ram_re <= "11";
                 ram_addr <= pc;
+                
                 instruction_raw := ram_dat_r(15 downto 8);
                 -- Short form ------------------------
                 if ram_dat_r(15 downto 14) = "10" then
                     -- 0OP ------------------------------
                     if ram_dat_r(13 downto 12) = "11" then
-                        case to_integer(unsigned(ram_dat_r(9 downto 8))) is
+                        case to_integer(unsigned(ram_dat_r(11 downto 9))) is
                         when 0 => -- rtrue
                             instruction := OP_NOP;
                             ret := true;
@@ -618,10 +828,10 @@ begin
                             op0_type := TYPE_SML_CNT;
                         when 2 => -- print (literal-string)
                             instruction := OP_PRINT;
-                            fetch_string := true;
+                            string_fetch := true;
                         when 3 => -- print_ret (literal-string)
                             instruction := OP_PRINT;
-                            fetch_string := true;
+                            string_fetch := true;
                             ret := true;
                             op0 := "0000000000000001";
                             op0_type := TYPE_SML_CNT;
@@ -666,6 +876,7 @@ begin
                             message := pad_string("Instruction undecodable. Short, 0OP", message'LENGTH, ram_dat_r);
                         end case;
                     -- 1OP ------------------------------
+                    
                     else
                         op0_type := ram_dat_r(11 downto 10);
                         if op0_type /= TYPE_LRG_CNT then -- NOT Lage constant that will require later fetching, BUT Variable or small constant
@@ -848,6 +1059,8 @@ begin
                     end if;
                 -- Long form -------------------------
                 else -- Always 2OP
+                    op0_fetch := true;
+                    op1_fetch := true;
                     -- Type OP 1
                     if ram_dat_r(14) = '0' then
                         op0_type := "01";
@@ -1039,7 +1252,7 @@ begin
                     flags2 := ram_dat_r;
                     ram_addr <= 16#18#; -- Location of abbreviations table (byte address)
                 when 12 =>
-                    abbreviations := to_integer(unsigned(ram_dat_r));
+                    abbreviations_start := to_integer(unsigned(ram_dat_r));
                     ram_addr <= 16#1A#; -- Length of file, Not always available
                 when 13 =>
                     length := 2 * to_integer(unsigned(ram_dat_r));
@@ -1047,15 +1260,39 @@ begin
                 when 14 =>
                     checksum := to_integer(unsigned(ram_dat_r));
                 when 15 => -- HEADER LOADED
-                    ram_re <= "00";
+                    ram_addr <= abbreviations_start;
+                    state := LOAD_ABBR;
                     cursor := 0;
-                    state := FETCH;
+
+
+--                    ram_re <= "00";
+--                    cursor := 0;
+--                    state := FETCH;
                 when others =>
                     ram_re <= "00";
                     cursor := 0;
                     state := ERROR;
                     message := pad_string("Illegal load state.", message'LENGTH);
                 end case;
+            ---------------------------------------------
+            when LOAD_ABBR =>
+                ram_re <= "11";
+                -- because the abbreviations are always 2n bytes long, they devided the address by 2.
+                abbreviations(cursor) := 2 * to_integer(unsigned(ram_dat_r));
+                if cursor = 96 then
+                    
+                    
+                    ram_re <= "00";
+                    cursor := 0;
+                    state := FETCH;
+                    
+                    
+                else
+                    ram_addr <= ram_addr + 2;
+                    cursor := cursor_delta(cursor);
+                end if;
+                
+                 
             ---------------------------------------------
             when SCROLL => -- move all of the screen up one row, read part
                 fb_a_en <= '1';
@@ -1230,10 +1467,10 @@ begin
                     when 9 * COLS + 6 =>    fb_a_dat_in <= ascii_c(':');
                     when 9 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
                     when 9 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
-                    when 9 * COLS + 18 =>   fb_a_dat_in <= ascii_x(abbreviations, 3);
-                    when 9 * COLS + 19 =>   fb_a_dat_in <= ascii_x(abbreviations, 2);
-                    when 9 * COLS + 20 =>   fb_a_dat_in <= ascii_x(abbreviations, 1);
-                    when 9 * COLS + 21 =>   fb_a_dat_in <= ascii_x(abbreviations, 0);
+                    when 9 * COLS + 18 =>   fb_a_dat_in <= ascii_x(abbreviations_start, 3);
+                    when 9 * COLS + 19 =>   fb_a_dat_in <= ascii_x(abbreviations_start, 2);
+                    when 9 * COLS + 20 =>   fb_a_dat_in <= ascii_x(abbreviations_start, 1);
+                    when 9 * COLS + 21 =>   fb_a_dat_in <= ascii_x(abbreviations_start, 0);
                     
                     when 10 * COLS + 0 =>    fb_a_dat_in <= ascii_c('L');
                     when 10 * COLS + 1 =>    fb_a_dat_in <= ascii_c('e');
@@ -1378,12 +1615,30 @@ begin
                     when 19 * COLS + 5 =>    fb_a_dat_in <= ascii_c('h');
                     when 19 * COLS + 6 =>    fb_a_dat_in <= ascii_c(':');
                     when 19 * COLS + 7 =>    fb_a_dat_in <= ascii_c(' ');
-                    when 19 * COLS + 16 =>   fb_a_dat_in <= ascii_c('0');
-                    when 19 * COLS + 17 =>   fb_a_dat_in <= ascii_c('x');
-                    when 19 * COLS + 18 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(branch_offset)), 3);
-                    when 19 * COLS + 19 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(branch_offset)), 2);
-                    when 19 * COLS + 20 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(branch_offset)), 1);
-                    when 19 * COLS + 21 =>   fb_a_dat_in <= ascii_x(to_integer(unsigned(branch_offset)), 0);
+                    when 19 * COLS + 16 =>   fb_a_dat_in <= ascii_i(branch_offset, 6, false, true);
+                    when 19 * COLS + 17 =>   fb_a_dat_in <= ascii_i(branch_offset, 5);
+                    when 19 * COLS + 18 =>   fb_a_dat_in <= ascii_i(branch_offset, 4);
+                    when 19 * COLS + 19 =>   fb_a_dat_in <= ascii_i(branch_offset, 3);
+                    when 19 * COLS + 20 =>   fb_a_dat_in <= ascii_i(branch_offset, 2);
+                    when 19 * COLS + 21 =>   fb_a_dat_in <= ascii_i(branch_offset, 1);
+                    when 19 * COLS + 22 =>   fb_a_dat_in <= ascii_i(branch_offset, 0);
+
+                    when 20 * COLS + 0 =>    fb_a_dat_in <= ascii_c('T');
+                    when 20 * COLS + 1 =>    fb_a_dat_in <= ascii_c('e');
+                    when 20 * COLS + 2 =>    fb_a_dat_in <= ascii_c('x');
+                    when 20 * COLS + 3 =>    fb_a_dat_in <= ascii_c('t');
+                    when 20 * COLS + 4 =>    fb_a_dat_in <= ascii_c(' ');
+                    when 20 * COLS + 5 =>    fb_a_dat_in <= ascii_c('s');
+                    when 20 * COLS + 6 =>    fb_a_dat_in <= ascii_c('i');
+                    when 20 * COLS + 7 =>    fb_a_dat_in <= ascii_c('z');
+                    when 20 * COLS + 8 =>    fb_a_dat_in <= ascii_c('e');
+                    when 20 * COLS + 10 =>   fb_a_dat_in <= ascii_i(string_pointer, 4);
+                    when 20 * COLS + 11 =>   fb_a_dat_in <= ascii_i(string_pointer, 3);
+                    when 20 * COLS + 12 =>   fb_a_dat_in <= ascii_i(string_pointer, 2);
+                    when 20 * COLS + 13 =>   fb_a_dat_in <= ascii_i(string_pointer, 1);
+                    when 20 * COLS + 14 =>   fb_a_dat_in <= ascii_i(string_pointer, 0);
+
+                    when 21 * COLS to (22 * COLS) - 1 => fb_a_dat_in <= ascii_c(string_buffer(cursor - (21 * COLS)));
 
                     when others =>
                         -- Nothing

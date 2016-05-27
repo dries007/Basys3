@@ -1,0 +1,12 @@
+frotz
+dfrotz
+*.o
+*.O
+*.OBJ
+*.BAK
+*.SWP
+*.DSK
+*.a
+defines.h
+/tags
+/tmp

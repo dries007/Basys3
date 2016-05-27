@@ -45,6 +45,7 @@ proc step_failed { step } {
 set_msg_config -id {HDL 9-1061} -limit 100000
 set_msg_config -id {HDL 9-1654} -limit 100000
 set_msg_config  -ruleid {1}  -string {{generated file not found}}  -suppress 
+set_msg_config  -ruleid {2}  -id {Timing 38-282}  -string {{CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.}}  -suppress 
 
 start_step init_design
 set rc [catch {

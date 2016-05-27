@@ -1,0 +1,5 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  "../../../FPGA-Z.srcs/sim_5/new/sim5.vhd"
+
+# Do not sort compile order
+nosort

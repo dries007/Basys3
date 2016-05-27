@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="Stack_synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1461763443">
-  <File Type="VDS-TIMINGSUMMARY" Name="Stack_timing_summary_synth.rpt"/>
-  <File Type="RUN-STRAT" Name="$PDATADIR/runs/Stack_synth_1/Stack_synth_1.psg"/>
-  <File Type="RUN-CONSTRS" Name="$PDATADIR/runs/Stack_synth_1/constrs_in.xml"/>
-  <File Type="RUN-SRCS" Name="$PDATADIR/runs/Stack_synth_1/sources.xml"/>
-  <File Type="PA-TCL" Name="Stack.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="Stack_drc_synth.rpt"/>
-  <File Type="RDS-DCP" Name="Stack.dcp"/>
-  <File Type="RDS-UTIL" Name="Stack_utilization_synth.rpt"/>
-  <File Type="RDS-RDS" Name="Stack.vds"/>
+  <File Type="PA-TCL" Name="Stack.tcl"/>
+  <File Type="RUN-SRCS" Name="$PDATADIR/runs/Stack_synth_1/sources.xml"/>
+  <File Type="RUN-CONSTRS" Name="$PDATADIR/runs/Stack_synth_1/constrs_in.xml"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="Stack_timing_summary_synth.rpt"/>
   <File Type="VDS-TIMING-PB" Name="Stack_timing_summary_synth.pb"/>
+  <File Type="RDS-RDS" Name="Stack.vds"/>
   <File Type="RDS-UTIL-PB" Name="Stack_utilization_synth.pb"/>
+  <File Type="RDS-UTIL" Name="Stack_utilization_synth.rpt"/>
+  <File Type="RDS-DCP" Name="Stack.dcp"/>
+  <File Type="RUN-STRAT" Name="$PDATADIR/runs/Stack_synth_1/Stack_synth_1.psg"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/Stack">
     <File Path="$PSRCDIR/sources_1/ip/Stack/Stack.xci">
       <FileInfo>
