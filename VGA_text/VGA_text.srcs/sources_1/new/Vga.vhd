@@ -1,8 +1,12 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;
-use IEEE.std_logic_unsigned.all;
+use ieee.numeric_std.all;
 use ieee.math_real.all;
+
+use ieee.std_logic_textio.all;
+use std.textio.all;
+
+use work.Font.all;
 
 -- Information from http://tinyvga.com/vga-timing/1280x1024@60Hz
 entity Vga is
@@ -20,12 +24,14 @@ entity Vga is
     );
     Port
     (
-        clk : in STD_LOGIC;
-        enable : out STD_LOGIC;
-        hSync : out STD_LOGIC;
-        vSync : out STD_LOGIC;
-        column : out integer range 0 to H_PIX + H_FP + H_SY + H_BP; -- 1688
-        row : out integer range 0 to V_PIX + V_FP + V_SY + V_BP -- 1066
+        clk : in std_logic;
+        hSync : out std_logic;
+        vSync : out std_logic;
+        vgaRed : out std_logic_vector (3 downto 0);
+        vgaGreen : out std_logic_vector (3 downto 0);
+        vgaBlue : out std_logic_vector (3 downto 0);
+        fbOutAddr : out std_logic_vector(13 downto 0);
+        fbOutDat : in std_logic_vector(7 downto 0)
     );
 end Vga;
 
@@ -41,6 +47,10 @@ begin --                      BEGIN
 process(clk)
     variable h_count : integer range 0 to H_MAX - 1 := 0;  --horizontal counter (counts the columns)
     variable v_count : integer range 0 to V_MAX - 1 := 0;  --vertical counter (counts the rows)
+    variable char : std_logic_vector(7 downto 0);
+    --variable nextChar : std_logic_vector(7 downto 0);
+    variable charX : integer range 0 to 8;
+    variable charY : integer range 0 to 16;
 begin
     if (rising_edge(clk)) then
         --counters
@@ -66,13 +76,30 @@ begin
         else
             vSync <= V_POL;
         end if;
-        column <= h_count;
-        row <= v_count;
-        --set display enable output
+        --text display    
         if (h_count < H_PIX AND v_count < V_PIX) then
-            enable <= '1';
+            charX := h_count mod 8;
+            charY := v_count mod 16;
+            if (charX = 0) then -- Set up next character
+                char := fbOutDat;
+            elsif (charX = 1) then
+                fbOutAddr <= std_logic_vector(to_unsigned(1 + (h_count / 8) + ((v_count / 16) * 160), fbOutAddr'LENGTH));
+            end if;
+            -- char[7] = invert bit
+            if (char(7) = '1' xor draw_char(charX, charY, to_integer(unsigned(char and "01111111")))) then
+                vgaRed      <= "1111";
+                vgaGreen    <= "1111";
+                vgaBlue     <= "1111";
+            else
+                vgaRed      <= "0000";
+                vgaGreen    <= "0000";
+                vgaBlue     <= "0000";
+            end if;
         else
-            enable <= '0';
+            fbOutAddr <= std_logic_vector(to_unsigned(((v_count / 16) * 160), fbOutAddr'LENGTH));
+            vgaRed      <= "0000";
+            vgaGreen    <= "0000";
+            vgaBlue     <= "0000";
         end if;
     end if;
 end process;

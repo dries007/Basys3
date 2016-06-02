@@ -1,0 +1,64 @@
+                                                                                                                                                                
+        RRRRRRRRRRRRRRRRR                                      lllllll                              tttt               tttt                                     
+        R::::::::::::::::R                                     l:::::l                           ttt:::t            ttt:::t                                     
+        R::::::RRRRRR:::::R                                    l:::::l                           t:::::t            t:::::t                                     
+        RR:::::R     R:::::R                                   l:::::l                           t:::::t            t:::::t                                     
+          R::::R     R:::::R   ooooooooooo   uuuuuu    uuuuuu   l::::l     eeeeeeeeeeee    ttttttt:::::tttttttttttttt:::::ttttttt        eeeeeeeeeeee           
+          R::::R     R:::::R oo:::::::::::oo u::::u    u::::u   l::::l   ee::::::::::::ee  t:::::::::::::::::tt:::::::::::::::::t      ee::::::::::::ee         
+          R::::RRRRRR:::::R o:::::::::::::::ou::::u    u::::u   l::::l  e::::::eeeee:::::eet:::::::::::::::::tt:::::::::::::::::t     e::::::eeeee:::::ee       
+          R:::::::::::::RR  o:::::ooooo:::::ou::::u    u::::u   l::::l e::::::e     e:::::etttttt:::::::tttttttttttt:::::::tttttt    e::::::e     e:::::e       
+          R::::RRRRRR:::::R o::::o     o::::ou::::u    u::::u   l::::l e:::::::eeeee::::::e      t:::::t            t:::::t          e:::::::eeeee::::::e       
+          R::::R     R:::::Ro::::o     o::::ou::::u    u::::u   l::::l e:::::::::::::::::e       t:::::t            t:::::t          e:::::::::::::::::e        
+          R::::R     R:::::Ro::::o     o::::ou::::u    u::::u   l::::l e::::::eeeeeeeeeee        t:::::t            t:::::t          e::::::eeeeeeeeeee         
+          R::::R     R:::::Ro::::o     o::::ou:::::uuuu:::::u   l::::l e:::::::e                 t:::::t    tttttt  t:::::t    tttttte:::::::e                  
+        RR:::::R     R:::::Ro:::::ooooo:::::ou:::::::::::::::uul::::::le::::::::e                t::::::tttt:::::t  t::::::tttt:::::te::::::::e                 
+        R::::::R     R:::::Ro:::::::::::::::o u:::::::::::::::ul::::::l e::::::::eeeeeeee        tt::::::::::::::t  tt::::::::::::::t e::::::::eeeeeeee         
+        R::::::R     R:::::R oo:::::::::::oo   uu::::::::uu:::ul::::::l  ee:::::::::::::e          tt:::::::::::tt    tt:::::::::::tt  ee:::::::::::::e         
+        RRRRRRRR     RRRRRRR   ooooooooooo       uuuuuuuu  uuuullllllll    eeeeeeeeeeeeee            ttttttttttt        ttttttttttt      eeeeeeeeeeeeee         
+                                                                                                                                                                
+       +--------------------------------------------------+     +--------+--------------+--------------+     +------------------------------------------+       
+       | * Plein                                          |     |   --   |       0      | $ --- ---.-- |     | Bets                                     |       
+       |   One number                                     |     +--------+----+----+----+--------+-----+     +------------------------------------------+       
+       |   35x payout                                     |     | PASSE  | 1  | 2  | 3  | MANQUE | 12P |     |                                          |       
+       |                                                  |     |        +----+----+----+        |     |     |                                          |       
+       | * Cheval                                         |     |        | 4  | 5  | 6  |        |     |     |                                          |       
+       |   Two neighbours                                 |     |        +----+----+----+        |     |     |                                          |       
+       |   17x payout                                     |     |        | 7  | 8  | 9  |        |     |     |                                          |       
+       |                                                  |     |        +----+----+----+        |     |     |                                          |       
+       | * Transversale                                   |     |        | 10 | 11 | 12 |        |     |     |                                          |       
+       |   Row of three                                   |     +--------+----+----+----+--------+-----+     |                                          |       
+       |   11x payout                                     |     | PAIR   | 13 | 14 | 15 | IMPAIR | 12M |     |                                          |       
+       |                                                  |     |        +----+----+----+        |     |     |                                          |       
+       | * Transversale simple                            |     |        | 16 | 17 | 18 |        |     |     |                                          |       
+       |   Two neighbouring rows of three                 |     |        +----+----+----+        |     |     |                                          |       
+       |   5x payout                                      |     |        | 19 | 20 | 21 |        |     |     |                                          |       
+       |                                                  |     |        +----+----+----+        |     |     |                                          |       
+       | * Carre                                          |     |        | 22 | 23 | 24 |        |     |     |                                          |       
+       |   Square of four neighbours                      |     +--------+----+----+----+--------+-----+     |                                          |       
+       |   8x payout                                      |     | NOIR   | 25 | 26 | 27 | ROUGE  | 12D |     |                                          |       
+       |                                                  |     |        +----+----+----+        |     |     |                                          |       
+       | * Colonne                                        |     |        | 28 | 29 | 30 |        |     |     |                                          |       
+       |   Twelve numnbers (R1, R2, R3, 12P, 12M or 12D)  |     |        +----+----+----+        |     |     |                                          |       
+       |   2x payout                                      |     |        | 31 | 32 | 33 |        |     |     |                                          |       
+       |                                                  |     |        +----+----+----+        |     |     |                                          |       
+       | * Chance Simple                                  |     |        | 34 | 35 | 36 |        |     |     |                                          |       
+       |   Noir, Rouge, Pair, Impair, Manque or Passe     |     +--------+----+----+----+--------+-----+     |                                          |       
+       |   1x payout                                      |              | R1 | R2 | R3 |                    |                                          |       
+       +--------------------------------------------------+              +----+----+----+                    +------------------------------------------+       
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                        Copyright (C) 2016 Dries007 <http://dries007.net>                                                       

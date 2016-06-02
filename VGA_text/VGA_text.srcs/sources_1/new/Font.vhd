@@ -2189,7 +2189,6 @@ package body Font is
        "00000000", -- e
        "00000000"  -- f
        );
-       variable addr : std_logic_vector(10 downto 0);
     begin
         return ROM((char * 16) + Y)(X) = '1';
     end draw_char;

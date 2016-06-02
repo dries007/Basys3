@@ -55,8 +55,9 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// CLK_OUT1___108.000______0.000______50.0______140.594____121.138
-// CLK_OUT2____25.000______0.000______50.0______189.744____121.138
+// CLK_OUT1___108.000______0.000______50.0______221.150____300.991
+// CLK_OUT2____10.000______0.000______50.0______322.773____300.991
+// CLK_OUT3____20.000______0.000______50.0______290.710____300.991
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -67,17 +68,18 @@
 
 module ClockDivider_clk_wiz 
  (// Clock in ports
-  input         inClock,
+  input         clk,
   // Clock out ports
-  output        pixelClock,
-  output        clk25MHz
+  output        clk_vga,
+  output        clk_cpu,
+  output        clk_2cpu
  );
 
   // Input buffering
   //------------------------------------
   IBUF clkin1_ibufg
-   (.O (inClock_ClockDivider),
-    .I (inClock));
+   (.O (clk_ClockDivider),
+    .I (clk));
 
 
 
@@ -96,7 +98,6 @@ module ClockDivider_clk_wiz
   wire        clkfboutb_unused;
     wire clkout0b_unused;
    wire clkout1b_unused;
-   wire clkout2_unused;
    wire clkout2b_unused;
    wire clkout3_unused;
    wire clkout3b_unused;
@@ -111,29 +112,33 @@ module ClockDivider_clk_wiz
     .CLKOUT4_CASCADE      ("FALSE"),
     .COMPENSATION         ("ZHOLD"),
     .STARTUP_WAIT         ("FALSE"),
-    .DIVCLK_DIVIDE        (1),
-    .CLKFBOUT_MULT_F      (6.750),
+    .DIVCLK_DIVIDE        (5),
+    .CLKFBOUT_MULT_F      (54.000),
     .CLKFBOUT_PHASE       (0.000),
     .CLKFBOUT_USE_FINE_PS ("FALSE"),
-    .CLKOUT0_DIVIDE_F     (6.250),
+    .CLKOUT0_DIVIDE_F     (10.000),
     .CLKOUT0_PHASE        (0.000),
     .CLKOUT0_DUTY_CYCLE   (0.500),
     .CLKOUT0_USE_FINE_PS  ("FALSE"),
-    .CLKOUT1_DIVIDE       (27),
+    .CLKOUT1_DIVIDE       (108),
     .CLKOUT1_PHASE        (0.000),
     .CLKOUT1_DUTY_CYCLE   (0.500),
     .CLKOUT1_USE_FINE_PS  ("FALSE"),
+    .CLKOUT2_DIVIDE       (54),
+    .CLKOUT2_PHASE        (0.000),
+    .CLKOUT2_DUTY_CYCLE   (0.500),
+    .CLKOUT2_USE_FINE_PS  ("FALSE"),
     .CLKIN1_PERIOD        (10.0))
   mmcm_adv_inst
     // Output clocks
    (
     .CLKFBOUT            (clkfbout_ClockDivider),
     .CLKFBOUTB           (clkfboutb_unused),
-    .CLKOUT0             (pixelClock_ClockDivider),
+    .CLKOUT0             (clk_vga_ClockDivider),
     .CLKOUT0B            (clkout0b_unused),
-    .CLKOUT1             (clk25MHz_ClockDivider),
+    .CLKOUT1             (clk_cpu_ClockDivider),
     .CLKOUT1B            (clkout1b_unused),
-    .CLKOUT2             (clkout2_unused),
+    .CLKOUT2             (clk_2cpu_ClockDivider),
     .CLKOUT2B            (clkout2b_unused),
     .CLKOUT3             (clkout3_unused),
     .CLKOUT3B            (clkout3b_unused),
@@ -142,7 +147,7 @@ module ClockDivider_clk_wiz
     .CLKOUT6             (clkout6_unused),
      // Input clock control
     .CLKFBIN             (clkfbout_buf_ClockDivider),
-    .CLKIN1              (inClock_ClockDivider),
+    .CLKIN1              (clk_ClockDivider),
     .CLKIN2              (1'b0),
      // Tied to always select the primary input clock
     .CLKINSEL            (1'b1),
@@ -178,13 +183,17 @@ module ClockDivider_clk_wiz
 
 
   BUFG clkout1_buf
-   (.O   (pixelClock),
-    .I   (pixelClock_ClockDivider));
+   (.O   (clk_vga),
+    .I   (clk_vga_ClockDivider));
 
 
   BUFG clkout2_buf
-   (.O   (clk25MHz),
-    .I   (clk25MHz_ClockDivider));
+   (.O   (clk_cpu),
+    .I   (clk_cpu_ClockDivider));
+
+  BUFG clkout3_buf
+   (.O   (clk_2cpu),
+    .I   (clk_2cpu_ClockDivider));
 
 
 

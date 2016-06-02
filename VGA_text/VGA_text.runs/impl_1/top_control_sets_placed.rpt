@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
-| Date         : Thu Apr 14 01:42:48 2016
+| Date         : Thu Jun  2 22:53:12 2016
 | Host         : Dries007-Arch running 64-bit unknown
 | Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
 | Design       : top
@@ -22,8 +22,8 @@ Table of Contents
 +-------------------------------------------------------------------+-------+
 |                               Status                              | Count |
 +-------------------------------------------------------------------+-------+
-| Number of unique control sets                                     |    10 |
-| Minimum Number of register sites lost to control set restrictions |    31 |
+| Number of unique control sets                                     |    77 |
+| Minimum Number of register sites lost to control set restrictions |   245 |
 +-------------------------------------------------------------------+-------+
 
 
@@ -33,31 +33,98 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              47 |           18 |
+| No           | No                    | No                     |             101 |           45 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              43 |           18 |
-| Yes          | No                    | No                     |              30 |            9 |
+| No           | Yes                   | No                     |              34 |           14 |
+| Yes          | No                    | No                     |             419 |          232 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |               9 |            3 |
+| Yes          | Yes                   | No                     |              81 |           41 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 3. Detailed Control Set Information
 -----------------------------------
 
-+-------------------------+--------------------------+--------------------------+------------------+----------------+
-|       Clock Signal      |       Enable Signal      |     Set/Reset Signal     | Slice Load Count | Bel Load Count |
-+-------------------------+--------------------------+--------------------------+------------------+----------------+
-|  clock0/inst/clk25MHz   |                          |                          |                2 |              2 |
-|  clock0/inst/pixelClock | vga0/enable              |                          |                3 |              8 |
-|  clock0/inst/pixelClock | vga0/nextchar_reg[0][0]  |                          |                2 |              8 |
-|  clk_BUFG               |                          | fb_in_dat[7]_i_1_n_0     |                4 |              8 |
-|  clock0/inst/pixelClock | vga0/h_count[10]_i_1_n_0 | vga0/v_count[5]_i_1_n_0  |                3 |              9 |
-|  clock0/inst/pixelClock |                          | vga0/h_count[10]_i_1_n_0 |                7 |             11 |
-|  clock0/inst/pixelClock | vga0/E[0]                |                          |                4 |             14 |
-|  clock0/inst/pixelClock |                          |                          |                8 |             17 |
-|  clock0/inst/clk25MHz   |                          | counter[23]_i_1_n_0      |                7 |             24 |
-|  clk_BUFG               |                          |                          |                8 |             28 |
-+-------------------------+--------------------------+--------------------------+------------------+----------------+
++---------------------------------------+----------------------------------------+--------------------------------+------------------+----------------+
+|              Clock Signal             |              Enable Signal             |        Set/Reset Signal        | Slice Load Count | Bel Load Count |
++---------------------------------------+----------------------------------------+--------------------------------+------------------+----------------+
+|  clock0/inst/clk_cpu                  | bets[2][kind][3]_i_1_n_0               |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[16][kind][3]_i_1_n_0              |                                |                2 |              4 |
+|  clock0/inst/clk_cpu                  | bets[15][kind][3]_i_1_n_0              |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[14][kind][3]_i_1_n_0              |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[13][kind][3]_i_1_n_0              |                                |                2 |              4 |
+|  clock0/inst/clk_cpu                  | bets[12][kind][3]_i_1_n_0              |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[11][kind][3]_i_1_n_0              |                                |                2 |              4 |
+|  clock0/inst/clk_cpu                  | bets[10][kind][3]_i_1_n_0              |                                |                2 |              4 |
+|  clock0/inst/clk_cpu                  | bets[0][kind][3]_i_1_n_0               |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[17][kind][3]_i_1_n_0              |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[4][kind][3]_i_1_n_0               |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[3][kind][3]_i_1_n_0               |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[5][kind][3]_i_1_n_0               |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[6][kind][3]_i_1_n_0               |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[7][kind][3]_i_1_n_0               |                                |                2 |              4 |
+|  clock0/inst/clk_cpu                  | bets[8][kind][3]_i_1_n_0               |                                |                2 |              4 |
+|  clock0/inst/clk_cpu                  | bets[9][kind][3]_i_1_n_0               |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[18][kind][3]_i_1_n_0              |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[19][kind][3]_i_1_n_0              |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[1][kind][3]_i_1_n_0               |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[20][kind][3]_i_1_n_0              |                                |                2 |              4 |
+|  clock0/inst/clk_cpu                  | bets[21][kind][3]_i_1_n_0              |                                |                2 |              4 |
+|  clock0/inst/clk_cpu                  | bets[22][kind][3]_i_1_n_0              |                                |                2 |              4 |
+|  clock0/inst/clk_cpu                  | bets[23][kind][3]_i_1_n_0              |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[24][kind][3]_i_1_n_0              |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[25][kind][3]_i_1_n_0              |                                |                2 |              4 |
+|  clock0/inst/clk_cpu                  | keyboard0/input_reg[2]                 | keyboard0/input_reg[7]_0       |                2 |              4 |
+|  clock0/inst/clk_cpu                  | msg[1][5]_i_1_n_0                      | msg[12][0]_i_1_n_0             |                2 |              4 |
+|  clock0/inst/clk_vga                  | vga0/fbOutAddr[13]_i_1_n_0             | vga0/fbOutAddr[4]_i_1_n_0      |                2 |              4 |
+|  clock0/inst/clk_cpu                  | msg[1][5]_i_1_n_0                      | msg[11][4]_i_1_n_0             |                3 |              4 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[3][0][0]           |                                |                5 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[2][0][0]           |                                |                4 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[13][0][0]          |                                |                4 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[1][0][0]           |                                |                3 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[15][0][0]          |                                |                5 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[9][0][0]           |                                |                5 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[4][0][0]           |                                |                5 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[5][0][0]           |                                |                5 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[6][0][0]           |                                |                4 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[7][0][0]           |                                |                5 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[8][0][0]           |                                |                5 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[12][0][0]          |                                |                4 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[11][0][0]          |                                |                5 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[10][0][0]          |                                |                4 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[0][0][0]           |                                |                4 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_index_reg[1]_rep[0]    |                                |                4 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/E[0]                         |                                |                3 |              5 |
+|  clock0/inst/clk_cpu                  | bets_index[4]_i_1_n_0                  |                                |                1 |              5 |
+|  clock0/inst/clk_cpu                  | msg[1][5]_i_1_n_0                      | msg[15][6]_i_1_n_0             |                2 |              5 |
+|  clock0/inst/clk_cpu                  | input_max[10]_i_1_n_0                  |                                |                6 |              6 |
+|  clock0/inst/clk_cpu                  | rnd0                                   |                                |                2 |              6 |
+|  clock0/inst/clk_cpu                  | keyboard0/ascii_new_i_1_n_0            |                                |                4 |              7 |
+|  clock0/inst/clk_cpu                  | keyboard0/ps2_keyboard_0/E[0]          |                                |                7 |              7 |
+|  clock0/inst/clk_2cpu                 |                                        |                                |                4 |              7 |
+|  clock0/inst/clk_cpu                  | msg[1][5]_i_1_n_0                      | msg[10][3]_i_1_n_0             |                5 |              7 |
+|  clock0/inst/clk_cpu                  | fb_a_dat_in[7]_i_1_n_0                 |                                |                8 |              8 |
+|  clock0/inst/clk_cpu                  | msg[1][5]_i_1_n_0                      | msg[14][4]_i_1_n_0             |                3 |              8 |
+|  clock0/inst/clk_cpu                  | keyboard0/ps2_keyboard_0/ps2_code_new0 |                                |                2 |              8 |
+|  clock0/inst/clk_vga                  | vga0/char[7]_i_1_n_0                   |                                |                5 |              8 |
+|  clock0/inst/clk_cpu                  | msg[1][5]_i_1_n_0                      | msg[14][3]_i_1_n_0             |                4 |              9 |
+|  clock0/inst/clk_cpu                  | keyboard0/ps2_keyboard_0/sel           | keyboard0/ps2_keyboard_0/clear |                3 |             10 |
+|  clock0/inst/clk_vga                  | vga0/fbOutAddr[13]_i_1_n_0             |                                |                2 |             10 |
+|  clock0/inst/clk_cpu                  | keyboard0/input_reg[2]                 |                                |                8 |             11 |
+| ~keyboard0/ps2_keyboard_0/ps2_clk_int |                                        |                                |                3 |             11 |
+|  clock0/inst/clk_vga                  |                                        | vga0/h_count[10]_i_1_n_0       |                7 |             11 |
+|  clock0/inst/clk_cpu                  | rom_addr[14]_i_2_n_0                   | rom_addr[14]_i_1_n_0           |                5 |             12 |
+|  clock0/inst/clk_cpu                  | fb_a_addr[13]_i_1_n_0                  |                                |                9 |             14 |
+|  clock0/inst/clk_cpu                  | fb_index[13]_i_1_n_0                   |                                |                6 |             14 |
+|  clock0/inst/clk_cpu                  | keyboard0/msg_index_reg[0][0]          |                                |               11 |             14 |
+|  clock0/inst/clk_cpu                  | msg[1][5]_i_1_n_0                      | msg[6][2]_i_1_n_0              |               10 |             14 |
+|  clock0/inst/clk_cpu                  | keyboard0/rng_seed_reg[0][0]           |                                |                5 |             16 |
+|  clock0/inst/clk_cpu                  | prng0/rnd[15]_i_1_n_0                  |                                |                5 |             16 |
+|  clk__0                               |                                        |                                |                5 |             18 |
+|  clock0/inst/clk_vga                  |                                        |                                |                9 |             20 |
+|  clock0/inst/clk_cpu                  |                                        | i[22]_i_1_n_0                  |                7 |             23 |
+|  clock0/inst/clk_cpu                  |                                        |                                |               24 |             45 |
+|  clock0/inst/clk_cpu                  | msg[1][5]_i_1_n_0                      |                                |               41 |             80 |
++---------------------------------------+----------------------------------------+--------------------------------+------------------+----------------+
 
 

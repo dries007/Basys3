@@ -54,8 +54,9 @@
 --  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 --   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 ------------------------------------------------------------------------------
--- CLK_OUT1___108.000______0.000______50.0______140.594____121.138
--- CLK_OUT2____25.000______0.000______50.0______189.744____121.138
+-- CLK_OUT1___108.000______0.000______50.0______221.150____300.991
+-- CLK_OUT2____10.000______0.000______50.0______322.773____300.991
+-- CLK_OUT3____20.000______0.000______50.0______290.710____300.991
 --
 ------------------------------------------------------------------------------
 -- Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -68,10 +69,11 @@
 component ClockDivider
 port
  (-- Clock in ports
-  inClock           : in     std_logic;
+  clk           : in     std_logic;
   -- Clock out ports
-  pixelClock          : out    std_logic;
-  clk25MHz          : out    std_logic
+  clk_vga          : out    std_logic;
+  clk_cpu          : out    std_logic;
+  clk_2cpu          : out    std_logic
  );
 end component;
 
@@ -83,9 +85,10 @@ your_instance_name : ClockDivider
    port map ( 
 
    -- Clock in ports
-   inClock => inClock,
+   clk => clk,
   -- Clock out ports  
-   pixelClock => pixelClock,
-   clk25MHz => clk25MHz              
+   clk_vga => clk_vga,
+   clk_cpu => clk_cpu,
+   clk_2cpu => clk_2cpu              
  );
 -- INST_TAG_END ------ End INSTANTIATION Template ------------

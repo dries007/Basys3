@@ -59,11 +59,15 @@ USE blk_mem_gen_v8_3_1.blk_mem_gen_v8_3_1;
 ENTITY FrameBuffer IS
   PORT (
     clka : IN STD_LOGIC;
+    ena : IN STD_LOGIC;
     wea : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     addra : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
     dina : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+    douta : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
     clkb : IN STD_LOGIC;
+    web : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     addrb : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
+    dinb : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
     doutb : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
   );
 END FrameBuffer;
@@ -216,11 +220,15 @@ ARCHITECTURE FrameBuffer_arch OF FrameBuffer IS
   END COMPONENT blk_mem_gen_v8_3_1;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF clka: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORTA CLK";
+  ATTRIBUTE X_INTERFACE_INFO OF ena: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORTA EN";
   ATTRIBUTE X_INTERFACE_INFO OF wea: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORTA WE";
   ATTRIBUTE X_INTERFACE_INFO OF addra: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORTA ADDR";
   ATTRIBUTE X_INTERFACE_INFO OF dina: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORTA DIN";
+  ATTRIBUTE X_INTERFACE_INFO OF douta: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORTA DOUT";
   ATTRIBUTE X_INTERFACE_INFO OF clkb: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORTB CLK";
+  ATTRIBUTE X_INTERFACE_INFO OF web: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORTB WE";
   ATTRIBUTE X_INTERFACE_INFO OF addrb: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORTB ADDR";
+  ATTRIBUTE X_INTERFACE_INFO OF dinb: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORTB DIN";
   ATTRIBUTE X_INTERFACE_INFO OF doutb: SIGNAL IS "xilinx.com:interface:bram:1.0 BRAM_PORTB DOUT";
 BEGIN
   U0 : blk_mem_gen_v8_3_1
@@ -236,24 +244,24 @@ BEGIN
       C_CTRL_ECC_ALGO => "NONE",
       C_HAS_AXI_ID => 0,
       C_AXI_ID_WIDTH => 4,
-      C_MEM_TYPE => 1,
+      C_MEM_TYPE => 2,
       C_BYTE_SIZE => 8,
       C_ALGORITHM => 1,
       C_PRIM_TYPE => 1,
       C_LOAD_INIT_FILE => 1,
       C_INIT_FILE_NAME => "FrameBuffer.mif",
       C_INIT_FILE => "FrameBuffer.mem",
-      C_USE_DEFAULT_DATA => 1,
+      C_USE_DEFAULT_DATA => 0,
       C_DEFAULT_DATA => "0",
       C_HAS_RSTA => 0,
       C_RST_PRIORITY_A => "CE",
       C_RSTRAM_A => 0,
       C_INITA_VAL => "0",
-      C_HAS_ENA => 0,
+      C_HAS_ENA => 1,
       C_HAS_REGCEA => 0,
       C_USE_BYTE_WEA => 1,
       C_WEA_WIDTH => 1,
-      C_WRITE_MODE_A => "NO_CHANGE",
+      C_WRITE_MODE_A => "WRITE_FIRST",
       C_WRITE_WIDTH_A => 8,
       C_READ_WIDTH_A => 8,
       C_WRITE_DEPTH_A => 10240,
@@ -297,23 +305,24 @@ BEGIN
       C_DISABLE_WARN_BHV_RANGE => 0,
       C_COUNT_36K_BRAM => "2",
       C_COUNT_18K_BRAM => "1",
-      C_EST_POWER_SUMMARY => "Estimated Power for IP     :     4.13854 mW"
+      C_EST_POWER_SUMMARY => "Estimated Power for IP     :     4.61856 mW"
     )
     PORT MAP (
       clka => clka,
       rsta => '0',
-      ena => '0',
+      ena => ena,
       regcea => '0',
       wea => wea,
       addra => addra,
       dina => dina,
+      douta => douta,
       clkb => clkb,
       rstb => '0',
       enb => '0',
       regceb => '0',
-      web => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 1)),
+      web => web,
       addrb => addrb,
-      dinb => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 8)),
+      dinb => dinb,
       doutb => doutb,
       injectsbiterr => '0',
       injectdbiterr => '0',

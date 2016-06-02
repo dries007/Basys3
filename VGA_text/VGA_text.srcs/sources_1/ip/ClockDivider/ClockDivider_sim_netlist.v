@@ -1,7 +1,7 @@
 // Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
-// Date        : Thu Apr 14 00:17:58 2016
+// Date        : Sun May 29 22:41:18 2016
 // Host        : Dries007-Arch running 64-bit unknown
 // Command     : write_verilog -force -mode funcsim
 //               /home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/ip/ClockDivider/ClockDivider_sim_netlist.v
@@ -12,49 +12,56 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "ClockDivider,clk_wiz_v5_2_1,{component_name=ClockDivider,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=2,clkin1_period=10.0,clkin2_period=10.0,use_power_down=false,use_reset=false,use_locked=false,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *) 
+(* CORE_GENERATION_INFO = "ClockDivider,clk_wiz_v5_2_1,{component_name=ClockDivider,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=3,clkin1_period=10.0,clkin2_period=10.0,use_power_down=false,use_reset=false,use_locked=false,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *) 
 (* NotValidForBitStream *)
 module ClockDivider
-   (inClock,
-    pixelClock,
-    clk25MHz);
-  input inClock;
-  output pixelClock;
-  output clk25MHz;
+   (clk,
+    clk_vga,
+    clk_cpu,
+    clk_2cpu);
+  input clk;
+  output clk_vga;
+  output clk_cpu;
+  output clk_2cpu;
 
-  wire clk25MHz;
-  (* IBUF_LOW_PWR *) wire inClock;
-  wire pixelClock;
+  (* IBUF_LOW_PWR *) wire clk;
+  wire clk_2cpu;
+  wire clk_cpu;
+  wire clk_vga;
 
   ClockDivider_ClockDivider_clk_wiz inst
-       (.clk25MHz(clk25MHz),
-        .inClock(inClock),
-        .pixelClock(pixelClock));
+       (.clk(clk),
+        .clk_2cpu(clk_2cpu),
+        .clk_cpu(clk_cpu),
+        .clk_vga(clk_vga));
 endmodule
 
 (* ORIG_REF_NAME = "ClockDivider_clk_wiz" *) 
 module ClockDivider_ClockDivider_clk_wiz
-   (inClock,
-    pixelClock,
-    clk25MHz);
-  input inClock;
-  output pixelClock;
-  output clk25MHz;
+   (clk,
+    clk_vga,
+    clk_cpu,
+    clk_2cpu);
+  input clk;
+  output clk_vga;
+  output clk_cpu;
+  output clk_2cpu;
 
-  wire clk25MHz;
-  wire clk25MHz_ClockDivider;
+  wire clk;
+  wire clk_2cpu;
+  wire clk_2cpu_ClockDivider;
+  wire clk_ClockDivider;
+  wire clk_cpu;
+  wire clk_cpu_ClockDivider;
+  wire clk_vga;
+  wire clk_vga_ClockDivider;
   wire clkfbout_ClockDivider;
   wire clkfbout_buf_ClockDivider;
-  wire inClock;
-  wire inClock_ClockDivider;
-  wire pixelClock;
-  wire pixelClock_ClockDivider;
   wire NLW_mmcm_adv_inst_CLKFBOUTB_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKFBSTOPPED_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED;
-  wire NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT3_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED;
@@ -77,33 +84,37 @@ module ClockDivider_ClockDivider_clk_wiz
   IBUF #(
     .IOSTANDARD("DEFAULT")) 
     clkin1_ibufg
-       (.I(inClock),
-        .O(inClock_ClockDivider));
+       (.I(clk),
+        .O(clk_ClockDivider));
   (* BOX_TYPE = "PRIMITIVE" *) 
   BUFG clkout1_buf
-       (.I(pixelClock_ClockDivider),
-        .O(pixelClock));
+       (.I(clk_vga_ClockDivider),
+        .O(clk_vga));
   (* BOX_TYPE = "PRIMITIVE" *) 
   BUFG clkout2_buf
-       (.I(clk25MHz_ClockDivider),
-        .O(clk25MHz));
+       (.I(clk_cpu_ClockDivider),
+        .O(clk_cpu));
+  (* BOX_TYPE = "PRIMITIVE" *) 
+  BUFG clkout3_buf
+       (.I(clk_2cpu_ClockDivider),
+        .O(clk_2cpu));
   (* BOX_TYPE = "PRIMITIVE" *) 
   MMCME2_ADV #(
     .BANDWIDTH("OPTIMIZED"),
-    .CLKFBOUT_MULT_F(6.750000),
+    .CLKFBOUT_MULT_F(54.000000),
     .CLKFBOUT_PHASE(0.000000),
     .CLKFBOUT_USE_FINE_PS("FALSE"),
     .CLKIN1_PERIOD(10.000000),
     .CLKIN2_PERIOD(0.000000),
-    .CLKOUT0_DIVIDE_F(6.250000),
+    .CLKOUT0_DIVIDE_F(10.000000),
     .CLKOUT0_DUTY_CYCLE(0.500000),
     .CLKOUT0_PHASE(0.000000),
     .CLKOUT0_USE_FINE_PS("FALSE"),
-    .CLKOUT1_DIVIDE(27),
+    .CLKOUT1_DIVIDE(108),
     .CLKOUT1_DUTY_CYCLE(0.500000),
     .CLKOUT1_PHASE(0.000000),
     .CLKOUT1_USE_FINE_PS("FALSE"),
-    .CLKOUT2_DIVIDE(1),
+    .CLKOUT2_DIVIDE(54),
     .CLKOUT2_DUTY_CYCLE(0.500000),
     .CLKOUT2_PHASE(0.000000),
     .CLKOUT2_USE_FINE_PS("FALSE"),
@@ -125,7 +136,7 @@ module ClockDivider_ClockDivider_clk_wiz
     .CLKOUT6_PHASE(0.000000),
     .CLKOUT6_USE_FINE_PS("FALSE"),
     .COMPENSATION("ZHOLD"),
-    .DIVCLK_DIVIDE(1),
+    .DIVCLK_DIVIDE(5),
     .IS_CLKINSEL_INVERTED(1'b0),
     .IS_PSEN_INVERTED(1'b0),
     .IS_PSINCDEC_INVERTED(1'b0),
@@ -142,15 +153,15 @@ module ClockDivider_ClockDivider_clk_wiz
         .CLKFBOUT(clkfbout_ClockDivider),
         .CLKFBOUTB(NLW_mmcm_adv_inst_CLKFBOUTB_UNCONNECTED),
         .CLKFBSTOPPED(NLW_mmcm_adv_inst_CLKFBSTOPPED_UNCONNECTED),
-        .CLKIN1(inClock_ClockDivider),
+        .CLKIN1(clk_ClockDivider),
         .CLKIN2(1'b0),
         .CLKINSEL(1'b1),
         .CLKINSTOPPED(NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED),
-        .CLKOUT0(pixelClock_ClockDivider),
+        .CLKOUT0(clk_vga_ClockDivider),
         .CLKOUT0B(NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED),
-        .CLKOUT1(clk25MHz_ClockDivider),
+        .CLKOUT1(clk_cpu_ClockDivider),
         .CLKOUT1B(NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED),
-        .CLKOUT2(NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED),
+        .CLKOUT2(clk_2cpu_ClockDivider),
         .CLKOUT2B(NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED),
         .CLKOUT3(NLW_mmcm_adv_inst_CLKOUT3_UNCONNECTED),
         .CLKOUT3B(NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED),
