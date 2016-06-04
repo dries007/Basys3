@@ -56,8 +56,8 @@
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
 // CLK_OUT1___108.000______0.000______50.0______221.150____300.991
-// CLK_OUT2____10.000______0.000______50.0______322.773____300.991
-// CLK_OUT3____20.000______0.000______50.0______290.710____300.991
+// CLK_OUT2_____9.000______0.000______50.0______327.887____300.991
+// CLK_OUT3____18.000______0.000______50.0______295.409____300.991
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -120,11 +120,11 @@ module ClockDivider_clk_wiz
     .CLKOUT0_PHASE        (0.000),
     .CLKOUT0_DUTY_CYCLE   (0.500),
     .CLKOUT0_USE_FINE_PS  ("FALSE"),
-    .CLKOUT1_DIVIDE       (108),
+    .CLKOUT1_DIVIDE       (120),
     .CLKOUT1_PHASE        (0.000),
     .CLKOUT1_DUTY_CYCLE   (0.500),
     .CLKOUT1_USE_FINE_PS  ("FALSE"),
-    .CLKOUT2_DIVIDE       (54),
+    .CLKOUT2_DIVIDE       (60),
     .CLKOUT2_PHASE        (0.000),
     .CLKOUT2_DUTY_CYCLE   (0.500),
     .CLKOUT2_USE_FINE_PS  ("FALSE"),

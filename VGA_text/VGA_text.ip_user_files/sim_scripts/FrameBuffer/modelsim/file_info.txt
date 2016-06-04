@@ -1,3 +1,0 @@
-Language File-Name             IP           Library             File-Path                                                             
-VHDL,    blk_mem_gen_v8_3.vhd, FrameBuffer, blk_mem_gen_v8_3_1, ../../../ipstatic/blk_mem_gen_v8_3_1/simulation/blk_mem_gen_v8_3.vhd  
-VHDL,    FrameBuffer.vhd,      FrameBuffer, xil_defaultlib,     ../../../../VGA_text.srcs/sources_1/ip/FrameBuffer/sim/FrameBuffer.vhd

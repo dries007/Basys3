@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
-| Date         : Thu Jun  2 22:52:46 2016
+| Date         : Sat Jun  4 22:50:49 2016
 | Host         : Dries007-Arch running 64-bit unknown
 | Command      : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
 | Design       : top
@@ -27,18 +27,18 @@ Table of Contents
 1. Slice Logic
 --------------
 
-+-------------------------+------+-------+-----------+-------+
-|        Site Type        | Used | Fixed | Available | Util% |
-+-------------------------+------+-------+-----------+-------+
-| Slice LUTs*             | 2872 |     0 |     20800 | 13.81 |
-|   LUT as Logic          | 2872 |     0 |     20800 | 13.81 |
-|   LUT as Memory         |    0 |     0 |      9600 |  0.00 |
-| Slice Registers         |  622 |     0 |     41600 |  1.50 |
-|   Register as Flip Flop |  622 |     0 |     41600 |  1.50 |
-|   Register as Latch     |    0 |     0 |     41600 |  0.00 |
-| F7 Muxes                |  164 |     0 |     16300 |  1.01 |
-| F8 Muxes                |   57 |     0 |      8150 |  0.70 |
-+-------------------------+------+-------+-----------+-------+
++-------------------------+-------+-------+-----------+-------+
+|        Site Type        |  Used | Fixed | Available | Util% |
++-------------------------+-------+-------+-----------+-------+
+| Slice LUTs*             | 17429 |     0 |     20800 | 83.79 |
+|   LUT as Logic          | 17429 |     0 |     20800 | 83.79 |
+|   LUT as Memory         |     0 |     0 |      9600 |  0.00 |
+| Slice Registers         |  1256 |     0 |     41600 |  3.02 |
+|   Register as Flip Flop |  1256 |     0 |     41600 |  3.02 |
+|   Register as Latch     |     0 |     0 |     41600 |  0.00 |
+| F7 Muxes                |   295 |     0 |     16300 |  1.81 |
+| F8 Muxes                |    66 |     0 |      8150 |  0.81 |
++-------------------------+-------+-------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
 
 
@@ -56,8 +56,8 @@ Table of Contents
 | 0     |          Yes |           - |            - |
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
-| 9     |          Yes |         Set |            - |
-| 613   |          Yes |       Reset |            - |
+| 29    |          Yes |         Set |            - |
+| 1227  |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -150,18 +150,18 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT6     | 1280 |                 LUT |
-| FDRE     |  613 |        Flop & Latch |
-| LUT2     |  543 |                 LUT |
-| LUT3     |  519 |                 LUT |
-| LUT5     |  394 |                 LUT |
-| LUT1     |  332 |                 LUT |
-| CARRY4   |  322 |          CarryLogic |
-| LUT4     |  254 |                 LUT |
-| MUXF7    |  164 |               MuxFx |
-| MUXF8    |   57 |               MuxFx |
+| LUT6     | 5848 |                 LUT |
+| LUT3     | 3650 |                 LUT |
+| LUT2     | 3610 |                 LUT |
+| CARRY4   | 2784 |          CarryLogic |
+| LUT5     | 2632 |                 LUT |
+| LUT1     | 2436 |                 LUT |
+| LUT4     | 2140 |                 LUT |
+| FDRE     | 1227 |        Flop & Latch |
+| MUXF7    |  295 |               MuxFx |
+| MUXF8    |   66 |               MuxFx |
 | OBUF     |   30 |                  IO |
-| FDSE     |    9 |        Flop & Latch |
+| FDSE     |   29 |        Flop & Latch |
 | IBUF     |    2 |                  IO |
 | DSP48E1  |    1 |    Block Arithmetic |
 +----------+------+---------------------+

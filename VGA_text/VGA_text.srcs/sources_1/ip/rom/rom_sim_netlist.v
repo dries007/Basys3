@@ -1,7 +1,7 @@
 // Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
-// Date        : Tue May 31 22:13:45 2016
+// Date        : Fri Jun  3 00:16:42 2016
 // Host        : Dries007-Arch running 64-bit unknown
 // Command     : write_verilog -force -mode funcsim
 //               /home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/ip/rom/rom_sim_netlist.v

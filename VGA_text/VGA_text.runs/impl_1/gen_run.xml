@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1464899145">
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1465070211">
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <File Type="RDI-RDI" Name="top.vdi"/>
   <File Type="BG-DRC" Name="top.drc"/>
@@ -145,7 +145,7 @@
       <Option Id="RawbitFileBool">1</Option>
     </Step>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="rom"/>
-  <BlockFileSet Type="BlockSrcs" Name="FrameBuffer"/>
   <BlockFileSet Type="BlockSrcs" Name="ClockDivider"/>
+  <BlockFileSet Type="BlockSrcs" Name="FrameBuffer"/>
+  <BlockFileSet Type="BlockSrcs" Name="rom"/>
 </GenRun>

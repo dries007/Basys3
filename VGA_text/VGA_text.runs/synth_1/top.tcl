@@ -16,12 +16,12 @@ set_property target_language VHDL [current_project]
 set_property vhdl_version vhdl_2k [current_fileset]
 add_files /home/dries/Projects/Basys3/VGA_text/coe/GAMES.coe
 add_files /home/dries/Projects/Basys3/VGA_text/coe/FB.coe
-add_files -quiet /home/dries/Projects/Basys3/VGA_text/VGA_text.runs/ClockDivider_synth_1/ClockDivider.dcp
-set_property used_in_implementation false [get_files /home/dries/Projects/Basys3/VGA_text/VGA_text.runs/ClockDivider_synth_1/ClockDivider.dcp]
-add_files -quiet /home/dries/Projects/Basys3/VGA_text/VGA_text.runs/FrameBuffer_synth_1/FrameBuffer.dcp
-set_property used_in_implementation false [get_files /home/dries/Projects/Basys3/VGA_text/VGA_text.runs/FrameBuffer_synth_1/FrameBuffer.dcp]
 add_files -quiet /home/dries/Projects/Basys3/VGA_text/VGA_text.runs/rom_synth_1/rom.dcp
 set_property used_in_implementation false [get_files /home/dries/Projects/Basys3/VGA_text/VGA_text.runs/rom_synth_1/rom.dcp]
+add_files -quiet /home/dries/Projects/Basys3/VGA_text/VGA_text.runs/FrameBuffer_synth_1/FrameBuffer.dcp
+set_property used_in_implementation false [get_files /home/dries/Projects/Basys3/VGA_text/VGA_text.runs/FrameBuffer_synth_1/FrameBuffer.dcp]
+add_files -quiet /home/dries/Projects/Basys3/VGA_text/VGA_text.runs/ClockDivider_synth_1/ClockDivider.dcp
+set_property used_in_implementation false [get_files /home/dries/Projects/Basys3/VGA_text/VGA_text.runs/ClockDivider_synth_1/ClockDivider.dcp]
 read_vhdl -library xil_defaultlib {
   /home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/Font.vhd
   /home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/imports/Downloads/ps2_keyboard.vhd
