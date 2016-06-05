@@ -4,6 +4,10 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.std_logic_unsigned.all;
 use ieee.math_real.all;
 
+-- https://github.com/thelonious/vga_generator/blob/master/vga_text/font_rom.vhd
+-- I reversed the order of the bits to reduce the calculation load.
+-- also changed it to a function
+
 package Font is
     function draw_char(X : integer range 0 to 8; Y : integer range 0 to 16; char : integer range 0 to 128) return boolean;
 end Font;

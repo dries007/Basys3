@@ -2,8 +2,8 @@
 # Vivado v2015.4 (64-bit)
 # SW Build 1412921 on Wed Nov 18 09:44:32 MST 2015
 # IP Build 1412160 on Tue Nov 17 13:47:24 MST 2015
-# Start of session at: Sat Jun  4 21:56:52 2016
-# Process ID: 8286
+# Start of session at: Mon Jun  6 00:02:27 2016
+# Process ID: 10777
 # Current directory: /home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1
 # Command line: vivado -log top.vds -mode batch -messageDb vivado.pb -notrace -source top.tcl
 # Log file: /home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/top.vds
@@ -15,13 +15,13 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 961.609 ; gain = 130.918 ; free physical = 7358 ; free virtual = 60689
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 961.609 ; gain = 130.918 ; free physical = 6851 ; free virtual = 61528
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'top' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:25]
-INFO: [Synth 8-3491] module 'ClockDivider' declared at '/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-8286-Dries007-Arch/realtime/ClockDivider_stub.vhdl:5' bound to instance 'clock0' of component 'ClockDivider' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:192]
-INFO: [Synth 8-638] synthesizing module 'ClockDivider' [/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-8286-Dries007-Arch/realtime/ClockDivider_stub.vhdl:15]
-INFO: [Synth 8-3491] module 'Vga' declared at '/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/Vga.vhd:12' bound to instance 'vga0' of component 'Vga' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:226]
-INFO: [Synth 8-638] synthesizing module 'Vga' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/Vga.vhd:38]
+INFO: [Synth 8-3491] module 'ClockDivider' declared at '/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-10777-Dries007-Arch/realtime/ClockDivider_stub.vhdl:5' bound to instance 'clock0' of component 'ClockDivider' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:192]
+INFO: [Synth 8-638] synthesizing module 'ClockDivider' [/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-10777-Dries007-Arch/realtime/ClockDivider_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'Vga' declared at '/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/Vga.vhd:9' bound to instance 'vga0' of component 'Vga' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:226]
+INFO: [Synth 8-638] synthesizing module 'Vga' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/Vga.vhd:35]
 	Parameter H_PIX bound to: 1280 - type: integer 
 	Parameter H_FP bound to: 48 - type: integer 
 	Parameter H_SY bound to: 112 - type: integer 
@@ -32,13 +32,13 @@ INFO: [Synth 8-638] synthesizing module 'Vga' [/home/dries/Projects/Basys3/VGA_t
 	Parameter V_SY bound to: 3 - type: integer 
 	Parameter V_BP bound to: 36 - type: integer 
 	Parameter V_POL bound to: 1'b1 
-INFO: [Synth 8-4471] merging register 'vgaGreen_reg[3:0]' into 'vgaRed_reg[3:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/Vga.vhd:91]
-INFO: [Synth 8-4471] merging register 'vgaBlue_reg[3:0]' into 'vgaRed_reg[3:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/Vga.vhd:92]
-INFO: [Synth 8-256] done synthesizing module 'Vga' (1#1) [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/Vga.vhd:38]
-INFO: [Synth 8-3491] module 'FrameBuffer' declared at '/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-8286-Dries007-Arch/realtime/FrameBuffer_stub.vhdl:5' bound to instance 'frameBuffer0' of component 'Framebuffer' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:239]
-INFO: [Synth 8-638] synthesizing module 'FrameBuffer' [/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-8286-Dries007-Arch/realtime/FrameBuffer_stub.vhdl:22]
-INFO: [Synth 8-3491] module 'rom' declared at '/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-8286-Dries007-Arch/realtime/rom_stub.vhdl:5' bound to instance 'rom0' of component 'Rom' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:256]
-INFO: [Synth 8-638] synthesizing module 'rom' [/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-8286-Dries007-Arch/realtime/rom_stub.vhdl:14]
+INFO: [Synth 8-4471] merging register 'vgaGreen_reg[3:0]' into 'vgaRed_reg[3:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/Vga.vhd:88]
+INFO: [Synth 8-4471] merging register 'vgaBlue_reg[3:0]' into 'vgaRed_reg[3:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/Vga.vhd:89]
+INFO: [Synth 8-256] done synthesizing module 'Vga' (1#1) [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/Vga.vhd:35]
+INFO: [Synth 8-3491] module 'FrameBuffer' declared at '/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-10777-Dries007-Arch/realtime/FrameBuffer_stub.vhdl:5' bound to instance 'frameBuffer0' of component 'Framebuffer' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:239]
+INFO: [Synth 8-638] synthesizing module 'FrameBuffer' [/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-10777-Dries007-Arch/realtime/FrameBuffer_stub.vhdl:22]
+INFO: [Synth 8-3491] module 'rom' declared at '/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-10777-Dries007-Arch/realtime/rom_stub.vhdl:5' bound to instance 'rom0' of component 'Rom' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:256]
+INFO: [Synth 8-638] synthesizing module 'rom' [/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-10777-Dries007-Arch/realtime/rom_stub.vhdl:14]
 	Parameter BITS bound to: 16 - type: integer 
 INFO: [Synth 8-3491] module 'Prng' declared at '/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/imports/new/Prng.vhd:6' bound to instance 'prng0' of component 'Prng' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:264]
 INFO: [Synth 8-638] synthesizing module 'Prng' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/imports/new/Prng.vhd:20]
@@ -54,9 +54,10 @@ INFO: [Synth 8-638] synthesizing module 'ps2_keyboard' [/home/dries/Projects/Bas
 	Parameter clk_freq bound to: 9000000 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'ps2_keyboard' (3#1) [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/imports/Downloads/ps2_keyboard.vhd:39]
 INFO: [Synth 8-256] done synthesizing module 'ps2_keyboard_to_ascii' (4#1) [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/imports/Downloads/ps2_keyboard_to_ascii.vhd:41]
+INFO: [Synth 8-4471] merging register 'fb_a_we_reg[0:0]' into 'fb_a_en_reg' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:243]
 INFO: [Synth 8-256] done synthesizing module 'top' (5#1) [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:25]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:29:55 ; elapsed = 00:34:26 . Memory (MB): peak = 18331.367 ; gain = 17500.676 ; free physical = 256 ; free virtual = 37226
+Finished RTL Elaboration : Time (s): cpu = 00:36:25 ; elapsed = 00:44:35 . Memory (MB): peak = 18799.227 ; gain = 17968.535 ; free physical = 370 ; free virtual = 35522
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -66,19 +67,19 @@ Report Check Netlist:
 |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:31:16 ; elapsed = 00:39:34 . Memory (MB): peak = 18331.367 ; gain = 17500.676 ; free physical = 168 ; free virtual = 41861
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:37:51 ; elapsed = 00:51:03 . Memory (MB): peak = 18799.227 ; gain = 17968.535 ; free physical = 163 ; free virtual = 41186
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-8286-Dries007-Arch/dcp/rom_in_context.xdc] for cell 'rom0'
-Finished Parsing XDC File [/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-8286-Dries007-Arch/dcp/rom_in_context.xdc] for cell 'rom0'
-Parsing XDC File [/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-8286-Dries007-Arch/dcp_2/FrameBuffer_in_context.xdc] for cell 'frameBuffer0'
-Finished Parsing XDC File [/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-8286-Dries007-Arch/dcp_2/FrameBuffer_in_context.xdc] for cell 'frameBuffer0'
-Parsing XDC File [/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-8286-Dries007-Arch/dcp_3/ClockDivider_in_context.xdc] for cell 'clock0'
-Finished Parsing XDC File [/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-8286-Dries007-Arch/dcp_3/ClockDivider_in_context.xdc] for cell 'clock0'
+Parsing XDC File [/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-10777-Dries007-Arch/dcp/rom_in_context.xdc] for cell 'rom0'
+Finished Parsing XDC File [/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-10777-Dries007-Arch/dcp/rom_in_context.xdc] for cell 'rom0'
+Parsing XDC File [/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-10777-Dries007-Arch/dcp_2/FrameBuffer_in_context.xdc] for cell 'frameBuffer0'
+Finished Parsing XDC File [/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-10777-Dries007-Arch/dcp_2/FrameBuffer_in_context.xdc] for cell 'frameBuffer0'
+Parsing XDC File [/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-10777-Dries007-Arch/dcp_3/ClockDivider_in_context.xdc] for cell 'clock0'
+Finished Parsing XDC File [/home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-10777-Dries007-Arch/dcp_3/ClockDivider_in_context.xdc] for cell 'clock0'
 Parsing XDC File [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/constrs_1/imports/Basys3/Basys3_Master.xdc]
 Finished Parsing XDC File [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/constrs_1/imports/Basys3/Basys3_Master.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/constrs_1/imports/Basys3/Basys3_Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_propImpl.xdc].
@@ -88,147 +89,150 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.08 . Memory (MB): peak = 18363.383 ; gain = 0.000 ; free physical = 180 ; free virtual = 41908
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.09 . Memory (MB): peak = 18831.242 ; gain = 0.000 ; free physical = 149 ; free virtual = 41193
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context implementation of instance 'frameBuffer0' at clock pin 'clkb' is different from the actual clock period '9.259', this can result in different implementation results.
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 9856 
+INFO: Helper process launched with PID 13307 
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:33:42 ; elapsed = 00:45:23 . Memory (MB): peak = 18363.383 ; gain = 17532.691 ; free physical = 176 ; free virtual = 42304
+Finished Constraint Validation : Time (s): cpu = 00:40:25 ; elapsed = 00:57:07 . Memory (MB): peak = 18831.242 ; gain = 18000.551 ; free physical = 166 ; free virtual = 41752
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:33:42 ; elapsed = 00:45:23 . Memory (MB): peak = 18363.383 ; gain = 17532.691 ; free physical = 169 ; free virtual = 42304
+Finished Loading Part and Timing Information : Time (s): cpu = 00:40:25 ; elapsed = 00:57:07 . Memory (MB): peak = 18831.242 ; gain = 18000.551 ; free physical = 158 ; free virtual = 41751
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property IO_BUFFER_TYPE = NONE for clk. (constraint file  /home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-8286-Dries007-Arch/dcp_3/ClockDivider_in_context.xdc, line 5).
+Applied set_property IO_BUFFER_TYPE = NONE for clk. (constraint file  /home/dries/Projects/Basys3/VGA_text/VGA_text.runs/synth_1/.Xil/Vivado-10777-Dries007-Arch/dcp_3/ClockDivider_in_context.xdc, line 5).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:33:43 ; elapsed = 00:45:24 . Memory (MB): peak = 18363.383 ; gain = 17532.691 ; free physical = 163 ; free virtual = 42302
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:40:26 ; elapsed = 00:57:10 . Memory (MB): peak = 18831.242 ; gain = 18000.551 ; free physical = 162 ; free virtual = 41689
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5546] ROM "break" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "ascii" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "ascii" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "shift_l" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "shift_r" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-4471] merging register 'msg_reg[34][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[35][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[36][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[37][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[38][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[39][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[40][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[41][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[42][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[43][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[44][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[45][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[46][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[47][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[48][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[49][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[50][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[51][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[52][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[53][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[54][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[55][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[56][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[57][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[58][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[59][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[60][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[61][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[62][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[63][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[64][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[65][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[66][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[67][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[68][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[69][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[70][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[71][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[72][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[73][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[74][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[75][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[76][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[77][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[78][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[79][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[80][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[81][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[82][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[83][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[84][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[85][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[86][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[87][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[88][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[89][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[90][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[91][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[92][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[93][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[94][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[95][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[96][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[97][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[98][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[99][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[100][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[101][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[102][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[103][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[104][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[105][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[106][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[107][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[108][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[109][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[110][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[111][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[112][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[113][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[114][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[115][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[116][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[117][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[118][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[119][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[120][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[121][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[122][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[123][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[124][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[125][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[126][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[127][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[128][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[129][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[130][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
-INFO: [Synth 8-4471] merging register 'msg_reg[131][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:2931]
+INFO: [Synth 8-4471] merging register 'msg_reg[34][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[35][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[36][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[37][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[38][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[39][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[40][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[41][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[42][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[43][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[44][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[45][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[46][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[47][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[48][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[49][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[50][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[51][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[52][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[53][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[54][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[55][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[56][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[57][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[58][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[59][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[60][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[61][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[62][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[63][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[64][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[65][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[66][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[67][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[68][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[69][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[70][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[71][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[72][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[73][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[74][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[75][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[76][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[77][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[78][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[79][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[80][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[81][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[82][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[83][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[84][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[85][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[86][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[87][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[88][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[89][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[90][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[91][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[92][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[93][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[94][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[95][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[96][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[97][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[98][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[99][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[100][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[101][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[102][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[103][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[104][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[105][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[106][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[107][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[108][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[109][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[110][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[111][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[112][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[113][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[114][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[115][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[116][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[117][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[118][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[119][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[120][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[121][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[122][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[123][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[124][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[125][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[126][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[127][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[128][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[129][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
+INFO: [Synth 8-4471] merging register 'msg_reg[130][7:0]' into 'msg_reg[33][7:0]' [/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/top.vhd:462]
 INFO: [Common 17-14] Message 'Synth 8-4471' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-INFO: [Synth 8-5546] ROM "clk_1" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "clk_2" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "clk_1k" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "rng_seed_en" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "fb_a_en" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "fb_a_en" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5587] ROM size for "fb_a_en" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5544] ROM "fb_index" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[15]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[15]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[15]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[15]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[15]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[15]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5546] ROM "state[15]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5544] ROM "state_reg[15]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state_reg[15]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state_reg[15]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[15]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[15]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[15]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[15]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[15]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[15]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[15]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[15]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[14]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[14]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state_reg[14]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state_reg[14]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state_reg[14]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
@@ -247,6 +251,10 @@ INFO: [Synth 8-5544] ROM "state_reg[13]" won't be mapped to Block RAM because ad
 INFO: [Synth 8-5544] ROM "state_reg[13]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state_reg[13]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state_reg[13]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[13]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[13]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[12]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[12]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state_reg[12]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state_reg[12]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state_reg[12]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
@@ -265,6 +273,10 @@ INFO: [Synth 8-5544] ROM "state_reg[11]" won't be mapped to Block RAM because ad
 INFO: [Synth 8-5544] ROM "state_reg[11]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state_reg[11]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state_reg[11]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[11]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[11]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[10]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[10]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state_reg[10]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state_reg[10]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state_reg[10]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
@@ -283,6 +295,10 @@ INFO: [Synth 8-5544] ROM "state_reg[9]" won't be mapped to Block RAM because add
 INFO: [Synth 8-5544] ROM "state_reg[9]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state_reg[9]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state_reg[9]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[9]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[9]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[8]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[8]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state_reg[8]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state_reg[8]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state_reg[8]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
@@ -301,26 +317,9 @@ INFO: [Synth 8-5544] ROM "state_reg[7]" won't be mapped to Block RAM because add
 INFO: [Synth 8-5544] ROM "state_reg[7]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state_reg[7]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "state_reg[7]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[6]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[6]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[6]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[6]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[6]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[6]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[6]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[6]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[6]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[5]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[5]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[5]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[5]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[5]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[5]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[5]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[5]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "state_reg[5]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[7]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "state_reg[7]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Common 17-14] Message 'Synth 8-5544' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-INFO: [Synth 8-5545] ROM "fb_a_addr1" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5546] ROM "fb_a_addr" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "fb_a_dat_in" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "fb_a_dat_in" won't be mapped to RAM because it is too sparse
@@ -328,13 +327,20 @@ INFO: [Synth 8-5546] ROM "fb_a_dat_in" won't be mapped to RAM because it is too 
 INFO: [Synth 8-5546] ROM "state_index" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "state_index" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "state_index" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "state_index" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5587] ROM size for "state_index" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5546] ROM "state_index" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "state_index" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "game" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "card_first" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "msg[1]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "input_max" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "input_max" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "input_max" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "input" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "bet_higher" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "bet_higher" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "bet_money" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "rnd" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "bets_reg[25][kind]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "bets_reg[24][kind]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "bets_reg[23][kind]" won't be mapped to RAM because it is too sparse
@@ -362,7 +368,6 @@ INFO: [Synth 8-5546] ROM "bets_reg[2][kind]" won't be mapped to RAM because it i
 INFO: [Synth 8-5546] ROM "bets_reg[1][kind]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "bets_reg[0][kind]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "bets_index" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "rnd" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "ascii_i5" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "ascii_i5" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "ascii_i5" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
@@ -372,40 +377,38 @@ INFO: [Synth 8-5545] ROM "ascii_i5" won't be mapped to RAM because address size 
 INFO: [Synth 8-5545] ROM "ascii_i5" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "ascii_i5" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:38:22 ; elapsed = 00:50:17 . Memory (MB): peak = 18363.383 ; gain = 17532.691 ; free physical = 211 ; free virtual = 42399
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:45:19 ; elapsed = 01:03:11 . Memory (MB): peak = 18831.242 ; gain = 18000.551 ; free physical = 184 ; free virtual = 41656
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
 +------+--------------+------------+----------+
 |      |RTL Partition |Replication |Instances |
 +------+--------------+------------+----------+
-|1     |top__GB0      |           1|     25299|
-|2     |top__GB1      |           1|     11426|
-|3     |top__GB2      |           1|      3245|
-|4     |top__GB3      |           1|      7502|
-|5     |top__GB4      |           1|      6404|
-|6     |top__GB5      |           1|     10329|
-|7     |top__GB6      |           1|     10502|
-|8     |top__GB7      |           1|      9378|
-|9     |top__GB8      |           1|     16682|
-|10    |top__GB9      |           1|      5913|
-|11    |top__GB10     |           1|      7318|
-|12    |top__GB11     |           1|     17684|
-|13    |top__GB12     |           1|      5453|
-|14    |top__GB13     |           1|      6945|
-|15    |top__GB14     |           1|     16549|
-|16    |top__GB15     |           1|      4863|
-|17    |top__GB16     |           1|     10909|
-|18    |top__GB17     |           1|      4105|
+|1     |top__GB0      |           1|     29774|
+|2     |top__GB1      |           1|      4719|
+|3     |top__GB2      |           1|      3475|
+|4     |top__GB3      |           1|      6192|
+|5     |top__GB4      |           1|      7953|
+|6     |top__GB5      |           1|     17769|
+|7     |top__GB6      |           1|     12567|
+|8     |top__GB7      |           1|     18328|
+|9     |top__GB8      |           1|     16366|
+|10    |top__GB9      |           1|      6544|
+|11    |top__GB10     |           1|     18736|
+|12    |top__GB11     |           1|      6453|
+|13    |top__GB12     |           1|     16627|
+|14    |top__GB13     |           1|      4735|
+|15    |top__GB14     |           1|      3998|
+|16    |top__GB15     |           1|      6192|
+|17    |top__GB16     |           1|      6380|
 +------+--------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input     32 Bit       Adders := 1     
-	   2 Input     31 Bit       Adders := 1     
 	   2 Input     28 Bit       Adders := 2     
+	   2 Input     27 Bit       Adders := 10    
 	   3 Input     27 Bit       Adders := 1     
 	   2 Input     25 Bit       Adders := 2     
 	   2 Input     23 Bit       Adders := 1     
@@ -414,14 +417,14 @@ Detailed RTL Component Info :
 	   2 Input     18 Bit       Adders := 2     
 	   2 Input     15 Bit       Adders := 6     
 	   3 Input     15 Bit       Adders := 1     
-	   2 Input     14 Bit       Adders := 5     
+	   2 Input     14 Bit       Adders := 4     
 	   2 Input     12 Bit       Adders := 1     
 	   2 Input     11 Bit       Adders := 4     
 	   2 Input      9 Bit       Adders := 1     
 	   2 Input      8 Bit       Adders := 2     
 	   2 Input      7 Bit       Adders := 41    
 	   2 Input      6 Bit       Adders := 1     
-	   2 Input      5 Bit       Adders := 4     
+	   2 Input      5 Bit       Adders := 5     
 	   2 Input      4 Bit       Adders := 4     
 	   2 Input      3 Bit       Adders := 1     
 	   2 Input      1 Bit       Adders := 4     
@@ -431,7 +434,7 @@ Detailed RTL Component Info :
 +---Registers : 
 	               27 Bit    Registers := 1     
 	               23 Bit    Registers := 1     
-	               17 Bit    Registers := 38    
+	               17 Bit    Registers := 48    
 	               16 Bit    Registers := 3     
 	               15 Bit    Registers := 1     
 	               14 Bit    Registers := 4     
@@ -441,12 +444,12 @@ Detailed RTL Component Info :
 	                7 Bit    Registers := 1     
 	                6 Bit    Registers := 26    
 	                5 Bit    Registers := 17    
-	                4 Bit    Registers := 27    
+	                4 Bit    Registers := 28    
 	                2 Bit    Registers := 1     
-	                1 Bit    Registers := 23    
+	                1 Bit    Registers := 21    
 +---Muxes : 
-	   2 Input     31 Bit        Muxes := 1     
 	   2 Input     28 Bit        Muxes := 2     
+	  10 Input     27 Bit        Muxes := 1     
 	   2 Input     25 Bit        Muxes := 3     
 	   2 Input     23 Bit        Muxes := 1     
 	   2 Input     21 Bit        Muxes := 3     
@@ -456,51 +459,60 @@ Detailed RTL Component Info :
 	  18 Input     17 Bit        Muxes := 1     
 	   2 Input     16 Bit        Muxes := 1     
 	   2 Input     15 Bit        Muxes := 5     
-	   7 Input     14 Bit        Muxes := 1     
-	   2 Input     14 Bit        Muxes := 36    
+	   2 Input     14 Bit        Muxes := 37    
+	  18 Input     14 Bit        Muxes := 2     
 	 499 Input     14 Bit        Muxes := 2     
-	   8 Input     14 Bit        Muxes := 1     
+	  16 Input     14 Bit        Muxes := 1     
+	   6 Input     14 Bit        Muxes := 1     
 	   2 Input     11 Bit        Muxes := 14    
+	  18 Input      8 Bit        Muxes := 12    
+	  16 Input      8 Bit        Muxes := 1     
 	 499 Input      8 Bit        Muxes := 30    
-	   2 Input      8 Bit        Muxes := 20    
-	  18 Input      8 Bit        Muxes := 19    
+	   2 Input      8 Bit        Muxes := 19    
 	  32 Input      8 Bit        Muxes := 2     
 	   9 Input      8 Bit        Muxes := 2     
 	  48 Input      8 Bit        Muxes := 4     
 	   4 Input      8 Bit        Muxes := 23    
-	   6 Input      8 Bit        Muxes := 4     
 	10240 Input      8 Bit        Muxes := 2     
+	   5 Input      8 Bit        Muxes := 1     
+	   7 Input      8 Bit        Muxes := 1     
 	   9 Input      7 Bit        Muxes := 125   
+	   5 Input      7 Bit        Muxes := 25    
 	   2 Input      7 Bit        Muxes := 82    
 	   3 Input      7 Bit        Muxes := 25    
-	   5 Input      7 Bit        Muxes := 25    
 	10240 Input      7 Bit        Muxes := 1     
 	   2 Input      6 Bit        Muxes := 1     
 	   5 Input      6 Bit        Muxes := 1     
-	   2 Input      5 Bit        Muxes := 22    
-	  18 Input      5 Bit        Muxes := 17    
+	   2 Input      5 Bit        Muxes := 5     
+	   3 Input      5 Bit        Muxes := 16    
 	 499 Input      5 Bit        Muxes := 16    
+	  18 Input      5 Bit        Muxes := 17    
 	  32 Input      5 Bit        Muxes := 1     
 	  26 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 99    
 	   3 Input      4 Bit        Muxes := 32    
-	   2 Input      4 Bit        Muxes := 52    
 	   4 Input      4 Bit        Muxes := 16    
-	   7 Input      4 Bit        Muxes := 1     
+	   6 Input      4 Bit        Muxes := 1     
+	  10 Input      3 Bit        Muxes := 2     
 	   2 Input      3 Bit        Muxes := 32    
-	  18 Input      3 Bit        Muxes := 7     
+	  18 Input      3 Bit        Muxes := 5     
+	  16 Input      2 Bit        Muxes := 16    
 	   4 Input      2 Bit        Muxes := 1     
 	 499 Input      2 Bit        Muxes := 2     
-	  18 Input      2 Bit        Muxes := 6     
+	  18 Input      2 Bit        Muxes := 1     
 	   7 Input      2 Bit        Muxes := 1     
-	  18 Input      1 Bit        Muxes := 87    
-	   2 Input      1 Bit        Muxes := 248   
+	  18 Input      1 Bit        Muxes := 91    
+	   2 Input      1 Bit        Muxes := 204   
 	 499 Input      1 Bit        Muxes := 45    
-	   4 Input      1 Bit        Muxes := 51    
-	   3 Input      1 Bit        Muxes := 20    
-	  13 Input      1 Bit        Muxes := 2     
-	  20 Input      1 Bit        Muxes := 2     
+	   4 Input      1 Bit        Muxes := 45    
+	  33 Input      1 Bit        Muxes := 2     
 	   8 Input      1 Bit        Muxes := 3     
-	   5 Input      1 Bit        Muxes := 4     
+	  16 Input      1 Bit        Muxes := 4     
+	  10 Input      1 Bit        Muxes := 18    
+	   3 Input      1 Bit        Muxes := 38    
+	   5 Input      1 Bit        Muxes := 7     
+	  13 Input      1 Bit        Muxes := 2     
+	  20 Input      1 Bit        Muxes := 1     
 	   6 Input      1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
@@ -512,9 +524,8 @@ Hierarchical RTL Component report
 Module top 
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input     32 Bit       Adders := 1     
-	   2 Input     31 Bit       Adders := 1     
 	   2 Input     28 Bit       Adders := 2     
+	   2 Input     27 Bit       Adders := 10    
 	   3 Input     27 Bit       Adders := 1     
 	   2 Input     25 Bit       Adders := 2     
 	   2 Input     23 Bit       Adders := 1     
@@ -523,30 +534,30 @@ Detailed RTL Component Info :
 	   2 Input     18 Bit       Adders := 2     
 	   2 Input     15 Bit       Adders := 6     
 	   3 Input     15 Bit       Adders := 1     
-	   2 Input     14 Bit       Adders := 5     
+	   2 Input     14 Bit       Adders := 4     
 	   2 Input     11 Bit       Adders := 2     
 	   2 Input      8 Bit       Adders := 2     
 	   2 Input      7 Bit       Adders := 41    
 	   2 Input      6 Bit       Adders := 1     
-	   2 Input      5 Bit       Adders := 4     
+	   2 Input      5 Bit       Adders := 5     
 	   2 Input      4 Bit       Adders := 4     
 	   2 Input      3 Bit       Adders := 1     
 	   2 Input      1 Bit       Adders := 4     
 +---Registers : 
 	               27 Bit    Registers := 1     
 	               23 Bit    Registers := 1     
-	               17 Bit    Registers := 38    
+	               17 Bit    Registers := 48    
 	               16 Bit    Registers := 1     
 	               15 Bit    Registers := 1     
 	               14 Bit    Registers := 3     
 	                8 Bit    Registers := 34    
 	                6 Bit    Registers := 26    
 	                5 Bit    Registers := 17    
-	                4 Bit    Registers := 27    
-	                1 Bit    Registers := 8     
+	                4 Bit    Registers := 28    
+	                1 Bit    Registers := 6     
 +---Muxes : 
-	   2 Input     31 Bit        Muxes := 1     
 	   2 Input     28 Bit        Muxes := 2     
+	  10 Input     27 Bit        Muxes := 1     
 	   2 Input     25 Bit        Muxes := 3     
 	   2 Input     23 Bit        Muxes := 1     
 	   2 Input     21 Bit        Muxes := 3     
@@ -555,45 +566,55 @@ Detailed RTL Component Info :
 	   2 Input     17 Bit        Muxes := 11    
 	  18 Input     17 Bit        Muxes := 1     
 	   2 Input     15 Bit        Muxes := 5     
-	   7 Input     14 Bit        Muxes := 1     
-	   2 Input     14 Bit        Muxes := 35    
+	   2 Input     14 Bit        Muxes := 36    
+	  18 Input     14 Bit        Muxes := 2     
 	 499 Input     14 Bit        Muxes := 2     
-	   8 Input     14 Bit        Muxes := 1     
+	  16 Input     14 Bit        Muxes := 1     
+	   6 Input     14 Bit        Muxes := 1     
 	   2 Input     11 Bit        Muxes := 3     
+	  18 Input      8 Bit        Muxes := 12    
+	  16 Input      8 Bit        Muxes := 1     
 	 499 Input      8 Bit        Muxes := 30    
-	   2 Input      8 Bit        Muxes := 10    
-	  18 Input      8 Bit        Muxes := 19    
-	   4 Input      8 Bit        Muxes := 21    
-	   6 Input      8 Bit        Muxes := 4     
+	   2 Input      8 Bit        Muxes := 9     
 	10240 Input      8 Bit        Muxes := 2     
+	   5 Input      8 Bit        Muxes := 1     
+	   4 Input      8 Bit        Muxes := 21    
+	   7 Input      8 Bit        Muxes := 1     
 	   9 Input      7 Bit        Muxes := 125   
+	   5 Input      7 Bit        Muxes := 25    
 	   2 Input      7 Bit        Muxes := 82    
 	   3 Input      7 Bit        Muxes := 25    
-	   5 Input      7 Bit        Muxes := 25    
 	10240 Input      7 Bit        Muxes := 1     
 	   2 Input      6 Bit        Muxes := 1     
 	   5 Input      6 Bit        Muxes := 1     
-	   2 Input      5 Bit        Muxes := 22    
-	  18 Input      5 Bit        Muxes := 17    
+	   2 Input      5 Bit        Muxes := 5     
+	   3 Input      5 Bit        Muxes := 16    
 	 499 Input      5 Bit        Muxes := 16    
+	  18 Input      5 Bit        Muxes := 17    
 	  26 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 99    
 	   3 Input      4 Bit        Muxes := 32    
-	   2 Input      4 Bit        Muxes := 52    
 	   4 Input      4 Bit        Muxes := 16    
-	   7 Input      4 Bit        Muxes := 1     
+	   6 Input      4 Bit        Muxes := 1     
+	  10 Input      3 Bit        Muxes := 2     
 	   2 Input      3 Bit        Muxes := 32    
-	  18 Input      3 Bit        Muxes := 7     
+	  18 Input      3 Bit        Muxes := 5     
+	  16 Input      2 Bit        Muxes := 16    
 	   4 Input      2 Bit        Muxes := 1     
 	 499 Input      2 Bit        Muxes := 2     
-	  18 Input      2 Bit        Muxes := 6     
-	  18 Input      1 Bit        Muxes := 87    
-	   2 Input      1 Bit        Muxes := 244   
+	  18 Input      2 Bit        Muxes := 1     
+	  18 Input      1 Bit        Muxes := 91    
+	   2 Input      1 Bit        Muxes := 200   
 	 499 Input      1 Bit        Muxes := 45    
-	   4 Input      1 Bit        Muxes := 44    
-	   3 Input      1 Bit        Muxes := 19    
-	  13 Input      1 Bit        Muxes := 2     
-	  20 Input      1 Bit        Muxes := 2     
+	   4 Input      1 Bit        Muxes := 38    
+	  33 Input      1 Bit        Muxes := 2     
 	   8 Input      1 Bit        Muxes := 1     
+	  16 Input      1 Bit        Muxes := 4     
+	  10 Input      1 Bit        Muxes := 18    
+	   3 Input      1 Bit        Muxes := 37    
+	   5 Input      1 Bit        Muxes := 3     
+	  13 Input      1 Bit        Muxes := 2     
+	  20 Input      1 Bit        Muxes := 1     
 Module Vga 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -663,76 +684,87 @@ BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5580] Multithreading enabled for synth_design using a maximum of 4 processes.
-Start Parallel Synthesis Optimization  : Time (s): cpu = 00:38:26 ; elapsed = 00:50:22 . Memory (MB): peak = 18363.383 ; gain = 17532.691 ; free physical = 193 ; free virtual = 42393
+Start Parallel Synthesis Optimization  : Time (s): cpu = 00:45:23 ; elapsed = 01:03:15 . Memory (MB): peak = 18831.242 ; gain = 18000.551 ; free physical = 164 ; free virtual = 41648
 ---------------------------------------------------------------------------------
 Start Cross Boundary Optimization
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-5545] ROM "fb_a_addr1" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "fb_a_addr" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "fb_a_en" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "input_max" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "clk_1" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "clk_1k" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "ascii_i5" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "ascii_i5" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "ascii_i5" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "ascii_i5" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5546] ROM "bet_higher" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ascii2" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ascii" won't be mapped to RAM because it is too sparse
 DSP Report: Generating DSP fb_a_addr0, operation Mode is: (C:0x1ea1)+A2*(B:0xa0).
 DSP Report: register input_reg is absorbed into DSP fb_a_addr0.
 DSP Report: operator fb_a_addr0 is absorbed into DSP fb_a_addr0.
 DSP Report: operator fb_a_addr1 is absorbed into DSP fb_a_addr0.
+INFO: [Synth 8-5546] ROM "bet_money" won't be mapped to RAM because it is too sparse
+DSP Report: Generating DSP money2, operation Mode is: A''*(B:0x6b).
+DSP Report: register input_reg is absorbed into DSP money2.
+DSP Report: register bet_money_reg is absorbed into DSP money2.
+DSP Report: operator money2 is absorbed into DSP money2.
+DSP Report: Generating DSP money2, operation Mode is: A''*(B:0x35).
+DSP Report: register input_reg is absorbed into DSP money2.
+DSP Report: register bet_money_reg is absorbed into DSP money2.
+DSP Report: operator money2 is absorbed into DSP money2.
+DSP Report: Generating DSP money2, operation Mode is: A''*(B:0x23).
+DSP Report: register input_reg is absorbed into DSP money2.
+DSP Report: register bet_money_reg is absorbed into DSP money2.
+DSP Report: operator money2 is absorbed into DSP money2.
+DSP Report: Generating DSP money2, operation Mode is: A''*(B:0x1a).
+DSP Report: register input_reg is absorbed into DSP money2.
+DSP Report: register bet_money_reg is absorbed into DSP money2.
+DSP Report: operator money2 is absorbed into DSP money2.
+DSP Report: Generating DSP money2, operation Mode is: A''*(B:0x15).
+DSP Report: register input_reg is absorbed into DSP money2.
+DSP Report: register bet_money_reg is absorbed into DSP money2.
+DSP Report: operator money2 is absorbed into DSP money2.
+DSP Report: Generating DSP money2, operation Mode is: A''*(B:0x11).
+DSP Report: register input_reg is absorbed into DSP money2.
+DSP Report: register bet_money_reg is absorbed into DSP money2.
+DSP Report: operator money2 is absorbed into DSP money2.
 INFO: [Synth 8-5545] ROM "ascii_i5" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "ascii_i5" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "ascii_i5" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "ascii_i5" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "ascii_i5" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5546] ROM "fb_a_addr" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "fb_a_en" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "fb_a_en" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5587] ROM size for "fb_a_en" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5546] ROM "state_index" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "msg[1]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "clk_1k" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "input_max" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "input_max" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5587] ROM size for "state_index" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5546] ROM "state_index" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "state_index" won't be mapped to RAM because it is too sparse
-WARNING: [Synth 8-3917] design top__GB1 has port ascii_i1[3] driven by constant 0
-WARNING: [Synth 8-3917] design top__GB1 has port O8[3] driven by constant 0
-WARNING: [Synth 8-3917] design top__GB1 has port O12[3] driven by constant 0
-WARNING: [Synth 8-3917] design top__GB1 has port O13[3] driven by constant 0
-WARNING: [Synth 8-3917] design top__GB1 has port O15[3] driven by constant 0
-WARNING: [Synth 8-3917] design top__GB1 has port O24[3] driven by constant 0
-WARNING: [Synth 8-3917] design top__GB1 has port O34[3] driven by constant 0
-WARNING: [Synth 8-3917] design top__GB1 has port O41[3] driven by constant 0
-WARNING: [Synth 8-3917] design top__GB1 has port O43[3] driven by constant 0
-WARNING: [Synth 8-3917] design top__GB1 has port O44[3] driven by constant 0
-WARNING: [Synth 8-3917] design top__GB1 has port O46[3] driven by constant 0
-WARNING: [Synth 8-3917] design top__GB1 has port O51[3] driven by constant 0
-WARNING: [Synth 8-3917] design top__GB1 has port O53[3] driven by constant 0
-INFO: [Synth 8-5545] ROM "ascii_i5" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5545] ROM "ascii_i5" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "clk_2" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "ascii2" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "ascii" won't be mapped to RAM because it is too sparse
-WARNING: [Synth 8-3331] design top__GB14 has unconnected port msg_index1_out[4]
-WARNING: [Synth 8-3331] design top__GB14 has unconnected port msg_index1_out[3]
 ---------------------------------------------------------------------------------
-Finished Cross Boundary Optimization : Time (s): cpu = 00:40:08 ; elapsed = 00:52:33 . Memory (MB): peak = 18383.027 ; gain = 17552.336 ; free physical = 234 ; free virtual = 40955
+Finished Cross Boundary Optimization : Time (s): cpu = 00:47:09 ; elapsed = 01:05:39 . Memory (MB): peak = 18850.887 ; gain = 18020.195 ; free physical = 171 ; free virtual = 40257
 ---------------------------------------------------------------------------------
-Finished Parallel Reinference  : Time (s): cpu = 00:40:08 ; elapsed = 00:52:33 . Memory (MB): peak = 18383.027 ; gain = 17552.336 ; free physical = 234 ; free virtual = 40955
+Finished Parallel Reinference  : Time (s): cpu = 00:47:09 ; elapsed = 01:05:39 . Memory (MB): peak = 18850.887 ; gain = 18020.195 ; free physical = 171 ; free virtual = 40257
 
 Report RTL Partitions: 
 +------+--------------+------------+----------+
 |      |RTL Partition |Replication |Instances |
 +------+--------------+------------+----------+
-|1     |top__GB0      |           1|     26301|
-|2     |top__GB1      |           1|      9918|
-|3     |top__GB2      |           1|      2598|
-|4     |top__GB3      |           1|      8369|
-|5     |top__GB4      |           1|      7591|
-|6     |top__GB5      |           1|      8006|
-|7     |top__GB6      |           1|     12092|
-|8     |top__GB7      |           1|      9651|
-|9     |top__GB8      |           1|     14849|
-|10    |top__GB9      |           1|      7324|
-|11    |top__GB10     |           1|      7093|
-|12    |top__GB11     |           1|     17518|
-|13    |top__GB12     |           1|      6052|
-|14    |top__GB13     |           1|      6240|
-|15    |top__GB14     |           1|     16059|
-|16    |top__GB15     |           1|      5119|
-|17    |top__GB16     |           1|     12461|
-|18    |top__GB17     |           1|      4030|
+|1     |top__GB0      |           1|     32910|
+|2     |top__GB1      |           1|      5062|
+|3     |top__GB2      |           1|      3876|
+|4     |top__GB3      |           1|      5037|
+|5     |top__GB4      |           1|      6955|
+|6     |top__GB5      |           1|     16076|
+|7     |top__GB6      |           1|     10995|
+|8     |top__GB7      |           1|     18676|
+|9     |top__GB8      |           1|     15516|
+|10    |top__GB9      |           1|      7829|
+|11    |top__GB10     |           1|     19224|
+|12    |top__GB11     |           1|      7015|
+|13    |top__GB12     |           1|     17574|
+|14    |top__GB13     |           1|      5465|
+|15    |top__GB14     |           1|      3941|
+|16    |top__GB15     |           1|      5037|
+|17    |top__GB16     |           1|      8574|
 +------+--------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -743,7 +775,9 @@ ROM:
 |Module Name | RTL Object | Depth x Width | Implemented As | 
 +------------+------------+---------------+----------------+
 |Vga         | rom        | 2048x8        | LUT            | 
-|Vga         | rom        | 2048x8        | LUT            | 
+|top__GB14   | rom__1     | 32x8          | LUT            | 
+|top__GB14   | rom__2     | 32x8          | LUT            | 
+|top__GB14   | rom__3     | 32x8          | LUT            | 
 +------------+------------+---------------+----------------+
 
 
@@ -752,6 +786,12 @@ DSP:
 |Module Name | DSP Mapping            | Neg Edge Clk | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
 +------------+------------------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 |top         | (C:0x1ea1)+A2*(B:0xa0) | No           | 14     | 9      | 14     | 25     | 14     | 1    | 0    | 0    | 1    | 1     | 0    | 0    | 
+|top         | A''*(B:0x6b)           | No           | 17     | 7      | 48     | 25     | 24     | 2    | 0    | 1    | 1    | 1     | 0    | 0    | 
+|top         | A''*(B:0x35)           | No           | 17     | 6      | 48     | 25     | 23     | 2    | 0    | 1    | 1    | 1     | 0    | 0    | 
+|top         | A''*(B:0x23)           | No           | 17     | 6      | 48     | 25     | 23     | 2    | 0    | 1    | 1    | 1     | 0    | 0    | 
+|top         | A''*(B:0x1a)           | No           | 17     | 5      | 48     | 25     | 22     | 2    | 0    | 1    | 1    | 1     | 0    | 0    | 
+|top         | A''*(B:0x15)           | No           | 17     | 5      | 48     | 25     | 22     | 2    | 0    | 1    | 1    | 1     | 0    | 0    | 
+|top         | A''*(B:0x11)           | No           | 17     | 5      | 48     | 25     | 22     | 2    | 0    | 1    | 1    | 1     | 0    | 0    | 
 +------------+------------------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 
 Note: The table above shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
@@ -761,136 +801,135 @@ Finished ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
 Start Area Optimization
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[33][0] ' (FDE) to 'i_17/\msg_reg[32][0] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[32][0] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[31][0] ' (FDE) to 'i_17/\msg_reg[31][6] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[3][0] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[29][0] ' (FDE) to 'i_17/\msg_reg[29][6] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[9][0] ' (FDE) to 'i_17/\msg_reg[3][3] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[1][0] ' (FDE) to 'i_17/\msg_reg[1][6] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[30][0] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[26][0] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[2][0] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[20][0] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[33][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[32][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[31][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[15][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[23][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[7][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[27][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[11][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[19][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[3][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[29][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[13][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[21][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[5][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[25][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[17][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[9][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[1][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[30][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[14][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[22][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[6][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[26][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[10][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[18][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[2][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[28][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[12][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[20][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[4][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[24][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[16][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[8][7] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[33][6] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[32][6] ' (FDE) to 'i_17/\msg_reg[32][2] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[31][6] ' (FDE) to 'i_17/\msg_reg[31][5] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[7][6] ' (FDE) to 'i_17/\msg_reg[6][5] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[27][6] ' (FDE) to 'i_17/\msg_reg[27][2] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[3][6] ' (FDE) to 'i_17/\msg_reg[3][2] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[29][6] ' (FDE) to 'i_17/\msg_reg[29][2] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[5][6] ' (FDE) to 'i_17/\msg_reg[6][5] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[9][6] ' (FDE) to 'i_17/\msg_reg[9][4] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[1][6] ' (FDE) to 'i_17/\msg_reg[1][3] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[30][6] ' (FDE) to 'i_17/\msg_reg[30][5] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[6][6] ' (FDE) to 'i_17/\msg_reg[6][5] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[2][6] ' (FDE) to 'i_17/\msg_reg[2][2] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[4][6] ' (FDE) to 'i_17/\msg_reg[6][5] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[8][6] ' (FDE) to 'i_17/\msg_reg[8][2] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[33][5] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[32][5] ' (FDE) to 'i_17/\msg_reg[32][2] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[31][5] ' (FDE) to 'i_17/\msg_reg[31][2] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[7][5] ' (FDE) to 'i_17/\msg_reg[6][5] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[3][5] ' (FDE) to 'i_17/\msg_reg[6][5] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[5][5] ' (FDE) to 'i_17/\msg_reg[6][5] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[6][5] ' (FDE) to 'i_17/\msg_reg[2][5] '
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (i_17/\msg_reg[2][5] )
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[33][3] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[32][3] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[31][3] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[29][3] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[9][3] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[30][3] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[6][3] ' (FDE) to 'i_17/\msg_reg[6][2] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[2][3] ' (FDE) to 'i_17/\msg_reg[2][2] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[28][3] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[33][4] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[32][4] ' (FDE) to 'i_17/\msg_reg[32][2] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[31][4] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[27][4] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[29][4] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[1][4] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[30][4] ' (FDE) to 'i_17/\msg_reg[30][2] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[2][4] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[33][1] ' (FDE) to 'i_17/\msg_reg[32][1] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[32][1] ' (FDE) to 'i_17/\msg_reg[1][2] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[31][1] ' (FDE) to 'i_17/\msg_reg[1][2] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[27][1] ' (FDE) to 'i_17/\msg_reg[1][2] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[3][1] ' (FDE) to 'i_17/\msg_reg[1][2] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[29][1] ' (FDE) to 'i_17/\msg_reg[1][2] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[25][1] ' (FDE) to 'i_17/\msg_reg[1][2] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[1][1] ' (FDE) to 'i_17/\msg_reg[1][2] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[33][2] ' (FDE) to 'i_17/\msg_reg[1][2] '
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_17/\msg_reg[1][2] )
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[28][0] ' (FDE) to 'i_17/\msg_reg[32][2] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[11][6] ' (FDE) to 'i_17/\msg_reg[12][6] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[10][6] ' (FDE) to 'i_17/\msg_reg[12][6] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[15][5] ' (FDE) to 'i_17/\msg_reg[18][5] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[23][5] ' (FDE) to 'i_17/\msg_reg[22][5] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[27][5] ' (FDE) to 'i_17/\msg_reg[28][5] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[11][5] ' (FDE) to 'i_17/\msg_reg[12][5] '
-INFO: [Synth 8-3886] merging instance 'i_17/\msg_reg[29][5] ' (FDE) to 'i_17/\msg_reg[30][5] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[33][0] ' (FDE) to 'i_14/\msg_reg[32][0] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[32][0] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[31][0] ' (FDE) to 'i_14/\msg_reg[31][6] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[3][0] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[29][0] ' (FDE) to 'i_14/\msg_reg[29][6] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[1][0] ' (FDE) to 'i_14/\msg_reg[1][3] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[30][0] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[26][0] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[2][0] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[20][0] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[33][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[32][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[31][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[15][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[23][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[7][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[27][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[11][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[19][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[3][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[29][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[13][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[21][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[5][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[25][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[17][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[9][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[1][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[30][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[14][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[22][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[6][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[26][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[10][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[18][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[2][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[28][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[12][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[20][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[4][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[24][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[16][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[8][7] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[33][6] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[32][6] ' (FDE) to 'i_14/\msg_reg[32][2] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[31][6] ' (FDE) to 'i_14/\msg_reg[31][5] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[27][6] ' (FDE) to 'i_14/\msg_reg[27][2] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[29][6] ' (FDE) to 'i_14/\msg_reg[29][2] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[5][6] ' (FDE) to 'i_14/\msg_reg[6][5] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[30][6] ' (FDE) to 'i_14/\msg_reg[30][5] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[6][6] ' (FDE) to 'i_14/\msg_reg[6][5] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[4][6] ' (FDE) to 'i_14/\msg_reg[6][5] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[33][5] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[32][5] ' (FDE) to 'i_14/\msg_reg[32][2] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[31][5] ' (FDE) to 'i_14/\msg_reg[31][2] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[7][5] ' (FDE) to 'i_14/\msg_reg[6][5] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[3][5] ' (FDE) to 'i_14/\msg_reg[6][5] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[5][5] ' (FDE) to 'i_14/\msg_reg[6][5] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[6][5] ' (FDE) to 'i_14/\msg_reg[2][5] '
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (i_14/\msg_reg[2][5] )
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[33][3] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[32][3] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[31][3] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[29][3] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[30][3] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[2][3] ' (FDE) to 'i_14/\msg_reg[2][2] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[28][3] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[33][4] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[32][4] ' (FDE) to 'i_14/\msg_reg[32][2] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[31][4] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[27][4] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[29][4] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[1][4] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[30][4] ' (FDE) to 'i_14/\msg_reg[30][2] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[2][4] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[33][1] ' (FDE) to 'i_14/\msg_reg[32][1] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[32][1] ' (FDE) to 'i_14/\msg_reg[1][2] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[31][1] ' (FDE) to 'i_14/\msg_reg[1][2] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[27][1] ' (FDE) to 'i_14/\msg_reg[1][2] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[3][1] ' (FDE) to 'i_14/\msg_reg[1][2] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[29][1] ' (FDE) to 'i_14/\msg_reg[1][2] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[25][1] ' (FDE) to 'i_14/\msg_reg[1][2] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[1][1] ' (FDE) to 'i_14/\msg_reg[1][2] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[33][2] ' (FDE) to 'i_14/\msg_reg[1][2] '
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_14/\msg_reg[1][2] )
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[7][0] ' (FDE) to 'i_14/\msg_reg[14][6] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[28][0] ' (FDE) to 'i_14/\msg_reg[32][2] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[11][6] ' (FDE) to 'i_14/\msg_reg[12][6] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[10][6] ' (FDE) to 'i_14/\msg_reg[12][6] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[15][5] ' (FDE) to 'i_14/\msg_reg[18][5] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[23][5] ' (FDE) to 'i_14/\msg_reg[22][5] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[27][5] ' (FDE) to 'i_14/\msg_reg[28][5] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[11][5] ' (FDE) to 'i_14/\msg_reg[12][5] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[29][5] ' (FDE) to 'i_14/\msg_reg[30][5] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[21][5] ' (FDE) to 'i_14/\msg_reg[22][5] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[25][5] ' (FDE) to 'i_14/\msg_reg[24][5] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[17][5] ' (FDE) to 'i_14/\msg_reg[18][5] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[9][5] ' (FDE) to 'i_14/\msg_reg[12][5] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[14][5] ' (FDE) to 'i_14/\msg_reg[18][5] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[10][5] ' (FDE) to 'i_14/\msg_reg[12][5] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[18][5] ' (FDE) to 'i_14/\msg_reg[16][5] '
+INFO: [Synth 8-3886] merging instance 'i_14/\msg_reg[12][5] ' (FDE) to 'i_14/\msg_reg[8][5] '
 INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Area Optimization : Time (s): cpu = 00:40:46 ; elapsed = 00:53:18 . Memory (MB): peak = 18383.027 ; gain = 17552.336 ; free physical = 209 ; free virtual = 40543
+Finished Area Optimization : Time (s): cpu = 00:47:32 ; elapsed = 01:06:13 . Memory (MB): peak = 18850.887 ; gain = 18020.195 ; free physical = 215 ; free virtual = 39844
 ---------------------------------------------------------------------------------
-Finished Parallel Area Optimization  : Time (s): cpu = 00:40:46 ; elapsed = 00:53:18 . Memory (MB): peak = 18383.027 ; gain = 17552.336 ; free physical = 209 ; free virtual = 40543
+Finished Parallel Area Optimization  : Time (s): cpu = 00:47:32 ; elapsed = 01:06:13 . Memory (MB): peak = 18850.887 ; gain = 18020.195 ; free physical = 215 ; free virtual = 39844
 
 Report RTL Partitions: 
 +------+--------------+------------+----------+
 |      |RTL Partition |Replication |Instances |
 +------+--------------+------------+----------+
-|1     |top__GB0      |           1|      9198|
-|2     |top__GB1      |           1|      2585|
-|3     |top__GB2      |           1|       539|
-|4     |top__GB3      |           1|      3917|
-|5     |top__GB4      |           1|      3342|
-|6     |top__GB5      |           1|      1992|
-|7     |top__GB6      |           1|      5025|
-|8     |top__GB7      |           1|      2014|
-|9     |top__GB8      |           1|      3281|
-|10    |top__GB9      |           1|      3406|
-|11    |top__GB10     |           1|      2072|
-|12    |top__GB11     |           1|      4694|
-|13    |top__GB12     |           1|      2546|
-|14    |top__GB13     |           1|      1277|
-|15    |top__GB14     |           1|      4980|
-|16    |top__GB15     |           1|      1599|
-|17    |top__GB16     |           1|      4408|
-|18    |top__GB17     |           1|      1326|
+|1     |top__GB0      |           1|     11506|
+|2     |top__GB1      |           1|      2455|
+|3     |top__GB2      |           1|      1357|
+|4     |top__GB3      |           1|       876|
+|5     |top__GB4      |           1|      1691|
+|6     |top__GB5      |           1|      4973|
+|7     |top__GB6      |           1|      3825|
+|8     |top__GB7      |           1|      5237|
+|9     |top__GB8      |           1|      3821|
+|10    |top__GB9      |           1|      2842|
+|11    |top__GB10     |           1|      5449|
+|12    |top__GB11     |           1|      3026|
+|13    |top__GB12     |           1|      5946|
+|14    |top__GB13     |           1|      2023|
+|15    |top__GB14     |           1|      1227|
+|16    |top__GB15     |           1|       876|
+|17    |top__GB16     |           1|      4130|
 +------+--------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start Timing Optimization
@@ -903,68 +942,69 @@ INFO: [Synth 8-5578] Moved timing constraint from pin 'clock0/clk_cpu' to pin 'c
 INFO: [Synth 8-5578] Moved timing constraint from pin 'clock0/clk_vga' to pin 'clock0/bbstub_clk_vga/O'
 INFO: Moved 3 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:40:54 ; elapsed = 00:53:28 . Memory (MB): peak = 18383.027 ; gain = 17552.336 ; free physical = 240 ; free virtual = 40488
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:47:39 ; elapsed = 01:06:23 . Memory (MB): peak = 18850.887 ; gain = 18020.195 ; free physical = 178 ; free virtual = 39770
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:40:56 ; elapsed = 00:53:31 . Memory (MB): peak = 18383.027 ; gain = 17552.336 ; free physical = 290 ; free virtual = 40559
+Finished Timing Optimization : Time (s): cpu = 00:47:42 ; elapsed = 01:06:26 . Memory (MB): peak = 18850.887 ; gain = 18020.195 ; free physical = 173 ; free virtual = 39775
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
 +------+--------------+------------+----------+
 |      |RTL Partition |Replication |Instances |
 +------+--------------+------------+----------+
-|1     |top__GB0      |           1|      9113|
-|2     |top__GB1      |           1|      2585|
-|3     |top__GB2      |           1|       539|
-|4     |top__GB3      |           1|      3917|
-|5     |top__GB4      |           1|      3342|
-|6     |top__GB5      |           1|      1992|
-|7     |top__GB6      |           1|      5025|
-|8     |top__GB7      |           1|      2014|
-|9     |top__GB8      |           1|      3281|
-|10    |top__GB9      |           1|      3406|
-|11    |top__GB10     |           1|      2072|
-|12    |top__GB11     |           1|      4692|
-|13    |top__GB12     |           1|      2546|
-|14    |top__GB13     |           1|      1277|
-|15    |top__GB14     |           1|      4980|
-|16    |top__GB15     |           1|      1599|
-|17    |top__GB16     |           1|      4408|
-|18    |top__GB17     |           1|      1326|
+|1     |top__GB0      |           1|     11425|
+|2     |top__GB1      |           1|      2455|
+|3     |top__GB2      |           1|      1357|
+|4     |top__GB3      |           1|       876|
+|5     |top__GB4      |           1|      1691|
+|6     |top__GB5      |           1|      4957|
+|7     |top__GB6      |           1|      3825|
+|8     |top__GB7      |           1|      5237|
+|9     |top__GB8      |           1|      3821|
+|10    |top__GB9      |           1|      2842|
+|11    |top__GB10     |           1|      5449|
+|12    |top__GB11     |           1|      3026|
+|13    |top__GB12     |           1|      5946|
+|14    |top__GB13     |           1|      2023|
+|15    |top__GB14     |           1|      1227|
+|16    |top__GB15     |           1|       876|
+|17    |top__GB16     |           1|      4130|
 +------+--------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-3332] Sequential element (\msg_reg[8][5] ) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (\input_reg[15]__1 ) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (\input_reg[13]__1 ) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (\input_reg[14]__1 ) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (\input_reg[9]__1 ) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (\input_reg[10]__1 ) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (\input_reg[11]__1 ) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (\input_reg[12]__1 ) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (\input_reg[1]__1 ) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (\input_reg[2]__1 ) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (\input_reg[3]__1 ) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (\input_reg[4]__1 ) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (\input_reg[5]__1 ) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (\input_reg[6]__1 ) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (\input_reg[7]__1 ) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (\input_reg[8]__1 ) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (\msg_reg[4][5] ) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (\input_reg[0]__1 ) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (\msg_reg[23][3] ) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (\msg_reg[1][3] ) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (\msg_reg[2][2] ) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (\input_reg[15]__0 ) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (\input_reg[13] ) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (\input_reg[14] ) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (\input_reg[1] ) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (\input_reg[2] ) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (\input_reg[3] ) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (\input_reg[4] ) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (\input_reg[5] ) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (\input_reg[6] ) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (\input_reg[7] ) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (\input_reg[8] ) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (\input_reg[9] ) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (\input_reg[10] ) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (\input_reg[11] ) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (\input_reg[12] ) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (\msg_reg[2][6] ) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (\msg_reg[3][2] ) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (\msg_reg[2][1] ) is unused and will be removed from module top.
+WARNING: [Synth 8-3332] Sequential element (\input_reg[0]__0 ) is unused and will be removed from module top.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:41:08 ; elapsed = 00:53:43 . Memory (MB): peak = 18383.027 ; gain = 17552.336 ; free physical = 384 ; free virtual = 40640
+Finished Technology Mapping : Time (s): cpu = 00:47:54 ; elapsed = 01:06:38 . Memory (MB): peak = 18850.887 ; gain = 18020.195 ; free physical = 165 ; free virtual = 39792
 ---------------------------------------------------------------------------------
-Finished Parallel Technology Mapping Optimization  : Time (s): cpu = 00:41:08 ; elapsed = 00:53:43 . Memory (MB): peak = 18383.027 ; gain = 17552.336 ; free physical = 384 ; free virtual = 40640
+Finished Parallel Technology Mapping Optimization  : Time (s): cpu = 00:47:54 ; elapsed = 01:06:38 . Memory (MB): peak = 18850.887 ; gain = 18020.195 ; free physical = 165 ; free virtual = 39792
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
 | |RTL Partition |Replication |Instances |
 +-+--------------+------------+----------+
 +-+--------------+------------+----------+
-Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:41:08 ; elapsed = 00:53:43 . Memory (MB): peak = 18383.027 ; gain = 17552.336 ; free physical = 384 ; free virtual = 40640
+Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:47:54 ; elapsed = 01:06:38 . Memory (MB): peak = 18850.887 ; gain = 18020.195 ; free physical = 165 ; free virtual = 39792
 ---------------------------------------------------------------------------------
 Start IO Insertion
 ---------------------------------------------------------------------------------
@@ -981,7 +1021,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:41:09 ; elapsed = 00:53:44 . Memory (MB): peak = 18383.027 ; gain = 17552.336 ; free physical = 371 ; free virtual = 40632
+Finished IO Insertion : Time (s): cpu = 00:47:55 ; elapsed = 01:06:39 . Memory (MB): peak = 18850.887 ; gain = 18020.195 ; free physical = 161 ; free virtual = 39794
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -994,7 +1034,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:41:09 ; elapsed = 00:53:45 . Memory (MB): peak = 18383.027 ; gain = 17552.336 ; free physical = 370 ; free virtual = 40632
+Finished Renaming Generated Instances : Time (s): cpu = 00:47:55 ; elapsed = 01:06:39 . Memory (MB): peak = 18850.887 ; gain = 18020.195 ; free physical = 160 ; free virtual = 39794
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1006,25 +1046,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:41:11 ; elapsed = 00:53:46 . Memory (MB): peak = 18383.027 ; gain = 17552.336 ; free physical = 370 ; free virtual = 40632
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:47:57 ; elapsed = 01:06:41 . Memory (MB): peak = 18850.887 ; gain = 18020.195 ; free physical = 156 ; free virtual = 39791
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:41:11 ; elapsed = 00:53:46 . Memory (MB): peak = 18383.027 ; gain = 17552.336 ; free physical = 370 ; free virtual = 40632
+Finished Renaming Generated Ports : Time (s): cpu = 00:47:57 ; elapsed = 01:06:41 . Memory (MB): peak = 18850.887 ; gain = 18020.195 ; free physical = 156 ; free virtual = 39791
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:41:11 ; elapsed = 00:53:46 . Memory (MB): peak = 18383.027 ; gain = 17552.336 ; free physical = 360 ; free virtual = 40631
+Finished Handling Custom Attributes : Time (s): cpu = 00:47:57 ; elapsed = 01:06:41 . Memory (MB): peak = 18850.887 ; gain = 18020.195 ; free physical = 164 ; free virtual = 39768
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:41:11 ; elapsed = 00:53:46 . Memory (MB): peak = 18383.027 ; gain = 17552.336 ; free physical = 360 ; free virtual = 40631
+Finished Renaming Generated Nets : Time (s): cpu = 00:47:57 ; elapsed = 01:06:41 . Memory (MB): peak = 18850.887 ; gain = 18020.195 ; free physical = 167 ; free virtual = 39764
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -1046,40 +1086,41 @@ Report Cell Usage:
 |1     |ClockDivider_bbox |     1|
 |2     |FrameBuffer_bbox  |     1|
 |3     |rom_bbox          |     1|
-|4     |CARRY4            |  2784|
+|4     |CARRY4            |  2807|
 |5     |DSP48E1           |     1|
-|6     |LUT1              |  2437|
-|7     |LUT2              |  3610|
-|8     |LUT3              |  3650|
-|9     |LUT4              |  2140|
-|10    |LUT5              |  2632|
-|11    |LUT6              |  5848|
-|12    |MUXF7             |   295|
-|13    |MUXF8             |    66|
-|14    |FDRE              |  1227|
-|15    |FDSE              |    29|
-|16    |IBUF              |     2|
-|17    |OBUF              |    30|
+|6     |DSP48E1_1         |     6|
+|7     |LUT1              |  2399|
+|8     |LUT2              |  3706|
+|9     |LUT3              |  3634|
+|10    |LUT4              |  2178|
+|11    |LUT5              |  2668|
+|12    |LUT6              |  6551|
+|13    |MUXF7             |   349|
+|14    |MUXF8             |    41|
+|15    |FDRE              |  1246|
+|16    |FDSE              |    22|
+|17    |IBUF              |     2|
+|18    |OBUF              |    14|
 +------+------------------+------+
 
 Report Instance Areas: 
 +------+-------------------+----------------------+------+
 |      |Instance           |Module                |Cells |
 +------+-------------------+----------------------+------+
-|1     |top                |                      | 24778|
-|2     |  keyboard0        |ps2_keyboard_to_ascii |   455|
+|1     |top                |                      | 25651|
+|2     |  keyboard0        |ps2_keyboard_to_ascii |   473|
 |3     |    ps2_keyboard_0 |ps2_keyboard          |   183|
-|4     |  prng0            |Prng                  |   161|
-|5     |  vga0             |Vga                   |   563|
+|4     |  prng0            |Prng                  |   256|
+|5     |  vga0             |Vga                   |   522|
 +------+-------------------+----------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:41:11 ; elapsed = 00:53:46 . Memory (MB): peak = 18383.027 ; gain = 17552.336 ; free physical = 360 ; free virtual = 40631
+Finished Writing Synthesis Report : Time (s): cpu = 00:47:57 ; elapsed = 01:06:41 . Memory (MB): peak = 18850.887 ; gain = 18020.195 ; free physical = 177 ; free virtual = 39758
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 34 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:40:03 ; elapsed = 00:51:55 . Memory (MB): peak = 18383.027 ; gain = 17428.402 ; free physical = 355 ; free virtual = 40630
-Synthesis Optimization Complete : Time (s): cpu = 00:41:11 ; elapsed = 00:53:47 . Memory (MB): peak = 18383.027 ; gain = 17552.336 ; free physical = 353 ; free virtual = 40630
+Synthesis finished with 0 errors, 0 critical warnings and 21 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:46:42 ; elapsed = 01:04:47 . Memory (MB): peak = 18850.887 ; gain = 17896.262 ; free physical = 205 ; free virtual = 39771
+Synthesis Optimization Complete : Time (s): cpu = 00:47:57 ; elapsed = 01:06:43 . Memory (MB): peak = 18850.887 ; gain = 18020.195 ; free physical = 202 ; free virtual = 39772
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 2787 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 2816 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 WARNING: [Netlist 29-101] Netlist 'top' is not ideal for floorplanning, since the cellview 'top' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -1088,8 +1129,8 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-423 Infos, 36 Warnings, 0 Critical Warnings and 0 Errors encountered.
+431 Infos, 23 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:41:30 ; elapsed = 00:53:50 . Memory (MB): peak = 18403.113 ; gain = 17501.090 ; free physical = 2014 ; free virtual = 42449
-report_utilization: Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.09 . Memory (MB): peak = 18435.129 ; gain = 0.000 ; free physical = 2011 ; free virtual = 42453
-INFO: [Common 17-206] Exiting Vivado at Sat Jun  4 22:50:49 2016...
+synth_design: Time (s): cpu = 00:49:32 ; elapsed = 01:06:49 . Memory (MB): peak = 18870.973 ; gain = 17968.949 ; free physical = 1955 ; free virtual = 41668
+report_utilization: Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.13 . Memory (MB): peak = 18902.988 ; gain = 0.000 ; free physical = 1912 ; free virtual = 41657
+INFO: [Common 17-206] Exiting Vivado at Mon Jun  6 01:09:23 2016...

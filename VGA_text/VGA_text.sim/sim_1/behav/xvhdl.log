@@ -1,0 +1,5 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/Font.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/new/Vga.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Vga
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sim_1/new/test1.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity test1

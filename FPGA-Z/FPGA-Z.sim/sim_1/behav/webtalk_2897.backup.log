@@ -2,12 +2,12 @@
 # Webtalk v2015.4 (64-bit)
 # SW Build 1412921 on Wed Nov 18 09:44:32 MST 2015
 # IP Build 1412160 on Tue Nov 17 13:47:24 MST 2015
-# Start of session at: Sat Apr 16 22:59:41 2016
-# Process ID: 12224
+# Start of session at: Sun Jun  5 22:17:03 2016
+# Process ID: 2897
 # Current directory: /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.sim/sim_1/behav
 # Command line: wbtcv -mode batch -source /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.sim/sim_1/behav/xsim.dir/test1_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.sim/sim_1/behav/webtalk.log
 # Journal file: /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.sim/sim_1/behav/webtalk.jou
 #-----------------------------------------------------------
 source /home/dries/Projects/Basys3/FPGA-Z/FPGA-Z.sim/sim_1/behav/xsim.dir/test1_behav/webtalk/xsim_webtalk.tcl -notrace
-INFO: [Common 17-206] Exiting Webtalk at Sat Apr 16 22:59:41 2016...
+INFO: [Common 17-206] Exiting Webtalk at Sun Jun  5 22:17:03 2016...

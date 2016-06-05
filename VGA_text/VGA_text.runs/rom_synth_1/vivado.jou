@@ -2,8 +2,8 @@
 # Vivado v2015.4 (64-bit)
 # SW Build 1412921 on Wed Nov 18 09:44:32 MST 2015
 # IP Build 1412160 on Tue Nov 17 13:47:24 MST 2015
-# Start of session at: Fri Jun  3 00:15:04 2016
-# Process ID: 28256
+# Start of session at: Sun Jun  5 17:41:42 2016
+# Process ID: 18650
 # Current directory: /home/dries/Projects/Basys3/VGA_text/VGA_text.runs/rom_synth_1
 # Command line: vivado -log rom.vds -mode batch -messageDb vivado.pb -notrace -source rom.tcl
 # Log file: /home/dries/Projects/Basys3/VGA_text/VGA_text.runs/rom_synth_1/rom.vds

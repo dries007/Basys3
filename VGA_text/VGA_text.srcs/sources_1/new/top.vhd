@@ -17,7 +17,7 @@ entity top is
         Vsync : out std_logic;
         PS2Clk : in std_logic;
         PS2Data : in std_logic;
-        led : out std_logic_vector (15 downto 0);
+        --led : out std_logic_vector (15 downto 0);
         clk : in std_logic
     );
 end top;
@@ -288,15 +288,16 @@ begin
     end if;
 end process;
 
-led <= clk_1 & clk_2 & std_logic_vector(runtime(17 downto 4));
+--led <= clk_1 & clk_2 & std_logic_vector(runtime(17 downto 4));
 
 -- CPU ---------------------------------------------------------
 process (clk_cpu)
     -- State stack system
     constant STATE_STACK_MAX : integer := 15;
-    type state_type is (COPY, COPY2, RESET, ERROR, ERROR_STUCK, WRITE, READ, READ_MENU, BLANK, SCROLL, SCROLL_W,
+    type state_type is (COPY, COPY2, RESET, ERROR, ERROR_STUCK, WRITE, READ, READ_MENU, BLANK, 
+    -- SCROLL, SCROLL_W,
     GAME_R_0, GAME_R_ROLL, GAME_R_PLACE_START, GAME_R_PLACE_BET, GAME_R_PLACE_SAVE,
-    GAME_HL_0
+    GAME_HL_0, GAME_HL_BET, GAME_HL_BET_2
     );
     type state_type_arry is array(STATE_STACK_MAX downto 0) of state_type;
     variable state_index : integer range 0 to STATE_STACK_MAX := 0;
@@ -323,8 +324,6 @@ process (clk_cpu)
     -- STUFF FOR ROULETTE -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
     constant R_MONEY_START : integer := 3132; -- For printing the $ --- ---.-- string 
     constant R_RND_START : integer := 3108; -- For printing the rolled number
---    type names_type is array (1 to 9) of string;
---    constant NAMES : names_type := ("Plain", "Cheval H", "Cheval V", "Trans", "Trans S", "Carre", "Colonne", "Simple");
     
     -- stack-like system for placing bets
     constant BETS_MAX : integer := 25; -- place maximum of 25 bets per game
@@ -339,8 +338,14 @@ process (clk_cpu)
     variable bets : bets_type;
     
     -- STUFF FOR HL -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-    constant SCROLL_END : integer := COLS * 51;
-    constant INPUT_LINE : integer := COLS * 62;
+    constant HL_MONEY_START : integer := 3129; -- fb index for printing the $ --- ---.-- string 
+    constant HL_FIRST_CARD : integer := 3788; -- fb index for printing the first card
+    constant HL_SECOND_CARD : integer := 4108; -- fb index for printing the second card
+    
+    variable card_first : integer range 2 to 12 := 2;
+    variable bet_higher : boolean := true;
+    variable bet_money : integer range 0 to 1_000_00 := 0;
+    
     
 begin
     if rising_edge(clk_cpu) then
@@ -351,7 +356,7 @@ begin
         ---------------------------------------------
         when COPY =>
             fb_index := 0;
-            rom_addr <= std_logic_vector(to_unsigned(CHARS * game + fb_index, 15));
+            rom_addr <= std_logic_vector(to_unsigned(CHARS * game, 15));
             state(state_index) := COPY2;
         when COPY2 =>
             fb_a_en <= '1';
@@ -375,10 +380,10 @@ begin
                 -- vhdl syntax is strang. ()'s are required to make it show up as a boolean?
                 when (x"01") | (x"38") => -- up or 8
                     fb_a_dat_in <= x"20";  -- space
-                    game := index_delta(game, delta => -1, modulo => GAMES);
+                    game := index_delta(game, modulo => GAMES);
                 when (x"02") | (x"32") => -- down or 2
                     fb_a_dat_in <= x"20";  -- space
-                    game := index_delta(game, modulo => GAMES);
+                    game := index_delta(game, delta => -1, modulo => GAMES);
                 when x"0d" => -- enter
                     rng_seed <= std_logic_vector(runtime(15 downto 0));
                     rng_seed_en <= '1';
@@ -393,6 +398,183 @@ begin
                     -- nop
                 end case;
             end if;
+        ---------------------------------------------
+        when GAME_HL_0 =>
+            fb_index := index_delta(fb_index); -- by default +1 index
+            case fb_index is
+            when 1 =>
+                fb_a_en <= '1';
+                fb_a_we <= "1";
+                fb_a_addr <= std_logic_vector(to_unsigned(HL_MONEY_START, 14));
+                fb_a_dat_in <= ascii_i(money, 7);
+            when 2 =>
+                fb_a_en <= '1';
+                fb_a_we <= "1";
+                fb_a_addr <= std_logic_vector(to_unsigned(HL_MONEY_START + 1, 14));
+                fb_a_dat_in <= ascii_i(money, 6);
+            when 3 =>
+                fb_a_en <= '1';
+                fb_a_we <= "1";
+                fb_a_addr <= std_logic_vector(to_unsigned(HL_MONEY_START + 2, 14));
+                fb_a_dat_in <= ascii_i(money, 5);
+            when 4 => -- Space, so skip '+ 3'
+                fb_a_en <= '1';
+                fb_a_we <= "1";
+                fb_a_addr <= std_logic_vector(to_unsigned(HL_MONEY_START + 4, 14));
+                fb_a_dat_in <= ascii_i(money, 4);
+            when 5 =>
+                fb_a_en <= '1';
+                fb_a_we <= "1";
+                fb_a_addr <= std_logic_vector(to_unsigned(HL_MONEY_START + 5, 14));
+                fb_a_dat_in <= ascii_i(money, 3);
+            when 6 =>
+                fb_a_en <= '1';
+                fb_a_we <= "1";
+                fb_a_addr <= std_logic_vector(to_unsigned(HL_MONEY_START + 6, 14));
+                fb_a_dat_in <= ascii_i(money, 2);
+            when 7 => -- Dot, so skip '+ 7'
+                fb_a_en <= '1';
+                fb_a_we <= "1";
+                fb_a_addr <= std_logic_vector(to_unsigned(HL_MONEY_START + 8, 14));
+                fb_a_dat_in <= ascii_i(money, 1);
+            when 8 =>
+                fb_a_en <= '1';
+                fb_a_we <= "1";
+                fb_a_addr <= std_logic_vector(to_unsigned(HL_MONEY_START + 9, 14));
+                fb_a_dat_in <= ascii_i(money, 0);
+                
+            when 10 => -- pick number (2 -> 12)
+                card_first := 2 + (to_integer(unsigned(rng_out)) mod 11);
+                
+            when 20 =>
+                fb_a_en <= '1';
+                fb_a_we <= "1";
+                fb_a_addr <= std_logic_vector(to_unsigned(HL_FIRST_CARD, 14));
+                fb_a_dat_in <= ascii_i(card_first, 1);
+            when 21 =>
+                fb_a_en <= '1';
+                fb_a_we <= "1";
+                fb_a_addr <= std_logic_vector(to_unsigned(HL_FIRST_CARD + 1, 14));
+                fb_a_dat_in <= ascii_i(card_first, 0);
+                
+                    
+            when COLS * 49 =>
+                msg := pad_string("   Bet higher", msg'LENGTH);
+                state_index := state_index + 1; state(state_index) := WRITE;
+            when COLS * 50 =>
+                msg := pad_string("   Bet lower", msg'LENGTH);
+                state_index := state_index + 1; state(state_index) := WRITE;
+                
+            when COLS * 51 =>
+                input_max := 2;
+                input := 0;
+                state_index := state_index + 1; state(state_index) := READ_MENU;    
+                
+            when COLS * 51 + 1 =>
+                if input = 1 then -- 0 = higher, 1 = lower
+                    bet_higher := false;
+                else
+                    bet_higher := true;
+                end if;
+                 state(state_index) := GAME_HL_BET;
+                fb_index := COLS * 49; -- start of blanking
+                state_index := state_index + 1; state(state_index) := BLANK; -- blank from line 49 to last-1 line
+            when others =>
+            end case;
+        ---------------------------------------------
+        when GAME_HL_BET =>
+            state(state_index) := GAME_HL_BET_2; -- after amount, save & go back to main menu
+            input := 0; -- reset
+            if money > 1_000_00 then -- can't bet more then you have
+                input_max := 1_000_00;
+            else
+                input_max := money;
+            end if;
+            state_index := state_index + 1; state(state_index) := READ; -- read = state after write
+            fb_index := COLS * 49; -- position question
+            msg := pad_string("   Amount? (Max 1 000.00 $) ", msg'LENGTH);
+            state_index := state_index + 1; state(state_index) := WRITE;
+        ---------------------------------------------
+        when GAME_HL_BET_2 =>
+            fb_index := index_delta(fb_index); -- by default +1 index
+            case fb_index is
+            when COLS * 50 =>
+                money := money - input;
+                bet_money := input;
+                rnd := 1 + (to_integer(unsigned(rng_out)) mod 13); -- pick number (1 -> 13)
+            when COLS * 50 + 1 =>
+                fb_a_en <= '1';
+                fb_a_we <= "1";
+                fb_a_addr <= std_logic_vector(to_unsigned(HL_SECOND_CARD, 14));
+                fb_a_dat_in <= ascii_i(rnd, 1);
+            when COLS * 50 + 2 =>
+                fb_a_en <= '1';
+                fb_a_we <= "1";
+                fb_a_addr <= std_logic_vector(to_unsigned(HL_SECOND_CARD + 1, 14));
+                fb_a_dat_in <= ascii_i(rnd, 0);
+            
+            when COLS * 50 + 3 =>
+                if rnd = card_first then -- 1:1 payout
+                    money := money + bet_money;
+                    state(state_index) := GAME_HL_0; -- go back to main menu
+                    fb_index := COLS * 49; -- start of blanking
+                    state_index := state_index + 1; state(state_index) := BLANK; -- blank from line 49 to last-1 line
+                end if;    
+            when COLS * 50 + 4 =>
+                if rnd < card_first then
+                    fb_index := COLS * 51 - 1; -- -1 for default +1
+                else 
+                    fb_index := COLS * 52 - 1; -- -1 for default +1
+                end if;
+                
+                -- todo WHY DOESN4T IT WORK
+                
+            when COLS * 51 => ------------------ RND < FIRST CARD aka LOWER
+                if bet_higher then -- you lost
+                    state(state_index) := GAME_HL_0; -- go back to main menu
+                    fb_index := COLS * 49; -- start of blanking
+                    state_index := state_index + 1; state(state_index) := BLANK; -- blank from line 49 to last-1 line
+                end if;
+            when COLS * 51 + 1 => -- you won, but how much?
+                case card_first is
+                when 2 => money := money + ((bet_money * 107) / 10); -- *x/10 because no floating point stuff
+                when 3 => money := money + ((bet_money * 53) / 10);
+                when 4 => money := money + ((bet_money * 35) / 10);
+                when 5 => money := money + ((bet_money * 26) / 10);
+                when 6 => money := money + ((bet_money * 21) / 10);
+                when 7 => money := money + ((bet_money * 17) / 10);
+                when 8 => money := money + ((bet_money * 15) / 10);
+                when 9 => money := money + ((bet_money * 13) / 10);
+                when 10 to 12 => money := money + ((bet_money * 11) / 10);
+                end case;
+                state(state_index) := GAME_HL_0; -- go back to main menu
+                fb_index := COLS * 49; -- start of blanking
+                state_index := state_index + 1; state(state_index) := BLANK; -- blank from line 49 to last-1 line
+                
+                
+            when COLS * 52 => ------------------ RND > FIRST CARD aka HIGER
+                if not bet_higher then -- you lost
+                    state(state_index) := GAME_HL_0; -- go back to main menu
+                    fb_index := COLS * 49; -- start of blanking
+                    state_index := state_index + 1; state(state_index) := BLANK; -- blank from line 49 to last-1 line
+                end if;
+            when COLS * 52 + 1 => -- you won, but how much?
+                case card_first is
+                when 12 => money := money + ((bet_money * 107) / 10);
+                when 11 => money := money + ((bet_money * 53) / 10);
+                when 10 => money := money + ((bet_money * 35) / 10);
+                when 9 => money := money + ((bet_money * 26) / 10);
+                when 8 => money := money + ((bet_money * 21) / 10);
+                when 7 => money := money + ((bet_money * 17) / 10);
+                when 6 => money := money + ((bet_money * 15) / 10);
+                when 5 => money := money + ((bet_money * 13) / 10);
+                when 2 to 4 => money := money + ((bet_money * 11) / 10);
+                end case;
+                state(state_index) := GAME_HL_0; -- go back to main menu
+                fb_index := COLS * 49; -- start of blanking
+                state_index := state_index + 1; state(state_index) := BLANK; -- blank from line 49 to last-1 line
+            when others =>
+            end case;
         ---------------------------------------------
         when GAME_R_0 =>
             -- by default +1 index & enable write to fb
@@ -2994,33 +3176,6 @@ begin
                 fb_index := COLS * 49; -- start of blanking
                 state_index := state_index + 1; state(state_index) := BLANK; -- blank from line 49 to last-1 line
                 
-            -- infinite loop here (until enter)
---                fb_index := COLS * 58 - 1; -- -1 because of the default +1 
---                fb_a_addr <= std_logic_vector(to_unsigned(input * COLS + (49 * COLS + 1), 14)); -- line (49 + menu) + 1 
---                fb_a_dat_in <= x"10";  -- '>' indicator arrow
---                if kb_event = '1' then
---                    case '0' & kb_acsii is
---                    -- vhdl syntax is strange. ()'s are required to make it show up as a boolean?
---                    when (x"01") | (x"38") => -- up or 8
---                        fb_a_dat_in <= x"20";  -- space
---                        input := index_delta(input, delta => -1, modulo => 9);
---                    when (x"02") | (x"32") => -- down or 2
---                        fb_a_dat_in <= x"20";  -- space
---                        input := index_delta(input, modulo => 9);
---                    when x"0d" => -- enter
---                        if input = 0 then -- if roll
---                            state(state_index) := GAME_R_ROLL; -- override return state
---                        else -- if place bet
---                            bets(bets_index).kind := input;
---                            state(state_index) := GAME_R_PLACE_START;  -- override return state
---                        end if;
---                        fb_index := COLS * 49; -- start of blanking
---                        state_index := state_index + 1; state(state_index) := BLANK; -- blank from line 49 to last-1 line
---                         -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
---                    when others =>
---                        -- nop
---                    end case;
---                end if;
             when others => -- after writes
                 fb_a_en <= '0';
                 fb_a_we <= "0";
@@ -3099,7 +3254,11 @@ begin
                 -- nop
             end case;
         
-        when GAME_HL_0 =>
+        
+        
+        
+        
+        
         ---------------------------------------------    
         when READ => -- No cursor, easy numeric input.
             if kb_event = '1' then -- kb event, handle that
@@ -3239,9 +3398,9 @@ begin
                 msg_inverted := '0';
                 state_index := state_index - 1; -- pop one of the state stack
             end if;
-            if fb_index = 0 then
-                state_index := state_index + 1; state(state_index) := SCROLL; -- put next state on stack
-            end if;
+--            if fb_index = 0 then
+--                state_index := state_index + 1; state(state_index) := SCROLL; -- put next state on stack
+--            end if;
         ---------------------------------------------
         when BLANK => -- Clear from fb_index to last line, then reset fb_index to 0
             fb_a_en <= '1';
@@ -3254,35 +3413,35 @@ begin
                 state_index := state_index - 1; -- pop one of the state stack
             end if;
         ---------------------------------------------    
-        when SCROLL => -- move all of the screen up one row, read part
-            fb_a_en <= '1';
-            -- Read next line's char
-            fb_a_addr <= std_logic_vector(to_unsigned((fb_index + COLS) mod CHARS, 14));
-            state(state_index) := SCROLL_W; -- override current state
-        when SCROLL_W => -- Write part of scroll state
-            fb_a_en <= '1';
-            -- Write current char
-            fb_a_we <= "1";
-            fb_a_addr <= std_logic_vector(to_unsigned(fb_index, 14));
-            -- Last line is special
-            if fb_index > INPUT_LINE then
-                fb_a_dat_in <= x"00";
-                -- Last character is the exit condition 
-                if fb_index = CHARS - 1 then
-                    -- Wrap fb_index to fist col, last line
-                    fb_index := INPUT_LINE;
-                    state_index := state_index - 1; -- pop one of the state stack
-                -- Last line doesn't need to go back to read the mem
-                else
-                    fb_index := index_delta(fb_index);
-                    state(state_index) := SCROLL_W; -- override return state
-                end if;
-            -- Copy data
-            else
-                fb_index := index_delta(fb_index);
-                fb_a_dat_in <= fb_a_dat_out;
-                state(state_index) := SCROLL; -- override return state
-            end if;
+--        when SCROLL => -- move all of the screen up one row, read part
+--            fb_a_en <= '1';
+--            -- Read next line's char
+--            fb_a_addr <= std_logic_vector(to_unsigned((fb_index + COLS) mod CHARS, 14));
+--            state(state_index) := SCROLL_W; -- override current state
+--        when SCROLL_W => -- Write part of scroll state
+--            fb_a_en <= '1';
+--            -- Write current char
+--            fb_a_we <= "1";
+--            fb_a_addr <= std_logic_vector(to_unsigned(fb_index, 14));
+--            -- Last line is special
+--            if fb_index > INPUT_LINE then
+--                fb_a_dat_in <= x"00";
+--                -- Last character is the exit condition 
+--                if fb_index = CHARS - 1 then
+--                    -- Wrap fb_index to fist col, last line
+--                    fb_index := INPUT_LINE;
+--                    state_index := state_index - 1; -- pop one of the state stack
+--                -- Last line doesn't need to go back to read the mem
+--                else
+--                    fb_index := index_delta(fb_index);
+--                    state(state_index) := SCROLL_W; -- override return state
+--                end if;
+--            -- Copy data
+--            else
+--                fb_index := index_delta(fb_index);
+--                fb_a_dat_in <= fb_a_dat_out;
+--                state(state_index) := SCROLL; -- override return state
+--            end if;
         ---------------------------------------------
         when others => -- WTF?
             state(state_index) := ERROR; -- override return state

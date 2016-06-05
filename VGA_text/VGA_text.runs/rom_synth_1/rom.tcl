@@ -16,6 +16,7 @@ set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property vhdl_version vhdl_2k [current_fileset]
 read_ip /home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/ip/rom/rom.xci
+set_property used_in_implementation false [get_files -all /home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/ip/rom/rom.dcp]
 set_property is_locked true [get_files /home/dries/Projects/Basys3/VGA_text/VGA_text.srcs/sources_1/ip/rom/rom.xci]
 
 synth_design -top rom -part xc7a35tcpg236-1 -mode out_of_context

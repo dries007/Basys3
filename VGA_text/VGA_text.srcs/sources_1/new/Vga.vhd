@@ -3,9 +3,6 @@ use IEEE.STD_LOGIC_1164.ALL;
 use ieee.numeric_std.all;
 use ieee.math_real.all;
 
-use ieee.std_logic_textio.all;
-use std.textio.all;
-
 use work.Font.all;
 
 -- Information from http://tinyvga.com/vga-timing/1280x1024@60Hz

@@ -1,8 +1,8 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Seeded PRNG
--- Thanks wikipedia 
+-- Seeded PRNG (linear feedback shift register)
+-- Thanks wikipedia for the consept and explaination
 entity Prng is
     Generic 
     ( 

@@ -9,12 +9,13 @@ Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
 Compiling package std.standard
 Compiling package ieee.std_logic_1164
-Compiling package ieee.std_logic_arith
-Compiling package ieee.std_logic_unsigned
-Compiling package ieee.math_real
-Compiling package xil_defaultlib.font
 Compiling package std.textio
 Compiling package ieee.std_logic_textio
+Compiling package ieee.numeric_std
+Compiling package ieee.math_real
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package xil_defaultlib.font
 Compiling architecture behavioral of entity xil_defaultlib.Vga [\Vga(1280,48,112,248,'1',1024,1,...]
 Compiling architecture behavioral of entity xil_defaultlib.test1
 Built simulation snapshot test1_behav
