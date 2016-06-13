@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
-| Date         : Mon Jun  6 01:10:29 2016
+| Date         : Mon Jun 13 15:01:57 2016
 | Host         : Dries007-Arch running 64-bit unknown
 | Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
 | Design       : top
@@ -22,8 +22,8 @@ Table of Contents
 +-------------------------------------------------------------------+-------+
 |                               Status                              | Count |
 +-------------------------------------------------------------------+-------+
-| Number of unique control sets                                     |   129 |
-| Minimum Number of register sites lost to control set restrictions |   490 |
+| Number of unique control sets                                     |    82 |
+| Minimum Number of register sites lost to control set restrictions |   274 |
 +-------------------------------------------------------------------+-------+
 
 
@@ -33,12 +33,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              95 |           41 |
+| No           | No                    | No                     |              94 |           40 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |              34 |           12 |
-| Yes          | No                    | No                     |            1069 |          500 |
+| Yes          | No                    | No                     |             466 |          244 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              80 |           44 |
+| Yes          | Yes                   | No                     |             108 |           66 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -48,135 +48,88 @@ Table of Contents
 +---------------------------------------+----------------------------------------+--------------------------------+------------------+----------------+
 |              Clock Signal             |              Enable Signal             |        Set/Reset Signal        | Slice Load Count | Bel Load Count |
 +---------------------------------------+----------------------------------------+--------------------------------+------------------+----------------+
-|  clock0/inst/clk_cpu                  | bets[19][kind][3]_i_1_n_0              |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[25][kind][3]_i_1_n_0              |                                |                1 |              4 |
 |  clock0/inst/clk_cpu                  | keyboard0/state_index_reg[0][0]        |                                |                2 |              4 |
-|  clock0/inst/clk_cpu                  | bets[9][kind][3]_i_1_n_0               |                                |                1 |              4 |
-|  clock0/inst/clk_cpu                  | bets[8][kind][3]_i_1_n_0               |                                |                1 |              4 |
-|  clock0/inst/clk_cpu                  | bets[7][kind][3]_i_1_n_0               |                                |                1 |              4 |
-|  clock0/inst/clk_cpu                  | bets[6][kind][3]_i_1_n_0               |                                |                1 |              4 |
-|  clock0/inst/clk_cpu                  | bets[5][kind][3]_i_1_n_0               |                                |                2 |              4 |
-|  clock0/inst/clk_cpu                  | bets[4][kind][3]_i_1_n_0               |                                |                2 |              4 |
-|  clock0/inst/clk_cpu                  | bets[3][kind][3]_i_1_n_0               |                                |                2 |              4 |
-|  clock0/inst/clk_cpu                  | bets[2][kind][3]_i_1_n_0               |                                |                1 |              4 |
-|  clock0/inst/clk_cpu                  | bets[25][kind][3]_i_1_n_0              |                                |                4 |              4 |
-|  clock0/inst/clk_cpu                  | bets[23][kind][3]_i_1_n_0              |                                |                1 |              4 |
-|  clock0/inst/clk_cpu                  | bets[22][kind][3]_i_1_n_0              |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[19][kind][3]_i_1_n_0              |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[1][kind][3]_i_1_n_0               |                                |                2 |              4 |
+|  clock0/inst/clk_cpu                  | bets[20][kind][3]_i_1_n_0              |                                |                3 |              4 |
 |  clock0/inst/clk_cpu                  | bets[21][kind][3]_i_1_n_0              |                                |                1 |              4 |
-|  clock0/inst/clk_cpu                  | bets[20][kind][3]_i_1_n_0              |                                |                1 |              4 |
-|  clock0/inst/clk_cpu                  | bets[1][kind][3]_i_1_n_0               |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[22][kind][3]_i_1_n_0              |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[23][kind][3]_i_1_n_0              |                                |                1 |              4 |
 |  clock0/inst/clk_cpu                  | bets[24][kind][3]_i_1_n_0              |                                |                2 |              4 |
-|  clock0/inst/clk_cpu                  | bets[18][kind][3]_i_1_n_0              |                                |                2 |              4 |
-|  clock0/inst/clk_cpu                  | bets[17][kind][3]_i_1_n_0              |                                |                1 |              4 |
-|  clock0/inst/clk_cpu                  | bets[16][kind][3]_i_1_n_0              |                                |                1 |              4 |
-|  clock0/inst/clk_cpu                  | bets[15][kind][3]_i_1_n_0              |                                |                1 |              4 |
-|  clock0/inst/clk_cpu                  | bets[14][kind][3]_i_1_n_0              |                                |                2 |              4 |
-|  clock0/inst/clk_cpu                  | bets[13][kind][3]_i_1_n_0              |                                |                1 |              4 |
-|  clock0/inst/clk_cpu                  | bets[12][kind][3]_i_1_n_0              |                                |                1 |              4 |
-|  clock0/inst/clk_cpu                  | bets[11][kind][3]_i_1_n_0              |                                |                2 |              4 |
-|  clock0/inst/clk_cpu                  | bets[10][kind][3]_i_1_n_0              |                                |                1 |              4 |
-|  clock0/inst/clk_cpu                  | bets[0][kind][3]_i_1_n_0               |                                |                1 |              4 |
-|  clock0/inst/clk_cpu                  | card_first[3]_i_1_n_0                  |                                |                1 |              4 |
-|  clock0/inst/clk_cpu                  | msg[1][6]_i_1_n_0                      | msg[8][0]_i_1_n_0              |                4 |              4 |
-|  clock0/inst/clk_cpu                  | msg[1][6]_i_1_n_0                      | msg[24][3]_i_1_n_0             |                4 |              4 |
-|  clock0/inst/clk_2cpu                 |                                        |                                |                2 |              4 |
+|  clock0/inst/clk_cpu                  | bets[18][kind][3]_i_1_n_0              |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[2][kind][3]_i_1_n_0               |                                |                2 |              4 |
+|  clock0/inst/clk_cpu                  | bets[3][kind][3]_i_1_n_0               |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[4][kind][3]_i_1_n_0               |                                |                2 |              4 |
+|  clock0/inst/clk_cpu                  | bets[5][kind][3]_i_1_n_0               |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[6][kind][3]_i_1_n_0               |                                |                2 |              4 |
+|  clock0/inst/clk_cpu                  | bets[7][kind][3]_i_1_n_0               |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[8][kind][3]_i_1_n_0               |                                |                2 |              4 |
+|  clock0/inst/clk_cpu                  | bets[9][kind][3]_i_1_n_0               |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[10][kind][3]_i_1_n_0              |                                |                3 |              4 |
+|  clock0/inst/clk_cpu                  | msg[1][6]_i_1_n_0                      | msg[14][4]_i_1_n_0             |                1 |              4 |
+|  clock0/inst/clk_cpu                  | msg[1][6]_i_1_n_0                      | msg[20][6]_i_1_n_0             |                2 |              4 |
+|  clock0/inst/clk_cpu                  | msg[1][6]_i_1_n_0                      | msg[20][5]_i_1_n_0             |                3 |              4 |
 |  clock0/inst/clk_vga                  | vga0/fbOutAddr[13]_i_1_n_0             | vga0/fbOutAddr[4]_i_1_n_0      |                3 |              4 |
-|  clock0/inst/clk_cpu                  | keyboard0/state_reg[13][0][0]          |                                |                5 |              5 |
-|  clock0/inst/clk_cpu                  | keyboard0/state_reg[10][0][0]          |                                |                4 |              5 |
-|  clock0/inst/clk_cpu                  | keyboard0/state_reg[1][0][0]           |                                |                4 |              5 |
+|  clock0/inst/clk_cpu                  | msg[1][6]_i_1_n_0                      | msg[15][6]_i_1_n_0             |                2 |              4 |
+|  clock0/inst/clk_2cpu                 |                                        |                                |                4 |              4 |
+|  clock0/inst/clk_cpu                  | i0                                     |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[0][kind][3]_i_1_n_0               |                                |                2 |              4 |
+|  clock0/inst/clk_cpu                  | bets[11][kind][3]_i_1_n_0              |                                |                2 |              4 |
+|  clock0/inst/clk_cpu                  | bets[12][kind][3]_i_1_n_0              |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[13][kind][3]_i_1_n_0              |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[14][kind][3]_i_1_n_0              |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | bets[15][kind][3]_i_1_n_0              |                                |                2 |              4 |
+|  clock0/inst/clk_cpu                  | bets[16][kind][3]_i_1_n_0              |                                |                2 |              4 |
+|  clock0/inst/clk_cpu                  | bets[17][kind][3]_i_1_n_0              |                                |                1 |              4 |
+|  clock0/inst/clk_cpu                  | msg[1][6]_i_1_n_0                      | msg[13][1]_i_1_n_0             |                4 |              5 |
+|  clock0/inst/clk_cpu                  | bets_index[4]_i_2_n_0                  | bets_index[4]_i_1_n_0          |                2 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/E[0]                         |                                |                5 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[13][0][0]          |                                |                4 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[14][0][0]          |                                |                3 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[15][0][0]          |                                |                5 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[2][0][0]           |                                |                4 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[3][0][0]           |                                |                4 |              5 |
 |  clock0/inst/clk_cpu                  | keyboard0/state_reg[4][0][0]           |                                |                4 |              5 |
 |  clock0/inst/clk_cpu                  | keyboard0/state_reg[5][0][0]           |                                |                5 |              5 |
-|  clock0/inst/clk_cpu                  | keyboard0/state_reg[15][0][0]          |                                |                4 |              5 |
-|  clock0/inst/clk_cpu                  | keyboard0/state_reg[9][0][0]           |                                |                3 |              5 |
-|  clock0/inst/clk_cpu                  | keyboard0/state_reg[2][0][0]           |                                |                4 |              5 |
-|  clock0/inst/clk_cpu                  | keyboard0/state_reg[14][0][0]          |                                |                4 |              5 |
-|  clock0/inst/clk_cpu                  | keyboard0/state_reg[8][0][0]           |                                |                4 |              5 |
-|  clock0/inst/clk_cpu                  | keyboard0/state_reg[3][0][0]           |                                |                5 |              5 |
-|  clock0/inst/clk_cpu                  | input_max[5]_i_1_n_0                   |                                |                3 |              5 |
-|  clock0/inst/clk_cpu                  | keyboard0/state_reg[12][0][0]          |                                |                4 |              5 |
-|  clock0/inst/clk_cpu                  | input_max[5]_i_1_n_0                   | input_max[16]_i_1_n_0          |                2 |              5 |
-|  clock0/inst/clk_cpu                  | keyboard0/state_reg[7][0][0]           |                                |                5 |              5 |
-|  clock0/inst/clk_cpu                  | bets_index[4]_i_2_n_0                  | bets_index[4]_i_1_n_0          |                2 |              5 |
-|  clock0/inst/clk_cpu                  | msg[1][6]_i_1_n_0                      | msg[11][1]_i_1_n_0             |                3 |              5 |
 |  clock0/inst/clk_cpu                  | keyboard0/state_reg[6][0][0]           |                                |                4 |              5 |
-|  clock0/inst/clk_cpu                  | keyboard0/state_reg[11][0][0]          |                                |                4 |              5 |
-|  clock0/inst/clk_cpu                  | keyboard0/state_reg[0][0][0]           |                                |                5 |              5 |
-|  clock0/inst/clk_cpu                  | bets[21][number][5]_i_1_n_0            |                                |                3 |              6 |
-|  clock0/inst/clk_cpu                  | bets[1][number][5]_i_1_n_0             |                                |                3 |              6 |
-|  clock0/inst/clk_cpu                  | bets[20][number][5]_i_1_n_0            |                                |                2 |              6 |
-|  clock0/inst/clk_cpu                  | bets[13][number][5]_i_1_n_0            |                                |                2 |              6 |
-|  clock0/inst/clk_cpu                  | bets[18][number][5]_i_1_n_0            |                                |                2 |              6 |
-|  clock0/inst/clk_cpu                  | bets[17][number][5]_i_1_n_0            |                                |                2 |              6 |
-|  clock0/inst/clk_cpu                  | bets[16][number][5]_i_1_n_0            |                                |                2 |              6 |
-|  clock0/inst/clk_cpu                  | bets[15][number][5]_i_1_n_0            |                                |                2 |              6 |
-|  clock0/inst/clk_cpu                  | bets[14][number][5]_i_1_n_0            |                                |                1 |              6 |
-|  clock0/inst/clk_cpu                  | bets[19][number][5]_i_1_n_0            |                                |                1 |              6 |
-|  clock0/inst/clk_cpu                  | bets[12][number][5]_i_1_n_0            |                                |                3 |              6 |
-|  clock0/inst/clk_cpu                  | bets[11][number][5]_i_1_n_0            |                                |                2 |              6 |
-|  clock0/inst/clk_cpu                  | bets[10][number][5]_i_1_n_0            |                                |                2 |              6 |
-|  clock0/inst/clk_cpu                  | bets[0][number][5]_i_1_n_0             |                                |                2 |              6 |
-|  clock0/inst/clk_cpu                  | msg[1][6]_i_1_n_0                      | msg[15][6]_i_1_n_0             |                4 |              6 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[7][0][0]           |                                |                5 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[0][0][0]           |                                |                4 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[10][0][0]          |                                |                5 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[12][0][0]          |                                |                5 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[8][0][0]           |                                |                4 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[9][0][0]           |                                |                4 |              5 |
+|  clock0/inst/clk_cpu                  | keyboard0/state_reg[11][0][0]          |                                |                5 |              5 |
+|  clock0/inst/clk_cpu                  | msg[1][6]_i_1_n_0                      | msg[11][2]_i_1_n_0             |                5 |              6 |
 |  clock0/inst/clk_cpu                  | rnd[5]_i_1_n_0                         |                                |                4 |              6 |
-|  clock0/inst/clk_cpu                  | bets[22][number][5]_i_1_n_0            |                                |                2 |              6 |
-|  clock0/inst/clk_cpu                  | bets[9][number][5]_i_1_n_0             |                                |                2 |              6 |
-|  clock0/inst/clk_cpu                  | bets[8][number][5]_i_1_n_0             |                                |                3 |              6 |
-|  clock0/inst/clk_cpu                  | bets[7][number][5]_i_1_n_0             |                                |                2 |              6 |
-|  clock0/inst/clk_cpu                  | bets[6][number][5]_i_1_n_0             |                                |                2 |              6 |
-|  clock0/inst/clk_cpu                  | bets[5][number][5]_i_1_n_0             |                                |                3 |              6 |
-|  clock0/inst/clk_cpu                  | bets[4][number][5]_i_1_n_0             |                                |                3 |              6 |
-|  clock0/inst/clk_cpu                  | bets[3][number][5]_i_1_n_0             |                                |                3 |              6 |
-|  clock0/inst/clk_cpu                  | bets[2][number][5]_i_1_n_0             |                                |                2 |              6 |
-|  clock0/inst/clk_cpu                  | bets[23][number][5]_i_1_n_0            |                                |                2 |              6 |
-|  clock0/inst/clk_cpu                  | bets[24][number][5]_i_1_n_0            |                                |                2 |              6 |
-|  clock0/inst/clk_cpu                  | keyboard0/ps2_keyboard_0/E[0]          |                                |                6 |              7 |
-|  clock0/inst/clk_cpu                  | input_max[5]_i_1_n_0                   | input_max[14]_i_1_n_0          |                4 |              7 |
-|  clock0/inst/clk_cpu                  | msg[1][6]_i_1_n_0                      | msg[6][4]_i_1_n_0              |                5 |              7 |
+|  clock0/inst/clk_cpu                  | msg[1][6]_i_1_n_0                      | msg[15][3]_i_1_n_0             |                3 |              6 |
+|  clock0/inst/clk_cpu                  | rom_addr[13]_i_1_n_0                   |                                |                4 |              6 |
 |  clock0/inst/clk_cpu                  | keyboard0/ascii_new_i_1_n_0            |                                |                3 |              7 |
-|  clock0/inst/clk_cpu                  | keyboard0/ps2_keyboard_0/ps2_code_new0 |                                |                1 |              8 |
-|  clock0/inst/clk_vga                  | vga0/char[7]_i_1_n_0                   |                                |                2 |              8 |
-|  clock0/inst/clk_cpu                  | keyboard0/E[0]                         |                                |                6 |              8 |
-|  clock0/inst/clk_cpu                  | keyboard0/ps2_keyboard_0/sel           | keyboard0/ps2_keyboard_0/clear |                3 |              9 |
-|  clock0/inst/clk_vga                  | vga0/fbOutAddr[13]_i_1_n_0             |                                |                4 |             10 |
+|  clock0/inst/clk_cpu                  | input_max[16]_i_1_n_0                  | input_max[14]_i_1_n_0          |                4 |              7 |
+|  clock0/inst/clk_cpu                  | keyboard0/ps2_keyboard_0/E[0]          |                                |                7 |              7 |
+|  clock0/inst/clk_cpu                  | keyboard0/fb_a_dat_in_reg[0][0]        |                                |                8 |              8 |
+|  clock0/inst/clk_vga                  | vga0/char[7]_i_1_n_0                   |                                |                3 |              8 |
+|  clock0/inst/clk_cpu                  | keyboard0/ps2_keyboard_0/ps2_code_new0 |                                |                2 |              8 |
+|  clock0/inst/clk_cpu                  | keyboard0/ps2_keyboard_0/sel           | keyboard0/ps2_keyboard_0/clear |                2 |              9 |
+|  clock0/inst/clk_cpu                  | rom_addr[13]_i_1_n_0                   | rom_addr[14]_i_1_n_0           |                6 |              9 |
+|  clock0/inst/clk_cpu                  | input_max[16]_i_1_n_0                  |                                |                6 |             10 |
+|  clock0/inst/clk_vga                  | vga0/fbOutAddr[13]_i_1_n_0             |                                |                5 |             10 |
+| ~keyboard0/ps2_keyboard_0/ps2_clk_int |                                        |                                |                3 |             11 |
+|  clock0/inst/clk_cpu                  | keyboard0/msg_index_reg[3]_0           | keyboard0/msg_index_reg[3]     |                5 |             11 |
 |  clock0/inst/clk_vga                  |                                        | vga0/h_count[10]_i_1_n_0       |                5 |             11 |
-| ~keyboard0/ps2_keyboard_0/ps2_clk_int |                                        |                                |                4 |             11 |
-|  clock0/inst/clk_cpu                  | keyboard0/msg_index_reg[3]             | keyboard0/msg_index_reg[3]_0   |                4 |             11 |
-|  clock0/inst/clk_cpu                  | rom_addr[14]_i_2_n_0                   | rom_addr[14]_i_1_n_0           |                6 |             13 |
-|  clock0/inst/clk_cpu                  | keyboard0/fb_a_addr_reg[0][0]          |                                |                7 |             14 |
+|  clock0/inst/clk_cpu                  | msg[1][6]_i_1_n_0                      | msg[6][3]_i_1_n_0              |                8 |             13 |
+|  clock0/inst/clk_cpu                  | keyboard0/fb_a_addr_reg[0][0]          |                                |                6 |             14 |
+|  clk_1k_reg_n_0                       |                                        |                                |                4 |             16 |
+|  clock0/inst/clk_cpu                  | fb_index[13]_i_1_n_0                   |                                |               12 |             16 |
 |  clock0/inst/clk_cpu                  | prng0/rnd[15]_i_1_n_0                  |                                |                5 |             16 |
-|  clock0/inst/clk_cpu                  | keyboard0/rng_seed_en_reg[0]           |                                |                5 |             16 |
-|  clk__0                               |                                        |                                |                4 |             16 |
-|  clock0/inst/clk_cpu                  | bets[2][money][16]_i_1_n_0             |                                |                6 |             17 |
-|  clock0/inst/clk_cpu                  | bets[0][money][16]_i_1_n_0             |                                |                9 |             17 |
-|  clock0/inst/clk_cpu                  | bets[10][money][16]_i_1_n_0            |                                |               12 |             17 |
-|  clock0/inst/clk_cpu                  | bets[7][money][16]_i_1_n_0             |                                |               10 |             17 |
-|  clock0/inst/clk_cpu                  | bets[8][money][16]_i_1_n_0             |                                |                6 |             17 |
-|  clock0/inst/clk_cpu                  | bet_money[16]_i_1_n_0                  |                                |               10 |             17 |
-|  clock0/inst/clk_cpu                  | fb_index[13]_i_1_n_0                   |                                |               12 |             17 |
-|  clock0/inst/clk_cpu                  | bets[23][money][16]_i_1_n_0            |                                |                7 |             17 |
-|  clock0/inst/clk_cpu                  | bets[9][money][16]_i_1_n_0             |                                |                7 |             17 |
-|  clock0/inst/clk_cpu                  | bets[22][money][16]_i_1_n_0            |                                |                9 |             17 |
-|  clock0/inst/clk_cpu                  | bets[16][money][16]_i_1_n_0            |                                |                8 |             17 |
-|  clock0/inst/clk_cpu                  | bets[1][money][16]_i_1_n_0             |                                |                8 |             17 |
-|  clock0/inst/clk_cpu                  | bets[19][money][16]_i_1_n_0            |                                |                6 |             17 |
-|  clock0/inst/clk_cpu                  | bets[3][money][16]_i_1_n_0             |                                |               11 |             17 |
-|  clock0/inst/clk_cpu                  | bets[18][money][16]_i_1_n_0            |                                |                6 |             17 |
-|  clock0/inst/clk_cpu                  | bets[20][money][16]_i_1_n_0            |                                |                6 |             17 |
-|  clock0/inst/clk_cpu                  | bets[17][money][16]_i_1_n_0            |                                |               11 |             17 |
-|  clock0/inst/clk_cpu                  | keyboard0/fb_a_addr0                   |                                |                8 |             17 |
-|  clock0/inst/clk_cpu                  | bets[4][money][16]_i_1_n_0             |                                |                5 |             17 |
-|  clock0/inst/clk_cpu                  | bets[24][money][16]_i_1_n_0            |                                |                9 |             17 |
-|  clock0/inst/clk_cpu                  | bets[15][money][16]_i_1_n_0            |                                |                7 |             17 |
-|  clock0/inst/clk_cpu                  | bets[5][money][16]_i_1_n_0             |                                |                9 |             17 |
-|  clock0/inst/clk_cpu                  | bets[14][money][16]_i_1_n_0            |                                |                6 |             17 |
-|  clock0/inst/clk_cpu                  | bets[13][money][16]_i_1_n_0            |                                |               10 |             17 |
-|  clock0/inst/clk_cpu                  | bets[6][money][16]_i_1_n_0             |                                |                7 |             17 |
-|  clock0/inst/clk_cpu                  | bets[12][money][16]_i_1_n_0            |                                |                9 |             17 |
-|  clock0/inst/clk_cpu                  | bets[21][money][16]_i_1_n_0            |                                |                6 |             17 |
-|  clock0/inst/clk_cpu                  | bets[11][money][16]_i_1_n_0            |                                |                8 |             17 |
-|  clock0/inst/clk_vga                  |                                        |                                |               11 |             20 |
+|  clock0/inst/clk_cpu                  | keyboard0/rng_seed_en_reg[0]           |                                |                3 |             16 |
+|  clock0/inst/clk_cpu                  | bet_money[16]_i_1_n_0                  |                                |                8 |             17 |
+|  clock0/inst/clk_cpu                  | keyboard0/fb_a_addr0                   | keyboard0/input_reg[13]_0      |               16 |             17 |
+|  clock0/inst/clk_vga                  |                                        |                                |                8 |             20 |
 |  clock0/inst/clk_cpu                  |                                        | i[22]_i_1_n_0                  |                7 |             23 |
-|  clock0/inst/clk_cpu                  | money[26]_i_1_n_0                      |                                |               15 |             29 |
-|  clock0/inst/clk_cpu                  |                                        |                                |               20 |             44 |
-|  clock0/inst/clk_cpu                  | msg[1][6]_i_1_n_0                      |                                |               49 |            117 |
+|  clock0/inst/clk_cpu                  | money[26]_i_1_n_0                      |                                |               12 |             29 |
+|  clock0/inst/clk_cpu                  |                                        |                                |               21 |             43 |
+|  clock0/inst/clk_cpu                  | msg[1][6]_i_1_n_0                      |                                |               43 |             96 |
 +---------------------------------------+----------------------------------------+--------------------------------+------------------+----------------+
 
 
