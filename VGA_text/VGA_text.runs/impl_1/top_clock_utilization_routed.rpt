@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------
 | Tool Version      : Vivado v.2015.4 (lin64) Build 1412921 Wed Nov 18 09:44:32 MST 2015
-| Date              : Mon Jun 13 15:02:38 2016
+| Date              : Tue Jun 14 01:04:40 2016
 | Host              : Dries007-Arch running 64-bit unknown
 | Command           : report_clock_utilization -file top_clock_utilization_routed.rpt
 | Design            : top
@@ -52,8 +52,8 @@ Table of Contents
 +-------+-------------------------+---------------------------------------+------+-------+-------+
 |     1 | clock0/inst/clkf_buf    | clock0/inst/clkfbout_buf_ClockDivider |    1 |     1 |    no |
 |     2 | clock0/inst/clkout3_buf | clock0/inst/clk_2cpu                  |   15 |    23 |    no |
-|     3 | clock0/inst/clkout1_buf | clock0/inst/clk_vga                   |   56 |    27 |    no |
-|     4 | clock0/inst/clkout2_buf | clock0/inst/clk_cpu                   |  625 |   334 |    no |
+|     3 | clock0/inst/clkout1_buf | clock0/inst/clk_vga                   |   56 |    30 |    no |
+|     4 | clock0/inst/clkout2_buf | clock0/inst/clk_cpu                   |  663 |   358 |    no |
 +-------+-------------------------+---------------------------------------+------+-------+-------+
 
 
@@ -88,7 +88,7 @@ Table of Contents
 +-------+------------------------------------------+--------------------------------------+------+-------+-------+
 |     1 | clock0/inst/clkin1_ibufg                 | clock0/inst/clk_ClockDivider         |    1 |     1 |   yes |
 |     2 | keyboard0/ps2_keyboard_0/ps2_clk_int_reg | keyboard0/ps2_keyboard_0/ps2_clk_int |   12 |     4 |    no |
-|     3 | clk_1k_reg                               | clk_1k_reg_n_0                       |   17 |     5 |    no |
+|     3 | clk_1k_reg                               | clk__0                               |   17 |     5 |    no |
 +-------+------------------------------------------+--------------------------------------+------+-------+-------+
 
 
@@ -100,10 +100,10 @@ Table of Contents
 +-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
 | Clock Region Name | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail |
 +-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
-| X0Y0              |    3 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |   85 |  9600 |    0 |  1600 |    1 |    20 |    2 |    10 |    0 |    20 |
-| X1Y0              |    3 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    1 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  121 | 12000 |    0 |  1800 |    1 |    40 |    7 |    20 |    7 |    20 |
-| X0Y1              |    1 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  161 |  9600 |    0 |  1600 |    0 |    20 |    0 |    10 |    0 |    20 |
-| X1Y1              |    1 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  335 | 12000 |    0 |  1800 |    0 |    40 |    0 |    20 |    0 |    20 |
+| X0Y0              |    3 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  263 |  9600 |    0 |  1600 |    1 |    20 |    1 |    10 |    0 |    20 |
+| X1Y0              |    3 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    1 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  311 | 12000 |    0 |  1800 |    1 |    40 |    7 |    20 |    7 |    20 |
+| X0Y1              |    3 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |   47 |  9600 |    0 |  1600 |    0 |    20 |    1 |    10 |    0 |    20 |
+| X1Y1              |    1 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  119 | 12000 |    0 |  1800 |    0 |    40 |    0 |    20 |    0 |    20 |
 | X0Y2              |    0 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    0 | 14400 |    0 |  1600 |    0 |    20 |    0 |    10 |    0 |    20 |
 | X1Y2              |    0 |    12 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     5 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |  7600 |    0 |  1200 |    0 |    10 |    0 |     5 |    0 |    20 |
 +-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
@@ -116,9 +116,9 @@ Table of Contents
 +-------------+--------------+-------+-----------+----------+---------+-----------+---------+---------+-----+-------+----------+----------------------+
 | Source Type | BUFHCE Site  | Fixed | MMCM Pins | PLL Pins | GT Pins | BRAM Pins | ILOGICs | OLOGICs | FFs | LUTMs | DSP48E1s |    Clock Net Name    |
 +-------------+--------------+-------+-----------+----------+---------+-----------+---------+---------+-----+-------+----------+----------------------+
-| BUFG        | BUFHCE_X0Y10 |   no  |         0 |        0 |       0 |         3 |       0 |       0 |   0 |     0 |        0 | clock0/inst/clk_2cpu |
-| BUFG        | BUFHCE_X0Y8  |   no  |         0 |        0 |       0 |         0 |       0 |       0 |  32 |     0 |        0 | clock0/inst/clk_cpu  |
-| BUFG        | BUFHCE_X0Y9  |   no  |         0 |        0 |       0 |         3 |       0 |       0 |  53 |     0 |        0 | clock0/inst/clk_vga  |
+| BUFG        | BUFHCE_X0Y10 |   no  |         0 |        0 |       0 |         2 |       0 |       0 |   0 |     0 |        0 | clock0/inst/clk_2cpu |
+| BUFG        | BUFHCE_X0Y9  |   no  |         0 |        0 |       0 |         2 |       0 |       0 |  49 |     0 |        0 | clock0/inst/clk_vga  |
+| BUFG        | BUFHCE_X0Y8  |   no  |         0 |        0 |       0 |         0 |       0 |       0 | 214 |     0 |        0 | clock0/inst/clk_cpu  |
 +-------------+--------------+-------+-----------+----------+---------+-----------+---------+---------+-----+-------+----------+----------------------+
 
 
@@ -130,18 +130,20 @@ Table of Contents
 +-------------+-------------+-------+-----------+----------+---------+-----------+---------+---------+-----+-------+----------+---------------------------------------+
 | BUFG        | BUFHCE_X1Y0 |   no  |         1 |        0 |       0 |         0 |       0 |       0 |   0 |     0 |        0 | clock0/inst/clkfbout_buf_ClockDivider |
 | BUFG        | BUFHCE_X1Y9 |   no  |         0 |        0 |       0 |        16 |       0 |       0 |   4 |     0 |        0 | clock0/inst/clk_2cpu                  |
-| BUFG        | BUFHCE_X1Y8 |   no  |         0 |        0 |       0 |         0 |       0 |       0 | 117 |     0 |        7 | clock0/inst/clk_cpu                   |
+| BUFG        | BUFHCE_X1Y8 |   no  |         0 |        0 |       0 |         0 |       0 |       0 | 291 |     0 |        7 | clock0/inst/clk_cpu                   |
 +-------------+-------------+-------+-----------+----------+---------+-----------+---------+---------+-----+-------+----------+---------------------------------------+
 
 
 10. Net wise resources used in clock region X0Y1
 ------------------------------------------------
 
-+-------------+--------------+-------+-----------+----------+---------+-----------+---------+---------+-----+-------+----------+---------------------+
-| Source Type | BUFHCE Site  | Fixed | MMCM Pins | PLL Pins | GT Pins | BRAM Pins | ILOGICs | OLOGICs | FFs | LUTMs | DSP48E1s |    Clock Net Name   |
-+-------------+--------------+-------+-----------+----------+---------+-----------+---------+---------+-----+-------+----------+---------------------+
-| BUFG        | BUFHCE_X0Y20 |   no  |         0 |        0 |       0 |         0 |       0 |       0 | 150 |     0 |        0 | clock0/inst/clk_cpu |
-+-------------+--------------+-------+-----------+----------+---------+-----------+---------+---------+-----+-------+----------+---------------------+
++-------------+--------------+-------+-----------+----------+---------+-----------+---------+---------+-----+-------+----------+----------------------+
+| Source Type | BUFHCE Site  | Fixed | MMCM Pins | PLL Pins | GT Pins | BRAM Pins | ILOGICs | OLOGICs | FFs | LUTMs | DSP48E1s |    Clock Net Name    |
++-------------+--------------+-------+-----------+----------+---------+-----------+---------+---------+-----+-------+----------+----------------------+
+| BUFG        | BUFHCE_X0Y22 |   no  |         0 |        0 |       0 |         1 |       0 |       0 |   0 |     0 |        0 | clock0/inst/clk_2cpu |
+| BUFG        | BUFHCE_X0Y21 |   no  |         0 |        0 |       0 |         1 |       0 |       0 |   4 |     0 |        0 | clock0/inst/clk_vga  |
+| BUFG        | BUFHCE_X0Y20 |   no  |         0 |        0 |       0 |         0 |       0 |       0 |  42 |     0 |        0 | clock0/inst/clk_cpu  |
++-------------+--------------+-------+-----------+----------+---------+-----------+---------+---------+-----+-------+----------+----------------------+
 
 
 11. Net wise resources used in clock region X1Y1
@@ -150,7 +152,7 @@ Table of Contents
 +-------------+--------------+-------+-----------+----------+---------+-----------+---------+---------+-----+-------+----------+---------------------+
 | Source Type | BUFHCE Site  | Fixed | MMCM Pins | PLL Pins | GT Pins | BRAM Pins | ILOGICs | OLOGICs | FFs | LUTMs | DSP48E1s |    Clock Net Name   |
 +-------------+--------------+-------+-----------+----------+---------+-----------+---------+---------+-----+-------+----------+---------------------+
-| BUFG        | BUFHCE_X1Y20 |   no  |         0 |        0 |       0 |         0 |       0 |       0 | 319 |     0 |        0 | clock0/inst/clk_cpu |
+| BUFG        | BUFHCE_X1Y20 |   no  |         0 |        0 |       0 |         0 |       0 |       0 | 109 |     0 |        0 | clock0/inst/clk_cpu |
 +-------------+--------------+-------+-----------+----------+---------+-----------+---------+---------+-----+-------+----------+---------------------+
 
 
@@ -179,18 +181,18 @@ set_property LOC MMCME2_ADV_X1Y0 [get_cells clock0/inst/mmcm_adv_inst]
 # Location of clock ports
 set_property LOC IOB_X1Y26 [get_ports clk]
 
-# Clock net "clk_1k_reg_n_0" driven by instance "clk_1k_reg" located at site "SLICE_X60Y59"
+# Clock net "clk__0" driven by instance "clk_1k_reg" located at site "SLICE_X65Y45"
 #startgroup
-create_pblock {CLKAG_clk_1k_reg_n_0}
-add_cells_to_pblock [get_pblocks  {CLKAG_clk_1k_reg_n_0}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="clk_1k_reg_n_0"}]]]
-resize_pblock [get_pblocks {CLKAG_clk_1k_reg_n_0}] -add {CLOCKREGION_X1Y1:CLOCKREGION_X1Y1}
+create_pblock {CLKAG_clk__0}
+add_cells_to_pblock [get_pblocks  {CLKAG_clk__0}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="clk__0"}]]]
+resize_pblock [get_pblocks {CLKAG_clk__0}] -add {CLOCKREGION_X1Y0:CLOCKREGION_X1Y0}
 #endgroup
 
 # Clock net "clock0/inst/clk_2cpu" driven by instance "clock0/inst/clkout3_buf" located at site "BUFGCTRL_X0Y2"
 #startgroup
 create_pblock {CLKAG_clock0/inst/clk_2cpu}
 add_cells_to_pblock [get_pblocks  {CLKAG_clock0/inst/clk_2cpu}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="clock0/inst/clk_2cpu"}]]]
-resize_pblock [get_pblocks {CLKAG_clock0/inst/clk_2cpu}] -add {CLOCKREGION_X0Y0:CLOCKREGION_X0Y0 CLOCKREGION_X1Y0:CLOCKREGION_X1Y0}
+resize_pblock [get_pblocks {CLKAG_clock0/inst/clk_2cpu}] -add {CLOCKREGION_X0Y0:CLOCKREGION_X0Y0 CLOCKREGION_X0Y1:CLOCKREGION_X0Y1 CLOCKREGION_X1Y0:CLOCKREGION_X1Y0}
 #endgroup
 
 # Clock net "clock0/inst/clk_cpu" driven by instance "clock0/inst/clkout2_buf" located at site "BUFGCTRL_X0Y0"
@@ -204,12 +206,12 @@ resize_pblock [get_pblocks {CLKAG_clock0/inst/clk_cpu}] -add {CLOCKREGION_X0Y0:C
 #startgroup
 create_pblock {CLKAG_clock0/inst/clk_vga}
 add_cells_to_pblock [get_pblocks  {CLKAG_clock0/inst/clk_vga}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="clock0/inst/clk_vga"}]]]
-resize_pblock [get_pblocks {CLKAG_clock0/inst/clk_vga}] -add {CLOCKREGION_X0Y0:CLOCKREGION_X0Y0}
+resize_pblock [get_pblocks {CLKAG_clock0/inst/clk_vga}] -add {CLOCKREGION_X0Y0:CLOCKREGION_X0Y0 CLOCKREGION_X0Y1:CLOCKREGION_X0Y1}
 #endgroup
 
-# Clock net "keyboard0/ps2_keyboard_0/ps2_clk_int" driven by instance "keyboard0/ps2_keyboard_0/ps2_clk_int_reg" located at site "SLICE_X28Y73"
+# Clock net "keyboard0/ps2_keyboard_0/ps2_clk_int" driven by instance "keyboard0/ps2_keyboard_0/ps2_clk_int_reg" located at site "SLICE_X28Y66"
 #startgroup
 create_pblock {CLKAG_keyboard0/ps2_keyboard_0/ps2_clk_int}
 add_cells_to_pblock [get_pblocks  {CLKAG_keyboard0/ps2_keyboard_0/ps2_clk_int}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="keyboard0/ps2_keyboard_0/ps2_clk_int"}]]]
-resize_pblock [get_pblocks {CLKAG_keyboard0/ps2_keyboard_0/ps2_clk_int}] -add {CLOCKREGION_X0Y1:CLOCKREGION_X0Y1}
+resize_pblock [get_pblocks {CLKAG_keyboard0/ps2_keyboard_0/ps2_clk_int}] -add {CLOCKREGION_X0Y1:CLOCKREGION_X0Y1 CLOCKREGION_X1Y1:CLOCKREGION_X1Y1}
 #endgroup

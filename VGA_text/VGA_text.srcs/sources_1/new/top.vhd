@@ -481,6 +481,14 @@ begin
                 state_index := state_index + 1; state(state_index) := BLANK; -- blank from line 49 to last-1 line
             when others =>
             end case;
+            
+            if money < 100 then
+                state(state_index) := ERROR_STUCK; -- override return state
+                state_index := state_index + 1; state(state_index) := WRITE; -- put next state on stack
+                msg_inverted := '1';
+                msg := pad_string("You are out of money...", msg'LENGTH);
+                fb_index := 0;
+            end if;
         ---------------------------------------------
         when GAME_HL_BET =>
             state(state_index) := GAME_HL_BET_2; -- after amount, save & go back to main menu
@@ -3178,6 +3186,13 @@ begin
                 fb_a_en <= '0';
                 fb_a_we <= "0";
             end case;
+            if money < 100 then
+                state(state_index) := ERROR_STUCK; -- override return state
+                state_index := state_index + 1; state(state_index) := WRITE; -- put next state on stack
+                msg_inverted := '1';
+                msg := pad_string("You are out of money...", msg'LENGTH);
+                fb_index := 0;
+            end if;
         ---------------------------------------------
         when GAME_R_PLACE_START =>
             case bets(bets_index).kind is
@@ -3197,9 +3212,22 @@ begin
                 fb_index := COLS * 49;
                 msg := pad_string("   First number? (0 - 36) ", msg'LENGTH);
                 state_index := state_index + 1; state(state_index) := WRITE;
-            when 7 to 8 => -- colonne or simple
+            when 7 => -- colonne
+                state(state_index) := GAME_R_PLACE_BET; -- after input, read amount
+                input_max := 6;
                 input := 0;
-                state(state_index) := READ_MENU;
+                state_index := state_index + 1; state(state_index) := READ_MENU; -- Read after the write
+                fb_index := COLS * 49;
+                msg := pad_string("   R1" & lf & "   R2" & lf  & "   R3" & lf  & "   12P" & lf  & "   12M" & lf  & "   12D" & lf , msg'LENGTH);
+                state_index := state_index + 1; state(state_index) := WRITE;  
+            when 8 => -- simple
+                state(state_index) := GAME_R_PLACE_BET; -- after input, read amount
+                input_max := 6;
+                input := 0;
+                state_index := state_index + 1; state(state_index) := READ_MENU; -- Read after the write
+                fb_index := COLS * 49;
+                msg := pad_string("   Noir" & lf & "   Rouge" & lf  & "   Pair" & lf  & "   Impair" & lf  & "   Manque" & lf  & "   Passe" & lf , msg'LENGTH);
+                state_index := state_index + 1; state(state_index) := WRITE;
             when others =>
                 state(state_index) := ERROR; -- ??
             end case;
@@ -3217,10 +3245,6 @@ begin
             fb_index := COLS * 49; -- position question
             msg := pad_string("   Amount? (Max 1 000.00 $) ", msg'LENGTH);
             state_index := state_index + 1; state(state_index) := WRITE;
-            
-            
-            
-            
             
         ---------------------------------------------
         when GAME_R_PLACE_SAVE =>
@@ -3361,6 +3385,8 @@ begin
                     fb_a_dat_in <= x"20";  -- space
                     input := index_delta(input, modulo => input_max);
                 when x"0d" => -- enter
+--                    fb_index := COLS * 49; -- start of blanking
+--                    state(state_index) := BLANK; -- blank from line 49 to last-1 line
                     state_index := state_index - 1;
                 when others =>
                     -- nop
