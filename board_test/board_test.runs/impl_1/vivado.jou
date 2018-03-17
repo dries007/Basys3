@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2017.4.1 (64-bit)
+# SW Build 2117270 on Tue Jan 30 15:31:13 MST 2018
+# IP Build 2095745 on Tue Jan 30 17:13:15 MST 2018
+# Start of session at: Sat Mar 17 02:07:39 2018
+# Process ID: 3876
+# Current directory: /home/dries/Projects/Basys3/board_test/board_test.runs/impl_1
+# Command line: vivado -log board_test_top.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source board_test_top.tcl -notrace
+# Log file: /home/dries/Projects/Basys3/board_test/board_test.runs/impl_1/board_test_top.vdi
+# Journal file: /home/dries/Projects/Basys3/board_test/board_test.runs/impl_1/vivado.jou
+#-----------------------------------------------------------
+source board_test_top.tcl -notrace
